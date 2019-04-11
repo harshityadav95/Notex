@@ -43,7 +43,16 @@
 
 
 ## Aptitude
-*
+* [Blood and Relation]()
+* 
 
 
-## 
+
+By  [Harshit Yadav](harshityadav.in)  
+
+
+// Sample [Readme](markdownsyntax.md)
+
+
+
+
