@@ -1,4 +1,4 @@
-## The Index to all the Contents of the Repository 
+ The Index to all the Contents of the Repository 
 
 # Computer Science
 
@@ -31,7 +31,8 @@
 * Eigen Values and Eigen Vectors
 * Solving Linear System Of Equations
 * Computer Aided Alegebra Software
-* Digital Logic 
+* [Digital Logic](Mathematics_and_Logic\Digital_Logic\Logic_Gates.md)
+
 
 
 # Tool Box 
