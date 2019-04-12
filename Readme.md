@@ -9,7 +9,7 @@
 * SQL
 * HTML and CSS
 * Data Structure
-* [Terminal Commands]()
+* [Terminal Commands](linux/linux_home.md)
 * 
 
 ## Learning Paths
