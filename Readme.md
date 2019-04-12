@@ -2,13 +2,15 @@
 
 # Computer Science
 
-## Programming Languages
+## Programming
 * C++
 * Python 
 * Javascript
 * SQL
 * HTML and CSS
 * Data Structure
+* [Terminal Commands]()
+* 
 
 ## Learning Paths
 *  Ai / ML  
@@ -16,7 +18,7 @@
 
 ## System Design and Stacks
 
-* Learning System Design
+* [Learning System Design](System_Design_and_Stacks/Learning_System_Design.md)
 * Serverless Designs
 * Coding Standards
 * Design Patterns
@@ -31,7 +33,7 @@
 * Eigen Values and Eigen Vectors
 * Solving Linear System Of Equations
 * Computer Aided Alegebra Software
-* [Digital Logic](Mathematics_and_Logic\Digital_Logic\Logic_Gates.md)
+* [Digital Logic & Boolean](Mathematics_and_Logic\Digital_Logic\Logic_Gates.md)
 
 
 
