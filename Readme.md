@@ -8,7 +8,7 @@
 * Javascript
 * SQL
 * HTML and CSS
-* Data Structure
+* [Data Structure and Algorithm]()
 * [Terminal Commands](linux/linux_home.md)
 * 
 
