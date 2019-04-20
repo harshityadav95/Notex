@@ -13,7 +13,9 @@ My Profile on Various Websites
 * [Book, Algorithm 4](https://algs4.cs.princeton.edu/home/)
 
 
-# [The Sol Project](https://github.com/harshityadav95/Notex/wiki) 
+# The Sol Project
+
+Main Link :(https://github.com/harshityadav95/Notex/wiki) 
 
 
 
