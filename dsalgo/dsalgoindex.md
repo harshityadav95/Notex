@@ -12,6 +12,11 @@ My Profile on Various Websites
 ## Resource
 * [Book, Algorithm 4](https://algs4.cs.princeton.edu/home/)
 
+
+# [The Sol Project](https://github.com/harshityadav95/Notex/wiki) 
+
+
+
 #### Week 1
 Mathematics
 Basic Recursion
@@ -47,6 +52,3 @@ Recursion and Backtracking: Backtracking questions, n queen, rat, knight etc.
 Dynamic Programming: Properties (Top Down, Bottom Up, Optimal Substructures, Overlapping Subproblems).
 
 
-## The Sol Project 
-
-* [Sol1](sol1.md)
