@@ -8,9 +8,9 @@
 * Javascript
 * SQL
 * HTML and CSS
-* [Data Structure and Algorithm]()
+* [Data Structure and Algorithm](dsalgo/dsalgoindex.md)
 * [Terminal Commands](linux/linux_home.md)
-* 
+
 
 ## Learning Paths
 *  Ai / ML  
