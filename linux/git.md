@@ -1,8 +1,8 @@
 # Git Commands  
 #### [<--Back to Home](../Readme.md)
 
-###Basic Git/GitHub Cheat Sheet
-####The Beginner's Guide to Version Control
+### Basic Git/GitHub Cheat Sheet
+#### The Beginner's Guide to Version Control
 
 Setting up Git  Identity
 
@@ -71,4 +71,8 @@ Push the branch on github :
 ```
 $ git push origin [name_of_your_new_branch]
 ```
+
+## Git Cheat Sheet 
+![](git-cheat-sheet-large01.png)
+
 
