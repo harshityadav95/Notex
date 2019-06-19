@@ -9,7 +9,7 @@
 * SQL
 * HTML and CSS
 * [Data Structure and Algorithm](dsalgo/dsalgoindex.md)
-* [Terminal Commands + Git ](linux/linux_home.md)
+* [Terminals + WSL + Git ](linux/linux_home.md)
 
 
 ## Learning Paths
