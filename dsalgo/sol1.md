@@ -24,5 +24,11 @@
 * O(1) < O(logn) <O(n) <O(nlogn) < O(n^c) < O(n!)
 
 
+# SOL 2
+
+## Track 1 - Mathematics
+
+* 
+
 
 
