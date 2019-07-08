@@ -28,7 +28,16 @@
 
 ## Track 1 - Mathematics
 
-* 
+* Finding Number of Digits in a Number 
+*  Arithematic and Geometric Progression  
+* Quadratic Equation  
+* Mean and Median  
+* Prime Numbers
+* LCM and HCF 
+* Factorials 
+* Permutation and Combination Basics
+* Modular Arithematics 
+
 
 
 

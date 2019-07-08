@@ -11,6 +11,9 @@
 
 * [Free Ebooks Source 1](https://www.pdfdrive.com/)
 
+* [REST API Client](https://insomnia.rest/)
+
+* [UI Prototyping ](https://www.figma.com/)
 
 * Resume 
     
