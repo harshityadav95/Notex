@@ -38,6 +38,10 @@
 * Permutation and Combination Basics
 * Modular Arithematics 
 
+Problems to Solve  
+ - Calculating the Absolute value without using inbuilt function (Method 1)[https://www.geeksforgeeks.org/compute-the-integer-absolute-value-abs-without-branching/]
+ - Convert Celsius To Fahrenheit (Source)[https://www.geeksforgeeks.org/program-celsius-fahrenheit-conversion/]
+ - 	 
 
 
 
