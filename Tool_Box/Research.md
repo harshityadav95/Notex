@@ -8,3 +8,8 @@
     - [Openreview](https://openreview.net/)
     - [Research Papers with code](https://github.com/zziz/pwc)
     - [Papers with code](https://paperswithcode.com/)
+    
+    
+    ### Requires Trial Subscription Signup
+    
+    - [McGrawHill](https://learn.mheducation.com/ACE_FreeTrialRequest.html)
