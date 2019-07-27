@@ -15,6 +15,8 @@
 
 * [UI Prototyping ](https://www.figma.com/)
 
+* [Index Repo for all resources](https://github.com/dipakkr/A-to-Z-Resources-for-Students/blob/master/README.md)
+
 * Resume 
     
     1. [Glossary Terms](https://telegra.ph/Ai-Resume-GLossary-03-07)  
