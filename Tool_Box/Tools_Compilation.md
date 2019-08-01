@@ -15,6 +15,8 @@
 
 * [UI Prototyping ](https://www.figma.com/)
 
+* [Front END Master Collection](https://www.evernote.design/?fbclid=IwAR3-449R7AukA6dQiFrDSIHAD6JwOhoFHwmrbVBDp9fkNugJl4CQIj15DrI)
+
 * [Index Repo for all resources](https://github.com/dipakkr/A-to-Z-Resources-for-Students/blob/master/README.md)
 
 * Resume 
