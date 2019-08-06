@@ -2,6 +2,7 @@
 
 #### [<--Back to Home](../Readme.md)
 
+* [AI Product Desgin Book by Google](http://pair.withgoogle.com)
 
 * [Awesome Design Tools](https://github.com/LisaDziuba/Awesome-Design-Tools/blob/master/README.md)
 
