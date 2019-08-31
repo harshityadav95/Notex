@@ -43,7 +43,7 @@ Problems to Solve
  - Convert Celsius To Fahrenheit [Source](https://www.geeksforgeeks.org/program-celsius-fahrenheit-conversion/)
  - Calculating the roots of the Quadratic equation (Source)[https://www.geeksforgeeks.org/program-to-find-the-roots-of-quadratic-equation/]
  - Factorial of Number Recursion[Source](https://www.geeksforgeeks.org/program-for-factorial-of-a-number/) 
- - Factrorial of a Big Number with Recursion[Source](https://www.geeksforgeeks.org/count-digits-factorial-set-1/)
+ - Digits in  Factrorial of a Big Number [Source](https://www.geeksforgeeks.org/count-digits-factorial-set-1/)
 
 
 

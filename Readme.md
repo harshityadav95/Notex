@@ -6,7 +6,7 @@
 * C++
 * Python 
 * Javascript
-* SQL
+* [SQL](Notes/sql.md)
 * HTML and CSS
 * [Data Structure and Algorithm](dsalgo/dsalgoindex.md)
 * [Terminals + WSL + Git ](linux/linux_home.md)
@@ -27,6 +27,7 @@
 
 
 # Mathematics and Logic
+* Probability
 * Vector Algebra
 * Matrix Algebra
 * Operation on Matrices
@@ -35,7 +36,7 @@
 * Solving Linear System Of Equations
 * Computer Aided Alegebra Software
 * [Digital Logic & Boolean](Mathematics_and_Logic\Digital_Logic\Logic_Gates.md)
-* [Essence of Linear Algebra]()
+
 
 
 
