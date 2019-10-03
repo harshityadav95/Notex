@@ -35,4 +35,11 @@
   sudo apt-get install tp-smapi-dkms acpi-call-dkms
   ```
 
+- Enable Battery percentage in top bar without installing Tweaks
+
+  ```shell
+  gsettings set org.gnome.desktop.interface show-battery-percentage true
+  ```
+
   
+

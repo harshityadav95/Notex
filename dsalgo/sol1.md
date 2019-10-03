@@ -68,12 +68,40 @@ Problems to Solve
            return n;
        else 
            return fibonacci(n-1)+fibonacci(n-2);
-   }
+       }
    ```
 
    
 
+- Modulo of 10^9+7 the Answer
+
+  ```
+  int sumUnderModulo(long long a,long long b)
+  {
+      int M=1000000007;
+      //your code here
+      return ((a%M)+(b%M))%M;
+  }
+  ```
+
+-  Find the First Bit Set [Source](https://www.geeksforgeeks.org/position-of-rightmost-set-bit/)  
+
    
 
+  ## Track 8 - Sorting
 
+  * Bubble Sort Algorithm 
 
+    
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
