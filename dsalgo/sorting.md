@@ -2,6 +2,10 @@
 
 #### [<--Back to Home](../Readme.md)
 
+-  Stable Algorithm
+
+  
+
 #### Bubble Sort
 
 ```c++
@@ -19,6 +23,10 @@ for(int i=0;i<n-1;i++)
 
     }
 ```
+
+### Selection Sort [[Link](https://youtu.be/xWBP4lzkoyM)]
+
+
 
 
 
