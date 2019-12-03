@@ -43,3 +43,8 @@
 
   
 
+- Install LXDE GUI on top of ubuntu  
+
+  ``` sudo apt-get install lxde ```
+
+  

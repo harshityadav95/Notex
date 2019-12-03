@@ -84,24 +84,46 @@ Problems to Solve
   }
   ```
 
--  Find the First Bit Set [Source](https://www.geeksforgeeks.org/position-of-rightmost-set-bit/)  
+- Find the First Bit Set [Source](https://www.geeksforgeeks.org/position-of-rightmost-set-bit/)
 
-   
+  
 
-  ## Track 8 - Sorting
+## Track 3 - Recursion
 
-  * Bubble Sort Algorithm 
+- Tower of Hanoi [Source](https://practice.geeksforgeeks.org/problems/tower-of-hanoi/0) 
 
-    
+```
+void towerofhanoi(int n,char s,char d ,char aux)
+{
+	if(n==1)
+	{
+		cout<<"Move Disk 1 from rod"<<s<< " to rod "<< d <<endl;
+		return;
+	}
+	towerofhanoi(n-1,s,aux,d);
+	cout<<"Move Disk "<<n<<" from rod"<< s<< "to rod" << d <<endl;
+	towerofhanoi(n-1, aux, d, s);
+}
+```
 
+- 
+
+
+
+## Track 8 - Sorting
+
+* Bubble Sort Algorithm 
+  
+  
   
 
   
 
   
-
   
-
   
-
+  
+  
+  
+  
   
