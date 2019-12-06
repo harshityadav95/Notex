@@ -106,7 +106,16 @@ void towerofhanoi(int n,char s,char d ,char aux)
 }
 ```
 
+- Josephus Problem [Source](https://practice.geeksforgeeks.org/problems/josephus-problem/1) ......[Medium](https://medium.com/@rrfd/explaining-the-josephus-algorithm-11d0c02e7212)
 - 
+
+
+
+
+
+
+
+
 
 
 
