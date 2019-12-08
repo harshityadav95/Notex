@@ -47,4 +47,10 @@
 
   ``` sudo apt-get install lxde ```
 
+- Install Foxit Reader
+
+  ``` 
+  
+  ```
+
   
