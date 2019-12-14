@@ -107,9 +107,23 @@ void towerofhanoi(int n,char s,char d ,char aux)
 ```
 
 - Josephus Problem [Source](https://practice.geeksforgeeks.org/problems/josephus-problem/1) ......[Medium](https://medium.com/@rrfd/explaining-the-josephus-algorithm-11d0c02e7212)
-- 
 
+  ```
+  int josephus(int n, int k)
+  {
+  if(n==1)
+  return 1;
+  return (josephus(n-1,k)+k-1)%n +1;
+  }
+  ```
 
+- Power using Recursion  [Source](https://www.sanfoundry.com/c-program-power-number-using-recursion/)
+
+- Power Set in Lexicographic order [Source](https://www.geeksforgeeks.org/powet-set-lexicographic-order/)
+
+  ``` 
+  #include<bits/stdc++.h> add all the libraries to a c file
+  ```
 
 
 
