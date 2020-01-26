@@ -131,22 +131,33 @@ void towerofhanoi(int n,char s,char d ,char aux)
 
 
 
-
+## 
 
 ## Track 8 - Sorting
 
-* Bubble Sort Algorithm 
-  
-  
-  
 
-  
 
-  
-  
-  
-  
-  
-  
-  
-  
+
+
+## C++ STL Library 
+
+  #### Vectors 
+
+Collection of Specific Types 
+
+```
+		vector<double> rain(7);
+```
+
+Each of 7 element is of size double with variable name rain 
+
+Access each element of array as Index
+
+```
+rain[index_value]
+```
+
+
+
+
+
