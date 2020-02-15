@@ -33,7 +33,14 @@ Remove a File from Staging area
 $git reset filename.extension
 ```
 
+Changing the Remote URL for Git repo
+
+```
+$ git remote set-url origin https://github.com/USERNAME/REPOSITORY.git
+```
+
 Remove File from Staging Area and Set it to be Untracked
+
 ```
 $git rm --cached filename.extension
 ```
