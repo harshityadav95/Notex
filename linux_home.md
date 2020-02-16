@@ -47,10 +47,16 @@
 
   ``` sudo apt-get install lxde ```
 
+- Update the Conda Environment
+
+  ``` 
+  condat update --all
+  ```
+
+  
+
 - Install Foxit Reader
 
   ``` 
   
   ```
-
-  
