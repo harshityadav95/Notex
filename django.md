@@ -44,7 +44,7 @@ python manage.py runserver
 - Activate the VirtualEnv
 
   ```
-  source venv/bin/activate
+   
   ```
 
 - To Deactivate the env  
@@ -266,7 +266,69 @@ https://docs.djangoproject.com/en/3.0/ref/models/fields/#field-options
 
 https://www.journaldev.com/21938/django-models
 
+```
+from django.db import models
+from django.contrib.auth.models import User
 
+
+class CompanyTable(models.Model):
+    id=models.AutoField(primary_key=True)
+    name=models.CharField("Company Name",max_length=100)
+
+class ComapnySchedule(models.Model):
+    companyName=models.ForeignKey(CompanyTable,on_delete=models.DO_NOTHING)
+   #branches=[("CSE","Computer Science & Engineering"),("CSIS","Computer Science and information Security")]
+    #eligibleBrances=models.TextChoices("CSE","CSIS") 
+    eligibleBranches=models.CharField("Eligible Branches",max_length=300,blank=False) # #,choices=branches
+    offers=models.IntegerField(blank=False)
+
+class CompanyCriteriaAndOffer(models.Model):
+    #last date of Registration
+    #Company Name 
+    #Link on the Top
+
+    recruitmentType=models.CharField("Recruitment Type",max_length=100)
+    jobType=models.CharField("Job Type",max_length=20)
+    eligibleBranches=models.CharField("Eligible Branches",max_length=300,blank=False)
+    #Needs to be in Decimal
+    minimum_Gpa_Mtech=models.IntegerField("Minimum GPA 1st Sem Mtech",blank=False)
+    minimum_Cgpa_Btech=models.IntegerField("Minimum CGPA in Undergrad",blank=False)
+    #Needs to be without decimal
+    maximumBackLog=models.IntegerField("Maximum Backlog")
+    minimum_12_marks=models.IntegerField("Minimum Class 12 Marks")
+    minimum_10_marks=models.IntegerField("Minimum Class 10 Marks")
+    minimum_Dimploma_marks=models.IntegerField("Minimum Diploma Marks")
+    stipend=models.CharField("Stipend",blank=False)
+    location=models.CharField("Location",max_length=100)
+    on_conversion=models.CharField("On Conversion CTC",max_length=100)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```
+
+
+
+```
+python manage.py makemigrations
+python manage.py sqlmigrate boards 0001
+python manage.py migrate
+
+python manage.py createsuperuser
+```
 
 
 
