@@ -1,4 +1,22 @@
-### # Javascript ES6 Notes:  
+### # Javascript ES6 Notes: 
+
+###  JavaScript Versions: ES6 and Before 
+
+Take for example pre-ES6 syntax for function expressions:
+
+```
+var greeting = function() {
+  console.log('Hello World!');  
+};
+```
+
+
+
+With ES6 arrow functions, we can transform the expression above into:
+
+````
+let writingUtensil=tool || 'pen'const greeting = () => console.log('Hello World'); 
+````
 
 
 
@@ -70,6 +88,21 @@ else
 }
 
 
+// Short Circuit using and Operator
+let writingUtensil=tool || 'pen'
+
+// Ternary operator  
+let isLocked = false;
+isLocked ?
+  console.log('You will need a key to open the door.') :
+  console.log('You will not need a key to open the door.');
+
+let favoritePhrase = 'Love That!';
+
+favoritePhrase === 'Love That!' ?
+  console.log('I love that!'):
+  console.log("I don't love that!");
+
 ```
 
 
@@ -132,7 +165,60 @@ let newVariable = 'Playing around with typeof.';
 console.log(typeof newVariable);
 ```
 
+# Functions in Javascript 
 
+
+
+One way to create a function is by using a *function declaration*. Just like how a variable declaration binds a value to a variable name, a function declaration binds a function to a name, or an *identifier*.
+
+```javascript
+function getReminder()
+{
+  console.log('Water the plants.');
+}
+```
+
+#### Default Parameters
+
+```javascript
+function makeShoppingList(item1='milk', item2='bread', item3='eggs'){
+  console.log(`Remember to buy ${item1}`);
+  console.log(`Remember to buy ${item2}`);
+  console.log(`Remember to buy ${item3}`);
+}
+```
+
+
+
+### Return Function 
+
+```javascript
+function rectangleArea(width, height) {
+  if (width < 0 || height < 0) {
+    return 'You need positive integers to calculate area!';
+  }
+  return width * height;
+
+```
+
+# Arrow Functions
+
+ES6 introduced *arrow function syntax*, a shorter way to write functions by
+
+using the special “fat arrow” `() =>` notation.
+
+```js
+const rectangleArea = (width, height) => {
+  let area = width * height;
+  return area;
+};
+```
+
+### Concise Body Arrow Functions
+
+```js
+const squareNum = num => num * num;
+```
 
 
 
