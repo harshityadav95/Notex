@@ -391,3 +391,143 @@ fruits.forEach(fruit => console.log(`I want to eat a ${fruit}.`))
 
 ### The .map() Method
 
+The second iterator we’re going to cover is `.map()`. When `.map()` is called on an array, it takes an argument of a callback function and returns a new array! Take a look at an example of calling `.map()`:
+
+```js
+const numbers = [1, 2, 3, 4, 5]; 
+
+const bigNumbers = numbers.map(number => {
+  return number * 10;
+});
+
+```
+
+`.map()` works in a similar manner to `.forEach()`— the major difference is that `.map()` returns a new array.
+
+Example  
+
+```js
+const animals = ['Hen', 'elephant', 'llama', 'leopard', 'ostrich', 'Whale', 'octopus', 'rabbit', 'lion', 'dog'];
+
+// Create the secretMessage array below
+const secretMessage=animals.map( world =>
+{
+  return world[0];
+}
+  );
+```
+
+
+
+# The .filter() Method
+
+`.filter()` returns an array of elements after filtering out certain elements from the original array. The callback function for the `.filter()` method should return `true` or `false` depending on the element that is passed to it. The elements that cause the callback function to return `true` are added to the new array. Take a look at the following example:
+
+```js
+const words = ['chair', 'music', 'pillow', 'brick', 'pen', 'door']; 
+
+const shortWords = words.filter(word => {
+  return word.length < 6;
+});
+```
+
+Example  :  
+
+```js
+const randomNumbers = [375, 200, 3.14, 7, 13, 852];
+
+// Call .filter() on randomNumbers below
+
+const smallNumbers=randomNumbers.filter( digit =>
+{
+  return digit<250;
+})
+
+console.log(smallNumbers);
+const favoriteWords = ['nostalgia', 'hyperbole', 'fervent', 'esoteric', 'serene'];
+
+
+// Call .filter() on favoriteWords below
+
+const longFavoriteWords=favoriteWords.filter( word => {
+  return word.length>7;
+});
+
+console.log(longFavoriteWords);
+```
+
+# The .findIndex() Method
+
+We sometimes want to find the location of an element in an array. That’s where the `.findIndex()` method comes in! Calling `.findIndex()` on an array will return the index of the first element that evaluates to `true` in the callback function
+
+```js
+const jumbledNums = [123, 25, 78, 5, 9]; 
+
+const lessThanTen = jumbledNums.findIndex(num => {
+  return num < 10;
+});
+
+```
+
+Example  
+
+```js
+const animals = ['hippo', 'tiger', 'lion', 'seal', 'cheetah', 'monkey', 'salamander', 'elephant'];
+
+
+
+const foundAnimal=animals.findIndex( word =>
+{
+  return  word==='elephant';
+});
+console.log(foundAnimal);
+const startsWithS=animals.findIndex(
+  word =>
+  {
+    return word[0]==='s';
+  }
+);
+console.log(startsWithS);
+```
+
+# The .reduce() Method
+
+Another widely used iteration method is `.reduce()`. The `.reduce()` method returns a single value after iterating through the elements of an array, thereby *reducing* the array. 
+
+```js
+const numbers = [1, 2, 4, 10];
+
+const summedNums = numbers.reduce((accumulator, currentValue) => {
+  return accumulator + currentValue
+})
+
+console.log(summedNums) // Output: 17
+```
+
+The `.reduce()` method can also take an optional second parameter to set an initial value for `accumulator` (remember, the first argument is the callback function!). For instance:
+
+```js
+const numbers = [1, 2, 4, 10];
+
+const summedNums = numbers.reduce((accumulator, currentValue) => {
+  return accumulator + currentValue
+}, 100)  // <- Second argument for .reduce()
+
+console.log(summedNums); // Output: 117
+```
+
+Example :
+
+```js
+const newNumbers = [1, 3, 5, 7];
+
+const newSum=newNumbers.reduce(function (accumulator,currentValue)
+{
+   console.log('The value of accumulator: ', accumulator);
+  console.log('The value of currentValue: ', currentValue);
+  return accumulator + currentValue;
+},10);
+
+console.log(newSum);
+```
+
