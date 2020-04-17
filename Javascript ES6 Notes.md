@@ -1338,16 +1338,127 @@ class HospitalEmployee {
     this._remainingVacationDays -= daysOff;
   }
 }
-class Nurse extends HospitalEmployee{
-  constructor(name,certifications) {
-    this._name=name;
 
+class Nurse extends HospitalEmployee {
+  constructor(name, certifications) {
     super(name);
-        this._certifications=certifications;
+    this._certifications = certifications;
+  } 
+  get certifications()
+  {
+    return this._certifications;
   }
-
+  addCertification(newCertification)
+  {
+    this._certifications.push(newCertification);
+  }
 }
 
-const nurseOlynyk=new Nurse('Olynyk',['Trauma', 'Pediatrics']);
+const nurseOlynyk = new Nurse('Olynyk', ['Trauma','Pediatrics']);
+nurseOlynyk.takeVacationDays(5);
+console.log(nurseOlynyk.remainingVacationDays);
+nurseOlynyk.addCertification('Genetics');
+console.log(nurseOlynyk.certifications);
 ```
+
+When we call `extends` in a class declaration, all of the parent methods are available to the child class.
+
+## Static Methods
+
+Sometimes you will want a class to have methods that aren’t available in individual instances, but that you can call directly from the class.
+
+```js
+class Animal {
+  constructor(name) {
+    this._name = name;
+    this._behavior = 0;
+  }
+
+  static generateName() {
+    const names = ['Angel', 'Spike', 'Buffy', 'Willow', 'Tara'];
+    const randomNumber = Math.floor(Math.random()*5);
+    return names[randomNumber];
+  }
+} 
+//
+static generatePassword()
+  {
+    return (Math.floor(Math.random() * 10000));
+  }
+```
+
+### **BROWSER COMPATIBILITY AND TRANSPILATION**
+
+- caniuse.com — A website that provides data on web browser compatibility for HTML, CSS, and JavaScript features. You will learn how to use it to look up ES6 feature support.
+- Babel — A Javascript library that you can use to convert new, unsupported JavaScript (ES6), into an older version (ES5) that is recognized by most modern browsers.
+
+# Transpilation With Babel
+
+Although manual conversion only took you a few minutes, it is unsustainable as the size of the JavaScript file increases.
+
+Because ES6 is predictably backwards compatible, a collection of JavaScript programmers developed a JavaScript library called Babel that *transpiles* ES6 JavaScript to ES5.
+
+Transpilation is the process of converting one programming language to another
+
+#### transpile ES6 code to ES5
+
+In the instructions below, you will pass JavaScript ES6 code to Babel, which will transpile it to ES5 and write it to a file in the **lib** directory.
+
+```shell
+npm install babel-cli
+npm install babel-preset-env
+
+```
+
+You can view the ES5 code in **./lib/main.js**.
+
+You may need to refresh to see the newly created **lib** directory.
+
+```shell
+npm init
+```
+
+In the next five exercises you will learn how to setup a JavaScript project that transpiles code when you run `npm run build` from the root directory of a JavaScript project.
+
+The first step is to place your ES6 JavaScript file in a directory called **src**. From your root directory, the path to the ES6 file is **./src/main.js**
+
+```
+project
+|_ src
+|___ main.js
+```
+
+- Before we install Babel, we need to setup our project to use the [node package manager (npm)](https://docs.npmjs.com/getting-started/what-is-npm). Developers use *npm* to access and manage Node packages. Node packages are directories that contain JavaScript code written by other developers. You can use these packages to reduce duplication of work and avoid bugs.
+- Before we can add Babel to our project directory, we need to run `npm init`. The `npm init` command creates a **package.json** file in the root directory.
+  - Metadata — This includes a project title, description, authors, and more.
+  - A list of node packages required for the project — If another developer wants to run your project, npm looks inside **package.json** and downloads the packages in this list.
+  - Key-value pairs for command line scripts — You can use npm to run these shorthand scripts to perform some process. In a later exercise, we will add a script that runs Babel and transpiles ES6 to ES5.
+
+If you have Node installed on your computer, you can create a **package.json** file by typing `npm init` into the terminal.
+
+
+
+The terminal prompts you to fill in fields for the project’s metadata (name, description, etc.)
+
+You are not required to answer the prompts, though we recommend at minimum, you add your own title and description. If you don’t want to fill in a field, you can press enter. npm will leave fill these fields with default values or leave them empty when it creates the **package.json** file.
+
+After you run `npm init` your directory structure will contain the following files and folders:
+
+```js
+project
+|_ src
+|___ main.js
+|_ package.json
+```
+
+npm adds the **package.json** file to the same level as the **src** directory.
+
+The `babel-cli` package includes command line Babel tools, and the `babel-preset-env` package has the code that maps any JavaScript feature, ES6 and above (ES6+), to ES5.
+
+```js
+$ npm install babel-cli -D
+$ npm install babel-preset-env -D
+```
+
+The `-D` flag instructs npm to add each package to a property called `devDependencies` in **package.json**. Once the project’s dependencies are listed in `devDependencies`, other developers can run your project without installing each package separately. Instead, they can simply run `npm install` — it instructs npm to look inside **package.json** and download all of the packages listed in `devDependencies`.
 
