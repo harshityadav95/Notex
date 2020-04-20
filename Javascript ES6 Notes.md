@@ -1462,3 +1462,509 @@ $ npm install babel-preset-env -D
 
 The `-D` flag instructs npm to add each package to a property called `devDependencies` in **package.json**. Once the project’s dependencies are listed in `devDependencies`, other developers can run your project without installing each package separately. Instead, they can simply run `npm install` — it instructs npm to look inside **package.json** and download all of the packages listed in `devDependencies`.
 
+Once you `npm install` packages, you can find the Babel packages and all their dependencies in the **node_modules** folder. The new directory structure contains the following:
+
+```js
+project
+|_ node_modules
+|___ .bin
+|___ ...
+|_ src
+|___ main.js
+|_ package.json
+```
+
+### .babelrc
+
+Now that you’ve downloaded the Babel packages, you need to specify the version of the source JavaScript code.
+
+You can specify the initial JavaScript version inside of a file named **.babelrc**. In your root directory, you can run `touch .babelrc` to create this file.
+
+Your project directory contains the following folders and files:
+
+```js
+project
+|_ node_modules
+|___ .bin
+|___ ...
+|_ src
+|___ main.js
+|_ .babelrc
+|_ package.json
+```
+
+Inside **.babelrc** you need to define the *preset* for your source JavaScript file. The preset specifies the version of your initial JavaScript file.
+
+Usually, you want to transpile JavaScript code from versions ES6 and later (ES6+) to ES5. From this point on, we will refer to our source code as ES6+, because Ecma introduces new syntax with each new version of JavaScript.
+
+To specify that we are transpiling code from an ES6+ source, we have to add the following JavaScript object into **.babelrc**:
+
+```js
+{
+  "presets": ["env"]
+}
+```
+
+When you run Babel, it looks in **.babelrc** to determine the version of the initial JavaScript file. In this case, `["env"]` instructs Babel to transpile any code from versions ES6 and later.
+
+There’s one last step before we can transpile our code. We need to specify a script in **package.json** that initiates the ES6+ to ES5 transpilation.
+
+Inside of the **package.json** file, there is a property named `"scripts"` that holds an object for specifying command line shortcuts. It looks like this:
+
+```js
+...
+"scripts": {
+  "test": "echo \"Error: no test specified\" && exit 1"
+}, ...
+```
+
+In the code above, the `"scripts"` property contains an object with one property called `"test"`. Below the `"test"` property, we will add a script that runs Babel like this:
+
+```
+...
+"scripts": {
+  "test": "echo \"Error: no test specified\" && exit 1",
+  "build": "babel src -d lib"
+}
+```
+
+In the `"scripts"` object above, we add a property called `"build"`. The property’s value, `"babel src -d lib"`, is a command line method that transpiles ES6+ code to ES5. Let’s consider each argument in the method call:
+
+- `babel` — The Babel command call responsible for transpiling code.
+- `src` — Instructs Babel to transpile all JavaScript code inside the **src** directory.
+- `-d` — Instructs Babel to write the transpiled code to a directory.
+- `lib` — Babel writes the transpiled code to a directory called `lib`.
+
+In the next exercise, we’ll run the `babel src -d lib` method to transpile our ES6+ code.
+
+```js
+{
+  "name": "learning-babel",
+  "version": "1.0.0",
+  "description": "Use Babel to transpile JavaScript ES6 to ES5",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0"
+  }
+  "build": "babel src -d lib"
+}
+
+```
+
+### Build
+
+We’re ready to transpile our code! In the last exercise, we wrote the following script in **package.json**:
+
+```
+"build": "babel src -d lib"
+```
+
+Now, we need to call `"build"` from the command line to transpile and write ES5 code to a directory called `lib`.
+
+From the command line, we type:
+
+```
+npm run build
+```
+
+The command above runs the `build` script in **package.json**.
+
+Babel writes the ES5 code to a file named **main.js** (it’s always the same name as the original file), inside of a folder called `lib`. The resulting directory structure is:
+
+```js
+project
+|_ lib
+|___ main.js
+|_ node_modules
+|___ .bin
+|___ ...
+|_ src
+|___ main.js
+|_ .babelrc
+|_ package.json
+```
+
+Notice, the directory contains a new folder named **lib**, with one file, called **main.js**.
+
+The `npm run build` command will transpile all JavaScript files inside of the **src** folder. This is helpful as you build larger JavaScript projects — regardless of the number of JavaScript files, you only need to run one command (`npm run build`) to transpile all of your code.
+
+
+
+## **INTERMEDIATE JAVASCRIPT MODULES**
+
+# module.exports
+
+We can get started with modules by defining a module in one file and making the module available for use in another file with Node.js `module.exports` syntax. Every JavaScript file run in Node has a local `module` object with an `exports` property used to define what should be exported from the file
+
+```js
+let Menu = {};
+Menu.specialty = "Roasted Beet Burger with Mint Sauce";
+
+module.exports = Menu; 
+```
+
+Let’s consider what this code means.
+
+1. `let Menu = {};` creates the object that represents the module `Menu`. The statement contains an uppercase variable named `Menu` which is set equal to an empty object.
+2. `Menu.specialty` is defined as a property of the `Menu` module. We add data to the `Menu` object by setting properties on that object and giving the properties a value.
+3. `"Roasted Beet Burger with Mint Sauce";` is the value stored in the `Menu.specialty` property.
+4. `module.exports = Menu;` exports the `Menu` object as a module. `module` is a variable that represents the module, and `exports` exposes the module as an object.
+
+The pattern we use to export modules is thus:
+
+1. Create an object to represent the module.
+2. Add properties or methods to the module object.
+3. Export the module with `module.exports`.
+
+# require()
+
+To make use of the exported module and the behavior we define within it, we import the module into another file. In Node.js, use the `require()` function to import modules.
+
+For instance, say we want the module to control the menu’s data and behavior, and we want a separate file to handle placing an order. We would create a separate file **order.js** and import the `Menu` module from **menu.js** to **order.js** using `require()`. `require()` takes a file path argument pointing to the original module file.
+
+In **order.js** we would write:
+
+```js
+const Menu = require('./menu.js');
+
+function placeOrder() {
+  console.log('My order is: ' + Menu.specialty);
+}
+
+placeOrder();
+```
+
+We can also wrap any collection of data and functions in an object, and export the object using `module.exports`. In **menu.js**, we could write:
+
+```js
+module.exports = {
+  specialty: "Roasted Beet Burger with Mint Sauce",
+  getSpecialty: function() {
+    return this.specialty;
+  } 
+}; 
+```
+
+
+
+# Export default
+
+Node.js supports `require()`/`module.exports`, but as of ES6, JavaScript supports a new more readable and flexible syntax for exporting modules. These are usually broken down into one of two techniques, *default export* and *named exports*.
+
+We’ll begin with the first syntax, default export. The default export syntax works similarly to the `module.exports` syntax, allowing us to export one module per file.
+
+```
+let Menu = {};
+
+export default Menu;
+```
+
+1. `export default` uses the JavaScript `export` statement to export JavaScript objects, functions, and primitive data types.
+2. `Menu` refers to the name of the `Menu` object, the object that we are setting the properties on within our modules.
+
+When using ES6 syntax, we use `export default` in place of `module.exports`. Node.js doesn’t support `export default` by default, so `module.exports` is usually used for Node.js development and ES6 syntax is used for front-end development. As with most ES6 features, it is common to transpile code since ES6 is [not supported by all browsers](https://caniuse.com/#feat=es6).
+
+```js
+let Airplane = {};
+Airplane.availableAirplanes = [
+{ 
+    name: 'AeroJet',
+  fuelCapacity: 800
+ }, 
+ {name: 'SkyJet',
+  fuelCapacity: 500
+ }
+];
+export default Airplane;
+```
+
+
+
+# Import
+
+ES6 module syntax also introduces the `import` keyword for importing objects. In our **order.js** example, we import an object like this
+
+```
+import Menu from './menu';
+```
+
+Within the body of the `displayFuelCapacity` function, use `forEach()` to iterate over the `Airplane.availableAirplanes` array.
+
+The `forEach()` should take an anonymous function as a parameter. We’ll add more in the next step.
+
+Pass the anonymous function you created in the last step a parameter of `element`.
+
+```js
+import Airplane from './airplane';
+function displayFuelCapacity() {
+
+  Airplane.availableAirplanes.forEach(function(element) {
+
+    console.log('Fuel Capacity of ' + element.name + ': ' + element.fuelCapacity);
+  });
+}
+displayFuelCapacity();
+```
+
+
+
+# Named Exports
+
+ES6 introduced a second common approach to export modules. In addition to `export default`, *named exports* allow us to export data through the use of variables.
+
+```js
+let specialty = '';
+function isVegetarian() {
+}; 
+function isLowSodium() {
+}; 
+
+export { specialty, isVegetarian };
+```
+
+Example  
+
+```js
+let availableAirplanes = [{
+ name: 'AeroJet',
+ fuelCapacity: 800,
+ availableStaff: ['pilots', 'flightAttendants', 'engineers', 'medicalAssistance', 'sensorOperators'],
+}, 
+{name: 'SkyJet',
+ fuelCapacity: 500,
+ availableStaff: ['pilots', 'flightAttendants']
+}];
+let flightRequirements = {
+  requiredStaff: 4,
+};
+function meetsStaffRequirements(availableStaff, requiredStaff) {
+  if (availableStaff.length >= requiredStaff) {
+    return true;
+  } else {
+    return false;
+  }
+}
+export { availableAirplanes, flightRequirements, meetsStaffRequirements};
+```
+
+## Named Imports
+
+To import objects stored in a variable, we use the `import` keyword and include the variables in a set of `{}`.
+
+```js
+import { specialty, isVegetarian } from './menu';
+
+console.log(specialty);
+```
+
+```js
+import {availableAirplanes, flightRequirements, meetsStaffRequirements} from './airplane';
+function displayFuelCapacity() {
+
+}
+function displayStaffStatus() {
+  availableAirplanes.forEach(function(element) {
+   console.log(element.name + ' meets staff requirements: ' + meetsStaffRequirements(element.availableStaff, flightRequirements.requiredStaff) );
+  });
+}
+displayStaffStatus();
+```
+
+## Export Named Exports
+
+Named exports are also distinct in that they can be exported as soon as they are declared, by placing the keyword `export` in front of variable declarations.
+
+```js
+export let specialty = '';
+export function isVegetarian() {
+}; 
+function isLowSodium() {
+}; 
+```
+
+Example  : 
+
+```js
+export let availableAirplanes = [
+{name: 'AeroJet',
+ fuelCapacity: 800,
+ availableStaff: ['pilots', 'flightAttendants', 'engineers', 'medicalAssistance', 'sensorOperators'],
+ maxSpeed: 1200,
+ minSpeed: 300
+}, 
+{name: 'SkyJet',
+ fuelCapacity: 500,
+ availableStaff: ['pilots', 'flightAttendants'],
+ maxSpeed: 800,
+ minSpeed: 200
+}
+];
+ export let flightRequirements = {
+  requiredStaff: 4,
+  requiredSpeedRange: 700
+};
+export function meetsSpeedRangeRequirements(maxSpeed, minSpeed, requiredSpeedRange) {
+  let range = maxSpeed - minSpeed;
+  if (range > requiredSpeedRange) {
+    return true;
+    } else {
+    return false;
+  }
+};
+export function meetsStaffRequirements(availableStaff, requiredStaff) {
+  if (availableStaff.length >= requiredStaff) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+```
+
+### Import Named Imports
+
+To import variables that are declared, we simply use the original syntax that describes the variable name. In other words, exporting upon declaration does not have an impact on how we import the variables.
+
+```js
+import { specialty, isVegetarian } from 'menu';
+```
+
+## Export as
+
+Named exports also conveniently offer a way to change the name of variables when we export or import them. We can do this with the `as` keyword.
+
+```js
+let specialty = '';
+let isVegetarian = function() {
+}; 
+let isLowSodium = function() {
+}; 
+
+export { specialty as chefsSpecial, isVegetarian as isVeg, isLowSodium };
+```
+
+## Import as
+
+To import named export aliases with the `as` keyword, we add the aliased variable in our import statement.
+
+```js
+import { chefsSpecial, isVeg } from './menu';
+```
+
+In **orders.js**
+
+1. We import `chefsSpecial` and `isVeg` from the `Menu` object.
+2. Here, note that we have an option to alias an object that was not previously aliased when exported. For example, the `isLowSodium` object that we exported could be aliased with the `as` keyword when imported: `import {isLowSodium as saltFree} from 'Menu';`
+
+Another way of using aliases is to import the entire module as an alias:
+
+```js
+import * as Carte from './menu';
+
+Carte.chefsSpecial;
+Carte.isVeg();
+Carte.isLowSodium(); 
+```
+
+### Combining Export Statements
+
+We can also use named exports and default exports together. In **menu.js**:
+
+```js
+let specialty = '';
+function isVegetarian() {
+}; 
+function isLowSodium() {
+}; 
+function isGlutenFree() {
+};
+
+export { specialty as chefsSpecial, isVegetarian as isVeg };
+export default isGlutenFree;
+```
+
+### Combining Import Statements
+
+We can import the collection of objects and functions with the same data.
+
+We can use an `import` keyword to import both types of variables as such:
+
+```js
+import { specialty, isVegetarian, isLowSodium } from './menu';
+
+import GlutenFree from './menu';
+```
+
+# What is a Promise?
+
+Promises are objects that represent the eventual outcome of an asynchronous operation. A `Promise` object can be in one of three states:
+
+- Pending**: The initial state— the operation has not completed yet.
+- **Fulfilled**: The operation has completed successfully and the promise now has a *resolved value*. For example, a request’s promise might resolve with a JSON object as its value.
+- **Rejected**: The operation has failed and the promise has a reason for the failure. This reason is usually an `Error` of some kind.
+
+### Constructing a Promise Object
+
+Let’s construct a promise! To create a new `Promise` object, we use the `new` keyword and the `Promise` constructor method:
+
+```js
+const executorFunction = (resolve, reject) => { };
+const myFirstPromise = new Promise(executorFunction);
+```
+
+The executor function has two function parameters, usually referred to as the `resolve()` and `reject()` functions. The `resolve()` and `reject()` functions aren’t defined by the programmer. When the `Promise` constructor runs, JavaScript will pass **its own** `resolve()` and `reject()` functions into the executor function.
+
+- `resolve` is a function with one argument. Under the hood, if invoked, `resolve()` will change the promise’s status from `pending` to `fulfilled`, and the promise’s resolved value will be set to the argument passed into `resolve()`.
+- `reject` is a function that takes a reason or error as an argument. Under the hood, if invoked, `reject()` will change the promise’s status from `pending` to `rejected`, and the promise’s rejection reason will be set to the argument passed into `reject()`.
+
+Let’s look at an example executor function in a `Promise` constructor:
+
+```js
+const executorFunction = (resolve, reject) => {
+  if (someCondition) {
+      resolve('I resolved!');
+  } else {
+      reject('I rejected!'); 
+  }
+}
+const myFirstPromise = new Promise(executorFunction);
+```
+
+Example  :  
+
+```js
+const inventory = {
+  sunglasses: 1900,
+  pants: 1088,
+  bags: 1344
+};
+
+// Write your code below:
+const myExecutor=(resolve,reject)=>{
+  if(inventory.sunglasses>0)
+  {
+    resolve('Sunglasses order processed.');
+  }
+  else
+  {
+    reject('That item is sold out.');
+  }
+  
+};
+function orderSunglasses()
+{
+
+  return (new Promise(myExecutor));
+}
+const orderPromise=orderSunglasses();
+console.log(orderPromise);
+```
+
+### The Node setTimeout() Function
+
