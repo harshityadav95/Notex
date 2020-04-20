@@ -2245,15 +2245,109 @@ fivePromise()
   yesAwait(); // Prints: Yay, I resolved!
   ```
 
-  
+  In the first `async` function, `noAwait()`, we left off the `await` keyword before `myPromise()`. In the second, `yesAwait()`, we included it. The `noAwait()` function logs `Promise {  }` to the console. Without the `await` keyword, the function execution wasn’t paused. The `console.log()` on the following line was executed before the promise had resolved.
+
+  Remember that the `await` operator returns the resolved value of a promise. When used properly in `yesAwait()`, the variable `value` was assigned the resolved value of the `myPromise()` promise, whereas in `noAwait()`, `value` was assigned the promise object itself.
 
   
 
-  
+  #### Handling Dependent Promises
+
+  The true beauty of `async...await` is when we have a series of asynchronous actions which depend on one another. For example, we may make a network request based on a query to a database. In that case, we would need to wait to make the network request until we had the results from the database. With native promise syntax, we use a chain of `.then()` functions making sure to return correctly each one:
+
+  ```js
+  function nativePromiseVersion() {
+      returnsFirstPromise()
+      .then((firstValue) => {
+          console.log(firstValue);
+          return returnsSecondPromise(firstValue);
+      })
+     .then((secondValue) => {
+          console.log(secondValue);
+      });
+  }
+  ```
 
   
 
-  
+  Let’s break down what’s happening in the `nativePromiseVersion()` function:
+
+  - Within our function we use two functions which return promises: `returnsFirstPromise()` and `returnsSecondPromise()`.
+  - We invoke `returnsFirstPromise()` and ensure that the first promise resolved by using `.then()`.
+  - In the callback of our first `.then()`, we log the resolved value of the first promise, `firstValue`, and then return `returnsSecondPromise(firstValue)`.
+  - We use another `.then()` to print the second promise’s resolved value to the console.
+
+  Here’s how we’d write an `async` function to accomplish the same thing:
 
   
+
+  ```js
+  async function asyncAwaitVersion() {
+   let firstValue = await returnsFirstPromise();
+   console.log(firstValue);
+   let secondValue = await returnsSecondPromise(firstValue);
+   console.log(secondValue);
+  }
+  ```
+
+  
+
+# Handling Errors
+
+With `async...await`, we use `try...catch` statements for error handling. By using this syntax, not only are we able to handle errors in the same way we do with synchronous code, but we can also catch both synchronous and asynchronous errors. This makes for easier debugging!
+
+```js
+async function usingTryCatch() {
+ try {
+   let resolveValue = await asyncFunction('thing that will fail');
+   let secondValue = await secondAsyncFunction(resolveValue);
+ } catch (err) {
+   // Catches any errors in the try block
+   console.log(err);
+ }
+}
+
+usingTryCatch();
+```
+
+# Handling Independent Promises
+
+Remember that `await` halts the execution of our `async` function. This allows us to conveniently write synchronous-style code to handle dependent promises. But what if our `async` function contains multiple promises which are not dependent on the results of one another to execute
+
+```js
+async function serveDinner()
+{
+ const vegetablePromise = steamBroccoli();
+ const starchPromise = cookRice();
+ const proteinPromise = bakeChicken();
+ const sidePromise = cookBeans();
+ console.log(`Dinner is served. We're having ${await vegetablePromise}, ${await starchPromise}, ${await proteinPromise}, and ${await sidePromise}.`);
+}
+serveDinner();
+```
+
+# Await Promise.all()
+
+Another way to take advantage of concurrency when we have multiple promises which can be executed simultaneously is to `await` a `Promise.all()`
+
+```js
+async function asyncPromAll() {
+  const resultArray = await Promise.all([asyncTask1(), asyncTask2(), asyncTask3(), asyncTask4()]);
+  for (let i = 0; i<resultArray.length; i++){
+    console.log(resultArray[i]); 
+  }
+}
+```
+
+`Promise.all()` allows us to take advantage of asynchronicity— each of the four asynchronous tasks can process concurrently. `Promise.all()` also has the benefit of *failing fast*, meaning it won’t wait for the rest of the asynchronous actions to complete once any one has rejected. As soon as the first promise in the array rejects, the promise returned from `Promise.all()` will reject with that reason. As it was when working with native promises, `Promise.all()` is a good choice if multiple asynchronous tasks are all required, but none must wait for any other before executing.
+
+```js
+async function serveDinnerAgain(){
+  let foodArray = await Promise.all([steamBroccoli(), cookRice(), bakeChicken(), cookBeans()]); 
+  
+  console.log(`Dinner is served. We're having ${foodArray[0]}, ${foodArray[1]}, ${foodArray[2]}, and ${foodArray[3]}.`)
+}
+
+serveDinnerAgain()
+```
 

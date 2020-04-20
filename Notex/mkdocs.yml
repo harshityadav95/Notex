@@ -1,1 +1,34 @@
 site_name: Notex
+nav:
+    - Home: 'index.md'
+    - 'Languages':
+        - 'Python': 'python.md'
+        - 'Javascript': 'Javascript-ES6-Notes.md'
+        - 'Java': '404.md'
+        - 'C/C++': 'C++.md'
+        - 'SQL': 'sql.md'
+        - 'C#': '404.md'
+    - 'Tools':
+        - 'MarkDown': 'markdownsyntax.md'
+        - 'Django': 'django.md'
+        - 'React': '404.md'
+        - 'Git': 'git.md'
+        - 'Vim': 'vimCheats.md'
+        - 'Tool Compilation': 'Tools_Compilation.md'
+
+
+    - 'Garage':
+        - 'Terminal': 'terminal_commands.md'
+        - 'System Design': 'Learning_System_Design.md'
+        - 'Thinkpad': 'thinkpad.md'
+        - 'Interview': 'Programming_Interview_Study_Plan.md'
+
+
+        - 'Research': 'Research.md'
+    - 'Ai/ML':
+        - 'Start': 'ai_ml_index.md'
+    - 'HandWritten':
+        - 'Index': '404.md'
+    - About:
+        - 'Writer': '404.md'
+        - 'Release Notes': '404.md'

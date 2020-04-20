@@ -1,15 +1,5 @@
-# Linux Home  
-#### [<--Back to Home](../Readme.md)
-
-* [Linux Terminal Commands](commands.md)
-* [Git Commands](git.md)
-* [Windows Subsystem for Linux](wsl.md)
-
-
-
-
-
-### My Personal Essential Commands :
+# ThinkPad Setup
+* My Personal Essential Commands :
 
 - Delete Useless Packages
 
