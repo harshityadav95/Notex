@@ -1968,3 +1968,292 @@ console.log(orderPromise);
 
 ### The Node setTimeout() Function
 
+Rather than constructing promises, you’ll be handling `Promise` objects returned to you as the result of an asynchronous operation. These promises will start off pending but settle eventually.
+
+To accomplish this, we’ll be using `setTimeout()`. `setTimeout()` is a Node API (a comparable API is provided by web browsers) that uses callback functions to schedule tasks to be performed after a delay. `setTimeout()` has two parameters: a callback function and a delay in milliseconds.
+
+```js
+const delayedHello = () => {
+  console.log('Hi! This is an asynchronous greeting!');
+};
+
+setTimeout(delayedHello, 2000);
+```
+
+Here, we invoke `setTimeout()` with the callback function `delayedHello()` and `2000`. In at least two seconds `delayedHello()` will be invoked. But why is it “at least” two seconds and not exactly two seconds?
+
+This delay is performed asynchronously—the rest of our program won’t stop executing during the delay. Asynchronous JavaScript uses something called *the event-loop*. After two seconds, `delayedHello()` is added to a line of code waiting to be run. Before it can run, any synchronous code from the program will run. Next, any code in front of it in the line will run. This means it might be more than two seconds before `delayedHello()` is actually executed.
+
+Let’s look at how we’ll be using `setTimeout()` to construct asynchronous promises:
+
+```js
+const returnPromiseFunction = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(( ) => {resolve('I resolved!')}, 1000);
+  });
+};
+
+const prom = returnPromiseFunction();
+```
+
+
+
+In the example code, we invoked `returnPromiseFunction()` which returned a promise. We assigned that promise to the variable `prom`. Similar to the asynchronous promises you may encounter in production, `prom` will initially have a status of pending.
+
+### Consuming Promises
+
+- The initial state of an asynchronous promise is `pending`
+-  but we have a guarantee that it will settle. How do we tell the computer what should happen then? Promise objects come with an aptly named `.then()` method. It allows us to say, “I have a promise, when it settles, **then** here’s what I want to happen…
+- `.then()` is a higher-order function— it takes two callback functions as arguments. We refer to these callbacks as *handlers*. 
+
+
+
+## The onFulfilled and onRejected Functions
+
+To handle a “successful” promise, or a promise that resolved, we invoke `.then()` on the promise, passing in a success handler callback function:
+
+
+
+```js
+const prom = new Promise((resolve, reject) => {
+  resolve('Yay!');
+});
+
+const handleSuccess = (resolvedValue) => {
+  console.log(resolvedValue);
+};
+
+prom.then(handleSuccess); // Prints: 'Yay!'
+```
+
+With typical promise consumption, we won’t know whether a promise will resolve or reject, so we’ll need to provide the logic for either case. We can pass both an `onFulfilled` and `onRejected` callback to `.then()`.
+
+```js
+let prom = new Promise((resolve, reject) => {
+  let num = Math.random();
+  if (num < .5 ){
+    resolve('Yay!');
+  } else {
+    reject('Ohhh noooo!');
+  }
+});
+
+const handleSuccess = (resolvedValue) => {
+  console.log(resolvedValue);
+};
+
+const handleFailure = (rejectionReason) => {
+  console.log(rejectionReason);
+};
+
+prom.then(handleSuccess, handleFailure);
+checkInventory(order).then(handleSuccess,handleFailure);
+```
+
+## Using catch() with Promises
+
+One way to write cleaner code is to follow a principle called *separation of concerns*. Separation of concerns means organizing code into distinct sections each handling a specific task. It enables us to quickly navigate our code and know where to look if something isn’t working.
+
+```js
+prom
+  .then((resolvedValue) => {
+    console.log(resolvedValue);
+  })
+  .then(null, (rejectionReason) => {
+    console.log(rejectionReason);
+  });
+```
+
+-  Since JavaScript doesn’t mind whitespace, we follow a common convention of putting each part of this chain on a new line to make it easier to read. To create even more readable code, we can use a different promise function: `.catch()`.
+
+  The `.catch()` function takes only one argument, `onRejected`. In the case of a rejected promise, this failure handler will be invoked with the reason for rejection. Using `.catch()` accomplishes the same thing as using a `.then()` with only a failure handler.
+
+  Let’s look at an example using `.catch()`:
+
+  ```js
+  prom
+    .then((resolvedValue) => {
+      console.log(resolvedValue);
+    })
+    .catch((rejectionReason) => {
+      console.log(rejectionReason);
+    });
+  ```
+
+Example  :
+
+```js
+checkInventory(order).then(handleSuccess).catch(handleFailure);
+```
+
+# Chaining Multiple Promises
+
+One common pattern we’ll see with asynchronous programming is multiple operations which depend on each other to execute or that must be executed in a certain order.*** We might make one request to a database and use the data returned to us to make another request and so on***
+
+This process of chaining promises together is called *composition*. Promises are designed with composition in mind! Here’s a simple promise chain in code:
+
+```js
+firstPromiseFunction()
+.then((firstResolveVal) => {
+  return secondPromiseFunction(firstResolveVal);
+})
+.then((secondResolveVal) => {
+  console.log(secondResolveVal);
+});
+```
+
+Example  :
+
+```js
+checkInventory(order)
+.then((resolvedValueArray) => {
+  // Write the correct return statement here:
+ return processPayment(resolvedValueArray);
+})
+.then((resolvedValueArray) => {
+  // Write the correct return statement here:
+  return shipOrder(resolvedValueArray);
+})
+.then((successMessage) => {
+  console.log(successMessage);
+})
+.catch((errorMessage) => {
+  console.log(errorMessage);
+});
+```
+
+# Avoiding Common Mistakes
+
+Promise composition allows for much more readable code than the nested callback syntax that preceded it. However, it can still be easy to make mistakes. In this exercise, we’ll go over two common mistakes with promise composition.
+
+**Mistake 1:** Nesting promises instead of chaining them.
+
+```js
+returnsFirstPromise()
+.then((firstResolveVal) => {
+  return returnsSecondValue(firstResolveVal)
+    .then((secondResolveVal) => {
+      console.log(secondResolveVal);
+    })
+})
+```
+
+Instead of having a clean chain of promises, we’ve nested the logic for one inside the logic of the other. Imagine if we were handling five or ten promises!
+
+**Mistake 2:** Forgetting to `return` a promise.
+
+```js
+returnsFirstPromise()
+.then((firstResolveVal) => {
+  returnsSecondValue(firstResolveVal)
+})
+.then((someVal) => {
+  console.log(someVal);
+})
+```
+
+# Using Promise.all()
+
+When done correctly, promise composition is a great way to handle situations where asynchronous operations depend on each other or execution order matters. What if we’re dealing with multiple promises, but we don’t care about the order? Let’s think in terms of cleaning again.
+
+To maximize efficiency we should use *concurrency*, multiple asynchronous operations happening together. With promises, we can do this with the function `Promise.all()`.
+
+- If every promise in the argument array resolves, the single promise returned from `Promise.all()` will resolve with an array containing the resolve value from each promise in the argument array.
+- If any promise from the argument array rejects, the single promise returned from `Promise.all()` will immediately reject with the reason that promise rejected. This behavior is sometimes referred to as *failing fast*.
+
+```js
+let myPromises = Promise.all([returnsPromOne(), returnsPromTwo(), returnsPromThree()]);
+
+myPromises
+  .then((arrayOfValues) => {
+    console.log(arrayOfValues);
+  })
+  .catch((rejectionReason) => {
+    console.log(rejectionReason);
+  });
+```
+
+- We declare `myPromises` assigned to invoking `Promise.all()`.
+- We invoke `Promise.all()` with an array of three promises— the returned values from functions.
+- We invoke `.then()` with a success handler which will print the array of resolved values if each promise resolves successfully.
+- We invoke `.catch()` with a failure handler which will print the first rejection message if any promise rejects.
+
+# The async Keyword
+
+The `async` keyword is used to write functions that handle asynchronous actions. We wrap our asynchronous logic inside a function prepended with the `async` keyword. Then, we invoke that function.
+
+```js
+const myFunc = async () => {
+  // Function body here
+};
+
+myFunc();
+```
+
+
+
+`async` functions always return a promise. This means we can use traditional promise syntax, like `.then()` and `.catch` with our `async` functions. An `async` function will return in one of three ways:
+
+- If there’s nothing returned from the function, it will return a promise with a resolved value of `undefined`.
+- If there’s a non-promise value returned from the function, it will return a promise resolved to that value.
+- If a promise is returned from the function, it will simply return that promise
+
+```js
+async function fivePromise() { 
+  return 5;
+}
+
+fivePromise()
+.then(resolvedValue => {
+    console.log(resolvedValue);
+  })  // Prints 5
+```
+
+# The await Operator
+
+- `async` functions are almost always used with the additional keyword `await` inside the function body.
+
+- The `await` keyword can only be used inside an `async` function
+
+- `await` is an operator: it returns the resolved value of a promise
+
+- Since promises resolve in an indeterminate amount of time, `await` halts, or pauses, the execution of our `async` function until a given promise is resolved.
+
+  ```js
+  async function asyncFuncExample(){
+    let resolvedValue = await myPromise();
+    console.log(resolvedValue);
+  }
+  
+  asyncFuncExample(); // Prints: I am resolved now!
+  ```
+
+  Now we’ll write two `async` functions which invoke `myPromise()`:
+
+  ```js
+  async function noAwait() {
+   let value = myPromise();
+   console.log(value);
+  }
+  
+  async function yesAwait() {
+   let value = await myPromise();
+   console.log(value);
+  }
+  
+  noAwait(); // Prints: Promise { <pending> }
+  yesAwait(); // Prints: Yay, I resolved!
+  ```
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
