@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>System Design - Notex</title>
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="..">Notex</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li >
+                                <a href="..">Home</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Languages <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../python/">Python</a>
+</li>
+                                    
+<li >
+    <a href="../Javascript-ES6-Notes/">Javascript</a>
+</li>
+                                    
+<li >
+    <a href="../404/">Java</a>
+</li>
+                                    
+<li >
+    <a href="../C++/">C/C++</a>
+</li>
+                                    
+<li >
+    <a href="../sql/">SQL</a>
+</li>
+                                    
+<li >
+    <a href="../404/">C#</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tools <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../markdownsyntax/">MarkDown</a>
+</li>
+                                    
+<li >
+    <a href="../django/">Django</a>
+</li>
+                                    
+<li >
+    <a href="../404/">React</a>
+</li>
+                                    
+<li >
+    <a href="../git/">Git</a>
+</li>
+                                    
+<li >
+    <a href="../vimCheats/">Vim</a>
+</li>
+                                    
+<li >
+    <a href="../Tools_Compilation/">Tool Compilation</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Garage <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../terminal_commands/">Terminal</a>
+</li>
+                                    
+<li class="active">
+    <a href="./">System Design</a>
+</li>
+                                    
+<li >
+    <a href="../thinkpad/">Thinkpad</a>
+</li>
+                                    
+<li >
+    <a href="../Programming_Interview_Study_Plan/">Interview</a>
+</li>
+                                    
+<li >
+    <a href="../Research/">Research</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ai/ML <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../ai_ml_index/">Start</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">HandWritten <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../404/">Index</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../404/">Writer</a>
+</li>
+                                    
+<li >
+    <a href="../404/">Release Notes</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li >
+                                <a rel="next" href="../terminal_commands/">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li >
+                                <a rel="prev" href="../thinkpad/">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#system-design-from-scratch">System Design from Scratch</a></li>
+            <li><a href="#chapter-1-introduction-to-system-design">Chapter 1: Introduction to System Design</a></li>
+            <li><a href="#topic-1-microservices-architecture">Topic 1: Microservices Architecture</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="system-design-from-scratch">System Design from Scratch</h1>
+<h2 id="chapter-1-introduction-to-system-design">Chapter 1: Introduction to System Design</h2>
+<p>1.1 Before designing a system, below are the topics that we should be considering before designing any system.<br />
+1.1. Features<br />
+1.1.2. Define API's<br />
+1.1.3. Availability<br />
+1.1.4. Latency<br />
+1.1.5. Scalability<br />
+1.1.6. Durability<br />
+1.1.7. Class Diagram<br />
+1.1.8. Security and Privacy<br />
+1.1.9. Cost effective </p>
+<h3 id="111-features">1.1.1 Features</h3>
+<p>Before designing a system, be clear about the features of the system. If you are appearing for an interview, ask the features to be included to the interviewer.<br />
+For example:  </p>
+<p>If you are to develop a chat application, you need to ask if there is only one to one chat or group chat. The level of security required and other features required.</p>
+<h3 id="112-define-apis">1.1.2 Define API's</h3>
+<p>Once we define the features, we need to come up with the API's. How many API's are needed, when to call those API's and who will call the APIs.</p>
+<h3 id="113-availability">1.1.3 Availability</h3>
+<p>Once we decide upon the API, we need to decide about the availability of the system. Particularly we need to decide upon how available the service should be.
+For example: If a service goes down or a data center goes down, what should be the state of the system.</p>
+<h3 id="114-latency">1.1.4 Latency</h3>
+<p>We need to decide upon how fast the system should be. If it is a chat application, the system should be very fast and responsive. Then we need to improve the latency of the system.
+One way to improve the latency is by using cache system, CDN.
+If it is a mail system, then it can be less responsive than our chat application.</p>
+<h3 id="115-scalability">1.1.5 Scalability</h3>
+<p>Once we decide on latency, we need to think about the scalability of the system. Especially on how the system will behave when there are 100 users, or 1000 users, or 1M users.</p>
+<h3 id="116-durability">1.1.6 Durability</h3>
+<p>Now we should think about how durable the system should be. If the system you are designing is a code backup repository service, then the system should be highly durable and the associated security features needed for that data needs to be taken care.</p>
+<h3 id="117-class-diagram">1.1.7 Class Diagram</h3>
+<p>If you are needed to design a parking lot or an elevator system, you need to design the class and how multiple classes interact with each other.
+Here the interviewer will be interested in OOP concepts and how effectively you use OOP concepts.</p>
+<h3 id="118-security-and-privacy">1.1.8 Security and Privacy</h3>
+<p>This is important when we are designing an authentication or credit card storage system.</p>
+<h3 id="119-cost-effective">1.1.9 Cost effective</h3>
+<p>Once we decide upon all the above features, we need to think how cost effective the system will be. Is there any alternative system available that are more cost effective?</p>
+<h3 id="12-below-are-the-topics-to-be-known-before-designing-a-system">1.2 Below are the topics to be known before designing a system</h3>
+<p>1.2.1. Vertical and Horizontal Scaling<br />
+1.2.2. CAP Theorem<br />
+1.2.3. ACID and BASE properties<br />
+1.2.4. Partitioning or Sharding data<br />
+1.2.5. consistent hashing<br />
+1.2.6. Strong vs Eventual Consistency<br />
+1.2.7. Optimistic vs pessimist locking<br />
+1.2.8. Relational vs No SQL DB<br />
+1.2.9. Caching<br />
+1.2.10. Datacenters / Racks/ Hosts<br />
+1.2.11. CPU/Memory/Network Bandwidth<br />
+1.2.12. Random vs sequential read/write on disks<br />
+1.2.13. http vs http2 vs web sockets<br />
+1.2.14. TCP/IP Model<br />
+1.2.15. IPv4 vs IPv6<br />
+1.2.16. TCP vs UDP<br />
+1.2.17. DNS lookup<br />
+1.2.18. HTTPS vs TLS<br />
+1.2.19. Certificate Authority<br />
+1.2.20. Load Balancers<br />
+1.2.21. CDN's<br />
+1.2.22. Design Pattern and Object Oriented design<br />
+1.2.23. Virtual Machines and containers<br />
+1.2.24. Publisher-Subscriber<br />
+1.2.25. Map reduce<br />
+1.2.26. Multithreading, Concurrency, locks, Synchronization.  </p>
+<h3 id="121-vertical-and-horizontal-scaling">1.2.1 Vertical and Horizontal Scaling</h3>
+<p>If we want to serve more users, then we need to scale our system. We can do it in 2 ways :</p>
+<ol>
+<li>
+<p>Vertical Scaling: It refers to adding more memory, RAM, increase the processor speed all in a single host or a computer.</p>
+</li>
+<li>
+<p>Horizontal Scaling: It refers to adding more hosts or computers as the number of users increases.</p>
+</li>
+</ol>
+<h3 id="122-cap-theorem">1.2.2 CAP Theorem</h3>
+<p>CAP: Consistency, Availability and Partition Tolerance.<br />
+<em> Consistency: It refers to the read is the most recent write.  <br />
+</em> Availability: It refers to, when user asks for a request, the system should be available to respond.<br />
+* Partition Tolerance: The system should be able to function even if any one node or part of the system fails.  </p>
+<p>CAP theorem says that it is only possible to achieve any 2 out of 3 things.  </p>
+<h3 id="123-acid-and-base-properties">1.2.3 ACID and BASE properties</h3>
+<ul>
+<li>ACID: Atomicity Consistency Isolation Durability
+    Acid is for Relational Database.  </li>
+<li>BASE: Basically Available Soft-state Event, Base is for No SQL DB.  </li>
+</ul>
+<h3 id="124-partitioning-or-sharding-data">1.2.4 Partitioning or Sharding data</h3>
+<p>If we have huge amount of data, it is not possible to store all the data in a single DB system. Hence we need to store them in a different systems(nodes). Hence now Sharding of data comes to play. We need to choose to partition the data such that every node of DB is responsible for some of the data of that large amount of data</p>
+<h3 id="125-consistent-hashing">1.2.5 Consistent hashing</h3>
+<p>Consistent hashing is a way of organizing the key value pair for distributed data. So that when we want to scale the system, data changes due to additional keys will be minimum.</p>
+<h3 id="126-strong-vs-eventual-consistency">1.2.6 Strong vs Eventual Consistency</h3>
+<ul>
+<li>Strong consistency refers to the read will have the latest write.</li>
+<li>Eventual consistency refers that the read will have some write, but eventually will have the latest write.</li>
+<li>Strong consistency is used in relational DB.</li>
+<li>No SQL DB can be configured with Strong or Eventual Consistency.</li>
+</ul>
+<h3 id="127-optimistic-vs-pessimist-locking">1.2.7 Optimistic vs pessimist locking</h3>
+<ul>
+<li>In optimist locking, before committing any transaction we check and see if no other system is using the resource.</li>
+<li>In pessimist locking, we acquire lock before committing any transaction.</li>
+</ul>
+<h3 id="128-relational-vs-no-sql-db">1.2.8 Relational vs No SQL DB</h3>
+<p>Relational DB will provide ACID properties, but No SQL DB provides high availability and is highly scalable.
+Hence Depending on the system, we check and use which fits better.</p>
+<h3 id="129-caching">1.2.9 Caching</h3>
+<p>Caching is frequently used in web-browser, it will store most frequently used data such as css files. Hence when you visit the website, it can be accessed quickly.</p>
+<h3 id="1210-datacenters-racks-hosts">1.2.10 Datacenters / Racks/ Hosts</h3>
+<ul>
+<li>Server: A server is a computer, that is used to serve the requests. Most of the time, a server will serve only one type of request. There are different types of servers like Web server, Proxy server, mail server.</li>
+<li>Racks: Racks is a collection of servers.</li>
+<li>Datacenter: A datacenter is a collection of multiple networking components like servers, routers, switches, firewalls inside a building. Datacenter can be a dedicated building or inside a room. To support these multiple servers and other networking components, they need to be kept cool, hence they need into kept in a AC room.</li>
+<li>Cluster: It is a collection of datacenter.</li>
+<li>Hosts: A host is a computer device; it is used to communicate to another hosts on the network.</li>
+</ul>
+<h3 id="1211-cpumemorynetwork-bandwidth">1.2.11 CPU/Memory/Network Bandwidth</h3>
+<p>As all the above resources are costly and are limited, they should be effectively utilized. Many big companies, design their own datacenter to further reduce energy costs.</p>
+<h3 id="1212-random-vs-sequential-readwrite-on-disks">1.2.12 Random vs sequential read/write on disks</h3>
+<p>Sequential read and write are always faster than random read and writes on the disk.</p>
+<h3 id="1213-http-vs-http2-vs-web-sockets">1.2.13 http vs http2 vs web sockets</h3>
+<ul>
+<li>http: It is a request, reply architecture between client and server.</li>
+<li>http2: It can do multiple requests over a single connection</li>
+<li>web-sockets: It is fully bidirectional communication between client and server.</li>
+</ul>
+<h3 id="10214-tcpip-model">10.2.14 TCP/IP Model</h3>
+<p>TCP/IP model is used for communicating between different computers or applications over the internet. Any device that is connected to open internet should agree to TCP/IP model.
+It has 4 layers:
+* Layer 4: Application Layer
+* Layer 3: Transport Layer
+* Layer 2: Internet Layer
+* Layer 1: Link Layer
+All the 4 layers performs different functions.</p>
+<h3 id="10215-ipv4-vs-ipv6">10.2.15 IPv4 vs IPv6</h3>
+<p>Internet Protocol addressing is a way that 2 computers communicate with each other over the internet. Each device that is connected to internet will have an IP address attached to it.
+* IPv4: Internet Protocol version 4. It has 2³² ip address in total.
+* IPv6: Internet Protocol version 6, as IPv4 address is running out, the technology is moving towards IPv6. It has 2¹²⁸ address.</p>
+<h3 id="10216-tcp-vs-udp">10.2.16 TCP vs UDP</h3>
+<p>These 2 protocols are used to transfer packets over the internet.
+* TCP: It stands for Transmission Control Protocol. It is connection oriented protocol. It guarantees delivery of the packet to the required recipient. Retransmission of lost packets can be done in TCP.
+* UDP: It stands for User Datagram Protocol. It is a connection less protocol. The packet reaching to the destination cannot be guaranteed. It is faster than TCP.</p>
+<h3 id="10217-dns-lookup">10.2.17 DNS lookup</h3>
+<p>Domain Name Lookup service. When you type "harshityadav.in ", then the request goes to DNS which does the translation of the address into an IP address.</p>
+<h3 id="10218-https-vs-tls">10.2.18 HTTPS vs TLS</h3>
+<p>TLS stands for Transport Layer Security, used to secure communication between client and server.
+When TLS is used with HTTP, it will become HTTPS.</p>
+<h3 id="10219-certificate-authority">10.2.19 Certificate Authority</h3>
+<p>A certificate authority is an entity that issues digital certificates. A CA is tasked with identifying the website and ensuring safe data transfer between website and its clients.</p>
+<h3 id="10220-load-balancers">10.2.20 Load Balancers</h3>
+<p>Once our application gets more number of visitors, we need to include more application servers to serve those customers. So we place those application servers behind a load-balancer. A load balancer is a server that will be the first point of contact of user request, based on some model it will distribute those requests evenly among the available application server such that no server is overloaded.
+Load balancer server will also provide security for DDOS attacks, as those attacks will hit load balancer and application servers will be safe.</p>
+<h3 id="10221-cdns">10.2.21 CDN's</h3>
+<p>CDN stands for content delivery network. It will help to improve the performance and latency by keeping the requested data near to the user.</p>
+<h3 id="10222-design-pattern-and-object-oriented-design">10.2.22 Design Pattern and Object Oriented design</h3>
+<p>When developing/coding a system, it is important to follow coding standards. Design pattern will give an implementation idea for commonly occurring problems. Some of the design pattern to know are:</p>
+<ol>
+<li>Singleton Design Pattern: Here only one instance of the class will be available.</li>
+<li>Adapter Design Pattern: Here two incompatible elements can transfer data with adapter design pattern.</li>
+<li>Proxy Design Pattern: It is used in place of another component that can be delivered later.</li>
+<li>Factory Design Pattern: The concept is to create an object without exposing logic to the client.</li>
+</ol>
+<p>Most of the system today will follow Object Oriented Design. This design helps to reuse the same component multiple times, easy to debug and fix the issues. And has many advantages over procedure oriented design.</p>
+<h3 id="10223-virtual-machines-and-containers">10.2.23 Virtual Machines and containers</h3>
+<p>Virtual Machine is a software, that gives the user a feel that he is the owner of the hardware. But in reality that hardware will be shared by many users.
+Containers: It is a way to run an application along with it's dependency in an isolated environment.</p>
+<h3 id="10224-publisher-subscriber">10.2.24 Publisher-Subscriber</h3>
+<p>Publisher Subscriber model is also called as Pub-Sub model in short. In this model, a publisher will broadcast the message without the knowledge of subscriber. A subscriber will be always listening to broadcast topic without the knowledge of who is publishing the message.</p>
+<h3 id="10225-map-reduce">10.2.25 Map reduce</h3>
+<p>This concept is used to do distributed and parallel processing of big data.</p>
+<h3 id="10226-multithreading-concurrency-locks-synchronization">10.2.26 Multithreading, Concurrency, locks, Synchronization.</h3>
+<p>These concepts are important in multithreading. In Java it comes built-in, while other languages like "c" need to depend upon platform for implementation.</p>
+<h2 id="topic-1-microservices-architecture">Topic 1: Microservices Architecture</h2>
+<p>Topic 1: Microservices Architecture</p>
+<p>Before the introduction of Micro Architecture, there was a Monolithic Architecture.
+A Monolithic Architecture is like a big box where all the software components are assembled in a tightly packed manner.
+It means that all the components of a Monolithic Architecture are interconnected and inter dependent.
+For example:
+If you visit an online shopping website, they will be having:</p>
+<ol>
+<li>Products service, where customers can look at the product.</li>
+<li>Customer service, where customers can seek help to resolve any issues.</li>
+<li>Cart service, where customers can buy the product.</li>
+</ol>
+<p>So when you deploy the application, it will be deployed as a single instance that will be running all the time.
+For scaling them, we shall run multiple instances of these application and keep them behind the load balancer.
+The only advantage of these kind of application is the deployment will be easy and while scaling the application, you need to run multiple instances of the application which is easy.
+But there are many disadvantages for this kind of architecture. Some of them are displayed below:</p>
+<ol>
+<li>When you have a very large application, it will become difficult to modify and deploy the application without knowing all the dependencies.</li>
+<li>The development and maintenance of the application will be difficult. As the application size is large, a simple bug fix will require complete analysis of the application.</li>
+<li>The application memory consumption will be unfair. For example, a chat application will require less amount of CPU usage, but a payment checkout will require quick and immediate CPU resource. But in these kind of application, we cannot divide the CPU resources.</li>
+<li>Single point of failure. Because all of the application are tightly dependent, if one of the application goes down, entire application will be effected. Hence it will make the application highly unstable.</li>
+<li>Since all the modules are interdependent, adding new module or adding a new feature for existing module will become difficult.
+Hence we shifted towards Microservices Architecture.</li>
+</ol>
+<h3 id="what-is-a-microservices-architecture">What is a Microservices Architecture?</h3>
+<p>This architecture is a collection of small autonomous services that together form a complete application.
+Here all applications are independent of each other. They communicate through API provided by the applications.
+Below are some of the advantages of using Microservices Architecture:</p>
+<ol>
+<li>Each Microservices can focus on one business logic</li>
+<li>If any one of the service is down, it will not affect other services, as they are independent of each other.</li>
+<li>Development and bug fixing is easy, because the developer will focus on only one module.</li>
+<li>Instead of having a single database, each Microservices will be having its own database, avoiding single point of failure.</li>
+</ol>
+<p>Below are some of the features of Microservices:
+1. Decoupling: The modules can be easily build, scaled and deployed.
+2. Autonomy: Teams can work independently
+3. Continuous Delivery</p>
+<p>As we have made all the modules as Microservices, each module will communicate with the API provided by other application.
+Components involved in Microservice Architecture:</p>
+<ol>
+<li>API gateway</li>
+<li>Load Balancer</li>
+<li>Database</li>
+<li>Service discovery (Link)</li>
+</ol>
+<p>Open-source tools for developing Microservices:
+Operating System: CentOS
+Container: Docker
+Scheduler: Kubernates
+Monitoring: Prometheus
+Messaging: rabbitMQ
+API: POSTMAN
+Programming Language: Elixir</p>
+<p>Below are some of the companies using Microservices:
+Twitter
+Netflix
+Amazon
+Paypal</p>
+<h3 id="topic-2-data-sharding">Topic 2: Data Sharding</h3>
+<p>Before going to data sharding, let us understand Single storage and why we moved to data sharding.
+Before introduction of distributed systems, we had a single master storage. where in all the data will be dumped in to single DB and all the application traffic used to refer to that database.
+But as the application traffic increased, and usually we have more reads than writes, it made more sense to add more database to accommodate more reads. Hence we do read replication. In this model, we take two to three copy of the original database and redirect the traffic to those databases. Usually in this model, the write will go the master (original database) and then the latest data will be copied to other database.
+But in the above model, we have solved read delay but we introduced one potential issue. The issue is consistency, how to make use the read is the latest write? So how do we solve this?
+We solve the above consist any issue by Data Sharding.
+Data sharding is a way to break a large database into smaller DB's, in such a way that we maintain consistency in the database.</p>
+<h4 id="how-do-we-do-this">How do we do this?</h4>
+<p>Data sharding can be done in a very simple way. Consider we have 3 servers. We break the key into 3 different parts and assign each set of keys to different database.
+For example, we have keys from A to Z. we divide the keys into 3 parts, and assign to the serevers below:
+Server Key
+Server 1 A to F
+Server 2 G to N
+Server 3 O to z
+Hence we shard the data into multiple server, there by increasing the consistency. And each one of the databases will have their own replicated cluster.
+Above method of Data Sharding is called as Index based partitioning</p></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"search": 83, "next": 78, "help": 191, "previous": 80};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

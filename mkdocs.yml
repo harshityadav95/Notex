@@ -1,4 +1,5 @@
 site_name: Notex
+site_dir : '../../'
 nav:
     - Home: 'index.md'
     - 'Languages':
