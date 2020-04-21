@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>SOL 1 - Notex</title>
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="../..">Notex</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li >
+                                <a href="../..">Home</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Languages <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../../python/">Python</a>
+</li>
+                                    
+<li >
+    <a href="../../Javascript-ES6-Notes/">Javascript</a>
+</li>
+                                    
+<li >
+    <a href="../../404/">Java</a>
+</li>
+                                    
+<li >
+    <a href="../../C++/">C/C++</a>
+</li>
+                                    
+<li >
+    <a href="../../sql/">SQL</a>
+</li>
+                                    
+<li >
+    <a href="../../404/">C#</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tools <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../../markdownsyntax/">MarkDown</a>
+</li>
+                                    
+<li >
+    <a href="../../django/">Django</a>
+</li>
+                                    
+<li >
+    <a href="../../404/">React</a>
+</li>
+                                    
+<li >
+    <a href="../../git/">Git</a>
+</li>
+                                    
+<li >
+    <a href="../../vimCheats/">Vim</a>
+</li>
+                                    
+<li >
+    <a href="../../Tools_Compilation/">Tool Compilation</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Garage <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../../terminal_commands/">Terminal</a>
+</li>
+                                    
+<li >
+    <a href="../../Learning_System_Design/">System Design</a>
+</li>
+                                    
+<li >
+    <a href="../../thinkpad/">Thinkpad</a>
+</li>
+                                    
+<li >
+    <a href="../../Programming_Interview_Study_Plan/">Interview</a>
+</li>
+                                    
+<li >
+    <a href="../../Research/">Research</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ai/ML <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../../ai_ml_index/">Start</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">HandWritten <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../../404/">Index</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../../404/">Writer</a>
+</li>
+                                    
+<li >
+    <a href="../../404/">Release Notes</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#sol-1">SOL 1</a></li>
+            <li><a href="#-back-to-home">&lt;--Back to Home</a></li>
+            <li><a href="#week-0">Week 0 :</a></li>
+            <li><a href="#track-1-introduction">Track 1 - Introduction</a></li>
+        <li class="main "><a href="#analysis-of-algorithm">Analysis of Algorithm</a></li>
+            <li><a href="#track-2-analysis-of-recursion">Track 2 - Analysis of Recursion</a></li>
+            <li><a href="#track-3-time-complexity-of-a-computer-program">Track 3 - Time Complexity of a Computer Program</a></li>
+        <li class="main "><a href="#sol-2">SOL 2</a></li>
+            <li><a href="#track-1-mathematics">Track 1 - Mathematics</a></li>
+            <li><a href="#track-3-recursion">Track 3 - Recursion</a></li>
+            <li><a href="#track-8-sorting">Track 8 - Sorting</a></li>
+            <li><a href="#c-stl-library">C++ STL Library</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="sol-1">SOL 1</h1>
+<h4 id="-back-to-home"><a href="../Readme.md">&lt;--Back to Home</a></h4>
+<h3 id="week-0">Week 0 :</h3>
+<h2 id="track-1-introduction">Track 1 - Introduction</h2>
+<h1 id="analysis-of-algorithm">Analysis of Algorithm</h1>
+<ul>
+<li>How do we find which algorithm is better ? - Test Cases - Asymptotic Analysis</li>
+<li>Best Case(Omega Notation) , Average Case(Omega Notation), Worst Case (Big-Oh Notation)</li>
+<li>Shortcomings of Asymptotic analysis : Does not consider the difference caused by constants ie n^2 &lt;&lt; n+c (where C might be large)</li>
+<li><a href="https://telegra.ph/Analysis-of-Loops-06-11">Analysis of Loops</a></li>
+</ul>
+<h2 id="track-2-analysis-of-recursion">Track 2 - Analysis of Recursion</h2>
+<ul>
+<li>General Method : Recursion Tree Method</li>
+<li>Requires Learning : Formula,Master Theorem </li>
+</ul>
+<h2 id="track-3-time-complexity-of-a-computer-program">Track 3 - Time Complexity of a Computer Program</h2>
+<ul>
+<li>Cost of a statement, Number of times </li>
+<li>O(1) &lt; O(logn) &lt;O(n) &lt;O(nlogn) &lt; O(n^c) &lt; O(n!)</li>
+</ul>
+<h1 id="sol-2">SOL 2</h1>
+<h2 id="track-1-mathematics">Track 1 - Mathematics</h2>
+<ul>
+<li>Finding Number of Digits in a Number </li>
+<li>Arithmetic and Geometric Progression  </li>
+<li>Quadratic Equation  </li>
+<li>Mean and Median  </li>
+<li>Prime Numbers</li>
+<li>LCM and HCF </li>
+<li>Factorials </li>
+<li>Permutation and Combination Basics</li>
+<li>Modular Arithmetic </li>
+</ul>
+<p>Problems to Solve<br />
+ - Calculating the Absolute value without using inbuilt function <a href="https://www.geeksforgeeks.org/compute-the-integer-absolute-value-abs-without-branching/">Method 1</a></p>
+<ul>
+<li>
+<p>Convert Celsius To Fahrenheit <a href="https://www.geeksforgeeks.org/program-celsius-fahrenheit-conversion/">Source</a></p>
+</li>
+<li>
+<p>Calculating the roots of the Quadratic equation <a href="https://www.geeksforgeeks.org/program-to-find-the-roots-of-quadratic-equation/">Source</a></p>
+</li>
+<li>
+<p>Factorial of Number Recursion<a href="https://www.geeksforgeeks.org/program-for-factorial-of-a-number/">Source</a> </p>
+</li>
+<li>
+<p>Digits in  Factorial of a Big Number <a href="https://www.geeksforgeeks.org/count-digits-factorial-set-1/">Source</a></p>
+</li>
+<li>
+<p>Numbers with Exactly 3 Divisors <a href="https://www.geeksforgeeks.org/numbers-exactly-3-divisors/">Source</a></p>
+</li>
+<li>
+<p>Mean and Median <a href="https://www.geeksforgeeks.org/program-for-mean-and-median-of-an-unsorted-array/">Source</a></p>
+</li>
+<li>
+<p>Print Digits up to N without loop <a href="https://www.geeksforgeeks.org/how-will-you-print-numbers-from-1-to-200-without-using-loop/">Source</a></p>
+</li>
+<li>
+<p>Sum of N Digits in a number <a href="https://www.geeksforgeeks.org/program-for-sum-of-the-digits-of-a-given-number/">Source</a></p>
+</li>
+<li>
+<p>Digital Roots <a href="https://www.geeksforgeeks.org/digital-rootrepeated-digital-sum-given-integer/">Source</a></p>
+</li>
+<li>
+<p>Fibonacci Using Recursion <a href="https://www.geeksforgeeks.org/program-for-nth-fibonacci-number/">Source</a> </p>
+</li>
+</ul>
+<p><code>c++
+   long long fibonacci(int n)
+   {
+       if(n&lt;=1)
+           return n;
+       else 
+           return fibonacci(n-1)+fibonacci(n-2);
+       }</code></p>
+<ul>
+<li>Modulo of 10^9+7 the Answer</li>
+</ul>
+<p><code>int sumUnderModulo(long long a,long long b)
+  {
+      int M=1000000007;
+      //your code here
+      return ((a%M)+(b%M))%M;
+  }</code></p>
+<ul>
+<li>Find the First Bit Set <a href="https://www.geeksforgeeks.org/position-of-rightmost-set-bit/">Source</a></li>
+</ul>
+<h2 id="track-3-recursion">Track 3 - Recursion</h2>
+<ul>
+<li>Tower of Hanoi <a href="https://practice.geeksforgeeks.org/problems/tower-of-hanoi/0">Source</a> </li>
+</ul>
+<pre><code>void towerofhanoi(int n,char s,char d ,char aux)
+{
+    if(n==1)
+    {
+        cout&lt;&lt;&quot;Move Disk 1 from rod&quot;&lt;&lt;s&lt;&lt; &quot; to rod &quot;&lt;&lt; d &lt;&lt;endl;
+        return;
+    }
+    towerofhanoi(n-1,s,aux,d);
+    cout&lt;&lt;&quot;Move Disk &quot;&lt;&lt;n&lt;&lt;&quot; from rod&quot;&lt;&lt; s&lt;&lt; &quot;to rod&quot; &lt;&lt; d &lt;&lt;endl;
+    towerofhanoi(n-1, aux, d, s);
+}
+</code></pre>
+
+<ul>
+<li>Josephus Problem <a href="https://practice.geeksforgeeks.org/problems/josephus-problem/1">Source</a> ......<a href="https://medium.com/@rrfd/explaining-the-josephus-algorithm-11d0c02e7212">Medium</a></li>
+</ul>
+<p><code>int josephus(int n, int k)
+  {
+  if(n==1)
+  return 1;
+  return (josephus(n-1,k)+k-1)%n +1;
+  }</code></p>
+<ul>
+<li>
+<p>Power using Recursion  <a href="https://www.sanfoundry.com/c-program-power-number-using-recursion/">Source</a></p>
+</li>
+<li>
+<p>Power Set in Lexicographic order <a href="https://www.geeksforgeeks.org/powet-set-lexicographic-order/">Source</a></p>
+</li>
+</ul>
+<p><code>#include&lt;bits/stdc++.h&gt; add all the libraries to a c file</code></p>
+<h2 id="_1"></h2>
+<h2 id="track-8-sorting">Track 8 - Sorting</h2>
+<h2 id="c-stl-library">C++ STL Library</h2>
+<p>#### Vectors </p>
+<p>Collection of Specific Types </p>
+<pre><code>        vector&lt;double&gt; rain(7);
+</code></pre>
+
+<p>Each of 7 element is of size double with variable name rain </p>
+<p>Access each element of array as Index</p>
+<pre><code>rain[index_value]
+</code></pre></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"search": 83, "next": 78, "help": 191, "previous": 80};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
