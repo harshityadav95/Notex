@@ -2351,3 +2351,46 @@ async function serveDinnerAgain(){
 serveDinnerAgain()
 ```
 
+# HTTP Requests
+
+Web developers use the event loop to create a smoother browsing experience by deciding when to call functions and how to handle asynchronous events. We’ll be exploring one system of technologies called Asynchronous JavaScript and XML, or AJAX.
+
+To read more about the event loop, read the MDN documentation:
+
+- [MDN Documentation: Event Loop](https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop)
+
+# XHR GET Requests I
+
+Asynchronous JavaScript and XML (AJAX), enables requests to be made after the initial page load. Initially, AJAX was used only for XML formatted data, now it can be used to make requests that have many different formats.
+
+[MDN Documentation: Extensible Markup Language (XML)](https://developer.mozilla.org/en-US/docs/XML_introduction).
+
+Similarly, the XMLHttpRequest (XHR) API, named for XML, can be used to make many kinds of requests and supports other forms of data.
+
+# XHR GET Requests II
+
+We are going to reconstruct XHR GET request boilerplate code step-by-step until we have written a complete GET request.
+
+Feel free to refer to the XHR GET diagram at any point while completing this exercise:
+
+- [XHR GET diagram](https://s3.amazonaws.com/codecademy-content/courses/intermediate-javascript-requests/diagrams/XHR+GET+diagram.svg)
+
+Example
+
+```js
+/*The XMLHttpRequest object is used in JavaScript to create and send requests. To create a new instance of an object, you would use the new keyword. Like so:*/
+
+/*Make sure the URL is wrapped in quotes so that it is a string.*/
+
+const xhr = new XMLHttpRequest(); 
+const url =  'https://api-to-call.com/endpoint';
+xhr.responseType = 'json';
+xhr.onreadystatechange = () => {
+  if (xhr.readyState === XMLHttpRequest.DONE) {
+    return xhr.response;
+}
+};
+xhr.open('GET', url);
+xhr.send();
+```
+
