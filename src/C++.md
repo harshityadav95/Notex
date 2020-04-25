@@ -35,11 +35,9 @@ List of Compiler [Link](https://isocpp.org/get-started)
    String Member Functions 
   
   - length - variable.length();
-  
   - substr - 
-  
   - find
   
-    
+   
   
   

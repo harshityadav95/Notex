@@ -1,0 +1,26 @@
+# [Notes]Design Notes for Cross Platform Scalable Application
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
