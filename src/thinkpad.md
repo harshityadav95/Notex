@@ -1,6 +1,4 @@
 # ThinkPad Setup
-* My Personal Essential Commands :
-
 - Delete Useless Packages
 
   ```
@@ -50,3 +48,20 @@
   ``` 
   
   ```
+
+- Install MPV player 
+
+  ```shell
+  sudo apt install mpv
+  ```
+
+
+- Install Conda
+
+  ```shell
+  # Download the Package
+  bash Anaconda3-2019.03-Linux-x86_64.sh
+  
+  ```
+
+  
