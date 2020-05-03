@@ -1,99 +1,151 @@
-# Ai And Machine Learning
-#### [<--Back to Home](../Readme.md)
+### Machine Learning Code Snippets
 
-# Getting Started with Machine Learning in 3 Months Curriculum By Siraj Raval
+1. Uploading the data in the code run-time :
 
-# Learn_Machine_Learning_in_3_Months
+   ```shell
+   from google.colab import files
+   uploaded = files.upload()
+   ```
 
-This is the Curriculum for "Learn Machine Learning in 3 Months" [this](https://youtu.be/Cr6VqTRO1v0) video by Siraj Raval on Youtube 
+   
 
-# Month 1
+2. Mounting the Google Drive 
 
-## Week 1 Linear Algebra
-https://www.youtube.com/watch?v=kjBOesZCoqc&index=1&list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab
-https://ocw.mit.edu/courses/mathematics/18-06-linear-algebra-spring-2010/
+```shell
+from google.colab import drive
+drive.mount('/content/gdrive')
 
+#then upload the data in the google drive and then acces sit
+test_data = pd.read_csv('/content/gdrive/My Drive/Housing-Price-Prediction/data/test.csv')
 
+```
 
-## Week 2 Calculus
-https://www.youtube.com/playlist?list=PLZHQObOWTQDMsr9K-rj53DwVRMYO3t5Yr
-## Week 3 Probability
-https://www.edx.org/course/introduction-probability-science-mitx-6-041x-2
-## Week 4 Algorithms
-https://www.edx.org/course/algorithm-design-analysis-pennx-sd3x
+3. Directly uploading to the Current VM Instance  : 
 
-# Month 2
+   ```shell
+   !wget  https://github.com/harshityadav95/Notex/blob/master/src/hyembosslogo.jpg
+   ```
 
-## Week 1 
-#### Learn python for data science
-https://www.youtube.com/watch?v=T5pRlIbr6gg&list=PL2-dafEMk2A6QKz1mrk1uIGfHkC1zZ6UU
-#### Math of Intelligence
-https://www.youtube.com/watch?v=xRJCOz3AfYY&list=PL2-dafEMk2A7mu0bSksCGMJEmeddU_H4D
-#### Intro to Tensorflow
-https://www.youtube.com/watch?v=2FmcHiLCwTU&list=PL2-dafEMk2A7EEME489DsI468AB0wQsMV
+4. Display Image in Jupyter Notebook
 
-## Week 2 
-Intro to ML (Udacity)
-https://eu.udacity.com/course/intro-to-machine-learning--ud120
+   ```shell
+   ## To display image on the Jupyter notebook
+   from IPython.display import display
+   display(image)
+   ```
 
-## Week 3-4
-ML Project Ideas
-https://github.com/NirantK/awesome-project-ideas
+   
 
-# Month 3 (Deep Learning)
+5. Inspecting the Image type and Details :  
 
-## Week 1 
-Intro to Deep Learning
-https://www.youtube.com/watch?v=vOppzHpvTiQ&list=PL2-dafEMk2A7YdKv4XfKpfbTH5z6rEEj3
+   ```shell
+   import inspect
+   print("The type of the image is " + str(type(image)))
+   inspect.getmro(type(image))
+   ```
 
-## Week 2 
-Deep Learning by Fast.AI
-http://course.fast.ai/
+6. Open and Save Image 
 
-## Week 3-4 
-Re-implement DL projects from my github
-https://github.com/llSourcell?tab=repositories
+   ```shell
+   import PIL
+   from PIL import Image
+   from IPython.display import display
+   file="readonly/msi_recruitment.gif"
+   image=Image.open(file)
+   image.save("msi_recruitment.png")
+   image=Image.open("msi_recruitment.png")
+   
+   ```
 
----
+   
 
-*Additional Resources:*   
-- People in ML to [follow on Twitter](https://www.quora.com/Who-should-I-follow-on-Twitter-to-get-useful-and-reliable-machine-learning-information "Quora.com")
-- Join the ["Wizards" Slack channel](http://wizards.herokuapp.com/ "Herokuapp.com")
-- SubReddit ML Community
-- Use Twitter by Subscribing to really smart people
-- Hacker News
+7. Image Filter Library Pillow
 
+   ```shell
+   from PIL import ImageFilter
+   help(ImageFilter)
+   ```
 
+8. Dimensions of the Image 
 
+   ```shell
+   display(image.crop((50,0,190,150)))
+   ```
 
+9. Blur an Image using in built feature
 
-##### Resource
+   ```shell
+   image=image.convert('RGB')
+   # this stands for red, green blue mode other is CMYK
+   blurred_image=image.filter(PIL.ImageFilter.BLUR)
+   display(blurred_image)
+   ```
 
-#### Microsoft
+10.  Cropping the Image 
 
-* Book : [Developers Guide to Building Ai Applications with Microsoft Ai bot](https://github.com/harshityadav95/Notex/blob/master/asset/Developers%20Guide%20to%20Building%20Ai%20Chat%20Apps%20using%20Microsoft%20Ai%20bot.pdf)
-* Course :[Microsoft Ai School](https://aischool.microsoft.com/en-us/home)
+    ```shell
+    display(image.crop((50,0,190,150)))
+    ```
 
+    
 
-#### Google 
+11.  Write Text on Image 
 
+    ```python
+    from PIL import ImageDraw
+    drawing_object=ImageDraw.Draw(image)
+    drawing_object.rectangle((50,0,190,150), fill = None, outline ='red')
+    display(image)
+    ```
 
+    
 
+12 . Enhance Image
 
-#### Alibaba
+```python
+from PIL import ImageEnhance
+# load image in enhancer class
+enhancer=ImageEnhance.Brightness(image)
+images=[]
+for i in range(0, 10):
 
+    images.append(enhancer.enhance(i/10))
 
+print(images)
+```
 
+13.  Create a new Image 
 
-#### Amazon  
+```python
+# new image with RGB mode and dimensionnina  tuple
+contact_sheet=PIL.Image.new(first_image.mode, (first_image.width*3,first_image.height*3))
 
+```
 
+14. Iterate over a 3X3 Image and Paste Image 
 
-#### Microsoft 
+    ```python
+    x=0
+    y=0
+    
+    for img in images[1:]:
+       
+        contact_sheet.paste(img, (x, y) )
+    
+        if x+first_image.width == contact_sheet.width:
+            x=0
+            y=y+first_image.height
+        else:
+            x=x+first_image.width
+            
+    ```
 
+15. Resize an Image
 
+    ```python
+    contact_sheet = contact_sheet.resize((int(contact_sheet.width/2),int(contact_sheet.height/2) ))
+    # Now lets display that composite image
+    display(contact_sheet)
+    ```
 
-
-#### Others 
-
-
+    
