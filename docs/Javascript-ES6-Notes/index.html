@@ -13,11 +13,6 @@
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
-        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
 
         <script src="../js/jquery-1.10.2.min.js" defer></script>
         <script src="../js/bootstrap-3.0.3.min.js" defer></script>
@@ -263,6 +258,9 @@
         <li class="main "><a href="#handling-errors">Handling Errors</a></li>
         <li class="main "><a href="#handling-independent-promises">Handling Independent Promises</a></li>
         <li class="main "><a href="#await-promiseall">Await Promise.all()</a></li>
+        <li class="main "><a href="#http-requests">HTTP Requests</a></li>
+        <li class="main "><a href="#xhr-get-requests-i">XHR GET Requests I</a></li>
+        <li class="main "><a href="#xhr-get-requests-ii">XHR GET Requests II</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -2170,6 +2168,39 @@ serveDinner();
 }
 
 serveDinnerAgain()
+</code></pre>
+
+<h1 id="http-requests">HTTP Requests</h1>
+<p>Web developers use the event loop to create a smoother browsing experience by deciding when to call functions and how to handle asynchronous events. We’ll be exploring one system of technologies called Asynchronous JavaScript and XML, or AJAX.</p>
+<p>To read more about the event loop, read the MDN documentation:</p>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop">MDN Documentation: Event Loop</a></li>
+</ul>
+<h1 id="xhr-get-requests-i">XHR GET Requests I</h1>
+<p>Asynchronous JavaScript and XML (AJAX), enables requests to be made after the initial page load. Initially, AJAX was used only for XML formatted data, now it can be used to make requests that have many different formats.</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/XML_introduction">MDN Documentation: Extensible Markup Language (XML)</a>.</p>
+<p>Similarly, the XMLHttpRequest (XHR) API, named for XML, can be used to make many kinds of requests and supports other forms of data.</p>
+<h1 id="xhr-get-requests-ii">XHR GET Requests II</h1>
+<p>We are going to reconstruct XHR GET request boilerplate code step-by-step until we have written a complete GET request.</p>
+<p>Feel free to refer to the XHR GET diagram at any point while completing this exercise:</p>
+<ul>
+<li><a href="https://s3.amazonaws.com/codecademy-content/courses/intermediate-javascript-requests/diagrams/XHR+GET+diagram.svg">XHR GET diagram</a></li>
+</ul>
+<p>Example</p>
+<pre><code class="js">/*The XMLHttpRequest object is used in JavaScript to create and send requests. To create a new instance of an object, you would use the new keyword. Like so:*/
+
+/*Make sure the URL is wrapped in quotes so that it is a string.*/
+
+const xhr = new XMLHttpRequest(); 
+const url =  'https://api-to-call.com/endpoint';
+xhr.responseType = 'json';
+xhr.onreadystatechange = () =&gt; {
+  if (xhr.readyState === XMLHttpRequest.DONE) {
+    return xhr.response;
+}
+};
+xhr.open('GET', url);
+xhr.send();
 </code></pre></div>
         </div>
 
@@ -2179,7 +2210,7 @@ serveDinnerAgain()
         </footer>
         <script>
             var base_url = "..",
-                shortcuts = {"search": 83, "next": 78, "help": 191, "previous": 80};
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
         <script src="../js/base.js" defer></script>
         <script src="../search/main.js" defer></script>
