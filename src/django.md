@@ -44,7 +44,7 @@ python manage.py runserver
 - Activate the VirtualEnv
 
   ```
-   
+  source venv/bin/activate 
   ```
 
 - To Deactivate the env  
