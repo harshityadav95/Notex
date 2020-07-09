@@ -1,5 +1,9 @@
 # C++
 
+## C++ Chapter 1 : Introduction
+
+
+
 Standard Wesbite  : [C++](https://isocpp.org/)
 
 Some *C++* data types, their format specifiers, and their most common bit widths are as follows:
@@ -17,6 +21,10 @@ Void Pointers - a type of pointer that can store data of any type  (void *ptr;)
 Null Pointer - is a value of the pointer (int *ptr=NULL)
 
 Wild Pointer - Uninitialised value of a pointer
+
+
+
+
 
 
 
