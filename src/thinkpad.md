@@ -1,67 +1,63 @@
 # ThinkPad Setup
-- Delete Useless Packages
+#### Delete Useless Packages
 
-  ```
-  sudo apt-get clean
-  
-  sudo apt-get autoremove
-  ```
+```
+sudo apt-get clean
 
-- Launch UnetBootin after Installation using command line  
+sudo apt-get autoremove
+```
 
-  ```
-  sudo QT_X11_NO_MITSHM=1 /usr/bin/unetbootin
-  ```
+#### Launch UnetBootin after Installation using command line  
 
-- Install Power Management and Cooling Essentials [TLP]
+```
+sudo QT_X11_NO_MITSHM=1 /usr/bin/unetbootin
+```
 
-  ```
-  sudo add-apt-repository ppa:linrunner/tlp
-  sudo apt-get update
-  sudo apt-get install tlp tlp-rdw
-  //thinkpad Machines :
-  sudo apt-get install tp-smapi-dkms acpi-call-dkms
-  ```
+#### Install Power Management and Cooling Essentials [TLP]
 
-- Enable Battery percentage in top bar without installing Tweaks
+```
+sudo add-apt-repository ppa:linrunner/tlp
+sudo apt-get update
+sudo apt-get install tlp tlp-rdw
+//thinkpad Machines :
+sudo apt-get install tp-smapi-dkms acpi-call-dkms
+```
 
-  ```shell
-  gsettings set org.gnome.desktop.interface show-battery-percentage true
-  ```
+#### Enable Battery percentage in top bar without installing Tweaks
 
-  
-
-- Install LXDE GUI on top of ubuntu  
-
-  ``` sudo apt-get install lxde ```
-
-- Update the Conda Environment
-
-  ``` 
-  condat update --all
-  ```
-
-  
-
-- Install Foxit Reader
-
-  ``` 
-  
-  ```
-
-- Install MPV player 
-
-  ```shell
-  sudo apt install mpv
-  ```
+```shell
+gsettings set org.gnome.desktop.interface show-battery-percentage true
+```
 
 
-- Install Conda
 
-  ```shell
-  # Download the Package
-  bash Anaconda3-2019.03-Linux-x86_64.sh
-  
-  ```
+#### Install LXDE GUI on top of ubuntu  
 
-  
+``` sudo apt-get install lxde ```
+
+#### Update the Conda Environment
+
+``` 
+condat update --all
+```
+
+#### Install MPV player 
+
+```shell
+sudo apt install mpv
+```
+
+#### Install Conda
+
+```shell
+# Download the Package
+bash Anaconda3-2019.03-Linux-x86_64.sh
+
+```
+
+#### Image Viewer for handling big file size
+
+```bash
+sudo apt install eom
+```
+
