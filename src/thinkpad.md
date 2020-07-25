@@ -61,3 +61,11 @@ bash Anaconda3-2019.03-Linux-x86_64.sh
 sudo apt install eom
 ```
 
+PDF viewer for heavy PDF
+
+```shell
+sudo apt-get update
+
+sudo apt-get install mupdf mupdf-tools
+```
+
