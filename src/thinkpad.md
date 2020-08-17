@@ -69,3 +69,12 @@ sudo apt-get update
 sudo apt-get install mupdf mupdf-tools
 ```
 
+Terminal Update 
+
+```
+link-https://itnext.io/terminal-101-the-setup-guide-that-will-boost-your-workflow-12df2570052
+
+nano ~/.zshrc
+change theme o "xiong-chiamiov"
+```
+
