@@ -1,3 +1,11 @@
+### Notes 
+
+-  [Gitbook Notes](https://harshityadav95.gitbook.io/macine-learning-notes/)
+
+
+
+
+
 ### Machine Learning Code Snippets
 
 1. Uploading the data in the code run-time :
