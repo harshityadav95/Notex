@@ -1,0 +1,1105 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.4">
+    
+    
+      
+        <title>Django - Notex</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.f7f47774.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#django-tutorials" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Notex" class="md-header__button md-logo" aria-label="Notex" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Notex
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Django
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Notex" class="md-nav__button md-logo" aria-label="Notex" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Notex
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        Languages
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Languages" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Languages
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python/" class="md-nav__link">
+        Python
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Javascript-ES6-Notes/" class="md-nav__link">
+        Javascript
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../404/" class="md-nav__link">
+        Java
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../C%2B%2B/" class="md-nav__link">
+        C/C++
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql/" class="md-nav__link">
+        SQL
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../404/" class="md-nav__link">
+        C#
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      <label class="md-nav__link" for="__nav_3">
+        Tools
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Tools" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Tools
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../markdownsyntax/" class="md-nav__link">
+        MarkDown
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Django
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Django
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    Setup
+  </a>
+  
+    <nav class="md-nav" aria-label="Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#start-your-blank-project" class="md-nav__link">
+    Start your Blank Project
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-1-creating-a-hello-word-page-for-project" class="md-nav__link">
+    STEP 1 :Creating a Hello Word Page for Project
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../404/" class="md-nav__link">
+        React
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git/" class="md-nav__link">
+        Git
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vimCheats/" class="md-nav__link">
+        Vim
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tools_Compilation/" class="md-nav__link">
+        Tool Compilation
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        Garage
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Garage" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Garage
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../terminal_commands/" class="md-nav__link">
+        Terminal
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Learning_System_Design/" class="md-nav__link">
+        System Design
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../thinkpad/" class="md-nav__link">
+        Thinkpad
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Programming_Interview_Study_Plan/" class="md-nav__link">
+        Interview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Research/" class="md-nav__link">
+        Research
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
+        Ai/ML
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Ai/ML" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Ai/ML
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai_ml_index/" class="md-nav__link">
+        Start
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      <label class="md-nav__link" for="__nav_6">
+        HandWritten
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="HandWritten" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          HandWritten
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../404/" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      <label class="md-nav__link" for="__nav_7">
+        About
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="About" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          About
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../404/" class="md-nav__link">
+        Writer
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../404/" class="md-nav__link">
+        Release Notes
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    Setup
+  </a>
+  
+    <nav class="md-nav" aria-label="Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#start-your-blank-project" class="md-nav__link">
+    Start your Blank Project
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-1-creating-a-hello-word-page-for-project" class="md-nav__link">
+    STEP 1 :Creating a Hello Word Page for Project
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="django-tutorials">Django Tutorials</h1>
+<pre><code>sudo apt install python3-pip
+pip3 install virtualenv
+which virtualenv
+virtualenv venv -p python3.6
+source venv/bin/activate
+pip install django
+
+django-admin startproject myproject
+
+python manage.py runserver
+
+
+
+</code></pre>
+<ul>
+<li>https://simpleisbetterthancomplex.com/series/2017/09/04/a-complete-beginners-guide-to-django-part-1.html</li>
+</ul>
+<h2 id="setup">Setup</h2>
+<ul>
+<li>Check if you have  the Latest Version of Python </li>
+</ul>
+<p><code>shell
+  python3 --version</code></p>
+<ul>
+<li>Install virtualenv environment after installing  pip if you don't have that already  </li>
+</ul>
+<p><code>pip install virtualenv</code></p>
+<ul>
+<li>Create a folder where you want to setup your project and browse into it and setup a python 3.6  virtualenv inside it </li>
+</ul>
+<p><code>sudo apt install virtualenv
+  virtualenv venv -p python3.6</code></p>
+<ul>
+<li>Activate the VirtualEnv</li>
+</ul>
+<p><code>source venv/bin/activate</code></p>
+<ul>
+<li>To Deactivate the env  </li>
+</ul>
+<p><code>deactivate</code></p>
+<ul>
+<li>Install the Django inside your activated you virtualenv</li>
+</ul>
+<p><code>pip install django</code></p>
+<ul>
+<li>Start a New Project </li>
+</ul>
+<p>```
+  django-admin startproject myproject</p>
+<p># which will create the directory structure
+  myproject/                  &lt;-- higher level folder
+   |-- myproject/             &lt;-- django project folder
+   |    |-- myproject/
+   |    |    |-- <strong>init</strong>.py
+   |    |    |-- settings.py
+   |    |    |-- urls.py
+   |    |    |-- wsgi.py
+   |    +-- manage.py
+   +-- venv/                  &lt;-- virtual environment folder
+  ```</p>
+<p>Our initial project structure is composed of five files:</p>
+<ul>
+<li><strong>manage.py</strong>: a shortcut to use the <strong>django-admin</strong> command-line utility. It’s used to run management commands related to our project. We will use it to run the development server, run tests, create migrations and much more.</li>
+<li><strong><strong>init</strong>.py</strong>: this empty file tells Python that this folder is a Python package.</li>
+<li><strong>settings.py</strong>: this file contains all the project’s configuration. We will refer to this file all the time!</li>
+<li><strong>urls.py</strong>: this file is responsible for mapping the routes and paths in our project. For example, if you want to show something in the URL <code>/about/</code>, you have to map it here first.</li>
+<li><strong>wsgi.py</strong>: this file is a simple gateway interface used for deployment. You don’t have to bother about it. Just let it be for now.</li>
+</ul>
+<h4 id="start-your-blank-project">Start your Blank Project</h4>
+<pre><code>python manage.py runserver
+</code></pre>
+<p>to create a simple Web Forum or Discussion Board. To create our first app, go to the directory where the <strong>manage.py</strong> file is and executes the following command:</p>
+<pre><code>django-admin startapp boards
+
+# that will create a strucutre like
+myproject/
+ |-- myproject/
+ |    |-- whiteboard/                &lt;-- our new django app!
+ |    |    |-- migrations/
+ |    |    |    +-- __init__.py
+ |    |    |-- __init__.py
+ |    |    |-- admin.py
+ |    |    |-- apps.py
+ |    |    |-- models.py
+ |    |    |-- tests.py
+ |    |    +-- views.py
+ |    |-- myproject/
+ |    |    |-- __init__.py
+ |    |    |-- settings.py
+ |    |    |-- urls.py
+ |    |    |-- wsgi.py
+ |    +-- manage.py
+ +-- venv/
+</code></pre>
+<p>So, let’s first explore what each file does:</p>
+<ul>
+<li><strong>migrations/</strong>: here Django store some files to keep track of the changes you create in the <strong>models.py</strong> file, so to keep the database and the <strong>models.py</strong> synchronized.</li>
+<li><strong>admin.py</strong>: this is a configuration file for a built-in Django app called <strong>Django Admin</strong>.</li>
+<li><strong>apps.py</strong>: this is a configuration file of the app itself.</li>
+<li><strong>models.py</strong>: here is where we define the entities of our Web application. The models are translated automatically by Django into database tables.</li>
+<li><strong>tests.py</strong>: this file is used to write unit tests for the app.</li>
+<li><strong>views.py</strong>: this is the file where we handle the request/response cycle of our Web application.</li>
+</ul>
+<h3 id="step-1-creating-a-hello-word-page-for-project">STEP 1 :Creating a Hello Word Page for Project</h3>
+<p>Create the <strong>views.py</strong> file inside the <strong>boards</strong> app, and add the following code:</p>
+<p><strong>views.py</strong> [In the whiteboard project we just created]</p>
+<pre><code>from django.http import HttpResponse  #add this also
+
+def home(request):
+    return HttpResponse('Hello, World!')
+</code></pre>
+<p><strong><em>urls.py</em></strong> [in the other main project folder]</p>
+<pre><code>from django.conf.urls import url        #add this 
+from django.contrib import admin
+
+from whiteboards import views           #add this
+
+urlpatterns = [
+    url(r'^$', views.home, name='home'),
+    url(r'^admin/', admin.site.urls),
+]
+
+</code></pre>
+<p><strong><em>settings.py</em></strong> [in the same folder as the urls.py add the following in the Installed apps ]</p>
+<pre><code>INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+
+    'board',
+]
+</code></pre>
+<p>Now to Run the Project </p>
+<pre><code class="language-python">python manage.py runserver
+</code></pre>
+<h1 id="step-2-modeling">Step 2 - Modeling</h1>
+<p>Since we will be using Sqlite3 as DB , you can use <a href="https://sqlitebrowser.org/dl/">SQLiteBrowser</a>  as an GUI Interface to browse and edit the DB</p>
+<h3 id="common-field-arguments">Common field Arguments</h3>
+<p>The following common arguments can be used when declaring many/most of the different field types:</p>
+<ul>
+<li>
+<p><a href="https://docs.djangoproject.com/en/2.1/ref/models/fields/#help-text">help_text</a>: Provides a text label for HTML forms (e.g. in the admin site), as described above.</p>
+</li>
+<li>
+<p><a href="https://docs.djangoproject.com/en/2.1/ref/models/fields/#verbose-name">verbose_name</a>: A human-readable name for the field used in field labels. If not specified, Django will infer the default verbose name from the field name.</p>
+</li>
+<li>
+<p><a href="https://docs.djangoproject.com/en/2.1/ref/models/fields/#default">default</a>: The default value for the field. This can be a value or a callable object, in which case the object will be called every time a new record is created.</p>
+</li>
+<li>
+<p><a href="https://docs.djangoproject.com/en/2.1/ref/models/fields/#null">null</a>: If <code>True</code>, Django will store blank values as <code>NULL</code> in the database for fields where this is appropriate (a <code>CharField</code> will instead store an empty string). The default is <code>False</code>.</p>
+</li>
+<li>
+<p><a href="https://docs.djangoproject.com/en/2.1/ref/models/fields/#blank">blank</a>: If <code>True</code>, the field is allowed to be blank in your forms. The default is <code>False</code>, which means that Django's form validation will force you to enter a value. This is often used with <code>null=True</code> , because if you're going to allow blank values, you also want the database to be able to represent them appropriately.</p>
+</li>
+<li>
+<p><a href="https://docs.djangoproject.com/en/2.1/ref/models/fields/#choices">choices</a>: A group of choices for this field. If this is provided, the default corresponding form widget will be a select box with these choices instead of the standard text field. <a href="https://docs.djangoproject.com/en/3.0/topics/db/models/">More on Choices</a></p>
+</li>
+<li>
+<p><a href="https://docs.djangoproject.com/en/2.1/ref/models/fields/#primary-key">primary_key</a>: If <code>True</code>, sets the current field as the primary key for the model (A primary key is a special database column designated to uniquely identify all the different table records). If no field is specified as the primary key then Django will automatically add a field for this purpose.</p>
+</li>
+</ul>
+<p>There are many other options — you can view the <a href="https://docs.djangoproject.com/en/2.1/ref/models/fields/#field-options">full list of field options here</a>.</p>
+<h3 id="common-field-types">Common Field Types</h3>
+<p>The following list describes some of the more commonly used types of fields. </p>
+<ul>
+<li>
+<p><a href="https://docs.djangoproject.com/en/2.1/ref/models/fields/#django.db.models.CharField">CharField</a> is used to define short-to-mid sized fixed-length strings. You must specify the <code>max_length</code> of the data to be stored.</p>
+</li>
+<li>
+<p><a href="https://docs.djangoproject.com/en/2.1/ref/models/fields/#django.db.models.TextField">TextField</a> is used for large arbitrary-length strings. You may specify a <code>max_length</code> for the field, but this is used only when the field is displayed in forms (it is not enforced at the database level).</p>
+</li>
+<li>
+<p><a href="https://docs.djangoproject.com/en/2.1/ref/models/fields/#django.db.models.IntegerField">IntegerField</a> is a field for storing integer (whole number) values, and for validating entered values as integers in forms.</p>
+</li>
+<li>
+<p><a href="https://docs.djangoproject.com/en/2.1/ref/models/fields/#datefield">DateField</a> and <a href="https://docs.djangoproject.com/en/2.1/ref/models/fields/#datetimefield">DateTimeField</a> are used for storing/representing dates and date/time information (as Python <code>datetime.date</code> in and <code>datetime.datetime</code> objects, respectively). These fields can additionally declare the (mutually exclusive) parameters <code>auto_now=True</code> (to set the field to the current date every time the model is saved), <code>auto_now_add</code> (to only set the date when the model is first created) , and <code>default</code> (to set a default date that can be overridden by the user).</p>
+</li>
+<li>
+<p><a href="https://docs.djangoproject.com/en/2.1/ref/models/fields/#emailfield">EmailField</a> is used to store and validate email addresses.</p>
+</li>
+<li>
+<p><a href="https://docs.djangoproject.com/en/2.1/ref/models/fields/#filefield">FileField</a> and <a href="https://docs.djangoproject.com/en/2.1/ref/models/fields/#imagefield">ImageField</a> are used to upload files and images respectively (the <code>ImageField</code> simply adds additional validation that the uploaded file is an image). These have parameters to define how and where the uploaded files are stored.</p>
+</li>
+<li>
+<p><a href="https://docs.djangoproject.com/en/2.1/ref/models/fields/#autofield">AutoField</a> is a special type of <code>IntegerField</code> that automatically increments. A primary key of this type is automatically added to your model if you don’t explicitly specify one.</p>
+</li>
+<li>
+<p><a href="https://docs.djangoproject.com/en/2.1/ref/models/fields/#foreignkey">ForeignKey</a> is used to specify a one-to-many relationship to another database model (e.g. a car has one manufacturer, but a manufacturer can make many cars). The "one" side of the relationship is the model that contains the "key" (models containing a "foreign key" referring to that "key", are on the "many" side of such a relationship).</p>
+</li>
+</ul>
+<p>There are many other types of fields, including fields for different types of numbers (big integers, small integers, floats), booleans, URLs, slugs, unique ids, and other "time-related" information (duration, time, etc.). You can view the <a href="https://docs.djangoproject.com/en/2.1/ref/models/fields/#field-types">full list here</a>.</p>
+<p>Create the <strong>models.py</strong> file inside the <strong>boards</strong> app, and add the following code:</p>
+<pre><code>from django.db import models
+from django.contrib.auth.models import User
+
+
+class Board(models.Model):
+    name = models.CharField(max_length=30, unique=True)
+    description = models.CharField(max_length=100)
+
+
+class Topic(models.Model):
+    subject = models.CharField(max_length=255)
+    last_updated = models.DateTimeField(auto_now_add=True)
+    board = models.ForeignKey(Board, related_name='topics')
+    starter = models.ForeignKey(User, related_name='topics')
+
+
+class Post(models.Model):
+    message = models.TextField(max_length=4000)
+    topic = models.ForeignKey(Topic, related_name='posts')
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(null=True)
+    created_by = models.ForeignKey(User, related_name='posts')
+    updated_by = models.ForeignKey(User, null=True, related_name='+')
+</code></pre>
+<p>https://simpleisbetterthancomplex.com/series/2017/09/11/a-complete-beginners-guide-to-django-part-2.html</p>
+<p>https://docs.djangoproject.com/en/3.0/topics/db/models/#</p>
+<p>https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Models</p>
+<p>https://docs.djangoproject.com/en/3.0/ref/models/fields/#field-options</p>
+<p>https://www.journaldev.com/21938/django-models</p>
+<pre><code>from django.db import models
+from django.contrib.auth.models import User
+
+
+class CompanyTable(models.Model):
+    id=models.AutoField(primary_key=True)
+    name=models.CharField(&quot;Company Name&quot;,max_length=100)
+
+class ComapnySchedule(models.Model):
+    companyName=models.ForeignKey(CompanyTable,on_delete=models.DO_NOTHING)
+   #branches=[(&quot;CSE&quot;,&quot;Computer Science &amp; Engineering&quot;),(&quot;CSIS&quot;,&quot;Computer Science and information Security&quot;)]
+    #eligibleBrances=models.TextChoices(&quot;CSE&quot;,&quot;CSIS&quot;) 
+    eligibleBranches=models.CharField(&quot;Eligible Branches&quot;,max_length=300,blank=False) # #,choices=branches
+    offers=models.IntegerField(blank=False)
+
+class CompanyCriteriaAndOffer(models.Model):
+    #last date of Registration
+    #Company Name 
+    #Link on the Top
+
+    recruitmentType=models.CharField(&quot;Recruitment Type&quot;,max_length=100)
+    jobType=models.CharField(&quot;Job Type&quot;,max_length=20)
+    eligibleBranches=models.CharField(&quot;Eligible Branches&quot;,max_length=300,blank=False)
+    #Needs to be in Decimal
+    minimum_Gpa_Mtech=models.IntegerField(&quot;Minimum GPA 1st Sem Mtech&quot;,blank=False)
+    minimum_Cgpa_Btech=models.IntegerField(&quot;Minimum CGPA in Undergrad&quot;,blank=False)
+    #Needs to be without decimal
+    maximumBackLog=models.IntegerField(&quot;Maximum Backlog&quot;)
+    minimum_12_marks=models.IntegerField(&quot;Minimum Class 12 Marks&quot;)
+    minimum_10_marks=models.IntegerField(&quot;Minimum Class 10 Marks&quot;)
+    minimum_Dimploma_marks=models.IntegerField(&quot;Minimum Diploma Marks&quot;)
+    stipend=models.CharField(&quot;Stipend&quot;,blank=False)
+    location=models.CharField(&quot;Location&quot;,max_length=100)
+    on_conversion=models.CharField(&quot;On Conversion CTC&quot;,max_length=100)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</code></pre>
+<pre><code>python manage.py makemigrations
+python manage.py sqlmigrate boards 0001
+python manage.py migrate
+
+python manage.py createsuperuser
+</code></pre>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../markdownsyntax/" class="md-footer__link md-footer__link--prev" aria-label="Previous: MarkDown" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              MarkDown
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../404/" class="md-footer__link md-footer__link--next" aria-label="Next: React" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              React
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.709b4209.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.febc23d1.min.js"></script>
+      
+    
+  </body>
+</html>
