@@ -1,199 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-        
-        
-        <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>SQL - Notex</title>
-        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
-        <link href="../css/font-awesome.min.css" rel="stylesheet">
-        <link href="../css/base.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
-
-        <script src="../js/jquery-1.10.2.min.js" defer></script>
-        <script src="../js/bootstrap-3.0.3.min.js" defer></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-        <script>hljs.initHighlightingOnLoad();</script> 
-    </head>
-
-    <body>
-
-        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-            <div class="container">
-
-                <!-- Collapsed navigation -->
-                <div class="navbar-header">
-                    <!-- Expander button -->
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="..">Notex</a>
-                </div>
-
-                <!-- Expanded navigation -->
-                <div class="navbar-collapse collapse">
-                        <!-- Main navigation -->
-                        <ul class="nav navbar-nav">
-                            <li >
-                                <a href="..">Home</a>
-                            </li>
-                            <li class="dropdown active">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Languages <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    
-<li >
-    <a href="../python/">Python</a>
-</li>
-                                    
-<li >
-    <a href="../Javascript-ES6-Notes/">Javascript</a>
-</li>
-                                    
-<li >
-    <a href="../404/">Java</a>
-</li>
-                                    
-<li >
-    <a href="../C++/">C/C++</a>
-</li>
-                                    
-<li class="active">
-    <a href="./">SQL</a>
-</li>
-                                    
-<li >
-    <a href="../404/">C#</a>
-</li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tools <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    
-<li >
-    <a href="../markdownsyntax/">MarkDown</a>
-</li>
-                                    
-<li >
-    <a href="../django/">Django</a>
-</li>
-                                    
-<li >
-    <a href="../404/">React</a>
-</li>
-                                    
-<li >
-    <a href="../git/">Git</a>
-</li>
-                                    
-<li >
-    <a href="../vimCheats/">Vim</a>
-</li>
-                                    
-<li >
-    <a href="../Tools_Compilation/">Tool Compilation</a>
-</li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Garage <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    
-<li >
-    <a href="../terminal_commands/">Terminal</a>
-</li>
-                                    
-<li >
-    <a href="../Learning_System_Design/">System Design</a>
-</li>
-                                    
-<li >
-    <a href="../thinkpad/">Thinkpad</a>
-</li>
-                                    
-<li >
-    <a href="../Programming_Interview_Study_Plan/">Interview</a>
-</li>
-                                    
-<li >
-    <a href="../Research/">Research</a>
-</li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ai/ML <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    
-<li >
-    <a href="../ai_ml_index/">Start</a>
-</li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">HandWritten <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    
-<li >
-    <a href="../404/">Index</a>
-</li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    
-<li >
-    <a href="../404/">Writer</a>
-</li>
-                                    
-<li >
-    <a href="../404/">Release Notes</a>
-</li>
-                                </ul>
-                            </li>
-                        </ul>
-
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
-                                <i class="fa fa-search"></i> Search
-                            </a>
-                        </li>
-                            <li >
-                                <a rel="next" href="../C++/">
-                                    <i class="fa fa-arrow-left"></i> Previous
-                                </a>
-                            </li>
-                            <li >
-                                <a rel="prev" href="../404/">
-                                    Next <i class="fa fa-arrow-right"></i>
-                                </a>
-                            </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="container">
-                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
-    <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#sql-statements">SQL Statements</a></li>
-        <li class="main "><a href="#retriving-data-from-tables">Retriving Data from Tables</a></li>
-        <li class="main "><a href="#using-boolean-and-relational-operators">Using Boolean and Relational operators</a></li>
-        <li class="main "><a href="#wild-card-and-special-operators">Wild Card and Special Operators</a></li>
-        <li class="main "><a href="#special-characters">Special Characters</a></li>
-    </ul>
-</div></div>
-                <div class="col-md-9" role="main">
-
-<h3 id="sql-statements">SQL Statements</h3>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Notex: open notes, code snippets, system design, programming languages and handwritten resources by Harshit Yadav."><meta name="theme-color" content="#f7f7f8"><title>SQL · Notex</title><link rel="icon" href="../assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../assets/style.css?v=c95c66291b"><script src="../assets/app.js?v=1141b2008c" defer></script></head><body class="reading" data-base="../"><a class="skip" href="#main-content">Skip to content</a><div class="announcement"><a href="../library/"><span class="badge live">OPEN</span> Your next idea starts with a note <span class="announcement-more">Explore the library →</span></a><button aria-label="Dismiss announcement" data-dismiss>×</button></div><header class="site-header"><div class="nav-wrap"><a class="wordmark" href="../">notex<span class="badge">OPEN</span></a><nav aria-label="Main navigation"><div class="dropdown"><button aria-expanded="false" data-dropdown>Learning <span>⌄</span></button><div class="dropdown-panel"><a class="" href="../python/">Programming languages</a><a class="" href="../Learning_System_Design/">System design in depth</a><a class="" href="../ai_ml_index/">AI &amp; machine learning</a><a class="" href="../sql/">Databases &amp; SQL</a><a class="" href="../django/">Tools for building</a><a class="" href="../dsalgo/dsalgoindex/">Data structures &amp; algorithms</a><a class="" href="../terminal_commands/">Terminal &amp; hardware</a></div></div><a href="../library/">Library</a><a href="../library/#handwritten">Handwritten</a><a href="../library/#notebooks">Notebooks</a><div class="dropdown"><button aria-expanded="false" data-dropdown>Explore <span>⌄</span></button><div class="dropdown-panel"><a href="../#paths">Learning paths</a><a href="../#about">About Notex</a><a class="" href="../Research/">Research</a><a class="" href="../Tools_Compilation/">Developer tools</a></div></div><a href="https://github.com/harshityadav95/Notex">GitHub ↗</a></nav><div class="nav-actions"><a class="pill open-source" href="https://github.com/harshityadav95/Notex">100% open source ↗</a><button class="search-trigger tactile" aria-label="Search notes" data-search><img src="../assets/icons/search.svg" alt="" width="18" height="18"></button><a class="tactile desktop-start" href="../python/">Start reading</a><button class="tactile menu-trigger" aria-label="Open navigation menu" data-menu><img src="../assets/icons/menu.svg" alt="" width="16" height="16"> Menu</button></div></div></header><dialog class="menu-dialog"><div class="menu-head"><span class="wordmark">notex</span><button aria-label="Close menu" data-close>×</button></div><p>Notes, code and ideas. All in one place.</p><nav aria-label="Mobile navigation"><a href="../library/">All notes</a><a href="../library/#handwritten">Handwritten notes</a><a href="../library/#notebooks">Python notebooks</a><a href="../#about">About Notex</a><a class="" href="../python/">Programming languages</a><a class="" href="../Learning_System_Design/">System design in depth</a><a class="" href="../ai_ml_index/">AI &amp; machine learning</a><a class="" href="../sql/">Databases &amp; SQL</a><a class="" href="../django/">Tools for building</a><a class="" href="../dsalgo/dsalgoindex/">Data structures &amp; algorithms</a><a class="" href="../terminal_commands/">Terminal &amp; hardware</a><a href="https://github.com/harshityadav95/Notex">GitHub ↗</a></nav></dialog><div class="reader-bar"><button class="tactile" data-sidebar aria-expanded="false">☰ Topics</button><a href="../">Notex</a><span>/</span><span>Databases</span><span>/</span><strong>SQL</strong></div><div class="reader-layout"><aside class="sidebar" aria-label="Topic navigation"><a class="sidebar-overview" href="../#library">← All notes</a><p class="eyebrow">WORKSPACE</p><details ><summary>Languages<span>04</span></summary><a class="" href="../python/">Python</a><a class="" href="../Javascript-ES6-Notes/">JavaScript &amp; ES6</a><a class="" href="../C%2B%2B/">C / C++</a><a class="" href="../css/">CSS</a></details><details ><summary>Systems<span>02</span></summary><a class="" href="../Learning_System_Design/">System Design from Scratch</a><a class="" href="../Scalable_crossplatform_design/">Scalable Cross-platform Design</a></details><details ><summary>AI &amp; ML<span>02</span></summary><a class="" href="../ai_ml_index/">AI &amp; Machine Learning</a><a class="" href="../Research/">Research</a></details><details open><summary>Databases<span>03</span></summary><a class="active" href="../sql/">SQL</a><a class="" href="../postgresql/">PostgreSQL</a><a class="" href="../MongoDB/">MongoDB</a></details><details ><summary>Development<span>05</span></summary><a class="" href="../django/">Django</a><a class="" href="../git/">Git</a><a class="" href="../markdownsyntax/">Markdown</a><a class="" href="../vimCheats/">Vim Cheatsheet</a><a class="" href="../Tools_Compilation/">Developer Tools</a></details><details ><summary>Algorithms<span>04</span></summary><a class="" href="../dsalgo/dsalgoindex/">Data Structures &amp; Algorithms</a><a class="" href="../dsalgo/sorting/">Sorting Algorithms</a><a class="" href="../dsalgo/sol1/">Worked Solutions</a><a class="" href="../Programming_Interview_Study_Plan/">Programming Interview Study Plan</a></details><details ><summary>The garage<span>02</span></summary><a class="" href="../terminal_commands/">Terminal Commands</a><a class="" href="../thinkpad/">ThinkPad</a></details><div class="sidebar-foot">FREE TO READ · OPEN TO EVERYONE</div></aside><main id="main-content" class="reader-main"><div class="article-meta"><span class="eyebrow">Databases / NOTES</span><span>27 MIN READ</span></div><h1 class="article-title">SQL</h1><div class="article-actions"><button class="tactile" data-save="sql/" aria-pressed="false">Save note</button><a href="https://github.com/harshityadav95/Notex/blob/master/src/sql.md">Edit on GitHub ↗</a><span>Always free to read</span></div><div class="article-layout"><article class="prose"><h3 id="sql-statements">SQL Statements</h3>
 <ul>
 <li>
 <p>1.Create a table T_Salesman 
@@ -238,7 +43,6 @@ references T_Customer(Customer_ID),
 SalesMan_ID numeric(5) references T_SalesMan(SalesMan_ID));
 
 </code></pre>
-
 <ul>
 <li>Inserting data into each table </li>
 </ul>
@@ -249,7 +53,6 @@ insert into T_Salesman values(5001,'James Hoog','New York',0.15);
 insert into T_Orders values(70001,       150.5      ,      '2012-10-05 ',   3005    ,          5002);
 
 </code></pre>
-
 <h3 id="retriving-data-from-tables">Retriving Data from Tables</h3>
 <ul>
 <li>1.Write a sql statement to display all the information of all salesmen. </li>
@@ -283,7 +86,6 @@ select * from T_Customer where Grade=200;
 select Ord_No,Purchase_Amt,Ord_Date from T_Orders where SalesMan_ID=5001;
 
 </code></pre>
-
 <h3 id="using-boolean-and-relational-operators">Using Boolean and Relational operators</h3>
 <ul>
 <li>1.Write a query to display all customers with a grade above 100.</li>
@@ -308,7 +110,6 @@ select * from  T_Orders where (Purchase_Amt&lt;300.0 or Ord_Date&gt;='2012-09-10
 select * from T_Orders where ((Purchase_Amt&lt;300 or Ord_Date&gt;='2012-09-10') and Customer_ID&lt;3009 )order by Ord_Date desc ;
 select * from T_Orders where Ord_Date&gt;='2012-09-10' or Customer_ID&gt;3009 order by Ord_Date desc;
 </code></pre>
-
 <h3 id="wild-card-and-special-operators">Wild Card and Special Operators</h3>
 <ul>
 <li>1.Write a SQL statement to find those salesmen with all information who come from the city either Paris or Rome.</li>
@@ -336,7 +137,6 @@ select * from T_Customer where Cust_Name like'%n';
 select * from  T_Salesman where  Name like 'N__l%'
 
 </code></pre>
-
 <h3 id="special-characters">Special Characters</h3>
 <p>Sample Data - ‘Test Table’
 col1</p>
@@ -364,7 +164,6 @@ A001/DJ-402\44</p>
 21.Write a SQL statement to find those customer with all information who gets a grade except NULL value.
 
 </code></pre>
-
 <p>select  * from  TestTable where col1 like '%/<em>%' escape '/' ;
 select  * from  TestTable where col1 not  like '%/</em>%' escape '/' ;
 select  * from  TestTable where col1 like '%//%' escape '/' ;
@@ -399,7 +198,6 @@ select * from T_Customer where Grade is not null;</p>
 - 20.Write a query that counts the number of salesmen with their order date and ID registering orders for each day.
 
 </code></pre>
-
 <p>select sum(Purchase_Amt) from T_Orders;</p>
 <p>select avg(Purchase_Amt) from T_Orders ;</p>
 <p>select count(distinct SalesMan_ID )  from T_Orders;</p>
@@ -433,7 +231,6 @@ select * from T_Customer where Grade is not null;</p>
 - 9.Write a SQL statement to make a report with order date in such a manner that, the latest order date will comes first along with the total purchase amount and total commission (15% for all salesmen) for that date.
 
 </code></pre>
-
 <p>select 'FOR' ,Ord_Date,'there are' ,COUNT(distinct Ord_No), 'Orders' from  T_Orders group  by  Ord_Date</p>
 <p>select * from T_orders  order by Ord_No asc</p>
 <p>select * from  T_Orders order by  Ord_Date desc</p>
@@ -455,7 +252,6 @@ select * from T_Customer where Grade is not null;</p>
 - 7.Write a SQL statement that produces all orders with order number, customer name, commission rate and earned commission amount for those customers who carry their grade more than 200 and served by an existing salesman.
 
 </code></pre>
-
 <p>select T_Customer.Cust_Name , T_Salesman.Name ,T_Customer.City from T_Customer, T_Salesman where T_Customer.City=T_Salesman.City
 select  T_Customer.Cust_Name, T_Salesman.Name from T_Salesman,T_Customer where T_Customer.SalesMan_ID=T_Salesman.SalesMan_ID 
 select Ord_No,T_Orders.Customer_ID,T_Orders.SalesMan_ID  from  T_Salesman , T_Customer,T_Orders where   T_Customer.City!=T_Salesman.City AND T_Orders.Customer_ID=T_Customer.Customer_ID AND T_Orders.SalesMan_ID= T_Salesman.SalesMan_ID; 
@@ -488,7 +284,6 @@ select T_Orders.Ord_No ,Cust_Name, T_Orders.Purchase_Amt*T_Salesman.Commission f
 - 20.Write a SQL statement to make a cartesian product between salesman and customer i.e. each salesman will appear for all customer and vice versa for those salesmen who must belongs a city which is not the same as his customer and the customers should have a own grade.
 
 </code></pre>
-
 <p>select T_Salesman.Name, T_Customer.Cust_Name,T_Salesman.City from  T_Customer,T_Salesman where  T_Customer.City=T_Salesman.City</p>
 <p>select T_Orders.Ord_No , T_Orders.Purchase_Amt, T_Customer.Cust_Name ,T_Customer.City from  T_Orders , T_Customer where T_Customer.Customer_ID=T_Orders.Customer_ID and T_Orders.Purchase_Amt between 500 and  2000 </p>
 <p>--select  T_Salesman.Name, T_Customer.Cust_Name from  T_Salesman , T_Customer where T_Customer.SalesMan_ID=T_Salesman.SalesMan_ID </p>
@@ -545,7 +340,6 @@ select  * from T_Customer a  left join T_Salesman b on a.SalesMan_ID=b.SalesMan_
 - 30.Write a query to find all those customers who holds a different grade than any customer of the city Dallas.
 
 </code></pre>
-
 <p>select * from T_Orders where SalesMan_ID=(select SalesMan_ID from T_Salesman where Name='Paul Adam');</p>
 <p>select * from T_Orders where SalesMan_ID=(select SalesMan_ID from T_Salesman  where City='New York')</p>
 <p>select * from T_Orders where SalesMan_ID=(select SalesMan_ID from T_Orders where Customer_ID=3007)</p>
@@ -591,7 +385,6 @@ FROM T_CUSTOMER where CITY='Paris');</p>
 - 9.Write a command that produces the name and number of each salesman and each customer with more than one current order. Put the results in alphabetical order.
 
 </code></pre>
-
 <p>--1
 select Cust_name,City from T_CUSTOMER where City='California'
 UNION 
@@ -650,7 +443,6 @@ ORDER BY Cust_name</p>
 - 16.Write a query to create a view that find the salesmen who issued orders on either August 17th, 2012 or October 10th, 2012.
 
 </code></pre>
-
 <p>--1
 CREATE VIEW SALESMAN_INFO  AS select Salesman_id,Name,City from T_SALESMAN
 --2
@@ -695,83 +487,13 @@ SELECT * FROM ORDERONDATE10TH;
 --16
 CREATE VIEW ORDERONDATE12TH AS SELECT * FROM T_Salesman WHERE Salesman_Id IN(SELECT Salesman_Id FROM T_ORDERS WHERE Ord_Date='10/10/2012' OR Ord_Date='08/17/2012');
 SELECT * FROM ORDERONDATE12TH;</p>
-<p>```</p></div>
-        </div>
-
-        <footer class="col-md-12">
-            <hr>
-            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
-        </footer>
-        <script>
-            var base_url = "..",
-                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
-        </script>
-        <script src="../js/base.js" defer></script>
-        <script src="../search/main.js" defer></script>
-
-        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
-            </div>
-            <div class="modal-body">
-                <p>
-                    From here you can search these documents. Enter
-                    your search terms below.
-                </p>
-                <form role="form">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
-                    </div>
-                </form>
-                <div id="mkdocs-search-results"></div>
-            </div>
-            <div class="modal-footer">
-            </div>
-        </div>
-    </div>
-</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
-            </div>
-            <div class="modal-body">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th style="width: 20%;">Keys</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td class="help shortcut"><kbd>?</kbd></td>
-                    <td>Open this help</td>
-                  </tr>
-                  <tr>
-                    <td class="next shortcut"><kbd>n</kbd></td>
-                    <td>Next page</td>
-                  </tr>
-                  <tr>
-                    <td class="prev shortcut"><kbd>p</kbd></td>
-                    <td>Previous page</td>
-                  </tr>
-                  <tr>
-                    <td class="search shortcut"><kbd>s</kbd></td>
-                    <td>Search</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="modal-footer">
-            </div>
-        </div>
-    </div>
+<p>```</p></article><aside class="article-toc"><span class="eyebrow">ON THIS PAGE</span><div class="toc">
+<ul>
+<li><a href="#sql-statements">SQL Statements</a></li>
+<li><a href="#retriving-data-from-tables">Retriving Data from Tables</a></li>
+<li><a href="#using-boolean-and-relational-operators">Using Boolean and Relational operators</a></li>
+<li><a href="#wild-card-and-special-operators">Wild Card and Special Operators</a></li>
+<li><a href="#special-characters">Special Characters</a></li>
+</ul>
 </div>
-
-    </body>
-</html>
+</aside></div><div class="article-end"><span class="eyebrow">KEEP EXPLORING</span><h2>One note leads to another.</h2><a class="tactile" href="../library/">Back to the library →</a></div></main></div><footer><div class="footer-top wrap"><div class="footer-brand"><a class="wordmark" href="../">notex<span class="badge">OPEN</span></a><p>A personal library for deliberate<br>technical practice.</p><a href="https://github.com/harshityadav95/Notex">Explore the source ↗</a></div><div class="footer-links"><div><h3>Languages</h3><a class="" href="../python/">Python</a><a class="" href="../Javascript-ES6-Notes/">JavaScript &amp; ES6</a><a class="" href="../C%2B%2B/">C / C++</a><a class="" href="../css/">CSS</a></div><div><h3>Systems</h3><a class="" href="../Learning_System_Design/">System Design from Scratch</a><a class="" href="../Scalable_crossplatform_design/">Scalable Cross-platform Design</a></div><div><h3>AI &amp; ML</h3><a class="" href="../ai_ml_index/">AI &amp; Machine Learning</a><a class="" href="../Research/">Research</a></div><div><h3>Databases</h3><a class="" href="../sql/">SQL</a><a class="" href="../postgresql/">PostgreSQL</a><a class="" href="../MongoDB/">MongoDB</a></div><div><h3>Development</h3><a class="" href="../django/">Django</a><a class="" href="../git/">Git</a><a class="" href="../markdownsyntax/">Markdown</a><a class="" href="../vimCheats/">Vim Cheatsheet</a><a class="" href="../Tools_Compilation/">Developer Tools</a></div></div></div><div class="footer-bottom wrap"><span>© 2026 Notex · Open knowledge, shared freely.</span><a href="../licenses/">Licenses & credits</a><span>Designed by <a href="https://harshityadav.in">harshityadav.in</a></span></div></footer><dialog class="search-dialog"><div class="search-top"><span>⌕</span><input type="search" placeholder="Search notes, topics, code…" aria-label="Search the library" autocomplete="off"><button aria-label="Close search" data-close>Esc</button></div><div class="search-hint">Search across the entire library <kbd>⌘ K</kbd></div><div id="search-results" aria-live="polite"></div></dialog><div class="toast" role="status"></div></body></html>

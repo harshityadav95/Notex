@@ -1,208 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-        
-        
-        <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>MarkDown - Notex</title>
-        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
-        <link href="../css/font-awesome.min.css" rel="stylesheet">
-        <link href="../css/base.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
-
-        <script src="../js/jquery-1.10.2.min.js" defer></script>
-        <script src="../js/bootstrap-3.0.3.min.js" defer></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-        <script>hljs.initHighlightingOnLoad();</script> 
-    </head>
-
-    <body>
-
-        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-            <div class="container">
-
-                <!-- Collapsed navigation -->
-                <div class="navbar-header">
-                    <!-- Expander button -->
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="..">Notex</a>
-                </div>
-
-                <!-- Expanded navigation -->
-                <div class="navbar-collapse collapse">
-                        <!-- Main navigation -->
-                        <ul class="nav navbar-nav">
-                            <li >
-                                <a href="..">Home</a>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Languages <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    
-<li >
-    <a href="../python/">Python</a>
-</li>
-                                    
-<li >
-    <a href="../Javascript-ES6-Notes/">Javascript</a>
-</li>
-                                    
-<li >
-    <a href="../404/">Java</a>
-</li>
-                                    
-<li >
-    <a href="../C++/">C/C++</a>
-</li>
-                                    
-<li >
-    <a href="../sql/">SQL</a>
-</li>
-                                    
-<li >
-    <a href="../404/">C#</a>
-</li>
-                                </ul>
-                            </li>
-                            <li class="dropdown active">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tools <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    
-<li class="active">
-    <a href="./">MarkDown</a>
-</li>
-                                    
-<li >
-    <a href="../django/">Django</a>
-</li>
-                                    
-<li >
-    <a href="../404/">React</a>
-</li>
-                                    
-<li >
-    <a href="../git/">Git</a>
-</li>
-                                    
-<li >
-    <a href="../vimCheats/">Vim</a>
-</li>
-                                    
-<li >
-    <a href="../Tools_Compilation/">Tool Compilation</a>
-</li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Garage <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    
-<li >
-    <a href="../terminal_commands/">Terminal</a>
-</li>
-                                    
-<li >
-    <a href="../Learning_System_Design/">System Design</a>
-</li>
-                                    
-<li >
-    <a href="../thinkpad/">Thinkpad</a>
-</li>
-                                    
-<li >
-    <a href="../Programming_Interview_Study_Plan/">Interview</a>
-</li>
-                                    
-<li >
-    <a href="../Research/">Research</a>
-</li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ai/ML <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    
-<li >
-    <a href="../ai_ml_index/">Start</a>
-</li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">HandWritten <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    
-<li >
-    <a href="../404/">Index</a>
-</li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    
-<li >
-    <a href="../404/">Writer</a>
-</li>
-                                    
-<li >
-    <a href="../404/">Release Notes</a>
-</li>
-                                </ul>
-                            </li>
-                        </ul>
-
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
-                                <i class="fa fa-search"></i> Search
-                            </a>
-                        </li>
-                            <li >
-                                <a rel="next" href="../404/">
-                                    <i class="fa fa-arrow-left"></i> Previous
-                                </a>
-                            </li>
-                            <li >
-                                <a rel="prev" href="../django/">
-                                    Next <i class="fa fa-arrow-right"></i>
-                                </a>
-                            </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="container">
-                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
-    <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#whats-in-this-document">What's In This Document</a></li>
-        <li class="main "><a href="#get-started-in-5-minutes">Get Started in 5 Minutes</a></li>
-            <li><a href="#directory-structure">Directory Structure</a></li>
-        <li class="main "><a href="#editing-content">Editing Content</a></li>
-            <li><a href="#editing-an-existing-docs-page">Editing an existing docs page</a></li>
-            <li><a href="#editing-an-existing-blog-post">Editing an existing blog post</a></li>
-        <li class="main "><a href="#adding-content">Adding Content</a></li>
-            <li><a href="#adding-a-new-docs-page-to-an-existing-sidebar">Adding a new docs page to an existing sidebar</a></li>
-            <li><a href="#adding-a-new-blog-post">Adding a new blog post</a></li>
-            <li><a href="#adding-items-to-your-sites-top-navigation-bar">Adding items to your site's top navigation bar</a></li>
-            <li><a href="#adding-custom-pages">Adding custom pages</a></li>
-        <li class="main "><a href="#full-documentation">Full Documentation</a></li>
-    </ul>
-</div></div>
-                <div class="col-md-9" role="main">
-
-<p>This website was created with <a href="https://docusaurus.io/">Docusaurus</a>.</p>
-<p><img alt="Drag Racing" src="photo_2017-11-24_02-06-21.jpg" /></p>
-<h1 id="whats-in-this-document">What's In This Document</h1>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Notex: open notes, code snippets, system design, programming languages and handwritten resources by Harshit Yadav."><meta name="theme-color" content="#f7f7f8"><title>Markdown · Notex</title><link rel="icon" href="../assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../assets/style.css?v=c95c66291b"><script src="../assets/app.js?v=1141b2008c" defer></script></head><body class="reading" data-base="../"><a class="skip" href="#main-content">Skip to content</a><div class="announcement"><a href="../library/"><span class="badge live">OPEN</span> Your next idea starts with a note <span class="announcement-more">Explore the library →</span></a><button aria-label="Dismiss announcement" data-dismiss>×</button></div><header class="site-header"><div class="nav-wrap"><a class="wordmark" href="../">notex<span class="badge">OPEN</span></a><nav aria-label="Main navigation"><div class="dropdown"><button aria-expanded="false" data-dropdown>Learning <span>⌄</span></button><div class="dropdown-panel"><a class="" href="../python/">Programming languages</a><a class="" href="../Learning_System_Design/">System design in depth</a><a class="" href="../ai_ml_index/">AI &amp; machine learning</a><a class="" href="../sql/">Databases &amp; SQL</a><a class="" href="../django/">Tools for building</a><a class="" href="../dsalgo/dsalgoindex/">Data structures &amp; algorithms</a><a class="" href="../terminal_commands/">Terminal &amp; hardware</a></div></div><a href="../library/">Library</a><a href="../library/#handwritten">Handwritten</a><a href="../library/#notebooks">Notebooks</a><div class="dropdown"><button aria-expanded="false" data-dropdown>Explore <span>⌄</span></button><div class="dropdown-panel"><a href="../#paths">Learning paths</a><a href="../#about">About Notex</a><a class="" href="../Research/">Research</a><a class="" href="../Tools_Compilation/">Developer tools</a></div></div><a href="https://github.com/harshityadav95/Notex">GitHub ↗</a></nav><div class="nav-actions"><a class="pill open-source" href="https://github.com/harshityadav95/Notex">100% open source ↗</a><button class="search-trigger tactile" aria-label="Search notes" data-search><img src="../assets/icons/search.svg" alt="" width="18" height="18"></button><a class="tactile desktop-start" href="../python/">Start reading</a><button class="tactile menu-trigger" aria-label="Open navigation menu" data-menu><img src="../assets/icons/menu.svg" alt="" width="16" height="16"> Menu</button></div></div></header><dialog class="menu-dialog"><div class="menu-head"><span class="wordmark">notex</span><button aria-label="Close menu" data-close>×</button></div><p>Notes, code and ideas. All in one place.</p><nav aria-label="Mobile navigation"><a href="../library/">All notes</a><a href="../library/#handwritten">Handwritten notes</a><a href="../library/#notebooks">Python notebooks</a><a href="../#about">About Notex</a><a class="" href="../python/">Programming languages</a><a class="" href="../Learning_System_Design/">System design in depth</a><a class="" href="../ai_ml_index/">AI &amp; machine learning</a><a class="" href="../sql/">Databases &amp; SQL</a><a class="" href="../django/">Tools for building</a><a class="" href="../dsalgo/dsalgoindex/">Data structures &amp; algorithms</a><a class="" href="../terminal_commands/">Terminal &amp; hardware</a><a href="https://github.com/harshityadav95/Notex">GitHub ↗</a></nav></dialog><div class="reader-bar"><button class="tactile" data-sidebar aria-expanded="false">☰ Topics</button><a href="../">Notex</a><span>/</span><span>Development</span><span>/</span><strong>Markdown</strong></div><div class="reader-layout"><aside class="sidebar" aria-label="Topic navigation"><a class="sidebar-overview" href="../#library">← All notes</a><p class="eyebrow">WORKSPACE</p><details ><summary>Languages<span>04</span></summary><a class="" href="../python/">Python</a><a class="" href="../Javascript-ES6-Notes/">JavaScript &amp; ES6</a><a class="" href="../C%2B%2B/">C / C++</a><a class="" href="../css/">CSS</a></details><details ><summary>Systems<span>02</span></summary><a class="" href="../Learning_System_Design/">System Design from Scratch</a><a class="" href="../Scalable_crossplatform_design/">Scalable Cross-platform Design</a></details><details ><summary>AI &amp; ML<span>02</span></summary><a class="" href="../ai_ml_index/">AI &amp; Machine Learning</a><a class="" href="../Research/">Research</a></details><details ><summary>Databases<span>03</span></summary><a class="" href="../sql/">SQL</a><a class="" href="../postgresql/">PostgreSQL</a><a class="" href="../MongoDB/">MongoDB</a></details><details open><summary>Development<span>05</span></summary><a class="" href="../django/">Django</a><a class="" href="../git/">Git</a><a class="active" href="../markdownsyntax/">Markdown</a><a class="" href="../vimCheats/">Vim Cheatsheet</a><a class="" href="../Tools_Compilation/">Developer Tools</a></details><details ><summary>Algorithms<span>04</span></summary><a class="" href="../dsalgo/dsalgoindex/">Data Structures &amp; Algorithms</a><a class="" href="../dsalgo/sorting/">Sorting Algorithms</a><a class="" href="../dsalgo/sol1/">Worked Solutions</a><a class="" href="../Programming_Interview_Study_Plan/">Programming Interview Study Plan</a></details><details ><summary>The garage<span>02</span></summary><a class="" href="../terminal_commands/">Terminal Commands</a><a class="" href="../thinkpad/">ThinkPad</a></details><div class="sidebar-foot">FREE TO READ · OPEN TO EVERYONE</div></aside><main id="main-content" class="reader-main"><div class="article-meta"><span class="eyebrow">Development / NOTES</span><span>2 MIN READ</span></div><h1 class="article-title">Markdown</h1><div class="article-actions"><button class="tactile" data-save="markdownsyntax/" aria-pressed="false">Save note</button><a href="https://github.com/harshityadav95/Notex/blob/master/src/markdownsyntax.md">Edit on GitHub ↗</a><span>Always free to read</span></div><div class="article-layout"><article class="prose"><p>This website was created with <a href="https://docusaurus.io/">Docusaurus</a>.</p>
+<p><img alt="Drag Racing" src="../photo_2017-11-24_02-06-21.jpg" /></p>
+<h2 id="whats-in-this-document">What's In This Document</h2>
 <ul>
 <li><a href="#get-started-in-5-minutes">Get Started in 5 Minutes</a></li>
 <li><a href="#directory-structure">Directory Structure</a></li>
@@ -210,21 +8,19 @@
 <li><a href="#adding-content">Adding Content</a></li>
 <li><a href="#full-documentation">Full Documentation</a></li>
 </ul>
-<h1 id="get-started-in-5-minutes">Get Started in 5 Minutes</h1>
+<h2 id="get-started-in-5-minutes">Get Started in 5 Minutes</h2>
 <ol>
 <li>Make sure all the dependencies for the website are installed:</li>
 </ol>
-<pre><code class="sh"># Install dependencies
+<pre><code class="language-sh"># Install dependencies
 $ yarn
 </code></pre>
-
-<ol>
+<ol start="2">
 <li>Run your dev server:</li>
 </ol>
-<pre><code class="sh"># Start the site
+<pre><code class="language-sh"># Start the site
 $ yarn start
 </code></pre>
-
 <h2 id="directory-structure">Directory Structure</h2>
 <p>Your project file structure should look something like this</p>
 <pre><code>my-docusaurus/
@@ -246,49 +42,45 @@ $ yarn start
     sidebar.json
     siteConfig.js
 </code></pre>
-
-<h1 id="editing-content">Editing Content</h1>
+<h2 id="editing-content">Editing Content</h2>
 <h2 id="editing-an-existing-docs-page">Editing an existing docs page</h2>
 <p>Edit docs by navigating to <code>docs/</code> and editing the corresponding document:</p>
 <p><code>docs/doc-to-be-edited.md</code></p>
-<pre><code class="markdown">---
+<pre><code class="language-markdown">---
 id: page-needs-edit
 title: This Doc Needs To Be Edited
 ---
 
 Edit me...
 </code></pre>
-
 <p>For more information about docs, click <a href="https://docusaurus.io/docs/en/navigation">here</a></p>
 <h2 id="editing-an-existing-blog-post">Editing an existing blog post</h2>
 <p>Edit blog posts by navigating to <code>website/blog</code> and editing the corresponding post:</p>
 <p><code>website/blog/post-to-be-edited.md</code></p>
-<pre><code class="markdown">---
+<pre><code class="language-markdown">---
 id: post-needs-edit
 title: This Blog Post Needs To Be Edited
 ---
 
 Edit me...
 </code></pre>
-
 <p>For more information about blog posts, click <a href="https://docusaurus.io/docs/en/adding-blog">here</a></p>
-<h1 id="adding-content">Adding Content</h1>
+<h2 id="adding-content">Adding Content</h2>
 <h2 id="adding-a-new-docs-page-to-an-existing-sidebar">Adding a new docs page to an existing sidebar</h2>
 <ol>
 <li>Create the doc as a new markdown file in <code>/docs</code>, example <code>docs/newly-created-doc.md</code>:</li>
 </ol>
-<pre><code class="md">---
+<pre><code class="language-md">---
 id: newly-created-doc
 title: This Doc Needs To Be Edited
 ---
 
 My new content here..
 </code></pre>
-
 <ol>
 <li>Refer to that doc's ID in an existing sidebar in <code>website/sidebar.json</code>:</li>
 </ol>
-<pre><code class="javascript">// Add newly-created-doc to the Getting Started category of docs
+<pre><code class="language-javascript">// Add newly-created-doc to the Getting Started category of docs
 {
   &quot;docs&quot;: {
     &quot;Getting Started&quot;: [
@@ -300,25 +92,23 @@ My new content here..
   ...
 }
 </code></pre>
-
 <p>For more information about adding new docs, click <a href="https://docusaurus.io/docs/en/navigation">here</a></p>
 <h2 id="adding-a-new-blog-post">Adding a new blog post</h2>
 <ol>
 <li>Make sure there is a header link to your blog in <code>website/siteConfig.js</code>:</li>
 </ol>
 <p><code>website/siteConfig.js</code></p>
-<pre><code class="javascript">headerLinks: [
+<pre><code class="language-javascript">headerLinks: [
     ...
     { blog: true, label: 'Blog' },
     ...
 ]
 </code></pre>
-
-<ol>
+<ol start="2">
 <li>Create the blog post with the format <code>YYYY-MM-DD-My-Blog-Post-Title.md</code> in <code>website/blog</code>:</li>
 </ol>
 <p><code>website/blog/2018-05-21-New-Blog-Post.md</code></p>
-<pre><code class="markdown">---
+<pre><code class="language-markdown">---
 author: Frank Li
 authorURL: https://twitter.com/foobarbaz
 authorFBID: 503283835
@@ -327,14 +117,13 @@ title: New Blog Post
 
 Lorem Ipsum...
 </code></pre>
-
 <p>For more information about blog posts, click <a href="https://docusaurus.io/docs/en/adding-blog">here</a></p>
 <h2 id="adding-items-to-your-sites-top-navigation-bar">Adding items to your site's top navigation bar</h2>
 <ol>
 <li>Add links to docs, custom pages or external links by editing the headerLinks field of <code>website/siteConfig.js</code>:</li>
 </ol>
 <p><code>website/siteConfig.js</code></p>
-<pre><code class="javascript">{
+<pre><code class="language-javascript">{
   headerLinks: [
     ...
     /* you can add docs */
@@ -348,7 +137,6 @@ Lorem Ipsum...
   ...
 }
 </code></pre>
-
 <p>For more information about the navigation bar, click <a href="https://docusaurus.io/docs/en/navigation">here</a></p>
 <h2 id="adding-custom-pages">Adding custom pages</h2>
 <ol>
@@ -356,7 +144,7 @@ Lorem Ipsum...
 <li>If you want your page to show up in your navigation header, you will need to update <code>website/siteConfig.js</code> to add to the <code>headerLinks</code> element:</li>
 </ol>
 <p><code>website/siteConfig.js</code></p>
-<pre><code class="javascript">{
+<pre><code class="language-javascript">{
   headerLinks: [
     ...
     { page: 'my-new-custom-page', label: 'My New Custom Page' },
@@ -365,87 +153,29 @@ Lorem Ipsum...
   ...
 }
 </code></pre>
-
 <p>For more information about custom pages, click <a href="https://docusaurus.io/docs/en/custom-pages">here</a>.</p>
-<h1 id="full-documentation">Full Documentation</h1>
+<h2 id="full-documentation">Full Documentation</h2>
 <p>Full documentation can be found on the <a href="https://docusaurus.io/">website</a>.</p>
-<p>By  <a href="harshityadav.in">Harshit Yadav</a>  </p></div>
-        </div>
-
-        <footer class="col-md-12">
-            <hr>
-            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
-        </footer>
-        <script>
-            var base_url = "..",
-                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
-        </script>
-        <script src="../js/base.js" defer></script>
-        <script src="../search/main.js" defer></script>
-
-        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
-            </div>
-            <div class="modal-body">
-                <p>
-                    From here you can search these documents. Enter
-                    your search terms below.
-                </p>
-                <form role="form">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
-                    </div>
-                </form>
-                <div id="mkdocs-search-results"></div>
-            </div>
-            <div class="modal-footer">
-            </div>
-        </div>
-    </div>
-</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
-            </div>
-            <div class="modal-body">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th style="width: 20%;">Keys</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td class="help shortcut"><kbd>?</kbd></td>
-                    <td>Open this help</td>
-                  </tr>
-                  <tr>
-                    <td class="next shortcut"><kbd>n</kbd></td>
-                    <td>Next page</td>
-                  </tr>
-                  <tr>
-                    <td class="prev shortcut"><kbd>p</kbd></td>
-                    <td>Previous page</td>
-                  </tr>
-                  <tr>
-                    <td class="search shortcut"><kbd>s</kbd></td>
-                    <td>Search</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="modal-footer">
-            </div>
-        </div>
-    </div>
+<p>By  <a href="https://harshityadav.in">Harshit Yadav</a>  </p></article><aside class="article-toc"><span class="eyebrow">ON THIS PAGE</span><div class="toc">
+<ul>
+<li><a href="#whats-in-this-document">What's In This Document</a></li>
+<li><a href="#get-started-in-5-minutes">Get Started in 5 Minutes</a><ul>
+<li><a href="#directory-structure">Directory Structure</a></li>
+</ul>
+</li>
+<li><a href="#editing-content">Editing Content</a><ul>
+<li><a href="#editing-an-existing-docs-page">Editing an existing docs page</a></li>
+<li><a href="#editing-an-existing-blog-post">Editing an existing blog post</a></li>
+</ul>
+</li>
+<li><a href="#adding-content">Adding Content</a><ul>
+<li><a href="#adding-a-new-docs-page-to-an-existing-sidebar">Adding a new docs page to an existing sidebar</a></li>
+<li><a href="#adding-a-new-blog-post">Adding a new blog post</a></li>
+<li><a href="#adding-items-to-your-sites-top-navigation-bar">Adding items to your site's top navigation bar</a></li>
+<li><a href="#adding-custom-pages">Adding custom pages</a></li>
+</ul>
+</li>
+<li><a href="#full-documentation">Full Documentation</a></li>
+</ul>
 </div>
-
-    </body>
-</html>
+</aside></div><div class="article-end"><span class="eyebrow">KEEP EXPLORING</span><h2>One note leads to another.</h2><a class="tactile" href="../library/">Back to the library →</a></div></main></div><footer><div class="footer-top wrap"><div class="footer-brand"><a class="wordmark" href="../">notex<span class="badge">OPEN</span></a><p>A personal library for deliberate<br>technical practice.</p><a href="https://github.com/harshityadav95/Notex">Explore the source ↗</a></div><div class="footer-links"><div><h3>Languages</h3><a class="" href="../python/">Python</a><a class="" href="../Javascript-ES6-Notes/">JavaScript &amp; ES6</a><a class="" href="../C%2B%2B/">C / C++</a><a class="" href="../css/">CSS</a></div><div><h3>Systems</h3><a class="" href="../Learning_System_Design/">System Design from Scratch</a><a class="" href="../Scalable_crossplatform_design/">Scalable Cross-platform Design</a></div><div><h3>AI &amp; ML</h3><a class="" href="../ai_ml_index/">AI &amp; Machine Learning</a><a class="" href="../Research/">Research</a></div><div><h3>Databases</h3><a class="" href="../sql/">SQL</a><a class="" href="../postgresql/">PostgreSQL</a><a class="" href="../MongoDB/">MongoDB</a></div><div><h3>Development</h3><a class="" href="../django/">Django</a><a class="" href="../git/">Git</a><a class="" href="../markdownsyntax/">Markdown</a><a class="" href="../vimCheats/">Vim Cheatsheet</a><a class="" href="../Tools_Compilation/">Developer Tools</a></div></div></div><div class="footer-bottom wrap"><span>© 2026 Notex · Open knowledge, shared freely.</span><a href="../licenses/">Licenses & credits</a><span>Designed by <a href="https://harshityadav.in">harshityadav.in</a></span></div></footer><dialog class="search-dialog"><div class="search-top"><span>⌕</span><input type="search" placeholder="Search notes, topics, code…" aria-label="Search the library" autocomplete="off"><button aria-label="Close search" data-close>Esc</button></div><div class="search-hint">Search across the entire library <kbd>⌘ K</kbd></div><div id="search-results" aria-live="polite"></div></dialog><div class="toast" role="status"></div></body></html>

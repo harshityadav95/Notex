@@ -1,282 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-        
-        
-        <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>Javascript - Notex</title>
-        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
-        <link href="../css/font-awesome.min.css" rel="stylesheet">
-        <link href="../css/base.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
-
-        <script src="../js/jquery-1.10.2.min.js" defer></script>
-        <script src="../js/bootstrap-3.0.3.min.js" defer></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-        <script>hljs.initHighlightingOnLoad();</script> 
-    </head>
-
-    <body>
-
-        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-            <div class="container">
-
-                <!-- Collapsed navigation -->
-                <div class="navbar-header">
-                    <!-- Expander button -->
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="..">Notex</a>
-                </div>
-
-                <!-- Expanded navigation -->
-                <div class="navbar-collapse collapse">
-                        <!-- Main navigation -->
-                        <ul class="nav navbar-nav">
-                            <li >
-                                <a href="..">Home</a>
-                            </li>
-                            <li class="dropdown active">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Languages <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    
-<li >
-    <a href="../python/">Python</a>
-</li>
-                                    
-<li class="active">
-    <a href="./">Javascript</a>
-</li>
-                                    
-<li >
-    <a href="../404/">Java</a>
-</li>
-                                    
-<li >
-    <a href="../C++/">C/C++</a>
-</li>
-                                    
-<li >
-    <a href="../sql/">SQL</a>
-</li>
-                                    
-<li >
-    <a href="../404/">C#</a>
-</li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tools <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    
-<li >
-    <a href="../markdownsyntax/">MarkDown</a>
-</li>
-                                    
-<li >
-    <a href="../django/">Django</a>
-</li>
-                                    
-<li >
-    <a href="../404/">React</a>
-</li>
-                                    
-<li >
-    <a href="../git/">Git</a>
-</li>
-                                    
-<li >
-    <a href="../vimCheats/">Vim</a>
-</li>
-                                    
-<li >
-    <a href="../Tools_Compilation/">Tool Compilation</a>
-</li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Garage <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    
-<li >
-    <a href="../terminal_commands/">Terminal</a>
-</li>
-                                    
-<li >
-    <a href="../Learning_System_Design/">System Design</a>
-</li>
-                                    
-<li >
-    <a href="../thinkpad/">Thinkpad</a>
-</li>
-                                    
-<li >
-    <a href="../Programming_Interview_Study_Plan/">Interview</a>
-</li>
-                                    
-<li >
-    <a href="../Research/">Research</a>
-</li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ai/ML <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    
-<li >
-    <a href="../ai_ml_index/">Start</a>
-</li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">HandWritten <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    
-<li >
-    <a href="../404/">Index</a>
-</li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    
-<li >
-    <a href="../404/">Writer</a>
-</li>
-                                    
-<li >
-    <a href="../404/">Release Notes</a>
-</li>
-                                </ul>
-                            </li>
-                        </ul>
-
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
-                                <i class="fa fa-search"></i> Search
-                            </a>
-                        </li>
-                            <li >
-                                <a rel="next" href="../python/">
-                                    <i class="fa fa-arrow-left"></i> Previous
-                                </a>
-                            </li>
-                            <li >
-                                <a rel="prev" href="../404/">
-                                    Next <i class="fa fa-arrow-right"></i>
-                                </a>
-                            </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="container">
-                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
-    <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#javascript-es6-notes">Javascript ES6 Notes:</a></li>
-            <li><a href="#javascript-versions-es6-and-before">JavaScript Versions: ES6 and Before</a></li>
-            <li><a href="#progate-codeacademy-lesson-1">Progate + Codeacademy Lesson 1:</a></li>
-            <li><a href="#progate-lesson-2">Progate Lesson 2</a></li>
-            <li><a href="#codeacdemy-lesson-1">CodeAcdemy Lesson 1:</a></li>
-            <li><a href="#variable-in-js">Variable in JS</a></li>
-            <li><a href="#typeof-operator">Typeof Operator</a></li>
-        <li class="main "><a href="#functions-in-javascript">Functions in Javascript</a></li>
-            <li><a href="#default-parameters">Default Parameters</a></li>
-            <li><a href="#return-function">Return Function</a></li>
-        <li class="main "><a href="#arrow-functions">Arrow Functions</a></li>
-            <li><a href="#concise-body-arrow-functions">Concise Body Arrow Functions</a></li>
-        <li class="main "><a href="#arrays">Arrays</a></li>
-            <li><a href="#arrays-and-functions">Arrays and Functions</a></li>
-        <li class="main "><a href="#nested-arrays">Nested Arrays</a></li>
-        <li class="main "><a href="#higher-order-functions">HIGHER-ORDER FUNCTIONS</a></li>
-            <li><a href="#functions-as-data">Functions as Data</a></li>
-            <li><a href="#functions-as-parameters">Functions as Parameters</a></li>
-        <li class="main "><a href="#iterators">Iterators</a></li>
-            <li><a href="#the-foreach-method">The .forEach() Method</a></li>
-            <li><a href="#the-map-method">The .map() Method</a></li>
-        <li class="main "><a href="#the-filter-method">The .filter() Method</a></li>
-        <li class="main "><a href="#the-findindex-method">The .findIndex() Method</a></li>
-        <li class="main "><a href="#the-reduce-method">The .reduce() Method</a></li>
-            <li><a href="#more-example">More Example  :</a></li>
-        <li class="main "><a href="#introduction-to-objects">Introduction to Objects</a></li>
-            <li><a href="#creating-object-literals">Creating Object Literals</a></li>
-            <li><a href="#accessing-properties">Accessing Properties</a></li>
-            <li><a href="#using-bracket-notation">Using Bracket [ ] notation</a></li>
-            <li><a href="#property-assignment">Property Assignment</a></li>
-            <li><a href="#methods">Methods</a></li>
-            <li><a href="#nested-objects">Nested Objects</a></li>
-            <li><a href="#pass-by-reference">Pass By Reference</a></li>
-            <li><a href="#looping-through-objects">Looping Through Objects</a></li>
-        <li class="main "><a href="#advanced-objects-introduction">Advanced Objects Introduction</a></li>
-        <li class="main "><a href="#the-this-keyword">The this Keyword</a></li>
-            <li><a href="#arrow-functions-and-this">Arrow Functions and this</a></li>
-            <li><a href="#privacy">Privacy</a></li>
-        <li class="main "><a href="#built-in-object-methods">Built-in Object Methods</a></li>
-        <li class="main "><a href="#introduction-to-classes">Introduction to Classes</a></li>
-            <li><a href="#constructor">Constructor</a></li>
-            <li><a href="#instance">Instance</a></li>
-            <li><a href="#methods_1">Methods</a></li>
-            <li><a href="#method-calls">Method Calls</a></li>
-            <li><a href="#inheritance-i">Inheritance I</a></li>
-            <li><a href="#static-methods">Static Methods</a></li>
-        <li class="main "><a href="#transpilation-with-babel">Transpilation With Babel</a></li>
-            <li><a href="#transpile-es6-code-to-es5">transpile ES6 code to ES5</a></li>
-            <li><a href="#babelrc">.babelrc</a></li>
-            <li><a href="#build">Build</a></li>
-            <li><a href="#intermediate-javascript-modules">INTERMEDIATE JAVASCRIPT MODULES</a></li>
-        <li class="main "><a href="#moduleexports">module.exports</a></li>
-        <li class="main "><a href="#require">require()</a></li>
-        <li class="main "><a href="#export-default">Export default</a></li>
-        <li class="main "><a href="#import">Import</a></li>
-        <li class="main "><a href="#named-exports">Named Exports</a></li>
-            <li><a href="#named-imports">Named Imports</a></li>
-            <li><a href="#export-named-exports">Export Named Exports</a></li>
-            <li><a href="#export-as">Export as</a></li>
-            <li><a href="#import-as">Import as</a></li>
-        <li class="main "><a href="#what-is-a-promise">What is a Promise?</a></li>
-            <li><a href="#constructing-a-promise-object">Constructing a Promise Object</a></li>
-            <li><a href="#the-node-settimeout-function">The Node setTimeout() Function</a></li>
-            <li><a href="#consuming-promises">Consuming Promises</a></li>
-            <li><a href="#the-onfulfilled-and-onrejected-functions">The onFulfilled and onRejected Functions</a></li>
-            <li><a href="#using-catch-with-promises">Using catch() with Promises</a></li>
-        <li class="main "><a href="#chaining-multiple-promises">Chaining Multiple Promises</a></li>
-        <li class="main "><a href="#avoiding-common-mistakes">Avoiding Common Mistakes</a></li>
-        <li class="main "><a href="#using-promiseall">Using Promise.all()</a></li>
-        <li class="main "><a href="#the-async-keyword">The async Keyword</a></li>
-        <li class="main "><a href="#the-await-operator">The await Operator</a></li>
-        <li class="main "><a href="#handling-errors">Handling Errors</a></li>
-        <li class="main "><a href="#handling-independent-promises">Handling Independent Promises</a></li>
-        <li class="main "><a href="#await-promiseall">Await Promise.all()</a></li>
-        <li class="main "><a href="#http-requests">HTTP Requests</a></li>
-        <li class="main "><a href="#xhr-get-requests-i">XHR GET Requests I</a></li>
-        <li class="main "><a href="#xhr-get-requests-ii">XHR GET Requests II</a></li>
-    </ul>
-</div></div>
-                <div class="col-md-9" role="main">
-
-<h1 id="javascript-es6-notes">Javascript ES6 Notes:</h1>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Notex: open notes, code snippets, system design, programming languages and handwritten resources by Harshit Yadav."><meta name="theme-color" content="#f7f7f8"><title>JavaScript &amp; ES6 · Notex</title><link rel="icon" href="../assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../assets/style.css?v=c95c66291b"><script src="../assets/app.js?v=1141b2008c" defer></script></head><body class="reading" data-base="../"><a class="skip" href="#main-content">Skip to content</a><div class="announcement"><a href="../library/"><span class="badge live">OPEN</span> Your next idea starts with a note <span class="announcement-more">Explore the library →</span></a><button aria-label="Dismiss announcement" data-dismiss>×</button></div><header class="site-header"><div class="nav-wrap"><a class="wordmark" href="../">notex<span class="badge">OPEN</span></a><nav aria-label="Main navigation"><div class="dropdown"><button aria-expanded="false" data-dropdown>Learning <span>⌄</span></button><div class="dropdown-panel"><a class="" href="../python/">Programming languages</a><a class="" href="../Learning_System_Design/">System design in depth</a><a class="" href="../ai_ml_index/">AI &amp; machine learning</a><a class="" href="../sql/">Databases &amp; SQL</a><a class="" href="../django/">Tools for building</a><a class="" href="../dsalgo/dsalgoindex/">Data structures &amp; algorithms</a><a class="" href="../terminal_commands/">Terminal &amp; hardware</a></div></div><a href="../library/">Library</a><a href="../library/#handwritten">Handwritten</a><a href="../library/#notebooks">Notebooks</a><div class="dropdown"><button aria-expanded="false" data-dropdown>Explore <span>⌄</span></button><div class="dropdown-panel"><a href="../#paths">Learning paths</a><a href="../#about">About Notex</a><a class="" href="../Research/">Research</a><a class="" href="../Tools_Compilation/">Developer tools</a></div></div><a href="https://github.com/harshityadav95/Notex">GitHub ↗</a></nav><div class="nav-actions"><a class="pill open-source" href="https://github.com/harshityadav95/Notex">100% open source ↗</a><button class="search-trigger tactile" aria-label="Search notes" data-search><img src="../assets/icons/search.svg" alt="" width="18" height="18"></button><a class="tactile desktop-start" href="../python/">Start reading</a><button class="tactile menu-trigger" aria-label="Open navigation menu" data-menu><img src="../assets/icons/menu.svg" alt="" width="16" height="16"> Menu</button></div></div></header><dialog class="menu-dialog"><div class="menu-head"><span class="wordmark">notex</span><button aria-label="Close menu" data-close>×</button></div><p>Notes, code and ideas. All in one place.</p><nav aria-label="Mobile navigation"><a href="../library/">All notes</a><a href="../library/#handwritten">Handwritten notes</a><a href="../library/#notebooks">Python notebooks</a><a href="../#about">About Notex</a><a class="" href="../python/">Programming languages</a><a class="" href="../Learning_System_Design/">System design in depth</a><a class="" href="../ai_ml_index/">AI &amp; machine learning</a><a class="" href="../sql/">Databases &amp; SQL</a><a class="" href="../django/">Tools for building</a><a class="" href="../dsalgo/dsalgoindex/">Data structures &amp; algorithms</a><a class="" href="../terminal_commands/">Terminal &amp; hardware</a><a href="https://github.com/harshityadav95/Notex">GitHub ↗</a></nav></dialog><div class="reader-bar"><button class="tactile" data-sidebar aria-expanded="false">☰ Topics</button><a href="../">Notex</a><span>/</span><span>Languages</span><span>/</span><strong>JavaScript &amp; ES6</strong></div><div class="reader-layout"><aside class="sidebar" aria-label="Topic navigation"><a class="sidebar-overview" href="../#library">← All notes</a><p class="eyebrow">WORKSPACE</p><details open><summary>Languages<span>04</span></summary><a class="" href="../python/">Python</a><a class="active" href="../Javascript-ES6-Notes/">JavaScript &amp; ES6</a><a class="" href="../C%2B%2B/">C / C++</a><a class="" href="../css/">CSS</a></details><details ><summary>Systems<span>02</span></summary><a class="" href="../Learning_System_Design/">System Design from Scratch</a><a class="" href="../Scalable_crossplatform_design/">Scalable Cross-platform Design</a></details><details ><summary>AI &amp; ML<span>02</span></summary><a class="" href="../ai_ml_index/">AI &amp; Machine Learning</a><a class="" href="../Research/">Research</a></details><details ><summary>Databases<span>03</span></summary><a class="" href="../sql/">SQL</a><a class="" href="../postgresql/">PostgreSQL</a><a class="" href="../MongoDB/">MongoDB</a></details><details ><summary>Development<span>05</span></summary><a class="" href="../django/">Django</a><a class="" href="../git/">Git</a><a class="" href="../markdownsyntax/">Markdown</a><a class="" href="../vimCheats/">Vim Cheatsheet</a><a class="" href="../Tools_Compilation/">Developer Tools</a></details><details ><summary>Algorithms<span>04</span></summary><a class="" href="../dsalgo/dsalgoindex/">Data Structures &amp; Algorithms</a><a class="" href="../dsalgo/sorting/">Sorting Algorithms</a><a class="" href="../dsalgo/sol1/">Worked Solutions</a><a class="" href="../Programming_Interview_Study_Plan/">Programming Interview Study Plan</a></details><details ><summary>The garage<span>02</span></summary><a class="" href="../terminal_commands/">Terminal Commands</a><a class="" href="../thinkpad/">ThinkPad</a></details><div class="sidebar-foot">FREE TO READ · OPEN TO EVERYONE</div></aside><main id="main-content" class="reader-main"><div class="article-meta"><span class="eyebrow">Languages / NOTES</span><span>44 MIN READ</span></div><h1 class="article-title">JavaScript &amp; ES6</h1><div class="article-actions"><button class="tactile" data-save="Javascript-ES6-Notes/" aria-pressed="false">Save note</button><a href="https://github.com/harshityadav95/Notex/blob/master/src/Javascript-ES6-Notes.md">Edit on GitHub ↗</a><span>Always free to read</span></div><div class="article-layout"><article class="prose"><h2 id="javascript-es6-notes">Javascript ES6 Notes:</h2>
 <h3 id="javascript-versions-es6-and-before">JavaScript Versions: ES6 and Before</h3>
 <p>Take for example pre-ES6 syntax for function expressions:</p>
 <pre><code>var greeting = function() {
   console.log('Hello World!');  
 };
 </code></pre>
-
 <p>With ES6 arrow functions, we can transform the expression above into:</p>
 <pre><code>let writingUtensil=tool || 'pen'const greeting = () =&gt; console.log('Hello World'); 
 </code></pre>
-
 <h3 id="progate-codeacademy-lesson-1">Progate + Codeacademy Lesson 1:</h3>
 <ol>
 <li>
@@ -289,7 +20,7 @@
 <p><code>js
    let price;
    console.log(price); // Output: undefined</code></p>
-<ol>
+<ol start="3">
 <li>
 <p><em>Symbol</em>: A newer feature to the language, symbols are unique identifiers, useful in more complex coding. No need to worry about these for now.</p>
 </li>
@@ -298,7 +29,7 @@
 </li>
 </ol>
 <p>The first 1-2 of those types are considered <em>primitive data types</em>. They are the most basic data types in the language.</p>
-<pre><code class="javascript">// Prinitng the Hello World
+<pre><code class="language-javascript">// Prinitng the Hello World
 console.log(&quot;Hello World&quot;);
 // Output the result of 24 divided by 4
 console.log(24/4);
@@ -362,13 +93,11 @@ favoritePhrase === 'Love That!' ?
   console.log(&quot;I don't love that!&quot;);
 
 </code></pre>
-
 <h3 id="progate-lesson-2">Progate Lesson 2</h3>
 <pre><code>
 </code></pre>
-
 <h3 id="codeacdemy-lesson-1">CodeAcdemy Lesson 1:</h3>
-<pre><code class="js">//calculating the length of the string 
+<pre><code class="language-js">//calculating the length of the string 
 console.log(&quot;hello&quot;.length);
 
 console.log('hello'.toUpperCase()); // Prints 'HELLO'
@@ -379,77 +108,67 @@ console.math(Math.random()*50);//to generate number between 1 to 50
 console.log(Math.floor(Math.random() * 50));// Floor the decimal values to whole number
 
 </code></pre>
-
 <h4 id="maths-in-javascript-documentation">Maths  In <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math">Javascript Documentation</a></h4>
 <h4 id="number-in-javascript-documentation">Number in <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Javascript Documentation</a></h4>
 <h3 id="variable-in-js">Variable in JS</h3>
 <p>There were a lot of changes introduced in the ES6 version of JavaScript in 2015. One of the biggest changes was two new keywords, <code>let</code> and <code>const</code>, to create, or <em>declare</em>, variables. Prior to the ES6, programmers could only use the <code>var</code> keyword to declare variables</p>
 <p>The <code>let</code> keyword signals that the variable can be reassigned a different value. </p>
-<pre><code class="js">//var myName = 'Arya';
+<pre><code class="language-js">//var myName = 'Arya';
 let myName = 'Arya';
 console.log(myName);
 </code></pre>
-
 <p><code>myName</code> is the variable’s name. Capitalizing in this way is a standard convention in JavaScript called <em>camel casing</em>. In camel casing you group words into one, the first word is lowercase, then every word that follows will have its first letter uppercased. (e.g. camelCaseEverything) </p>
 <h4 id="string-interpolation">String Interpolation</h4>
 <p>In the ES6 version of JavaScript, we can insert, or <em>interpolate</em>, variables into strings using <em>template literals</em></p>
-<pre><code class="js">const myPet = 'armadillo';
+<pre><code class="language-js">const myPet = 'armadillo';
 console.log(`I own a pet ${myPet}.`);
 </code></pre>
-
 <h3 id="typeof-operator">Typeof Operator</h3>
-<pre><code class="js">let newVariable = 'Playing around with typeof.';
+<pre><code class="language-js">let newVariable = 'Playing around with typeof.';
 
 console.log(typeof newVariable);
 </code></pre>
-
-<h1 id="functions-in-javascript">Functions in Javascript</h1>
+<h2 id="functions-in-javascript">Functions in Javascript</h2>
 <p>One way to create a function is by using a <em>function declaration</em>. Just like how a variable declaration binds a value to a variable name, a function declaration binds a function to a name, or an <em>identifier</em>.</p>
-<pre><code class="javascript">function getReminder()
+<pre><code class="language-javascript">function getReminder()
 {
   console.log('Water the plants.');
 }
 </code></pre>
-
 <h4 id="default-parameters">Default Parameters</h4>
-<pre><code class="javascript">function makeShoppingList(item1='milk', item2='bread', item3='eggs'){
+<pre><code class="language-javascript">function makeShoppingList(item1='milk', item2='bread', item3='eggs'){
   console.log(`Remember to buy ${item1}`);
   console.log(`Remember to buy ${item2}`);
   console.log(`Remember to buy ${item3}`);
 }
 </code></pre>
-
 <h3 id="return-function">Return Function</h3>
-<pre><code class="javascript">function rectangleArea(width, height) {
+<pre><code class="language-javascript">function rectangleArea(width, height) {
   if (width &lt; 0 || height &lt; 0) {
     return 'You need positive integers to calculate area!';
   }
   return width * height;
 
 </code></pre>
-
-<h1 id="arrow-functions">Arrow Functions</h1>
+<h2 id="arrow-functions">Arrow Functions</h2>
 <p>ES6 introduced <em>arrow function syntax</em>, a shorter way to write functions by</p>
 <p>using the special “fat arrow” <code>() =&gt;</code> notation.</p>
-<pre><code class="js">const rectangleArea = (width, height) =&gt; {
+<pre><code class="language-js">const rectangleArea = (width, height) =&gt; {
   let area = width * height;
   return area;
 };
 </code></pre>
-
 <h3 id="concise-body-arrow-functions">Concise Body Arrow Functions</h3>
-<pre><code class="js">const squareNum = num =&gt; num * num;
+<pre><code class="language-js">const squareNum = num =&gt; num * num;
 </code></pre>
-
-<h1 id="arrays">Arrays</h1>
+<h2 id="arrays">Arrays</h2>
 <p>Arrays are JavaScript’s way of making lists. Arrays can store any data types (including strings, numbers, and booleans). Like lists, arrays are ordered, meaning each item has a numbered position</p>
-<pre><code class="js">let newYearsResolutions = ['Keep a journal', 'Take a falconry class', 'Learn to juggle'];
+<pre><code class="language-js">let newYearsResolutions = ['Keep a journal', 'Take a falconry class', 'Learn to juggle'];
 
 console.log(newYearsResolutions);
 console.log(newYearsResolutions.length);
 
 </code></pre>
-
 <ul>
 <li>Variables declared with the <code>const</code> keyword cannot be reassigned. However, elements in an array declared with <code>const</code> remain mutable. Meaning that we can change the contents of a <code>const</code> array, but cannot reassign a new array or a different value</li>
 </ul>
@@ -470,7 +189,7 @@ console.log(newYearsResolutions.length);
 <p>console.log(animals.slice(2, 4));
   ```</p>
 <h3 id="arrays-and-functions">Arrays and Functions</h3>
-<pre><code class="js">const concept = ['arrays', 'can', 'be', 'mutated'];
+<pre><code class="language-js">const concept = ['arrays', 'can', 'be', 'mutated'];
 
 function changeArr(arr){
   arr[3] = 'MUTATED';
@@ -485,29 +204,26 @@ removeElement(concept);
  console.log(concept);
 
 </code></pre>
-
-<h1 id="nested-arrays">Nested Arrays</h1>
-<pre><code class="js">let numberClusters=[[1,2],[3,4],[5,6]];
+<h2 id="nested-arrays">Nested Arrays</h2>
+<pre><code class="language-js">let numberClusters=[[1,2],[3,4],[5,6]];
 const target=numberClusters[2][1];
 </code></pre>
-
-<h1 id="higher-order-functions">HIGHER-ORDER FUNCTIONS</h1>
+<h2 id="higher-order-functions">HIGHER-ORDER FUNCTIONS</h2>
 <h3 id="functions-as-data">Functions as Data</h3>
 <ul>
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">mozilla documentation</a></li>
 </ul>
-<pre><code class="js">const announceThatIAmDoingImportantWork = () =&gt; {
+<pre><code class="language-js">const announceThatIAmDoingImportantWork = () =&gt; {
     console.log(&quot;I’m doing very important work!&quot;);
 };
 const busy = announceThatIAmDoingImportantWork;
 
 busy(); // This function call barely takes any space!
 </code></pre>
-
 <h3 id="functions-as-parameters">Functions as Parameters</h3>
 <p>of data in JavaScript, it might not surprise you to learn that we can also pass functions (into other functions) as parameters. A <em>higher-order function</em> is a function that either accepts functions as parameters, returns a function, or both! We call the functions that get passed in as parameters and invoked <em>callback functions</em> because they get called during the execution of the higher-order function.</p>
 <p>When we pass a function in as an argument to another function, we don’t invoke it. Invoking the function would evaluate to the return value of that function call. With callbacks, we pass in the function itself by typing the function name <em>without</em> the parentheses (that would evaluate to the result of calling the function):</p>
-<pre><code class="js">const timeFuncRuntime = funcParameter =&gt; {
+<pre><code class="language-js">const timeFuncRuntime = funcParameter =&gt; {
    let t1 = Date.now();
    funcParameter();
    let t2 = Date.now();
@@ -518,10 +234,9 @@ const addOneToOne = () =&gt; 1 + 1;
 
 timeFuncRuntime(addOneToOne);
 </code></pre>
-
 <p>We wrote a higher-order function, <code>timeFuncRuntime()</code>. It takes in a function as an argument, saves a starting time, invokes the callback function, records the time after the function was called, and returns the time the function took to run by subtracting the starting time from the ending time.</p>
 <p>Example :</p>
-<pre><code class="js">const checkThatTwoPlusTwoEqualsFourAMillionTimes = () =&gt; {
+<pre><code class="language-js">const checkThatTwoPlusTwoEqualsFourAMillionTimes = () =&gt; {
   for(let i = 1; i &lt;= 1000000; i++) {
     if ( (2 + 2) != 4) {
       console.log('Something has gone very wrong :( ');
@@ -554,14 +269,13 @@ const checkConsistentOutput = (func, val) =&gt; {
 
 checkConsistentOutput(addTwo, 10);
 </code></pre>
-
-<h1 id="iterators">Iterators</h1>
+<h2 id="iterators">Iterators</h2>
 <ul>
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array#Iteration_methods">Mozilla Documentation</a></li>
 </ul>
 <h4 id="the-foreach-method">The .forEach() Method</h4>
 <p>Aptly named, <code>.forEach()</code> will execute the same code for each element of an array.</p>
-<pre><code class="js">const fruits = ['mango', 'papaya', 'pineapple', 'apple'];
+<pre><code class="language-js">const fruits = ['mango', 'papaya', 'pineapple', 'apple'];
 
 fruits.forEach(groceryItem =&gt; console.log(fruits));
 
@@ -573,20 +287,18 @@ fruits.forEach(printer);
 
 fruits.forEach(fruit =&gt; console.log(`I want to eat a ${fruit}.`))
 </code></pre>
-
 <h3 id="the-map-method">The .map() Method</h3>
 <p>The second iterator we’re going to cover is <code>.map()</code>. When <code>.map()</code> is called on an array, it takes an argument of a callback function and returns a new array! Take a look at an example of calling <code>.map()</code>:</p>
-<pre><code class="js">const numbers = [1, 2, 3, 4, 5]; 
+<pre><code class="language-js">const numbers = [1, 2, 3, 4, 5]; 
 
 const bigNumbers = numbers.map(number =&gt; {
   return number * 10;
 });
 
 </code></pre>
-
 <p><code>.map()</code> works in a similar manner to <code>.forEach()</code>— the major difference is that <code>.map()</code> returns a new array.</p>
 <p>Example  </p>
-<pre><code class="js">const animals = ['Hen', 'elephant', 'llama', 'leopard', 'ostrich', 'Whale', 'octopus', 'rabbit', 'lion', 'dog'];
+<pre><code class="language-js">const animals = ['Hen', 'elephant', 'llama', 'leopard', 'ostrich', 'Whale', 'octopus', 'rabbit', 'lion', 'dog'];
 
 // Create the secretMessage array below
 const secretMessage=animals.map( world =&gt;
@@ -595,18 +307,16 @@ const secretMessage=animals.map( world =&gt;
 }
   );
 </code></pre>
-
-<h1 id="the-filter-method">The .filter() Method</h1>
+<h2 id="the-filter-method">The .filter() Method</h2>
 <p><code>.filter()</code> returns an array of elements after filtering out certain elements from the original array. The callback function for the <code>.filter()</code> method should return <code>true</code> or <code>false</code> depending on the element that is passed to it. The elements that cause the callback function to return <code>true</code> are added to the new array. Take a look at the following example:</p>
-<pre><code class="js">const words = ['chair', 'music', 'pillow', 'brick', 'pen', 'door']; 
+<pre><code class="language-js">const words = ['chair', 'music', 'pillow', 'brick', 'pen', 'door']; 
 
 const shortWords = words.filter(word =&gt; {
   return word.length &lt; 6;
 });
 </code></pre>
-
 <p>Example  :  </p>
-<pre><code class="js">const randomNumbers = [375, 200, 3.14, 7, 13, 852];
+<pre><code class="language-js">const randomNumbers = [375, 200, 3.14, 7, 13, 852];
 
 // Call .filter() on randomNumbers below
 
@@ -627,19 +337,17 @@ const longFavoriteWords=favoriteWords.filter( word =&gt; {
 
 console.log(longFavoriteWords);
 </code></pre>
-
-<h1 id="the-findindex-method">The .findIndex() Method</h1>
+<h2 id="the-findindex-method">The .findIndex() Method</h2>
 <p>We sometimes want to find the location of an element in an array. That’s where the <code>.findIndex()</code> method comes in! Calling <code>.findIndex()</code> on an array will return the index of the first element that evaluates to <code>true</code> in the callback function</p>
-<pre><code class="js">const jumbledNums = [123, 25, 78, 5, 9]; 
+<pre><code class="language-js">const jumbledNums = [123, 25, 78, 5, 9]; 
 
 const lessThanTen = jumbledNums.findIndex(num =&gt; {
   return num &lt; 10;
 });
 
 </code></pre>
-
 <p>Example  </p>
-<pre><code class="js">const animals = ['hippo', 'tiger', 'lion', 'seal', 'cheetah', 'monkey', 'salamander', 'elephant'];
+<pre><code class="language-js">const animals = ['hippo', 'tiger', 'lion', 'seal', 'cheetah', 'monkey', 'salamander', 'elephant'];
 
 
 
@@ -656,10 +364,9 @@ const startsWithS=animals.findIndex(
 );
 console.log(startsWithS);
 </code></pre>
-
-<h1 id="the-reduce-method">The .reduce() Method</h1>
+<h2 id="the-reduce-method">The .reduce() Method</h2>
 <p>Another widely used iteration method is <code>.reduce()</code>. The <code>.reduce()</code> method returns a single value after iterating through the elements of an array, thereby <em>reducing</em> the array. </p>
-<pre><code class="js">const numbers = [1, 2, 4, 10];
+<pre><code class="language-js">const numbers = [1, 2, 4, 10];
 
 const summedNums = numbers.reduce((accumulator, currentValue) =&gt; {
   return accumulator + currentValue
@@ -667,9 +374,8 @@ const summedNums = numbers.reduce((accumulator, currentValue) =&gt; {
 
 console.log(summedNums) // Output: 17
 </code></pre>
-
 <p>The <code>.reduce()</code> method can also take an optional second parameter to set an initial value for <code>accumulator</code> (remember, the first argument is the callback function!). For instance:</p>
-<pre><code class="js">const numbers = [1, 2, 4, 10];
+<pre><code class="language-js">const numbers = [1, 2, 4, 10];
 
 const summedNums = numbers.reduce((accumulator, currentValue) =&gt; {
   return accumulator + currentValue
@@ -677,9 +383,8 @@ const summedNums = numbers.reduce((accumulator, currentValue) =&gt; {
 
 console.log(summedNums); // Output: 117
 </code></pre>
-
 <p>Example :</p>
-<pre><code class="js">const newNumbers = [1, 3, 5, 7];
+<pre><code class="language-js">const newNumbers = [1, 3, 5, 7];
 
 const newSum=newNumbers.reduce(function (accumulator,currentValue)
 {
@@ -690,9 +395,8 @@ const newSum=newNumbers.reduce(function (accumulator,currentValue)
 
 console.log(newSum);
 </code></pre>
-
 <h3 id="more-example">More Example  :</h3>
-<pre><code class="js">const words = ['unique', 'uncanny', 'pique', 'oxymoron', 'guise'];
+<pre><code class="language-js">const words = ['unique', 'uncanny', 'pique', 'oxymoron', 'guise'];
 
 
 
@@ -706,9 +410,8 @@ const interestingWords = words.filter((word) =&gt; {return word.length &gt; 5});
 console.log(interestingWords.every((word) =&gt; {return word.length &gt; 5}));
 
 </code></pre>
-
 <p>Revision  :</p>
-<pre><code class="js">const cities = ['Orlando', 'Dubai', 'Edinburgh', 'Chennai', 'Accra', 'Denver', 'Eskisehir', 'Medellin', 'Yokohama'];
+<pre><code class="language-js">const cities = ['Orlando', 'Dubai', 'Edinburgh', 'Chennai', 'Accra', 'Denver', 'Eskisehir', 'Medellin', 'Yokohama'];
 
 const nums = [1, 50, 75, 200, 350, 525, 1000];
 
@@ -732,37 +435,32 @@ const smallerNums = nums.map(num =&gt; num - 5);
 nums.some(num =&gt; num &lt; 0);
 
 </code></pre>
-
-<h1 id="introduction-to-objects">Introduction to Objects</h1>
+<h2 id="introduction-to-objects">Introduction to Objects</h2>
 <h3 id="creating-object-literals">Creating Object Literals</h3>
 <p>Objects can be assigned to variables just like any JavaScript type. We use curly braces, <code>{}</code>, to designate an <em>object literal</em>:</p>
-<pre><code class="js">let spaceship = {}; // spaceship is an empty object
+<pre><code class="language-js">let spaceship = {}; // spaceship is an empty object
 </code></pre>
-
 <p>We fill an object with unordered data. This data is organized into <em>key-value pairs</em>.</p>
-<pre><code class="js">// An object literal with two key-value pairs
+<pre><code class="language-js">// An object literal with two key-value pairs
 let spaceship = {
   'Fuel Type': 'diesel',
   color: 'silver'
 };
 </code></pre>
-
 <h3 id="accessing-properties">Accessing Properties</h3>
-<pre><code class="js">let spaceship = {
+<pre><code class="language-js">let spaceship = {
   homePlanet: 'Earth',
   color: 'silver'
 };
 spaceship.homePlanet; // Returns 'Earth',
 spaceship.color; // Returns 'silver',
 </code></pre>
-
 <p>If we try to access a property that does not exist on that object, <code>undefined</code> will be returned.</p>
-<pre><code class="js">spaceship.favoriteIcecream; // Returns undefined
+<pre><code class="language-js">spaceship.favoriteIcecream; // Returns undefined
 </code></pre>
-
 <h3 id="using-bracket-notation">Using Bracket [ ] notation</h3>
 <p>The second way to access a key’s value is by using bracket notation, <code>[ ]</code>.</p>
-<pre><code class="js">let spaceship = {
+<pre><code class="language-js">let spaceship = {
   'Fuel Type': 'Turbo Fuel',
   'Active Duty': true,
   homePlanet: 'Earth',
@@ -773,9 +471,8 @@ spaceship['Fuel Type'];   // Returns  'Turbo Fuel'
 spaceship['numCrew'];   // Returns 5
 spaceship['!!!!!!!!!!!!!!!'];   // Returns undefined
 </code></pre>
-
 <p>Example  :</p>
-<pre><code class="js">let spaceship = {
+<pre><code class="language-js">let spaceship = {
   'Fuel Type' : 'Turbo Fuel',
   'Active Mission' : true,
   homePlanet : 'Earth', 
@@ -788,18 +485,16 @@ let propName =  'Active Mission';
 let isActive=spaceship['Active Mission'];
 console.log(spaceship[propName]);
 </code></pre>
-
 <h3 id="property-assignment">Property Assignment</h3>
 <p>It’s important to know that although we can’t reassign an object declared with <code>const</code>, we can still mutate it, meaning we can add new properties and change the properties that are there.</p>
-<pre><code class="js">const spaceship = {type: 'shuttle'};
+<pre><code class="language-js">const spaceship = {type: 'shuttle'};
 spaceship = {type: 'alien'}; // TypeError: Assignment to constant variable.
 spaceship.type = 'alien'; // Changes the value of the type property
 spaceship.speed = 'Mach 5'; // Creates a new key of 'speed' with a value of 'Mach 5'
 
 </code></pre>
-
 <p>You can delete a property from an object with the <code>delete</code> operator.</p>
-<pre><code class="js">const spaceship = {
+<pre><code class="language-js">const spaceship = {
   'Fuel Type': 'Turbo Fuel',
   homePlanet: 'Earth',
   mission: 'Explore the universe' 
@@ -807,10 +502,9 @@ spaceship.speed = 'Mach 5'; // Creates a new key of 'speed' with a value of 'Mac
 
 delete spaceship.mission;  // Removes the mission property
 </code></pre>
-
 <h3 id="methods">Methods</h3>
 <p>When the data stored on an object is a function we call that a <em>method</em>. A property is what an object has, while a method is what an object does.</p>
-<pre><code class="js">let retreatMessage = 'We no longer wish to conquer your planet. It is full of dogs, which we do not care for.';
+<pre><code class="language-js">let retreatMessage = 'We no longer wish to conquer your planet. It is full of dogs, which we do not care for.';
 
 // Write your code below
 let alienShip={
@@ -826,14 +520,12 @@ let alienShip={
 alienShip.retreat();
 alienShip.takeOff();
 </code></pre>
-
 <h3 id="nested-objects">Nested Objects</h3>
-<pre><code class="js">spaceship.nanoelectronics['back-up'].battery; // Returns 'Lithium'
+<pre><code class="language-js">spaceship.nanoelectronics['back-up'].battery; // Returns 'Lithium'
 </code></pre>
-
 <h3 id="pass-by-reference">Pass By Reference</h3>
 <p>Objects are <em>passed by reference</em>. This means when we pass a variable assigned to an object into a function as an argument, the computer interprets the parameter name as pointing to the space in memory holding that object. As a result, functions which change object properties actually mutate the object permanently (even when the object is assigned to a <code>const</code> variable)</p>
-<pre><code class="js">const spaceship = {
+<pre><code class="language-js">const spaceship = {
   homePlanet : 'Earth',
   color : 'silver'
 };
@@ -846,9 +538,8 @@ paintIt(spaceship);
 
 spaceship.color // Returns 'glorious gold'
 </code></pre>
-
 <p>Example  :  </p>
-<pre><code class="js">let spaceship = {
+<pre><code class="language-js">let spaceship = {
   'Fuel Type' : 'Turbo Fuel',
   homePlanet : 'Earth'
 };
@@ -865,10 +556,9 @@ remotelyDisable(spaceship);
 console.log(spaceship);
 
 </code></pre>
-
 <h3 id="looping-through-objects">Looping Through Objects</h3>
 <p><code>for...in</code> will execute a given block of code for each property in an object.</p>
-<pre><code class="js">let spaceship = {
+<pre><code class="language-js">let spaceship = {
     crew: {
     captain: { 
         name: 'Lily', 
@@ -902,24 +592,21 @@ for (let crewMember in spaceship.crew) {
   console.log(`${spaceship.crew[crewMember].name}: ${spaceship.crew[crewMember].degree}`)
 };
 </code></pre>
-
-<h1 id="advanced-objects-introduction">Advanced Objects Introduction</h1>
-<h1 id="the-this-keyword">The this Keyword</h1>
+<h2 id="advanced-objects-introduction">Advanced Objects Introduction</h2>
+<h2 id="the-this-keyword">The this Keyword</h2>
 <p>Objects are collections of related data and functionality. We store that functionality in methods on our objects:</p>
-<pre><code class="js">const goat = {
+<pre><code class="language-js">const goat = {
   dietType: 'herbivore',
   makeSound() {
     console.log('baaa');
   }
 };
 </code></pre>
-
 <p>In our <code>goat</code> object we have a <code>.makeSound()</code> method. We can invoke the <code>.makeSound()</code> method on <code>goat</code>.</p>
-<pre><code class="js">goat.makeSound(); // Prints baaa
+<pre><code class="language-js">goat.makeSound(); // Prints baaa
 </code></pre>
-
 <p>ice, we have a <code>goat</code> object that can print <code>baaa</code> to the console. Everything seems to be working fine. What if we wanted to add a new method to our <code>goat</code> object called <code>.diet()</code> that prints the <code>goat</code>‘s <code>dietType</code>?</p>
-<pre><code class="js">const goat = {
+<pre><code class="language-js">const goat = {
   dietType: 'herbivore',
   makeSound() {
     console.log('baaa');
@@ -931,10 +618,9 @@ for (let crewMember in spaceship.crew) {
 goat.diet(); 
 // Output will be &quot;ReferenceError: dietType is not defined&quot;
 </code></pre>
-
 <p>That’s strange, why is <code>dietType</code> not defined even though it’s a property of <code>goat</code>? That’s because inside the scope of the <code>.diet()</code> method, we don’t automatically have access to other properties of the <code>goat</code> object.</p>
 <p>Here’s where the <code>this</code> keyword comes to the rescue. If we change the <code>.diet()</code> method to use the <code>this</code>, the <code>.diet()</code> works! </p>
-<pre><code class="js">const goat = {
+<pre><code class="language-js">const goat = {
   dietType: 'herbivore',
   makeSound() {
     console.log('baaa');
@@ -947,10 +633,9 @@ goat.diet();
 goat.diet(); 
 // Output: herbivore
 </code></pre>
-
 <p>The <code>this</code> keyword references the <em>calling object</em> which provides access to the calling object’s properties. In the example above, the calling object is <code>goat</code> and by using <code>this</code> we’re accessing the <code>goat</code> object itself, and then the <code>dietType</code> property of <code>goat</code> by using property dot notation.</p>
 <p>Example  : </p>
-<pre><code class="js">const robot = {
+<pre><code class="language-js">const robot = {
   model:'1E78V2',
   energyLevel:100,
   provideInfo(){
@@ -960,10 +645,9 @@ goat.diet();
 };
 console.log(robot.provideInfo());
 </code></pre>
-
 <h3 id="arrow-functions-and-this">Arrow Functions and this</h3>
 <p>We saw in the previous exercise that for a method, the calling object is the object the method belongs to. If we use the <code>this</code> keyword in a method then the value of <code>this</code> is the calling object. However, it becomes a bit more complicated when we start using arrow functions for methods. Take a look at the example below:</p>
-<pre><code class="js">const goat = {
+<pre><code class="language-js">const goat = {
   dietType: 'herbivore',
   makeSound() {
     console.log('baaa');
@@ -975,13 +659,12 @@ console.log(robot.provideInfo());
 
 goat.diet(); // Prints undefined
 </code></pre>
-
 <p>In the comment, you can see that <code>goat.diet()</code> would log <code>undefined</code>. So what happened? Notice that in the <code>.diet()</code> is defined using an arrow function.</p>
 <p>Arrow functions inherently <em>bind</em>, or tie, an already defined <code>this</code> value to the function itself that is NOT the calling object. In the code snippet above, the value of <code>this</code> is the <em>global object</em>, or an object that exists in the global scope, which doesn’t have a <code>dietType</code> property and therefore returns <code>undefined</code>.</p>
 <p>To read more about either arrow functions or the global object check out the MDN documentation of <a href="https://developer.mozilla.org/en-US/docs/Glossary/Global_object">the global object</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions">arrow functions</a>.</p>
 <p>Example : </p>
 <p>This would work  </p>
-<pre><code class="js">const robot = {
+<pre><code class="language-js">const robot = {
   energyLevel: 100,
   checkEnergy()  {
     console.log(`Energy is currently at ${this.energyLevel}%.`)
@@ -990,9 +673,8 @@ goat.diet(); // Prints undefined
 
 robot.checkEnergy();
 </code></pre>
-
 <p>but this wont work  :  </p>
-<pre><code class="js">const robot = {
+<pre><code class="language-js">const robot = {
   energyLevel: 100,
   checkEnergy: () =&gt; {
     console.log(`Energy is currently at ${this.energyLevel}%.`)
@@ -1001,19 +683,17 @@ robot.checkEnergy();
 
 robot.checkEnergy();
 </code></pre>
-
 <h2 id="privacy">Privacy</h2>
 <p>Accessing and updating properties is fundamental in working with objects. However, there are cases in which we don’t want other code simply accessing and updating an object’s properties. When discussing <em>privacy</em> in objects, we define it as the idea that only certain properties should be mutable or able to change in value.</p>
 <p>Certain languages have privacy built-in for objects, but JavaScript does not have this feature. Rather, JavaScript developers follow naming conventions that signal to other developers how to interact with a property. One common convention is to place an underscore <code>_</code> before the name of a property to mean that the property should not be altered. Here’s an example of using <code>_</code> to prepend a property.</p>
-<pre><code class="js">const bankAccount = {
+<pre><code class="language-js">const bankAccount = {
   _amount: 1000
 }
 </code></pre>
-
 <p>In the example above, the <code>_amount</code> is not intended to be directly manipulated</p>
 <h4 id="getters">Getters</h4>
 <p><em>Getters</em> are methods that get and return the internal properties of an object. But they can do more than just retrieve the value of a property</p>
-<pre><code class="js">onst person = {
+<pre><code class="language-js">onst person = {
   _firstName: 'John',
   _lastName: 'Doe',
   get fullName() {
@@ -1028,10 +708,9 @@ robot.checkEnergy();
 // To call the getter method: 
 person.fullName; // 'John Doe'
 </code></pre>
-
 <h3 id="setters">Setters</h3>
 <p>Along with getter methods, we can also create <em>setter</em> methods which reassign values of existing properties within an object. Let’s see an example of a setter method:</p>
-<pre><code class="js">const person = {
+<pre><code class="language-js">const person = {
   _age: 37,
   set age(newAge){
     if (typeof newAge === 'number'){
@@ -1042,9 +721,8 @@ person.fullName; // 'John Doe'
   }
 };
 </code></pre>
-
 <p>Example :</p>
-<pre><code class="js">const robot = {
+<pre><code class="language-js">const robot = {
   _model: '1E78V2',
   _energyLevel: 100,
   _numOfSensors: 15,
@@ -1070,7 +748,6 @@ robot.numOfSensors=100;
 console.log(robot.numOfSensors);
 
 </code></pre>
-
 <h3 id="factory-functions">Factory Functions</h3>
 <ul>
 <li>
@@ -1137,12 +814,11 @@ console.log(robot.numOfSensors);
   const { residence } = vampire; 
   console.log(residence); // Prints 'Transylvania'</code></p>
 <p>Look back at the <code>vampire</code> object’s properties in the first code example. Then, in the example above, we declare a new variable <code>residence</code> that extracts the value of the <code>residence</code> property of <code>vampire</code>. When we log the value of <code>residence</code> to the console, <code>'Transylvania'</code> is printed.</p>
-<pre><code class="js">const { day } = vampire.preferences; 
+<pre><code class="language-js">const { day } = vampire.preferences; 
 console.log(day); // Prints 'stay inside'
 </code></pre>
-
 <p>Example  :  </p>
-<pre><code class="js">const robot = {
+<pre><code class="language-js">const robot = {
   model: '1E78V2',
   energyLevel: 100,
   functionality: {
@@ -1158,8 +834,7 @@ const {functionality }=robot;
 functionality.beep();
 
 </code></pre>
-
-<h1 id="built-in-object-methods">Built-in Object Methods</h1>
+<h2 id="built-in-object-methods">Built-in Object Methods</h2>
 <p>For example, we have access to object instance methods like: <code>.hasOwnProperty()</code>, <code>.valueOf()</code>, and many more! Practice your documentation reading skills and check out: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object#Methods">MDN’s object instance documentation</a>.</p>
 <p>There are also useful Object class methods such as <code>Object.assign()</code>, <code>Object.entries()</code>, and <code>Object.keys()</code> just to name a few. For a comprehensive list, browse: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object#Methods_of_the_Object_constructor">MDN’s object instance documentation</a>.</p>
 <ul>
@@ -1168,7 +843,7 @@ functionality.beep();
 <li>we should check <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign">Object.assign() documentation at MDN</a>.</li>
 </ul>
 <p>Example  :  </p>
-<pre><code class="js">const robot = {
+<pre><code class="language-js">const robot = {
     model: 'SAL-1000',
   mobile: true,
   sentient: false,
@@ -1191,11 +866,10 @@ console.log(robotEntries);
 const newRobot=Object.assign({laserBlaster: true, voiceRecognition: true}, robot);
 console.log(newRobot);
 </code></pre>
-
-<h1 id="introduction-to-classes">Introduction to Classes</h1>
+<h2 id="introduction-to-classes">Introduction to Classes</h2>
 <p>JavaScript is an <em>object-oriented programming</em> (OOP) language we can use to model real-world items. In this lesson, you will learn how to make <em>classes</em>. </p>
 <p>Take, for example, an object representing a dog named <code>halley</code>. This dog’s <code>name</code> (a key) is <code>"Halley"</code> (a value) and has an <code>age</code> (another key) of <code>3</code> (another value). We create the <code>halley</code> object below:</p>
-<pre><code class="js">let halley = {
+<pre><code class="language-js">let halley = {
   _name: 'Halley',
   _behavior: 0,
 
@@ -1212,19 +886,17 @@ console.log(newRobot);
   }
 }
 </code></pre>
-
 <p>class instantiation, method</p>
-<pre><code class="js">const halley = new Dog('Halley');
+<pre><code class="language-js">const halley = new Dog('Halley');
 console.log(halley.name); // Print name value to console
 console.log(halley.behavior); // Print behavior value to console
 halley.incrementBehavior(); // Add one to behavior
 console.log(halley.name); // Print name value to console
 console.log(halley.behavior); // Print behavior value to console
 </code></pre>
-
 <h3 id="constructor">Constructor</h3>
 <p>Although you may see similarities between class and object syntax, there is one important method that sets them apart. It’s called the <em>constructor</em> method. JavaScript calls the <code>constructor()</code> method every time it creates a new <em>instance</em> of a class.</p>
-<pre><code class="js">class Dog {
+<pre><code class="language-js">class Dog {
   constructor(name) {
     this.name = name;
     this.behavior = 0;
@@ -1232,10 +904,9 @@ console.log(halley.behavior); // Print behavior value to console
 }
 
 </code></pre>
-
 <h3 id="instance">Instance</h3>
 <p>n <em>instance</em> is an object that contains the property names and methods of a class, but with unique property values.</p>
-<pre><code class="js">class Surgeon {
+<pre><code class="language-js">class Surgeon {
   constructor(name, department) {
     this.name = name;
     this.department = department;
@@ -1246,10 +917,9 @@ const surgeonCurry=new Surgeon('Curry','Cardiovascular');
 const surgeonDurant=new Surgeon('Durant','Orthopedics');
 
 </code></pre>
-
 <h3 id="methods_1">Methods</h3>
 <p>Example </p>
-<pre><code class="js">class Surgeon {
+<pre><code class="language-js">class Surgeon {
   constructor(name, department) {
     this._name = name;
     this._department = department;
@@ -1275,10 +945,9 @@ const surgeonDurant=new Surgeon('Durant','Orthopedics');
 const surgeonCurry = new Surgeon('Curry', 'Cardiovascular');
 const surgeonDurant = new Surgeon('Durant', 'Orthopedics');
 </code></pre>
-
 <h3 id="method-calls">Method Calls</h3>
 <p>Example  : </p>
-<pre><code class="js">class Surgeon {
+<pre><code class="language-js">class Surgeon {
   constructor(name, department) {
     this._name = name;
     this._department = department;
@@ -1309,10 +978,9 @@ console.log(surgeonCurry.name);
 surgeonCurry.takeVacationDays(3);
 console.log(surgeonCurry.remainingVacationDays);
 </code></pre>
-
 <h3 id="inheritance-i">Inheritance I</h3>
 <p>We’ve abstracted the shared properties and methods of our <code>Cat</code> and <code>Dog</code> classes into a parent class called <code>Animal</code> (See below)</p>
-<pre><code class="js">class Animal {
+<pre><code class="language-js">class Animal {
   constructor(name) {
     this._name = name;
     this._behavior = 0;
@@ -1331,21 +999,19 @@ console.log(surgeonCurry.remainingVacationDays);
   }
 } 
 </code></pre>
-
 <p>Now that we have these shared properties and methods in the parent <code>Animal</code> class, we can extend them to the subclass, <code>Cat</code></p>
-<pre><code class="js">class Cat extends Animal {
+<pre><code class="language-js">class Cat extends Animal {
   constructor(name, usesLitter) {
     super(name);
     this._usesLitter = usesLitter;
   }
 }
 </code></pre>
-
 <ul>
 <li>The <code>super</code> keyword calls the constructor of the parent class. In this case, <code>super(name)</code> passes the name argument of the <code>Cat</code> class to the constructor of the <code>Animal</code> class. When the <code>Animal</code> constructor runs, it sets <code>this._name = name;</code> for new <code>Cat</code> instances</li>
 </ul>
 <p>Example :</p>
-<pre><code class="js">class HospitalEmployee {
+<pre><code class="language-js">class HospitalEmployee {
   constructor(name) {
     this._name = name;
     this._remainingVacationDays = 20;
@@ -1385,11 +1051,10 @@ console.log(nurseOlynyk.remainingVacationDays);
 nurseOlynyk.addCertification('Genetics');
 console.log(nurseOlynyk.certifications);
 </code></pre>
-
 <p>When we call <code>extends</code> in a class declaration, all of the parent methods are available to the child class.</p>
 <h2 id="static-methods">Static Methods</h2>
 <p>Sometimes you will want a class to have methods that aren’t available in individual instances, but that you can call directly from the class.</p>
-<pre><code class="js">class Animal {
+<pre><code class="language-js">class Animal {
   constructor(name) {
     this._name = name;
     this._behavior = 0;
@@ -1407,35 +1072,31 @@ static generatePassword()
     return (Math.floor(Math.random() * 10000));
   }
 </code></pre>
-
 <h3 id="browser-compatibility-and-transpilation"><strong>BROWSER COMPATIBILITY AND TRANSPILATION</strong></h3>
 <ul>
 <li>caniuse.com — A website that provides data on web browser compatibility for HTML, CSS, and JavaScript features. You will learn how to use it to look up ES6 feature support.</li>
 <li>Babel — A Javascript library that you can use to convert new, unsupported JavaScript (ES6), into an older version (ES5) that is recognized by most modern browsers.</li>
 </ul>
-<h1 id="transpilation-with-babel">Transpilation With Babel</h1>
+<h2 id="transpilation-with-babel">Transpilation With Babel</h2>
 <p>Although manual conversion only took you a few minutes, it is unsustainable as the size of the JavaScript file increases.</p>
 <p>Because ES6 is predictably backwards compatible, a collection of JavaScript programmers developed a JavaScript library called Babel that <em>transpiles</em> ES6 JavaScript to ES5.</p>
 <p>Transpilation is the process of converting one programming language to another</p>
 <h4 id="transpile-es6-code-to-es5">transpile ES6 code to ES5</h4>
 <p>In the instructions below, you will pass JavaScript ES6 code to Babel, which will transpile it to ES5 and write it to a file in the <strong>lib</strong> directory.</p>
-<pre><code class="shell">npm install babel-cli
+<pre><code class="language-shell">npm install babel-cli
 npm install babel-preset-env
 
 </code></pre>
-
 <p>You can view the ES5 code in <strong>./lib/main.js</strong>.</p>
 <p>You may need to refresh to see the newly created <strong>lib</strong> directory.</p>
-<pre><code class="shell">npm init
+<pre><code class="language-shell">npm init
 </code></pre>
-
 <p>In the next five exercises you will learn how to setup a JavaScript project that transpiles code when you run <code>npm run build</code> from the root directory of a JavaScript project.</p>
 <p>The first step is to place your ES6 JavaScript file in a directory called <strong>src</strong>. From your root directory, the path to the ES6 file is <strong>./src/main.js</strong></p>
 <pre><code>project
 |_ src
 |___ main.js
 </code></pre>
-
 <ul>
 <li>Before we install Babel, we need to setup our project to use the <a href="https://docs.npmjs.com/getting-started/what-is-npm">node package manager (npm)</a>. Developers use <em>npm</em> to access and manage Node packages. Node packages are directories that contain JavaScript code written by other developers. You can use these packages to reduce duplication of work and avoid bugs.</li>
 <li>Before we can add Babel to our project directory, we need to run <code>npm init</code>. The <code>npm init</code> command creates a <strong>package.json</strong> file in the root directory.</li>
@@ -1447,21 +1108,19 @@ npm install babel-preset-env
 <p>The terminal prompts you to fill in fields for the project’s metadata (name, description, etc.)</p>
 <p>You are not required to answer the prompts, though we recommend at minimum, you add your own title and description. If you don’t want to fill in a field, you can press enter. npm will leave fill these fields with default values or leave them empty when it creates the <strong>package.json</strong> file.</p>
 <p>After you run <code>npm init</code> your directory structure will contain the following files and folders:</p>
-<pre><code class="js">project
+<pre><code class="language-js">project
 |_ src
 |___ main.js
 |_ package.json
 </code></pre>
-
 <p>npm adds the <strong>package.json</strong> file to the same level as the <strong>src</strong> directory.</p>
 <p>The <code>babel-cli</code> package includes command line Babel tools, and the <code>babel-preset-env</code> package has the code that maps any JavaScript feature, ES6 and above (ES6+), to ES5.</p>
-<pre><code class="js">$ npm install babel-cli -D
+<pre><code class="language-js">$ npm install babel-cli -D
 $ npm install babel-preset-env -D
 </code></pre>
-
 <p>The <code>-D</code> flag instructs npm to add each package to a property called <code>devDependencies</code> in <strong>package.json</strong>. Once the project’s dependencies are listed in <code>devDependencies</code>, other developers can run your project without installing each package separately. Instead, they can simply run <code>npm install</code> — it instructs npm to look inside <strong>package.json</strong> and download all of the packages listed in <code>devDependencies</code>.</p>
 <p>Once you <code>npm install</code> packages, you can find the Babel packages and all their dependencies in the <strong>node_modules</strong> folder. The new directory structure contains the following:</p>
-<pre><code class="js">project
+<pre><code class="language-js">project
 |_ node_modules
 |___ .bin
 |___ ...
@@ -1469,12 +1128,11 @@ $ npm install babel-preset-env -D
 |___ main.js
 |_ package.json
 </code></pre>
-
 <h3 id="babelrc">.babelrc</h3>
 <p>Now that you’ve downloaded the Babel packages, you need to specify the version of the source JavaScript code.</p>
 <p>You can specify the initial JavaScript version inside of a file named <strong>.babelrc</strong>. In your root directory, you can run <code>touch .babelrc</code> to create this file.</p>
 <p>Your project directory contains the following folders and files:</p>
-<pre><code class="js">project
+<pre><code class="language-js">project
 |_ node_modules
 |___ .bin
 |___ ...
@@ -1483,24 +1141,21 @@ $ npm install babel-preset-env -D
 |_ .babelrc
 |_ package.json
 </code></pre>
-
 <p>Inside <strong>.babelrc</strong> you need to define the <em>preset</em> for your source JavaScript file. The preset specifies the version of your initial JavaScript file.</p>
 <p>Usually, you want to transpile JavaScript code from versions ES6 and later (ES6+) to ES5. From this point on, we will refer to our source code as ES6+, because Ecma introduces new syntax with each new version of JavaScript.</p>
 <p>To specify that we are transpiling code from an ES6+ source, we have to add the following JavaScript object into <strong>.babelrc</strong>:</p>
-<pre><code class="js">{
+<pre><code class="language-js">{
   &quot;presets&quot;: [&quot;env&quot;]
 }
 </code></pre>
-
 <p>When you run Babel, it looks in <strong>.babelrc</strong> to determine the version of the initial JavaScript file. In this case, <code>["env"]</code> instructs Babel to transpile any code from versions ES6 and later.</p>
 <p>There’s one last step before we can transpile our code. We need to specify a script in <strong>package.json</strong> that initiates the ES6+ to ES5 transpilation.</p>
 <p>Inside of the <strong>package.json</strong> file, there is a property named <code>"scripts"</code> that holds an object for specifying command line shortcuts. It looks like this:</p>
-<pre><code class="js">...
+<pre><code class="language-js">...
 &quot;scripts&quot;: {
   &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;
 }, ...
 </code></pre>
-
 <p>In the code above, the <code>"scripts"</code> property contains an object with one property called <code>"test"</code>. Below the <code>"test"</code> property, we will add a script that runs Babel like this:</p>
 <pre><code>...
 &quot;scripts&quot;: {
@@ -1508,7 +1163,6 @@ $ npm install babel-preset-env -D
   &quot;build&quot;: &quot;babel src -d lib&quot;
 }
 </code></pre>
-
 <p>In the <code>"scripts"</code> object above, we add a property called <code>"build"</code>. The property’s value, <code>"babel src -d lib"</code>, is a command line method that transpiles ES6+ code to ES5. Let’s consider each argument in the method call:</p>
 <ul>
 <li><code>babel</code> — The Babel command call responsible for transpiling code.</li>
@@ -1517,7 +1171,7 @@ $ npm install babel-preset-env -D
 <li><code>lib</code> — Babel writes the transpiled code to a directory called <code>lib</code>.</li>
 </ul>
 <p>In the next exercise, we’ll run the <code>babel src -d lib</code> method to transpile our ES6+ code.</p>
-<pre><code class="js">{
+<pre><code class="language-js">{
   &quot;name&quot;: &quot;learning-babel&quot;,
   &quot;version&quot;: &quot;1.0.0&quot;,
   &quot;description&quot;: &quot;Use Babel to transpile JavaScript ES6 to ES5&quot;,
@@ -1535,20 +1189,17 @@ $ npm install babel-preset-env -D
 }
 
 </code></pre>
-
 <h3 id="build">Build</h3>
 <p>We’re ready to transpile our code! In the last exercise, we wrote the following script in <strong>package.json</strong>:</p>
 <pre><code>&quot;build&quot;: &quot;babel src -d lib&quot;
 </code></pre>
-
 <p>Now, we need to call <code>"build"</code> from the command line to transpile and write ES5 code to a directory called <code>lib</code>.</p>
 <p>From the command line, we type:</p>
 <pre><code>npm run build
 </code></pre>
-
 <p>The command above runs the <code>build</code> script in <strong>package.json</strong>.</p>
 <p>Babel writes the ES5 code to a file named <strong>main.js</strong> (it’s always the same name as the original file), inside of a folder called <code>lib</code>. The resulting directory structure is:</p>
-<pre><code class="js">project
+<pre><code class="language-js">project
 |_ lib
 |___ main.js
 |_ node_modules
@@ -1559,18 +1210,16 @@ $ npm install babel-preset-env -D
 |_ .babelrc
 |_ package.json
 </code></pre>
-
 <p>Notice, the directory contains a new folder named <strong>lib</strong>, with one file, called <strong>main.js</strong>.</p>
 <p>The <code>npm run build</code> command will transpile all JavaScript files inside of the <strong>src</strong> folder. This is helpful as you build larger JavaScript projects — regardless of the number of JavaScript files, you only need to run one command (<code>npm run build</code>) to transpile all of your code.</p>
 <h2 id="intermediate-javascript-modules"><strong>INTERMEDIATE JAVASCRIPT MODULES</strong></h2>
-<h1 id="moduleexports">module.exports</h1>
+<h2 id="moduleexports">module.exports</h2>
 <p>We can get started with modules by defining a module in one file and making the module available for use in another file with Node.js <code>module.exports</code> syntax. Every JavaScript file run in Node has a local <code>module</code> object with an <code>exports</code> property used to define what should be exported from the file</p>
-<pre><code class="js">let Menu = {};
+<pre><code class="language-js">let Menu = {};
 Menu.specialty = &quot;Roasted Beet Burger with Mint Sauce&quot;;
 
 module.exports = Menu; 
 </code></pre>
-
 <p>Let’s consider what this code means.</p>
 <ol>
 <li><code>let Menu = {};</code> creates the object that represents the module <code>Menu</code>. The statement contains an uppercase variable named <code>Menu</code> which is set equal to an empty object.</li>
@@ -1584,11 +1233,11 @@ module.exports = Menu;
 <li>Add properties or methods to the module object.</li>
 <li>Export the module with <code>module.exports</code>.</li>
 </ol>
-<h1 id="require">require()</h1>
+<h2 id="require">require()</h2>
 <p>To make use of the exported module and the behavior we define within it, we import the module into another file. In Node.js, use the <code>require()</code> function to import modules.</p>
 <p>For instance, say we want the module to control the menu’s data and behavior, and we want a separate file to handle placing an order. We would create a separate file <strong>order.js</strong> and import the <code>Menu</code> module from <strong>menu.js</strong> to <strong>order.js</strong> using <code>require()</code>. <code>require()</code> takes a file path argument pointing to the original module file.</p>
 <p>In <strong>order.js</strong> we would write:</p>
-<pre><code class="js">const Menu = require('./menu.js');
+<pre><code class="language-js">const Menu = require('./menu.js');
 
 function placeOrder() {
   console.log('My order is: ' + Menu.specialty);
@@ -1596,30 +1245,27 @@ function placeOrder() {
 
 placeOrder();
 </code></pre>
-
 <p>We can also wrap any collection of data and functions in an object, and export the object using <code>module.exports</code>. In <strong>menu.js</strong>, we could write:</p>
-<pre><code class="js">module.exports = {
+<pre><code class="language-js">module.exports = {
   specialty: &quot;Roasted Beet Burger with Mint Sauce&quot;,
   getSpecialty: function() {
     return this.specialty;
   } 
 }; 
 </code></pre>
-
-<h1 id="export-default">Export default</h1>
+<h2 id="export-default">Export default</h2>
 <p>Node.js supports <code>require()</code>/<code>module.exports</code>, but as of ES6, JavaScript supports a new more readable and flexible syntax for exporting modules. These are usually broken down into one of two techniques, <em>default export</em> and <em>named exports</em>.</p>
 <p>We’ll begin with the first syntax, default export. The default export syntax works similarly to the <code>module.exports</code> syntax, allowing us to export one module per file.</p>
 <pre><code>let Menu = {};
 
 export default Menu;
 </code></pre>
-
 <ol>
 <li><code>export default</code> uses the JavaScript <code>export</code> statement to export JavaScript objects, functions, and primitive data types.</li>
 <li><code>Menu</code> refers to the name of the <code>Menu</code> object, the object that we are setting the properties on within our modules.</li>
 </ol>
 <p>When using ES6 syntax, we use <code>export default</code> in place of <code>module.exports</code>. Node.js doesn’t support <code>export default</code> by default, so <code>module.exports</code> is usually used for Node.js development and ES6 syntax is used for front-end development. As with most ES6 features, it is common to transpile code since ES6 is <a href="https://caniuse.com/#feat=es6">not supported by all browsers</a>.</p>
-<pre><code class="js">let Airplane = {};
+<pre><code class="language-js">let Airplane = {};
 Airplane.availableAirplanes = [
 { 
     name: 'AeroJet',
@@ -1631,16 +1277,14 @@ Airplane.availableAirplanes = [
 ];
 export default Airplane;
 </code></pre>
-
-<h1 id="import">Import</h1>
+<h2 id="import">Import</h2>
 <p>ES6 module syntax also introduces the <code>import</code> keyword for importing objects. In our <strong>order.js</strong> example, we import an object like this</p>
 <pre><code>import Menu from './menu';
 </code></pre>
-
 <p>Within the body of the <code>displayFuelCapacity</code> function, use <code>forEach()</code> to iterate over the <code>Airplane.availableAirplanes</code> array.</p>
 <p>The <code>forEach()</code> should take an anonymous function as a parameter. We’ll add more in the next step.</p>
 <p>Pass the anonymous function you created in the last step a parameter of <code>element</code>.</p>
-<pre><code class="js">import Airplane from './airplane';
+<pre><code class="language-js">import Airplane from './airplane';
 function displayFuelCapacity() {
 
   Airplane.availableAirplanes.forEach(function(element) {
@@ -1650,10 +1294,9 @@ function displayFuelCapacity() {
 }
 displayFuelCapacity();
 </code></pre>
-
-<h1 id="named-exports">Named Exports</h1>
+<h2 id="named-exports">Named Exports</h2>
 <p>ES6 introduced a second common approach to export modules. In addition to <code>export default</code>, <em>named exports</em> allow us to export data through the use of variables.</p>
-<pre><code class="js">let specialty = '';
+<pre><code class="language-js">let specialty = '';
 function isVegetarian() {
 }; 
 function isLowSodium() {
@@ -1661,9 +1304,8 @@ function isLowSodium() {
 
 export { specialty, isVegetarian };
 </code></pre>
-
 <p>Example  </p>
-<pre><code class="js">let availableAirplanes = [{
+<pre><code class="language-js">let availableAirplanes = [{
  name: 'AeroJet',
  fuelCapacity: 800,
  availableStaff: ['pilots', 'flightAttendants', 'engineers', 'medicalAssistance', 'sensorOperators'],
@@ -1684,15 +1326,13 @@ function meetsStaffRequirements(availableStaff, requiredStaff) {
 }
 export { availableAirplanes, flightRequirements, meetsStaffRequirements};
 </code></pre>
-
 <h2 id="named-imports">Named Imports</h2>
 <p>To import objects stored in a variable, we use the <code>import</code> keyword and include the variables in a set of <code>{}</code>.</p>
-<pre><code class="js">import { specialty, isVegetarian } from './menu';
+<pre><code class="language-js">import { specialty, isVegetarian } from './menu';
 
 console.log(specialty);
 </code></pre>
-
-<pre><code class="js">import {availableAirplanes, flightRequirements, meetsStaffRequirements} from './airplane';
+<pre><code class="language-js">import {availableAirplanes, flightRequirements, meetsStaffRequirements} from './airplane';
 function displayFuelCapacity() {
 
 }
@@ -1703,18 +1343,16 @@ function displayStaffStatus() {
 }
 displayStaffStatus();
 </code></pre>
-
 <h2 id="export-named-exports">Export Named Exports</h2>
 <p>Named exports are also distinct in that they can be exported as soon as they are declared, by placing the keyword <code>export</code> in front of variable declarations.</p>
-<pre><code class="js">export let specialty = '';
+<pre><code class="language-js">export let specialty = '';
 export function isVegetarian() {
 }; 
 function isLowSodium() {
 }; 
 </code></pre>
-
 <p>Example  : </p>
-<pre><code class="js">export let availableAirplanes = [
+<pre><code class="language-js">export let availableAirplanes = [
 {name: 'AeroJet',
  fuelCapacity: 800,
  availableStaff: ['pilots', 'flightAttendants', 'engineers', 'medicalAssistance', 'sensorOperators'],
@@ -1749,15 +1387,13 @@ export function meetsStaffRequirements(availableStaff, requiredStaff) {
 }
 
 </code></pre>
-
 <h3 id="import-named-imports">Import Named Imports</h3>
 <p>To import variables that are declared, we simply use the original syntax that describes the variable name. In other words, exporting upon declaration does not have an impact on how we import the variables.</p>
-<pre><code class="js">import { specialty, isVegetarian } from 'menu';
+<pre><code class="language-js">import { specialty, isVegetarian } from 'menu';
 </code></pre>
-
 <h2 id="export-as">Export as</h2>
 <p>Named exports also conveniently offer a way to change the name of variables when we export or import them. We can do this with the <code>as</code> keyword.</p>
-<pre><code class="js">let specialty = '';
+<pre><code class="language-js">let specialty = '';
 let isVegetarian = function() {
 }; 
 let isLowSodium = function() {
@@ -1765,28 +1401,25 @@ let isLowSodium = function() {
 
 export { specialty as chefsSpecial, isVegetarian as isVeg, isLowSodium };
 </code></pre>
-
 <h2 id="import-as">Import as</h2>
 <p>To import named export aliases with the <code>as</code> keyword, we add the aliased variable in our import statement.</p>
-<pre><code class="js">import { chefsSpecial, isVeg } from './menu';
+<pre><code class="language-js">import { chefsSpecial, isVeg } from './menu';
 </code></pre>
-
 <p>In <strong>orders.js</strong></p>
 <ol>
 <li>We import <code>chefsSpecial</code> and <code>isVeg</code> from the <code>Menu</code> object.</li>
 <li>Here, note that we have an option to alias an object that was not previously aliased when exported. For example, the <code>isLowSodium</code> object that we exported could be aliased with the <code>as</code> keyword when imported: <code>import {isLowSodium as saltFree} from 'Menu';</code></li>
 </ol>
 <p>Another way of using aliases is to import the entire module as an alias:</p>
-<pre><code class="js">import * as Carte from './menu';
+<pre><code class="language-js">import * as Carte from './menu';
 
 Carte.chefsSpecial;
 Carte.isVeg();
 Carte.isLowSodium(); 
 </code></pre>
-
 <h3 id="combining-export-statements">Combining Export Statements</h3>
 <p>We can also use named exports and default exports together. In <strong>menu.js</strong>:</p>
-<pre><code class="js">let specialty = '';
+<pre><code class="language-js">let specialty = '';
 function isVegetarian() {
 }; 
 function isLowSodium() {
@@ -1797,16 +1430,14 @@ function isGlutenFree() {
 export { specialty as chefsSpecial, isVegetarian as isVeg };
 export default isGlutenFree;
 </code></pre>
-
 <h3 id="combining-import-statements">Combining Import Statements</h3>
 <p>We can import the collection of objects and functions with the same data.</p>
 <p>We can use an <code>import</code> keyword to import both types of variables as such:</p>
-<pre><code class="js">import { specialty, isVegetarian, isLowSodium } from './menu';
+<pre><code class="language-js">import { specialty, isVegetarian, isLowSodium } from './menu';
 
 import GlutenFree from './menu';
 </code></pre>
-
-<h1 id="what-is-a-promise">What is a Promise?</h1>
+<h2 id="what-is-a-promise">What is a Promise?</h2>
 <p>Promises are objects that represent the eventual outcome of an asynchronous operation. A <code>Promise</code> object can be in one of three states:</p>
 <ul>
 <li>Pending**: The initial state— the operation has not completed yet.</li>
@@ -1815,17 +1446,16 @@ import GlutenFree from './menu';
 </ul>
 <h3 id="constructing-a-promise-object">Constructing a Promise Object</h3>
 <p>Let’s construct a promise! To create a new <code>Promise</code> object, we use the <code>new</code> keyword and the <code>Promise</code> constructor method:</p>
-<pre><code class="js">const executorFunction = (resolve, reject) =&gt; { };
+<pre><code class="language-js">const executorFunction = (resolve, reject) =&gt; { };
 const myFirstPromise = new Promise(executorFunction);
 </code></pre>
-
 <p>The executor function has two function parameters, usually referred to as the <code>resolve()</code> and <code>reject()</code> functions. The <code>resolve()</code> and <code>reject()</code> functions aren’t defined by the programmer. When the <code>Promise</code> constructor runs, JavaScript will pass <strong>its own</strong> <code>resolve()</code> and <code>reject()</code> functions into the executor function.</p>
 <ul>
 <li><code>resolve</code> is a function with one argument. Under the hood, if invoked, <code>resolve()</code> will change the promise’s status from <code>pending</code> to <code>fulfilled</code>, and the promise’s resolved value will be set to the argument passed into <code>resolve()</code>.</li>
 <li><code>reject</code> is a function that takes a reason or error as an argument. Under the hood, if invoked, <code>reject()</code> will change the promise’s status from <code>pending</code> to <code>rejected</code>, and the promise’s rejection reason will be set to the argument passed into <code>reject()</code>.</li>
 </ul>
 <p>Let’s look at an example executor function in a <code>Promise</code> constructor:</p>
-<pre><code class="js">const executorFunction = (resolve, reject) =&gt; {
+<pre><code class="language-js">const executorFunction = (resolve, reject) =&gt; {
   if (someCondition) {
       resolve('I resolved!');
   } else {
@@ -1834,9 +1464,8 @@ const myFirstPromise = new Promise(executorFunction);
 }
 const myFirstPromise = new Promise(executorFunction);
 </code></pre>
-
 <p>Example  :  </p>
-<pre><code class="js">const inventory = {
+<pre><code class="language-js">const inventory = {
   sunglasses: 1900,
   pants: 1088,
   bags: 1344
@@ -1862,21 +1491,19 @@ function orderSunglasses()
 const orderPromise=orderSunglasses();
 console.log(orderPromise);
 </code></pre>
-
 <h3 id="the-node-settimeout-function">The Node setTimeout() Function</h3>
 <p>Rather than constructing promises, you’ll be handling <code>Promise</code> objects returned to you as the result of an asynchronous operation. These promises will start off pending but settle eventually.</p>
 <p>To accomplish this, we’ll be using <code>setTimeout()</code>. <code>setTimeout()</code> is a Node API (a comparable API is provided by web browsers) that uses callback functions to schedule tasks to be performed after a delay. <code>setTimeout()</code> has two parameters: a callback function and a delay in milliseconds.</p>
-<pre><code class="js">const delayedHello = () =&gt; {
+<pre><code class="language-js">const delayedHello = () =&gt; {
   console.log('Hi! This is an asynchronous greeting!');
 };
 
 setTimeout(delayedHello, 2000);
 </code></pre>
-
 <p>Here, we invoke <code>setTimeout()</code> with the callback function <code>delayedHello()</code> and <code>2000</code>. In at least two seconds <code>delayedHello()</code> will be invoked. But why is it “at least” two seconds and not exactly two seconds?</p>
 <p>This delay is performed asynchronously—the rest of our program won’t stop executing during the delay. Asynchronous JavaScript uses something called <em>the event-loop</em>. After two seconds, <code>delayedHello()</code> is added to a line of code waiting to be run. Before it can run, any synchronous code from the program will run. Next, any code in front of it in the line will run. This means it might be more than two seconds before <code>delayedHello()</code> is actually executed.</p>
 <p>Let’s look at how we’ll be using <code>setTimeout()</code> to construct asynchronous promises:</p>
-<pre><code class="js">const returnPromiseFunction = () =&gt; {
+<pre><code class="language-js">const returnPromiseFunction = () =&gt; {
   return new Promise((resolve, reject) =&gt; {
     setTimeout(( ) =&gt; {resolve('I resolved!')}, 1000);
   });
@@ -1884,7 +1511,6 @@ setTimeout(delayedHello, 2000);
 
 const prom = returnPromiseFunction();
 </code></pre>
-
 <p>In the example code, we invoked <code>returnPromiseFunction()</code> which returned a promise. We assigned that promise to the variable <code>prom</code>. Similar to the asynchronous promises you may encounter in production, <code>prom</code> will initially have a status of pending.</p>
 <h3 id="consuming-promises">Consuming Promises</h3>
 <ul>
@@ -1894,7 +1520,7 @@ const prom = returnPromiseFunction();
 </ul>
 <h2 id="the-onfulfilled-and-onrejected-functions">The onFulfilled and onRejected Functions</h2>
 <p>To handle a “successful” promise, or a promise that resolved, we invoke <code>.then()</code> on the promise, passing in a success handler callback function:</p>
-<pre><code class="js">const prom = new Promise((resolve, reject) =&gt; {
+<pre><code class="language-js">const prom = new Promise((resolve, reject) =&gt; {
   resolve('Yay!');
 });
 
@@ -1904,9 +1530,8 @@ const handleSuccess = (resolvedValue) =&gt; {
 
 prom.then(handleSuccess); // Prints: 'Yay!'
 </code></pre>
-
 <p>With typical promise consumption, we won’t know whether a promise will resolve or reject, so we’ll need to provide the logic for either case. We can pass both an <code>onFulfilled</code> and <code>onRejected</code> callback to <code>.then()</code>.</p>
-<pre><code class="js">let prom = new Promise((resolve, reject) =&gt; {
+<pre><code class="language-js">let prom = new Promise((resolve, reject) =&gt; {
   let num = Math.random();
   if (num &lt; .5 ){
     resolve('Yay!');
@@ -1926,10 +1551,9 @@ const handleFailure = (rejectionReason) =&gt; {
 prom.then(handleSuccess, handleFailure);
 checkInventory(order).then(handleSuccess,handleFailure);
 </code></pre>
-
 <h2 id="using-catch-with-promises">Using catch() with Promises</h2>
 <p>One way to write cleaner code is to follow a principle called <em>separation of concerns</em>. Separation of concerns means organizing code into distinct sections each handling a specific task. It enables us to quickly navigate our code and know where to look if something isn’t working.</p>
-<pre><code class="js">prom
+<pre><code class="language-js">prom
   .then((resolvedValue) =&gt; {
     console.log(resolvedValue);
   })
@@ -1937,7 +1561,6 @@ checkInventory(order).then(handleSuccess,handleFailure);
     console.log(rejectionReason);
   });
 </code></pre>
-
 <ul>
 <li>Since JavaScript doesn’t mind whitespace, we follow a common convention of putting each part of this chain on a new line to make it easier to read. To create even more readable code, we can use a different promise function: <code>.catch()</code>.</li>
 </ul>
@@ -1952,13 +1575,12 @@ checkInventory(order).then(handleSuccess,handleFailure);
       console.log(rejectionReason);
     });</code></p>
 <p>Example  :</p>
-<pre><code class="js">checkInventory(order).then(handleSuccess).catch(handleFailure);
+<pre><code class="language-js">checkInventory(order).then(handleSuccess).catch(handleFailure);
 </code></pre>
-
-<h1 id="chaining-multiple-promises">Chaining Multiple Promises</h1>
+<h2 id="chaining-multiple-promises">Chaining Multiple Promises</h2>
 <p>One common pattern we’ll see with asynchronous programming is multiple operations which depend on each other to execute or that must be executed in a certain order.<strong><em> We might make one request to a database and use the data returned to us to make another request and so on</em></strong></p>
 <p>This process of chaining promises together is called <em>composition</em>. Promises are designed with composition in mind! Here’s a simple promise chain in code:</p>
-<pre><code class="js">firstPromiseFunction()
+<pre><code class="language-js">firstPromiseFunction()
 .then((firstResolveVal) =&gt; {
   return secondPromiseFunction(firstResolveVal);
 })
@@ -1966,9 +1588,8 @@ checkInventory(order).then(handleSuccess,handleFailure);
   console.log(secondResolveVal);
 });
 </code></pre>
-
 <p>Example  :</p>
-<pre><code class="js">checkInventory(order)
+<pre><code class="language-js">checkInventory(order)
 .then((resolvedValueArray) =&gt; {
   // Write the correct return statement here:
  return processPayment(resolvedValueArray);
@@ -1984,11 +1605,10 @@ checkInventory(order).then(handleSuccess,handleFailure);
   console.log(errorMessage);
 });
 </code></pre>
-
-<h1 id="avoiding-common-mistakes">Avoiding Common Mistakes</h1>
+<h2 id="avoiding-common-mistakes">Avoiding Common Mistakes</h2>
 <p>Promise composition allows for much more readable code than the nested callback syntax that preceded it. However, it can still be easy to make mistakes. In this exercise, we’ll go over two common mistakes with promise composition.</p>
 <p><strong>Mistake 1:</strong> Nesting promises instead of chaining them.</p>
-<pre><code class="js">returnsFirstPromise()
+<pre><code class="language-js">returnsFirstPromise()
 .then((firstResolveVal) =&gt; {
   return returnsSecondValue(firstResolveVal)
     .then((secondResolveVal) =&gt; {
@@ -1996,10 +1616,9 @@ checkInventory(order).then(handleSuccess,handleFailure);
     })
 })
 </code></pre>
-
 <p>Instead of having a clean chain of promises, we’ve nested the logic for one inside the logic of the other. Imagine if we were handling five or ten promises!</p>
 <p><strong>Mistake 2:</strong> Forgetting to <code>return</code> a promise.</p>
-<pre><code class="js">returnsFirstPromise()
+<pre><code class="language-js">returnsFirstPromise()
 .then((firstResolveVal) =&gt; {
   returnsSecondValue(firstResolveVal)
 })
@@ -2007,15 +1626,14 @@ checkInventory(order).then(handleSuccess,handleFailure);
   console.log(someVal);
 })
 </code></pre>
-
-<h1 id="using-promiseall">Using Promise.all()</h1>
+<h2 id="using-promiseall">Using Promise.all()</h2>
 <p>When done correctly, promise composition is a great way to handle situations where asynchronous operations depend on each other or execution order matters. What if we’re dealing with multiple promises, but we don’t care about the order? Let’s think in terms of cleaning again.</p>
 <p>To maximize efficiency we should use <em>concurrency</em>, multiple asynchronous operations happening together. With promises, we can do this with the function <code>Promise.all()</code>.</p>
 <ul>
 <li>If every promise in the argument array resolves, the single promise returned from <code>Promise.all()</code> will resolve with an array containing the resolve value from each promise in the argument array.</li>
 <li>If any promise from the argument array rejects, the single promise returned from <code>Promise.all()</code> will immediately reject with the reason that promise rejected. This behavior is sometimes referred to as <em>failing fast</em>.</li>
 </ul>
-<pre><code class="js">let myPromises = Promise.all([returnsPromOne(), returnsPromTwo(), returnsPromThree()]);
+<pre><code class="language-js">let myPromises = Promise.all([returnsPromOne(), returnsPromTwo(), returnsPromThree()]);
 
 myPromises
   .then((arrayOfValues) =&gt; {
@@ -2025,29 +1643,27 @@ myPromises
     console.log(rejectionReason);
   });
 </code></pre>
-
 <ul>
 <li>We declare <code>myPromises</code> assigned to invoking <code>Promise.all()</code>.</li>
 <li>We invoke <code>Promise.all()</code> with an array of three promises— the returned values from functions.</li>
 <li>We invoke <code>.then()</code> with a success handler which will print the array of resolved values if each promise resolves successfully.</li>
 <li>We invoke <code>.catch()</code> with a failure handler which will print the first rejection message if any promise rejects.</li>
 </ul>
-<h1 id="the-async-keyword">The async Keyword</h1>
+<h2 id="the-async-keyword">The async Keyword</h2>
 <p>The <code>async</code> keyword is used to write functions that handle asynchronous actions. We wrap our asynchronous logic inside a function prepended with the <code>async</code> keyword. Then, we invoke that function.</p>
-<pre><code class="js">const myFunc = async () =&gt; {
+<pre><code class="language-js">const myFunc = async () =&gt; {
   // Function body here
 };
 
 myFunc();
 </code></pre>
-
 <p><code>async</code> functions always return a promise. This means we can use traditional promise syntax, like <code>.then()</code> and <code>.catch</code> with our <code>async</code> functions. An <code>async</code> function will return in one of three ways:</p>
 <ul>
 <li>If there’s nothing returned from the function, it will return a promise with a resolved value of <code>undefined</code>.</li>
 <li>If there’s a non-promise value returned from the function, it will return a promise resolved to that value.</li>
 <li>If a promise is returned from the function, it will simply return that promise</li>
 </ul>
-<pre><code class="js">async function fivePromise() { 
+<pre><code class="language-js">async function fivePromise() { 
   return 5;
 }
 
@@ -2056,8 +1672,7 @@ fivePromise()
     console.log(resolvedValue);
   })  // Prints 5
 </code></pre>
-
-<h1 id="the-await-operator">The await Operator</h1>
+<h2 id="the-await-operator">The await Operator</h2>
 <ul>
 <li>
 <p><code>async</code> functions are almost always used with the additional keyword <code>await</code> inside the function body.</p>
@@ -2122,9 +1737,9 @@ fivePromise()
    let secondValue = await returnsSecondPromise(firstValue);
    console.log(secondValue);
   }</code></p>
-<h1 id="handling-errors">Handling Errors</h1>
+<h2 id="handling-errors">Handling Errors</h2>
 <p>With <code>async...await</code>, we use <code>try...catch</code> statements for error handling. By using this syntax, not only are we able to handle errors in the same way we do with synchronous code, but we can also catch both synchronous and asynchronous errors. This makes for easier debugging!</p>
-<pre><code class="js">async function usingTryCatch() {
+<pre><code class="language-js">async function usingTryCatch() {
  try {
    let resolveValue = await asyncFunction('thing that will fail');
    let secondValue = await secondAsyncFunction(resolveValue);
@@ -2136,10 +1751,9 @@ fivePromise()
 
 usingTryCatch();
 </code></pre>
-
-<h1 id="handling-independent-promises">Handling Independent Promises</h1>
+<h2 id="handling-independent-promises">Handling Independent Promises</h2>
 <p>Remember that <code>await</code> halts the execution of our <code>async</code> function. This allows us to conveniently write synchronous-style code to handle dependent promises. But what if our <code>async</code> function contains multiple promises which are not dependent on the results of one another to execute</p>
-<pre><code class="js">async function serveDinner()
+<pre><code class="language-js">async function serveDinner()
 {
  const vegetablePromise = steamBroccoli();
  const starchPromise = cookRice();
@@ -2149,19 +1763,17 @@ usingTryCatch();
 }
 serveDinner();
 </code></pre>
-
-<h1 id="await-promiseall">Await Promise.all()</h1>
+<h2 id="await-promiseall">Await Promise.all()</h2>
 <p>Another way to take advantage of concurrency when we have multiple promises which can be executed simultaneously is to <code>await</code> a <code>Promise.all()</code></p>
-<pre><code class="js">async function asyncPromAll() {
+<pre><code class="language-js">async function asyncPromAll() {
   const resultArray = await Promise.all([asyncTask1(), asyncTask2(), asyncTask3(), asyncTask4()]);
   for (let i = 0; i&lt;resultArray.length; i++){
     console.log(resultArray[i]); 
   }
 }
 </code></pre>
-
 <p><code>Promise.all()</code> allows us to take advantage of asynchronicity— each of the four asynchronous tasks can process concurrently. <code>Promise.all()</code> also has the benefit of <em>failing fast</em>, meaning it won’t wait for the rest of the asynchronous actions to complete once any one has rejected. As soon as the first promise in the array rejects, the promise returned from <code>Promise.all()</code> will reject with that reason. As it was when working with native promises, <code>Promise.all()</code> is a good choice if multiple asynchronous tasks are all required, but none must wait for any other before executing.</p>
-<pre><code class="js">async function serveDinnerAgain(){
+<pre><code class="language-js">async function serveDinnerAgain(){
   let foodArray = await Promise.all([steamBroccoli(), cookRice(), bakeChicken(), cookBeans()]); 
 
   console.log(`Dinner is served. We're having ${foodArray[0]}, ${foodArray[1]}, ${foodArray[2]}, and ${foodArray[3]}.`)
@@ -2169,25 +1781,24 @@ serveDinner();
 
 serveDinnerAgain()
 </code></pre>
-
-<h1 id="http-requests">HTTP Requests</h1>
+<h2 id="http-requests">HTTP Requests</h2>
 <p>Web developers use the event loop to create a smoother browsing experience by deciding when to call functions and how to handle asynchronous events. We’ll be exploring one system of technologies called Asynchronous JavaScript and XML, or AJAX.</p>
 <p>To read more about the event loop, read the MDN documentation:</p>
 <ul>
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop">MDN Documentation: Event Loop</a></li>
 </ul>
-<h1 id="xhr-get-requests-i">XHR GET Requests I</h1>
+<h2 id="xhr-get-requests-i">XHR GET Requests I</h2>
 <p>Asynchronous JavaScript and XML (AJAX), enables requests to be made after the initial page load. Initially, AJAX was used only for XML formatted data, now it can be used to make requests that have many different formats.</p>
 <p><a href="https://developer.mozilla.org/en-US/docs/XML_introduction">MDN Documentation: Extensible Markup Language (XML)</a>.</p>
 <p>Similarly, the XMLHttpRequest (XHR) API, named for XML, can be used to make many kinds of requests and supports other forms of data.</p>
-<h1 id="xhr-get-requests-ii">XHR GET Requests II</h1>
+<h2 id="xhr-get-requests-ii">XHR GET Requests II</h2>
 <p>We are going to reconstruct XHR GET request boilerplate code step-by-step until we have written a complete GET request.</p>
 <p>Feel free to refer to the XHR GET diagram at any point while completing this exercise:</p>
 <ul>
 <li><a href="https://s3.amazonaws.com/codecademy-content/courses/intermediate-javascript-requests/diagrams/XHR+GET+diagram.svg">XHR GET diagram</a></li>
 </ul>
 <p>Example</p>
-<pre><code class="js">/*The XMLHttpRequest object is used in JavaScript to create and send requests. To create a new instance of an object, you would use the new keyword. Like so:*/
+<pre><code class="language-js">/*The XMLHttpRequest object is used in JavaScript to create and send requests. To create a new instance of an object, you would use the new keyword. Like so:*/
 
 /*Make sure the URL is wrapped in quotes so that it is a string.*/
 
@@ -2201,83 +1812,133 @@ xhr.onreadystatechange = () =&gt; {
 };
 xhr.open('GET', url);
 xhr.send();
-</code></pre></div>
-        </div>
-
-        <footer class="col-md-12">
-            <hr>
-            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
-        </footer>
-        <script>
-            var base_url = "..",
-                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
-        </script>
-        <script src="../js/base.js" defer></script>
-        <script src="../search/main.js" defer></script>
-
-        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
-            </div>
-            <div class="modal-body">
-                <p>
-                    From here you can search these documents. Enter
-                    your search terms below.
-                </p>
-                <form role="form">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
-                    </div>
-                </form>
-                <div id="mkdocs-search-results"></div>
-            </div>
-            <div class="modal-footer">
-            </div>
-        </div>
-    </div>
-</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
-            </div>
-            <div class="modal-body">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th style="width: 20%;">Keys</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td class="help shortcut"><kbd>?</kbd></td>
-                    <td>Open this help</td>
-                  </tr>
-                  <tr>
-                    <td class="next shortcut"><kbd>n</kbd></td>
-                    <td>Next page</td>
-                  </tr>
-                  <tr>
-                    <td class="prev shortcut"><kbd>p</kbd></td>
-                    <td>Previous page</td>
-                  </tr>
-                  <tr>
-                    <td class="search shortcut"><kbd>s</kbd></td>
-                    <td>Search</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="modal-footer">
-            </div>
-        </div>
-    </div>
+</code></pre></article><aside class="article-toc"><span class="eyebrow">ON THIS PAGE</span><div class="toc">
+<ul>
+<li><a href="#javascript-es6-notes">Javascript ES6 Notes:</a><ul>
+<li><a href="#javascript-versions-es6-and-before">JavaScript Versions: ES6 and Before</a></li>
+<li><a href="#progate-codeacademy-lesson-1">Progate + Codeacademy Lesson 1:</a></li>
+<li><a href="#progate-lesson-2">Progate Lesson 2</a></li>
+<li><a href="#codeacdemy-lesson-1">CodeAcdemy Lesson 1:</a><ul>
+<li><a href="#maths-in-javascript-documentation">Maths In Javascript Documentation</a></li>
+<li><a href="#number-in-javascript-documentation">Number in Javascript Documentation</a></li>
+</ul>
+</li>
+<li><a href="#variable-in-js">Variable in JS</a><ul>
+<li><a href="#string-interpolation">String Interpolation</a></li>
+</ul>
+</li>
+<li><a href="#typeof-operator">Typeof Operator</a></li>
+</ul>
+</li>
+<li><a href="#functions-in-javascript">Functions in Javascript</a><ul>
+<li><a href="#default-parameters">Default Parameters</a></li>
+<li><a href="#return-function">Return Function</a></li>
+</ul>
+</li>
+<li><a href="#arrow-functions">Arrow Functions</a><ul>
+<li><a href="#concise-body-arrow-functions">Concise Body Arrow Functions</a></li>
+</ul>
+</li>
+<li><a href="#arrays">Arrays</a><ul>
+<li><a href="#arrays-and-functions">Arrays and Functions</a></li>
+</ul>
+</li>
+<li><a href="#nested-arrays">Nested Arrays</a></li>
+<li><a href="#higher-order-functions">HIGHER-ORDER FUNCTIONS</a><ul>
+<li><a href="#functions-as-data">Functions as Data</a></li>
+<li><a href="#functions-as-parameters">Functions as Parameters</a></li>
+</ul>
+</li>
+<li><a href="#iterators">Iterators</a><ul>
+<li><a href="#the-foreach-method">The .forEach() Method</a></li>
+<li><a href="#the-map-method">The .map() Method</a></li>
+</ul>
+</li>
+<li><a href="#the-filter-method">The .filter() Method</a></li>
+<li><a href="#the-findindex-method">The .findIndex() Method</a></li>
+<li><a href="#the-reduce-method">The .reduce() Method</a><ul>
+<li><a href="#more-example">More Example :</a></li>
+</ul>
+</li>
+<li><a href="#introduction-to-objects">Introduction to Objects</a><ul>
+<li><a href="#creating-object-literals">Creating Object Literals</a></li>
+<li><a href="#accessing-properties">Accessing Properties</a></li>
+<li><a href="#using-bracket-notation">Using Bracket [ ] notation</a></li>
+<li><a href="#property-assignment">Property Assignment</a></li>
+<li><a href="#methods">Methods</a></li>
+<li><a href="#nested-objects">Nested Objects</a></li>
+<li><a href="#pass-by-reference">Pass By Reference</a></li>
+<li><a href="#looping-through-objects">Looping Through Objects</a></li>
+</ul>
+</li>
+<li><a href="#advanced-objects-introduction">Advanced Objects Introduction</a></li>
+<li><a href="#the-this-keyword">The this Keyword</a><ul>
+<li><a href="#arrow-functions-and-this">Arrow Functions and this</a></li>
+<li><a href="#privacy">Privacy</a><ul>
+<li><a href="#getters">Getters</a></li>
+<li><a href="#setters">Setters</a></li>
+<li><a href="#factory-functions">Factory Functions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#built-in-object-methods">Built-in Object Methods</a></li>
+<li><a href="#introduction-to-classes">Introduction to Classes</a><ul>
+<li><a href="#constructor">Constructor</a></li>
+<li><a href="#instance">Instance</a></li>
+<li><a href="#methods_1">Methods</a></li>
+<li><a href="#method-calls">Method Calls</a></li>
+<li><a href="#inheritance-i">Inheritance I</a></li>
+<li><a href="#static-methods">Static Methods</a><ul>
+<li><a href="#browser-compatibility-and-transpilation">BROWSER COMPATIBILITY AND TRANSPILATION</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#transpilation-with-babel">Transpilation With Babel</a><ul>
+<li><a href="#transpile-es6-code-to-es5">transpile ES6 code to ES5</a></li>
+<li><a href="#babelrc">.babelrc</a></li>
+<li><a href="#build">Build</a></li>
+<li><a href="#intermediate-javascript-modules">INTERMEDIATE JAVASCRIPT MODULES</a></li>
+</ul>
+</li>
+<li><a href="#moduleexports">module.exports</a></li>
+<li><a href="#require">require()</a></li>
+<li><a href="#export-default">Export default</a></li>
+<li><a href="#import">Import</a></li>
+<li><a href="#named-exports">Named Exports</a><ul>
+<li><a href="#named-imports">Named Imports</a></li>
+<li><a href="#export-named-exports">Export Named Exports</a><ul>
+<li><a href="#import-named-imports">Import Named Imports</a></li>
+</ul>
+</li>
+<li><a href="#export-as">Export as</a></li>
+<li><a href="#import-as">Import as</a><ul>
+<li><a href="#combining-export-statements">Combining Export Statements</a></li>
+<li><a href="#combining-import-statements">Combining Import Statements</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#what-is-a-promise">What is a Promise?</a><ul>
+<li><a href="#constructing-a-promise-object">Constructing a Promise Object</a></li>
+<li><a href="#the-node-settimeout-function">The Node setTimeout() Function</a></li>
+<li><a href="#consuming-promises">Consuming Promises</a></li>
+<li><a href="#the-onfulfilled-and-onrejected-functions">The onFulfilled and onRejected Functions</a></li>
+<li><a href="#using-catch-with-promises">Using catch() with Promises</a></li>
+</ul>
+</li>
+<li><a href="#chaining-multiple-promises">Chaining Multiple Promises</a></li>
+<li><a href="#avoiding-common-mistakes">Avoiding Common Mistakes</a></li>
+<li><a href="#using-promiseall">Using Promise.all()</a></li>
+<li><a href="#the-async-keyword">The async Keyword</a></li>
+<li><a href="#the-await-operator">The await Operator</a></li>
+<li><a href="#handling-errors">Handling Errors</a></li>
+<li><a href="#handling-independent-promises">Handling Independent Promises</a></li>
+<li><a href="#await-promiseall">Await Promise.all()</a></li>
+<li><a href="#http-requests">HTTP Requests</a></li>
+<li><a href="#xhr-get-requests-i">XHR GET Requests I</a></li>
+<li><a href="#xhr-get-requests-ii">XHR GET Requests II</a></li>
+</ul>
 </div>
-
-    </body>
-</html>
+</aside></div><div class="article-end"><span class="eyebrow">KEEP EXPLORING</span><h2>One note leads to another.</h2><a class="tactile" href="../library/">Back to the library →</a></div></main></div><footer><div class="footer-top wrap"><div class="footer-brand"><a class="wordmark" href="../">notex<span class="badge">OPEN</span></a><p>A personal library for deliberate<br>technical practice.</p><a href="https://github.com/harshityadav95/Notex">Explore the source ↗</a></div><div class="footer-links"><div><h3>Languages</h3><a class="" href="../python/">Python</a><a class="" href="../Javascript-ES6-Notes/">JavaScript &amp; ES6</a><a class="" href="../C%2B%2B/">C / C++</a><a class="" href="../css/">CSS</a></div><div><h3>Systems</h3><a class="" href="../Learning_System_Design/">System Design from Scratch</a><a class="" href="../Scalable_crossplatform_design/">Scalable Cross-platform Design</a></div><div><h3>AI &amp; ML</h3><a class="" href="../ai_ml_index/">AI &amp; Machine Learning</a><a class="" href="../Research/">Research</a></div><div><h3>Databases</h3><a class="" href="../sql/">SQL</a><a class="" href="../postgresql/">PostgreSQL</a><a class="" href="../MongoDB/">MongoDB</a></div><div><h3>Development</h3><a class="" href="../django/">Django</a><a class="" href="../git/">Git</a><a class="" href="../markdownsyntax/">Markdown</a><a class="" href="../vimCheats/">Vim Cheatsheet</a><a class="" href="../Tools_Compilation/">Developer Tools</a></div></div></div><div class="footer-bottom wrap"><span>© 2026 Notex · Open knowledge, shared freely.</span><a href="../licenses/">Licenses & credits</a><span>Designed by <a href="https://harshityadav.in">harshityadav.in</a></span></div></footer><dialog class="search-dialog"><div class="search-top"><span>⌕</span><input type="search" placeholder="Search notes, topics, code…" aria-label="Search the library" autocomplete="off"><button aria-label="Close search" data-close>Esc</button></div><div class="search-hint">Search across the entire library <kbd>⌘ K</kbd></div><div id="search-results" aria-live="polite"></div></dialog><div class="toast" role="status"></div></body></html>

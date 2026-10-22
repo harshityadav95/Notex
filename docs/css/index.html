@@ -1,0 +1,498 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Notex: open notes, code snippets, system design, programming languages and handwritten resources by Harshit Yadav."><meta name="theme-color" content="#f7f7f8"><title>CSS · Notex</title><link rel="icon" href="../assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../assets/style.css?v=c95c66291b"><script src="../assets/app.js?v=1141b2008c" defer></script></head><body class="reading" data-base="../"><a class="skip" href="#main-content">Skip to content</a><div class="announcement"><a href="../library/"><span class="badge live">OPEN</span> Your next idea starts with a note <span class="announcement-more">Explore the library →</span></a><button aria-label="Dismiss announcement" data-dismiss>×</button></div><header class="site-header"><div class="nav-wrap"><a class="wordmark" href="../">notex<span class="badge">OPEN</span></a><nav aria-label="Main navigation"><div class="dropdown"><button aria-expanded="false" data-dropdown>Learning <span>⌄</span></button><div class="dropdown-panel"><a class="" href="../python/">Programming languages</a><a class="" href="../Learning_System_Design/">System design in depth</a><a class="" href="../ai_ml_index/">AI &amp; machine learning</a><a class="" href="../sql/">Databases &amp; SQL</a><a class="" href="../django/">Tools for building</a><a class="" href="../dsalgo/dsalgoindex/">Data structures &amp; algorithms</a><a class="" href="../terminal_commands/">Terminal &amp; hardware</a></div></div><a href="../library/">Library</a><a href="../library/#handwritten">Handwritten</a><a href="../library/#notebooks">Notebooks</a><div class="dropdown"><button aria-expanded="false" data-dropdown>Explore <span>⌄</span></button><div class="dropdown-panel"><a href="../#paths">Learning paths</a><a href="../#about">About Notex</a><a class="" href="../Research/">Research</a><a class="" href="../Tools_Compilation/">Developer tools</a></div></div><a href="https://github.com/harshityadav95/Notex">GitHub ↗</a></nav><div class="nav-actions"><a class="pill open-source" href="https://github.com/harshityadav95/Notex">100% open source ↗</a><button class="search-trigger tactile" aria-label="Search notes" data-search><img src="../assets/icons/search.svg" alt="" width="18" height="18"></button><a class="tactile desktop-start" href="../python/">Start reading</a><button class="tactile menu-trigger" aria-label="Open navigation menu" data-menu><img src="../assets/icons/menu.svg" alt="" width="16" height="16"> Menu</button></div></div></header><dialog class="menu-dialog"><div class="menu-head"><span class="wordmark">notex</span><button aria-label="Close menu" data-close>×</button></div><p>Notes, code and ideas. All in one place.</p><nav aria-label="Mobile navigation"><a href="../library/">All notes</a><a href="../library/#handwritten">Handwritten notes</a><a href="../library/#notebooks">Python notebooks</a><a href="../#about">About Notex</a><a class="" href="../python/">Programming languages</a><a class="" href="../Learning_System_Design/">System design in depth</a><a class="" href="../ai_ml_index/">AI &amp; machine learning</a><a class="" href="../sql/">Databases &amp; SQL</a><a class="" href="../django/">Tools for building</a><a class="" href="../dsalgo/dsalgoindex/">Data structures &amp; algorithms</a><a class="" href="../terminal_commands/">Terminal &amp; hardware</a><a href="https://github.com/harshityadav95/Notex">GitHub ↗</a></nav></dialog><div class="reader-bar"><button class="tactile" data-sidebar aria-expanded="false">☰ Topics</button><a href="../">Notex</a><span>/</span><span>Languages</span><span>/</span><strong>CSS</strong></div><div class="reader-layout"><aside class="sidebar" aria-label="Topic navigation"><a class="sidebar-overview" href="../#library">← All notes</a><p class="eyebrow">WORKSPACE</p><details open><summary>Languages<span>04</span></summary><a class="" href="../python/">Python</a><a class="" href="../Javascript-ES6-Notes/">JavaScript &amp; ES6</a><a class="" href="../C%2B%2B/">C / C++</a><a class="active" href="../css/">CSS</a></details><details ><summary>Systems<span>02</span></summary><a class="" href="../Learning_System_Design/">System Design from Scratch</a><a class="" href="../Scalable_crossplatform_design/">Scalable Cross-platform Design</a></details><details ><summary>AI &amp; ML<span>02</span></summary><a class="" href="../ai_ml_index/">AI &amp; Machine Learning</a><a class="" href="../Research/">Research</a></details><details ><summary>Databases<span>03</span></summary><a class="" href="../sql/">SQL</a><a class="" href="../postgresql/">PostgreSQL</a><a class="" href="../MongoDB/">MongoDB</a></details><details ><summary>Development<span>05</span></summary><a class="" href="../django/">Django</a><a class="" href="../git/">Git</a><a class="" href="../markdownsyntax/">Markdown</a><a class="" href="../vimCheats/">Vim Cheatsheet</a><a class="" href="../Tools_Compilation/">Developer Tools</a></details><details ><summary>Algorithms<span>04</span></summary><a class="" href="../dsalgo/dsalgoindex/">Data Structures &amp; Algorithms</a><a class="" href="../dsalgo/sorting/">Sorting Algorithms</a><a class="" href="../dsalgo/sol1/">Worked Solutions</a><a class="" href="../Programming_Interview_Study_Plan/">Programming Interview Study Plan</a></details><details ><summary>The garage<span>02</span></summary><a class="" href="../terminal_commands/">Terminal Commands</a><a class="" href="../thinkpad/">ThinkPad</a></details><div class="sidebar-foot">FREE TO READ · OPEN TO EVERYONE</div></aside><main id="main-content" class="reader-main"><div class="article-meta"><span class="eyebrow">Languages / NOTES</span><span>4 MIN READ</span></div><h1 class="article-title">CSS</h1><div class="article-actions"><button class="tactile" data-save="css/" aria-pressed="false">Save note</button><a href="https://github.com/harshityadav95/Notex/blob/master/src/css.md">Edit on GitHub ↗</a><span>Always free to read</span></div><div class="article-layout"><article class="prose"><h3 id="keyframe-animation-change-color">Keyframe Animation change color</h3>
+<pre><code>&lt;style&gt;
+  div {
+    height: 50px;
+    width: 70%;
+    background: black;
+    margin: 50px auto;
+    border-radius: 5px;
+  }
+
+  #rect {
+  animation-name: rainbow;
+  animation-duration: 4s;
+  }
+  @keyframes rainbow
+  {
+    0% {
+        background-color: blue;
+    }
+    50% {
+      background-color: green
+    }
+    100% {
+      background-color: yellow;
+
+    }
+  }
+
+
+
+
+&lt;/style&gt;
+&lt;div id=&quot;rect&quot;&gt;&lt;/div&gt;
+
+
+</code></pre>
+<h3 id="change-button-color-with-hover-using-animation">Change button color with hover using animation</h3>
+<pre><code>&lt;style&gt;
+  button {
+    border-radius: 5px;
+    color: white;
+    background-color: #0F5897;
+    padding: 5px 10px 8px 10px;
+  }
+
+  button:hover {
+    animation-name: background-color;
+    animation-duration: 500ms;
+  }
+  @keyframes background-color
+  {
+    100% {
+      background-color:#4791d0;
+    }
+
+  }
+
+&lt;/style&gt;
+
+&lt;button&gt;Register&lt;/button&gt;
+</code></pre>
+<h2 id="change-the-color-of-the-button-on-hover-and-remain-that-way">Change the color of the button on Hover and remain that way</h2>
+<pre><code>&lt;style&gt;
+  button {
+    border-radius: 5px;
+    color: white;
+    background-color: #0F5897;
+    padding: 5px 10px 8px 10px;
+  }
+  button:hover {
+    animation-name: background-color;
+    animation-duration: 500ms;
+    /* Only change code below this line */
+    animation-fill-mode:forwards;
+
+    /* Only change code above this line */
+  }
+  @keyframes background-color {
+    100% {
+      background-color: #4791d0;
+    }
+  }
+&lt;/style&gt;
+&lt;button&gt;Register&lt;/button&gt;
+
+</code></pre>
+<h2 id="create-movement-animation-using-css-animation">Create Movement Animation using CSS Animation</h2>
+<pre><code>&lt;style&gt;
+  div {
+    height: 40px;
+    width: 70%;
+    background: black;
+    margin: 50px auto;
+    border-radius: 5px;
+    position: relative;
+  }
+
+  #rect {
+    animation-name: rainbow;
+    animation-duration: 4s;
+  }
+
+  @keyframes rainbow {
+    0% {
+      background-color: blue;
+      top: 0px;
+      left:0px;
+
+    }
+    50% {
+      background-color: green;
+      top: 50px;
+      left:25px;
+
+    }
+    100% {
+      background-color: yellow;
+      top: 0px;
+      left:-25px;
+
+    }
+  }
+&lt;/style&gt;
+
+&lt;div id=&quot;rect&quot;&gt;&lt;/div&gt;
+</code></pre>
+<h2 id="fade-the-element-as-it-moves">Fade the element as it moves</h2>
+<pre><code>&lt;style&gt;
+
+  #ball {
+    width: 70px;
+    height: 70px;
+    margin: 50px auto;
+    position: fixed;
+    left: 20%;
+    border-radius: 50%;
+    background: linear-gradient(
+      35deg,
+      #ccffff,
+      #ffcccc
+    );
+    animation-name: fade;
+    animation-duration: 3s;
+
+  }
+
+  @keyframes fade {
+    50% {
+      left: 60%;
+      opacity:0.1;
+
+    }
+  }
+
+&lt;/style&gt;
+
+&lt;div id=&quot;ball&quot;&gt;&lt;/div&gt;
+
+</code></pre>
+<h2 id="iterating-animation-in-a-loop">Iterating animation in a loop</h2>
+<pre><code>&lt;style&gt;
+
+  #ball {
+    width: 100px;
+    height: 100px;
+    margin: 50px auto;
+    position: relative;
+    border-radius: 50%;
+    background: linear-gradient(
+      35deg,
+      #ccffff,
+      #ffcccc
+    );
+    animation-name: bounce;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+  }
+
+  @keyframes bounce{
+    0% {
+      top: 0px;
+    }
+    50% {
+      top: 249px;
+      width: 130px;
+      height: 70px;
+    }
+    100% {
+      top: 0px;
+    }
+  }
+&lt;/style&gt;
+&lt;div id=&quot;ball&quot;&gt;&lt;/div&gt;
+
+</code></pre>
+<h2 id="make-a-growing-and-shrinking-animation-by-scaling">Make a growing and shrinking animation by scaling</h2>
+<pre><code>&lt;style&gt;
+  .back {
+    position: fixed;
+    padding: 0;
+    margin: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    animation-name: backdiv;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+
+  }
+
+  .heart {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: pink;
+    height: 50px;
+    width: 50px;
+    transform: rotate(-45deg);
+    animation-name: beat;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+
+
+  }
+  .heart:after {
+    background-color: pink;
+    content: &quot;&quot;;
+    border-radius: 50%;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: 0px;
+    left: 25px;
+  }
+  .heart:before {
+    background-color: pink;
+    content: &quot;&quot;;
+    border-radius: 50%;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: -25px;
+    left: 0px;
+  }
+
+  @keyframes backdiv {
+    50% {
+      background: #ffe6f2;
+    }
+  }
+
+  @keyframes beat {
+    0% {
+      transform: scale(1) rotate(-45deg);
+    }
+    50% {
+      transform: scale(0.6) rotate(-45deg);
+    }
+  }
+
+&lt;/style&gt;
+&lt;div class=&quot;back&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;heart&quot;&gt;&lt;/div&gt;
+
+</code></pre>
+<h2 id="animate-elements-of-css-at-different-rate">Animate elements of CSS at different rate</h2>
+<pre><code>&lt;style&gt;
+  .stars {
+    background-color: white;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    animation-iteration-count: infinite;
+  }
+
+  .star-1 {
+    margin-top: 15%;
+    margin-left: 60%;
+    animation-name: twinkle-1;
+    animation-duration: 1s;
+  }
+
+  .star-2 {
+    margin-top: 25%;
+    margin-left: 25%;
+    animation-name: twinkle-2;
+    animation-duration: 1s;
+  }
+
+  @keyframes twinkle-1 {
+    50% {
+      transform: scale(0.5);
+      opacity: 0.5;
+    }
+  }
+
+  @keyframes twinkle-2 {
+    20% {
+      transform: scale(0.5);
+      opacity: 0.5;
+    }
+  }
+
+
+  #back {
+    position: fixed;
+    padding: 0;
+    margin: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(black, #000099, #66c2ff, #ffcccc, #ffeee6);
+  }
+&lt;/style&gt;
+
+&lt;div id=&quot;back&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;star-1 stars&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;star-2 stars&quot;&gt;&lt;/div&gt;
+</code></pre>
+<h2 id="animate-multiple-elements-at-variable-rate">Animate Multiple Elements at Variable Rate</h2>
+<pre><code>&lt;style&gt;
+  .stars {
+    background-color: white;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    animation-iteration-count: infinite;
+  }
+
+  .star-1 {
+    margin-top: 15%;
+    margin-left: 60%;
+    animation-duration: 1s;
+    animation-name: twinkle;
+  }
+
+  .star-2 {
+    margin-top: 25%;
+    margin-left: 25%;
+    animation-duration: 0.9s;
+    animation-name: twinkle;
+  }
+
+  .star-3 {
+    margin-top: 10%;
+    margin-left: 50%;
+    animation-duration: 1.1s;
+    animation-name: twinkle;
+  }
+
+  @keyframes twinkle {
+    20% {
+      transform: scale(0.5);
+      opacity: 0.5;
+    }
+  }
+
+  #back {
+    position: fixed;
+    padding: 0;
+    margin: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(black, #000099, #66c2ff, #ffcccc, #ffeee6);
+  }
+&lt;/style&gt;
+
+&lt;div id=&quot;back&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;star-1 stars&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;star-2 stars&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;star-3 stars&quot;&gt;&lt;/div&gt;
+
+</code></pre>
+<h2 id="change-animation-speed-with-keyword">Change Animation  speed with keyword</h2>
+<pre><code>&lt;style&gt;
+
+  .balls {
+    border-radius: 50%;
+    background: linear-gradient(
+      35deg,
+      #ccffff,
+      #ffcccc
+    );
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    margin-top: 50px;
+    animation-name: bounce;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+  }
+  #ball1 {
+    left:27%;
+    animation-timing-function: linear;
+
+  }
+  #ball2 {
+    left:56%;
+    animation-timing-function: ease-out;
+
+  }
+
+
+  @keyframes bounce {
+    0% {
+      top: 0px;
+    }
+    100% {a
+      top: 249px;
+    }
+  }
+
+&lt;/style&gt;
+
+&lt;div class=&quot;balls&quot; id=&quot;ball1&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;balls&quot; id=&quot;ball2&quot;&gt;&lt;/div&gt;
+
+</code></pre>
+<h2 id="curve-animation-using-bezier-curves">Curve Animation using Bezier Curves</h2>
+<pre><code>cubic-bezier(0.25, 0.25, 0.75, 0.75);
+</code></pre>
+<h2 id="the-viewport-is-a-users-visible-area-of-a-web-page-and-is-different-depending-on-the-device-used-to-access-the-site">The viewport is a user's visible area of a web page, and is different depending on the device used to access the site.</h2>
+<p>Here's an example of a media query that returns the content when the device's width is less than or equal to 100px:</p>
+<pre><code>@media (max-width: 100px) { /* CSS Rules */ }
+</code></pre>
+<p>and the following media query returns the content when the device's height is more than or equal to 350px:</p>
+<pre><code>@media (min-height: 350px) { /* CSS Rules */ }
+</code></pre>
+<p>Remember, the CSS inside the media query is applied only if the media type matches that of the device being used.</p>
+<pre><code>&lt;style&gt;
+  p {
+    font-size: 20px;
+  }
+
+  /* Only change code below this line */
+@media (max-height: 800px) { p {
+    font-size: 10px;
+  } }
+  /* Only change code above this line */
+&lt;/style&gt;
+</code></pre>
+<h2 id="make-an-responsive-images-using">Make an Responsive Images using</h2>
+<p>The <code>max-width</code> of <code>100%</code> will make sure the image is never wider than the container it is in, and the <code>height</code> of <code>auto</code> will make the image keep its original aspect ratio.</p>
+<pre><code>&lt;style&gt;
+.responsive-img {
+    max-width: 100%;
+  height: auto;
+
+
+}
+
+img {
+  width: 600px;
+}
+&lt;/style&gt;
+</code></pre>
+<h2 id="make-typography-responsive">Make Typography Responsive</h2>
+<p>The four different viewport units are:</p>
+<ul>
+<li><code>vw</code> (viewport width): <code>10vw</code> would be 10% of the viewport's width.</li>
+<li><code>vh</code> (viewport height): <code>3vh</code> would be 3% of the viewport's height.</li>
+<li><code>vmin</code> (viewport minimum): <code>70vmin</code> would be 70% of the viewport's smaller dimension (height or width).</li>
+<li><code>vmax</code> (viewport maximum): <code>100vmax</code> would be 100% of the viewport's bigger dimension (height or width).</li>
+</ul>
+<p>Here is an example that sets a body tag to 30% of the viewport's width.</p>
+<pre><code>body { width: 30vw; }
+</code></pre>
+<pre><code>&lt;style&gt;
+h2 {width:80vw;}
+p {width:75vmin}
+&lt;/style&gt;
+</code></pre></article><aside class="article-toc"><span class="eyebrow">ON THIS PAGE</span><div class="toc">
+<ul>
+<li><a href="#keyframe-animation-change-color">Keyframe Animation change color</a></li>
+<li><a href="#change-button-color-with-hover-using-animation">Change button color with hover using animation</a></li>
+<li><a href="#change-the-color-of-the-button-on-hover-and-remain-that-way">Change the color of the button on Hover and remain that way</a></li>
+<li><a href="#create-movement-animation-using-css-animation">Create Movement Animation using CSS Animation</a></li>
+<li><a href="#fade-the-element-as-it-moves">Fade the element as it moves</a></li>
+<li><a href="#iterating-animation-in-a-loop">Iterating animation in a loop</a></li>
+<li><a href="#make-a-growing-and-shrinking-animation-by-scaling">Make a growing and shrinking animation by scaling</a></li>
+<li><a href="#animate-elements-of-css-at-different-rate">Animate elements of CSS at different rate</a></li>
+<li><a href="#animate-multiple-elements-at-variable-rate">Animate Multiple Elements at Variable Rate</a></li>
+<li><a href="#change-animation-speed-with-keyword">Change Animation speed with keyword</a></li>
+<li><a href="#curve-animation-using-bezier-curves">Curve Animation using Bezier Curves</a></li>
+<li><a href="#the-viewport-is-a-users-visible-area-of-a-web-page-and-is-different-depending-on-the-device-used-to-access-the-site">The viewport is a user's visible area of a web page, and is different depending on the device used to access the site.</a></li>
+<li><a href="#make-an-responsive-images-using">Make an Responsive Images using</a></li>
+<li><a href="#make-typography-responsive">Make Typography Responsive</a></li>
+</ul>
+</div>
+</aside></div><div class="article-end"><span class="eyebrow">KEEP EXPLORING</span><h2>One note leads to another.</h2><a class="tactile" href="../library/">Back to the library →</a></div></main></div><footer><div class="footer-top wrap"><div class="footer-brand"><a class="wordmark" href="../">notex<span class="badge">OPEN</span></a><p>A personal library for deliberate<br>technical practice.</p><a href="https://github.com/harshityadav95/Notex">Explore the source ↗</a></div><div class="footer-links"><div><h3>Languages</h3><a class="" href="../python/">Python</a><a class="" href="../Javascript-ES6-Notes/">JavaScript &amp; ES6</a><a class="" href="../C%2B%2B/">C / C++</a><a class="" href="../css/">CSS</a></div><div><h3>Systems</h3><a class="" href="../Learning_System_Design/">System Design from Scratch</a><a class="" href="../Scalable_crossplatform_design/">Scalable Cross-platform Design</a></div><div><h3>AI &amp; ML</h3><a class="" href="../ai_ml_index/">AI &amp; Machine Learning</a><a class="" href="../Research/">Research</a></div><div><h3>Databases</h3><a class="" href="../sql/">SQL</a><a class="" href="../postgresql/">PostgreSQL</a><a class="" href="../MongoDB/">MongoDB</a></div><div><h3>Development</h3><a class="" href="../django/">Django</a><a class="" href="../git/">Git</a><a class="" href="../markdownsyntax/">Markdown</a><a class="" href="../vimCheats/">Vim Cheatsheet</a><a class="" href="../Tools_Compilation/">Developer Tools</a></div></div></div><div class="footer-bottom wrap"><span>© 2026 Notex · Open knowledge, shared freely.</span><a href="../licenses/">Licenses & credits</a><span>Designed by <a href="https://harshityadav.in">harshityadav.in</a></span></div></footer><dialog class="search-dialog"><div class="search-top"><span>⌕</span><input type="search" placeholder="Search notes, topics, code…" aria-label="Search the library" autocomplete="off"><button aria-label="Close search" data-close>Esc</button></div><div class="search-hint">Search across the entire library <kbd>⌘ K</kbd></div><div id="search-results" aria-live="polite"></div></dialog><div class="toast" role="status"></div></body></html>
