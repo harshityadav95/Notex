@@ -26,6 +26,9 @@ const sidebar=$('[data-sidebar]');if(sidebar)sidebar.addEventListener('click',()
 (()=>{
  const demo=document.querySelector('.demo-dialog');
  document.querySelectorAll('[data-demo]').forEach(button=>button.addEventListener('click',()=>demo?.showModal()));
+ document.querySelectorAll('[data-cloud-path]').forEach(button=>button.addEventListener('click',()=>{
+  document.getElementById(button.getAttribute('aria-controls'))?.showModal();
+ }));
  const word=document.querySelector('[data-rotate-word]'),article=document.querySelector('[data-rotate-article]');
  if(word&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
   const companies=['Anthropic','Google','Microsoft','Meta','Stripe','Amazon','NVIDIA'];let index=0;

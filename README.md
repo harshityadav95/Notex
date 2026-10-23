@@ -7,6 +7,8 @@ The landing page follows the current Fanout composition: rotating hero, floating
 reading material, three marquee rows, eleven topic cards, preview rows, a learning
 folder, eight navigation tiles, three free-access cards, study section, FAQ, and footer.
 The full collection lives at `library/`, with sidebar readers for every note.
+The Cloud & infrastructure section at `#cloud` adds Cloudflare, Azure, and Kubernetes
+path previews with original generated notebook artwork and links to official guides.
 It uses the reference pale palette, compact navigation, grotesk and monospaced typography. Notex
 retains its own content and branding; proprietary Fanout artwork is not bundled.
 
@@ -25,6 +27,7 @@ Open [localhost:4173](http://localhost:4173). Rebuild after editing source files
 - `src/`: original Markdown, PDFs, images, and notebooks.
 - `web/assets/`: CSS, browser JavaScript, self-hosted fonts and font licenses.
 - `scripts/build.py`: renders every Markdown page, copies attachments, and builds the search index.
+- `scripts/cloud.py`: cloud-path cards and accessible topic-preview dialogs.
 - `docs/`: generated, deployable static site. All URLs support the `/Notex/` project prefix.
 
 ## GitHub Pages
