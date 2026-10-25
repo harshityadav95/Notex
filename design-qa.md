@@ -1,3 +1,78 @@
+# Go and DDIA modules — design QA
+
+final result: passed
+
+Scope: replace the two course cover illustrations and turn Go/DDIA into guided
+learning paths using the live Fanout system course as the structural reference.
+This is an adaptation to existing Notex content, not a copy of Fanout lessons or art.
+The previous cloud/landing review remains below.
+
+## Findings and resolutions
+
+No remaining P0/P1/P2 findings. The previous flat chapter list and vector sticker
+covers were replaced by a module directory, expandable syllabus, numbered short
+lessons, practice classification, and matching textured notebook artwork.
+
+- Desktop overview: compact header, 246px syllabus, large course heading, small
+  notebook at the right, progress panel, and a three-column module directory.
+- Lesson reader: module breadcrumbs, lesson sequence and read time, one page heading,
+  highlighted code, tables, previous/next navigation, and an understood toggle.
+- Mobile: verified at 390 × 844; syllabus opens below the compact header, directory
+  becomes one column, text remains readable, and the document has no horizontal overflow.
+- Practice and reading filters, list/grid layout, local understood state, resume links,
+  and syllabus disclosures were exercised in the in-app browser.
+
+## Visual comparison evidence
+
+Current-run captures are under `.design-evidence/modules/` (ignored by Git).
+`overview-comparison.png` places the source and implementation in one image, at the
+same desktop browser viewport, for direct comparison. The source and implementation
+are both in course overview state; Notex shows saved local progress after testing.
+
+- `fanout-overview-final.png`: live Fanout system overview.
+- `go-overview-final.png`: final Notex Go overview.
+- `overview-comparison.png`: combined comparison reviewed before acceptance.
+- `go-practice-grid.png`: filtered practice grid and controls.
+- `go-lesson-desktop.png`: lesson typography, code, header, and syllabus detail.
+- `ddia-overview-mobile.png`: DDIA overview and cover at mobile width.
+- `ddia-mobile-syllabus.png`: mobile course navigation.
+
+The reference and implementation differ intentionally in copy, module count, access
+model, and the extra short course description/statistics. Notex uses existing local
+fonts and its own brand. Account gates, video placeholders, Pro labels, live counters,
+and purchase notifications were not carried over.
+
+## Required fidelity surfaces
+
+- Typography: existing self-hosted Overused Grotesk for titles/body and Departure Mono
+  for numbering/metadata; checked title wrapping, source-code monospace, and sidebar labels.
+- Spacing/layout: reference sidebar/main-column rhythm, rounded progress/directory
+  panels, restrained row separators, consistent module indentation; mobile controls fit.
+- Colors/tokens: existing pale neutral background, near-black text, muted metadata,
+  white panels, teal Go cover, and sage DDIA cover.
+- Images: original ImageGen hardcover illustrations visually match the supplied Notex
+  nine-book family (texture, spine, serif lettering, thin technical line art, shadow).
+  True alpha retained. WebP delivery versions preserve dimensions and reduce combined
+  cover transfer size from about 4.2MB to 436KB. No new handcrafted SVG cover stand-ins.
+- Copy/content: 5 Go modules/119 lessons and 15 DDIA modules/202 lessons. Publishing
+  notices and scraped ebook navigation are omitted from the guided path. Complete
+  imported chapters and source references remain accessible. Every source code block
+  appears exactly once across the corresponding module’s lessons.
+
+## Verification
+
+`python scripts/build.py`, `python scripts/check.py`, and
+`python scripts/check_books.py` passed. All 386 built note/lesson/module pages are
+indexed and checked for local links. The 20 original chapter SHA-256 hashes and all
+321 guided lessons pass code preservation/anchor checks. No browser console errors
+were seen in the tested course flows.
+
+P3 follow-up: original book figure image files were absent upstream. Their captions
+and descriptions remain available, but publisher figure artwork cannot be supplied
+from this repository.
+
+---
+
 # Notex cloud & infrastructure section — design QA
 
 final result: passed

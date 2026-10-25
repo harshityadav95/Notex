@@ -35,10 +35,19 @@ def shell(title,body,base='./',kind='home'):
  js_version=hashlib.sha256((WEB/'assets/app.js').read_bytes()).hexdigest()[:10]
  landing_version=hashlib.sha256((WEB/'assets/landing.css').read_bytes()).hexdigest()[:10]
  landing_styles=f'<link rel="stylesheet" href="{base}assets/landing.css?v={landing_version}">' if kind=='home' else ''
- page_header=landing.header(base,GROUPS) if kind=='home' else header(base)
+ course_track = next((track for track in books.SERIES if 'course-'+track['key'] in kind), None)
+ page_header=books.header(base, course_track) if course_track else (landing.header(base,GROUPS) if kind=='home' else header(base))
+ if 'course-page' in kind:
+  course_version=hashlib.sha256((WEB/'assets/courses.css').read_bytes()).hexdigest()[:10]
+  landing_styles += f'<link rel="stylesheet" href="{base}assets/courses.css?v={course_version}">'
  page_footer=landing.footer(base,GROUPS) if kind=='home' else footer(base)
  return f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Notex: open notes, code snippets, system design, programming languages and handwritten resources by Harshit Yadav."><meta name="theme-color" content="#f7f7f8"><title>{esc(title)} · Notex</title><link rel="icon" href="{base}assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="{base}assets/style.css?v={css_version}"><link rel="stylesheet" href="{base}assets/highlight.css">{landing_styles}<script src="{base}assets/app.js?v={js_version}" defer></script></head><body class="{kind}" data-base="{base}">{page_header}{body}{page_footer}<dialog class="search-dialog"><div class="search-top"><span>⌕</span><input type="search" placeholder="Search notes, topics, code…" aria-label="Search the library" autocomplete="off"><button aria-label="Close search" data-close>Esc</button></div><div class="search-hint">Search across the entire library <kbd>⌘ K</kbd></div><div id="search-results" aria-live="polite"></div></dialog><div class="toast" role="status"></div></body></html>'''
 OUT.mkdir(exist_ok=True)
+# Derived routes are rebuilt from source; discard obsolete lesson slugs.
+for track in books.SERIES:
+ for folder in ('lessons', 'modules'):
+  generated=OUT/track['key']/folder
+  if generated.exists(): shutil.rmtree(generated)
 shutil.copytree(WEB/'assets',OUT/'assets',dirs_exist_ok=True)
 (OUT/'assets/highlight.css').write_text(HtmlFormatter(style='friendly').get_style_defs('.codehilite'))
 # Preserve every source attachment with its existing relative path.
@@ -47,12 +56,14 @@ for p in SRC.rglob('*'):
   dest=OUT/p.relative_to(SRC);dest.parent.mkdir(parents=True,exist_ok=True)
   if not dest.exists() or (p.stat().st_size,p.stat().st_mtime_ns)!=(dest.stat().st_size,dest.stat().st_mtime_ns): shutil.copy2(p,dest)
 index=[]
-for p in SRC.rglob('*.md'):
+sources = [(p, None) for p in SRC.rglob('*.md')] + [(SRC/(slug+'.md'), page['text']) for slug, page in books.PAGES.items()]
+for p, derived_text in sources:
  slug=p.relative_to(SRC).with_suffix('').as_posix()
  if slug=='index': continue
  title=TITLES.get(slug,slug)
- group=next((g for g in GROUPS if slug in g[5]),GROUPS[0]); base='../'*(len(Path(slug).parts)+0)
- text=p.read_text(); text=re.sub(r'\((?:\.\./)*Readme\.md\)', '('+base+')', text, flags=re.I); text=text.replace('(harshityadav.in)', '(https://harshityadav.in)'); md=markdown.Markdown(extensions=['extra','toc','sane_lists','codehilite'],extension_configs={'codehilite':{'guess_lang':False,'use_pygments':slug.startswith(('go/', 'ddia/'))}})
+ track = books.track_for(slug)
+ group=next((g for g in GROUPS if slug in g[5] or (track and g[0]==('Languages' if track['key']=='go' else 'Systems'))),GROUPS[0]); base='../'*(len(Path(slug).parts)+0)
+ text=p.read_text() if derived_text is None else derived_text;  text=re.sub(r'\((?:\.\./)*Readme\.md\)', '('+base+')', text, flags=re.I); text=text.replace('(harshityadav.in)', '(https://harshityadav.in)'); md=markdown.Markdown(extensions=['extra','toc','sane_lists','codehilite'],extension_configs={'codehilite':{'guess_lang':False,'use_pygments':slug.startswith(('go/', 'ddia/'))}})
  content=md.convert(text)
  # Rebase existing Markdown links and attachments, including raw HTML links.
  def fixlink(m):
@@ -68,7 +79,7 @@ for p in SRC.rglob('*.md'):
   return f'{attr}="{base}{rel}{frag}"'
  content=re.sub(r'(href|src)="([^"]*)"',fixlink,content)
  plain=re.sub('<[^>]+>',' ',re.sub(r'</?span[^>]*>', '', content)); plain=re.sub(r'\s+',' ',html.unescape(plain))
- index.append({'title':title,'url':route(slug),'category':group[0],'text':plain})
+ index.append({'title':title,'url':route(slug),'category':group[0],'text':plain,'kind':books.page_kind(slug),'collection':(('Go' if track['key']=='go' else 'DDIA')+' · '+track['title']) if track else ''})
  # Keep a single page heading while preserving source anchors.
  first_heading=re.search(r'<h1 id="([^"]+)">(.*?)</h1>',content,re.S)
  heading_id=''
@@ -82,13 +93,19 @@ for p in SRC.rglob('*.md'):
  for g in GROUPS:
   sidebar+=f'<details {"open" if slug in g[5] else ""}><summary>{esc(g[0])}<span>{len(g[5]):02}</span></summary>'+''.join(anchor(base,s,TITLES[s], 'active' if s==slug else '') for s in g[5])+'</details>'
  sidebar+=f'<div class="sidebar-foot">FREE TO READ · OPEN TO EVERYONE</div>'
+ sidebar=books.sidebar(slug,base) or sidebar
  readtime=max(1,round(len(plain.split())/220))
+ edit_slug=books.PAGES[slug]['module']['chapter']['slug'] if slug in books.PAGES else slug
  chapter_intro, chapter_nav = books.context(slug, base)
- body=f'''<div class="reader-bar"><button class="tactile" data-sidebar aria-expanded="false">☰ Topics</button><a href="{base}">Notex</a><span>/</span><span>{esc(group[0])}</span><span>/</span><strong>{esc(title)}</strong></div><div class="reader-layout"><aside class="sidebar" aria-label="Topic navigation">{sidebar}</aside><main id="main-content" class="reader-main"><div class="article-meta"><span class="eyebrow">{esc(group[0])} / NOTES</span><span>{readtime} MIN READ</span></div><h1 class="article-title"{heading_id}>{esc(title)}</h1><div class="article-actions"><button class="tactile" data-save="{esc(route(slug))}" aria-pressed="false">Save note</button><a href="{REPO}/blob/main/src/{quote(slug,safe='/')}.md">Edit on GitHub ↗</a><span>Always free to read</span></div><div class="article-layout"><article class="prose">{chapter_intro}{content}{chapter_nav}</article><aside class="article-toc"><span class="eyebrow">ON THIS PAGE</span>{md.toc}</aside></div><div class="article-end"><span class="eyebrow">KEEP EXPLORING</span><h2>One note leads to another.</h2><a class="tactile" href="{base}library/">Back to the library →</a></div></main></div>'''
- dest=OUT/slug/'index.html';dest.parent.mkdir(parents=True,exist_ok=True);dest.write_text(shell(title,body,base,'reading'))
+ header_intro=chapter_intro if slug in books.PAGES else ''
+ if header_intro: chapter_intro=''
+ content=books.display(slug,content,base)
+ if books.page_kind(slug) in ('overview', 'module'): md.toc=''
+ body=f'''<div class="reader-bar"><button class="tactile" data-sidebar aria-expanded="false">☰ Topics</button><a href="{base}">Notex</a><span>/</span><span>{esc(group[0])}</span><span>/</span><strong>{esc(title)}</strong></div><div class="reader-layout"><aside class="sidebar" aria-label="Topic navigation">{sidebar}</aside><main id="main-content" class="reader-main"><div class="article-meta"><span class="eyebrow">{esc(group[0])} / NOTES</span><span>{readtime} MIN READ</span></div>{header_intro}<h1 class="article-title"{heading_id}>{esc(title)}</h1><div class="article-actions"><button class="tactile" data-save="{esc(route(slug))}" aria-pressed="false">Save note</button><a href="{REPO}/blob/main/src/{quote(edit_slug,safe='/')}.md">Edit source on GitHub ↗</a><span>Always free to read</span></div><div class="article-layout"><article class="prose">{chapter_intro}{content}{chapter_nav}</article><aside class="article-toc"><span class="eyebrow">ON THIS PAGE</span>{md.toc}</aside></div><div class="article-end"><span class="eyebrow">KEEP EXPLORING</span><h2>One note leads to another.</h2><a class="tactile" href="{base}library/">Back to the library →</a></div></main></div>'''
+ dest=OUT/slug/'index.html';dest.parent.mkdir(parents=True,exist_ok=True);dest.write_text(shell(title,body,base,('reading course-page course-'+track['key']+' course-'+books.page_kind(slug)) if track else 'reading'))
 index.sort(key=lambda x:(next((i for i,g in enumerate(GROUPS) if g[0]==x['category']),99),x['title']))
 (OUT/'assets/search.json').write_text(json.dumps(index,ensure_ascii=False))
-library=''.join(f'<a class="note-row" data-category="{esc(x["category"])}" data-url="{esc(x["url"])}" href="{x["url"]}"><span class="note-index">{i+1:02}</span><span>{esc(x["title"])}</span><small>{esc(x["category"])}</small><span>↗</span></a>' for i,x in enumerate(x for x in index if x['title']!='Page Not Found'))
+library=''.join(f'<a class="note-row" data-category="{esc(x["category"])}" data-url="{esc(x["url"])}" href="{x["url"]}"><span class="note-index">{i+1:02}</span><span>{esc(x["title"])}</span><small>{esc(x["category"])}</small><span>↗</span></a>' for i,x in enumerate(x for x in index if x['title']!='Page Not Found' and x.get('kind') not in ('reference', 'module')))
 files=''.join(f'<a class="resource-row" href="{quote(p.relative_to(SRC).as_posix())}"><span>PDF</span><strong>{esc(p.stem)}</strong><span>↗</span></a>' for p in sorted((SRC/'handwritten notes').glob('*.pdf')))
 references=''.join(f'<a class="resource-row" href="{quote(p.relative_to(SRC).as_posix())}"><span>PDF</span><strong>{esc(p.stem)}</strong><span>↗</span></a>' for p in sorted(SRC.rglob('*.pdf')) if 'handwritten notes' not in p.parts)
 notebooks=''.join(f'<a class="resource-row" href="{REPO}/blob/main/src/{quote(p.name)}"><span>IPYNB</span><strong>{esc(p.stem)}</strong><span>↗</span></a>' for p in sorted(SRC.glob('*.ipynb')))

@@ -63,3 +63,25 @@ for series in manifest['series']:
         count += 1
 assert count == 20
 print(f'Passed: {count} chapter hashes, source sizes, search categories, code blocks, section anchors, chapter navigation, and all chapter images.')
+
+# Each guided lesson must retain its extracted code and resolve every section anchor.
+import books
+lesson_count=0
+for track in books.SERIES:
+    for module in track['modules']:
+        combined=[]
+        for lesson in module['lessons']:
+            file=ROOT/'docs'/lesson['slug']/'index.html'
+            parser=Article();parser.feed(file.read_text())
+            expected=re.findall(r'^```[^\n]*\n(.*?)^```',lesson['text'],re.M|re.S)
+            assert [c.expandtabs(4).strip('\n') for c in expected]==[c.strip('\n') for c in parser.code_blocks],f'Lesson code changed: {lesson["slug"]}'
+            assert set(parser.fragments)<=set(parser.ids),f'Lesson anchors broken: {lesson["slug"]}'
+            assert 'A Note for Early Release Readers' not in file.read_text()
+            assert '- table of contents' not in lesson['text']
+            combined.extend(expected)
+            lesson_count+=1
+        original=ROOT/'src'/(module['chapter']['slug']+'.md')
+        expected=re.findall(r'^```[^\n]*\n(.*?)^```',original.read_text(),re.M|re.S)
+        assert combined==expected,f'Code omitted or duplicated while splitting {original}'
+assert lesson_count==sum(len(t['lessons']) for t in books.SERIES)
+print(f'Passed: {lesson_count} guided lessons retain every source code block, omit publishing/navigation boilerplate, and have valid section anchors.')

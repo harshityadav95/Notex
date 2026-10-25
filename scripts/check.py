@@ -3,6 +3,7 @@ from pathlib import Path
 from html.parser import HTMLParser
 from urllib.parse import urlsplit,unquote
 import json
+import books
 ROOT=Path(__file__).resolve().parent.parent; OUT=ROOT/'docs'
 class Links(HTMLParser):
  def __init__(self): super().__init__();self.links=[]
@@ -10,9 +11,10 @@ class Links(HTMLParser):
   for key,value in attrs:
    if (tag=='a' and key=='href') or (tag in ('script','link','img') and key in ('src','href')): self.links.append((value,tag))
 errors=[]
-# Validate generated UI; legacy note body references are preserved source material.
+# Validate every built source and derived curriculum page.
+valid_slugs={x.relative_to(ROOT/'src').with_suffix('').as_posix() for x in (ROOT/'src').rglob('*.md')} | set(books.PAGES) | {'licenses','library'}
 for file in OUT.rglob('index.html'):
- if file.parent!=OUT and not (file.parent.relative_to(OUT).as_posix() in [x.relative_to(ROOT/'src').with_suffix('').as_posix() for x in (ROOT/'src').rglob('*.md')]+['licenses','library']):continue
+ if file.parent!=OUT and file.parent.relative_to(OUT).as_posix() not in valid_slugs:continue
  parser=Links();parser.feed(file.read_text())
  for href,tag in parser.links:
   u=urlsplit(href)
@@ -25,7 +27,7 @@ for p in (ROOT/'src').rglob('*.md'):
  if p.stem=='index':continue
  if not (OUT/p.relative_to(ROOT/'src').with_suffix('')/'index.html').exists():errors.append(f'Missing note {p}')
 index=json.loads((OUT/'assets/search.json').read_text())
-assert len(index)==len(list((ROOT/'src').rglob('*.md')))-1
+assert len(index)==len(list((ROOT/'src').rglob('*.md')))-1+len(books.PAGES)
 assert 'Designed by' in (OUT/'index.html').read_text()
 # Validate the locally bundled styles, including font and sprite references.
 import re
