@@ -2,6 +2,7 @@
 import hashlib
 import json
 import re
+import study_notes
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
@@ -48,17 +49,15 @@ for series in manifest['series']:
         parser = Article()
         parser.feed(rendered)
         expected_code = re.findall(r'^```[^\n]*\n(.*?)^```', source.read_text(), re.M | re.S)
-        assert [c.expandtabs(4).strip('\n') for c in expected_code] == [c.strip('\n') for c in parser.code_blocks], f'Code content changed: {source}'
+        assert [study_notes.code(c).expandtabs(4).strip('\n') for c in expected_code] == [c.strip('\n') for c in parser.code_blocks], f'Code content changed: {source}'
         for image in parser.images:
             assert not urlsplit(image).scheme, f'Unexpected remote chapter media: {image}'
             assert (generated.parent / unquote(image)).resolve().is_file(), f'Missing media: {image}'
         assert set(parser.fragments) <= set(parser.ids), f'Broken section anchors: {source}'
         entry = next(x for x in index if x['url'] == chapter['slug'] + '/')
         assert entry['category'] == ('Languages' if series['key'] == 'go' else 'Systems')
-        # The final prose must be searchable too; long chapters must never be truncated.
-        if chapter['bytes'] > 140000:
-            assert len(entry['text']) > 140000 or source.read_text().splitlines()[-1].lstrip('- ').strip() in entry['text']
-        assert 'Original chapter ↗' in rendered
+        assert not re.search(r"o[’' -]?reilly|oreilly\.com|FAANG_BOOKS|Early Release|learning-go-book",rendered,re.I),f'Publishing metadata remains: {source}'
+        assert 'Original chapter ↗' not in rendered
         assert 'aria-label="Chapter navigation"' in rendered
         count += 1
 assert count == 20
@@ -78,10 +77,20 @@ for track in books.SERIES:
             assert set(parser.fragments)<=set(parser.ids),f'Lesson anchors broken: {lesson["slug"]}'
             assert 'A Note for Early Release Readers' not in file.read_text()
             assert '- table of contents' not in lesson['text']
+            assert not re.search(r"o[’' -]?reilly|oreilly\.com|FAANG_BOOKS|Early Release|learning-go-book|About the source material|Original source ↗",file.read_text(),re.I),f'Publishing metadata remains: {lesson["slug"]}'
             combined.extend(expected)
             lesson_count+=1
         original=ROOT/'src'/(module['chapter']['slug']+'.md')
         expected=re.findall(r'^```[^\n]*\n(.*?)^```',original.read_text(),re.M|re.S)
-        assert combined==expected,f'Code omitted or duplicated while splitting {original}'
+        assert combined==[study_notes.code(c) for c in expected],f'Code omitted or duplicated while splitting {original}'
 assert lesson_count==sum(len(t['lessons']) for t in books.SERIES)
 print(f'Passed: {lesson_count} guided lessons retain every source code block, omit publishing/navigation boilerplate, and have valid section anchors.')
+
+# Keep publishing/import metadata out of all public course pages and search text.
+for folder in ('go','ddia'):
+    for file in (ROOT/'docs'/folder).rglob('index.html'):
+        assert not re.search(r"o[’' -]?reilly|oreilly\.com|FAANG_BOOKS|Early Release|learning-go-book|About the source material|Original source ↗",file.read_text(),re.I),f'Publishing metadata remains in {file}'
+for entry in index:
+    if entry['url'].startswith(('go/','ddia/')):
+        assert not re.search(r"o[’' -]?reilly|oreilly\.com|FAANG_BOOKS|Early Release|learning-go-book",entry['text'],re.I)
+print('Passed: public study pages and search entries contain no publisher/import metadata.')

@@ -1,3 +1,24 @@
+# Study notes editorial cleanup
+
+final result: passed
+
+Publisher advertising, contact information, import/source panels, edition labels,
+bibliographic markers, and copied reader navigation are absent from the public Go
+and DDIA study pages and their search entries. Attribution is retained separately in
+`CREDITS.md`; archived chapter originals and hashes are unchanged.
+
+The former publishing preface is a three-lesson study guide. Older URLs redirect to
+the new study-guide routes, and stored completion/resume state recognizes those aliases.
+All 321 lessons retain their technical code, with only documented illustrative
+repository/package path substitutions. Inline code and fenced-code whitespace are
+preserved. Complete-module notes use the same editorial cleanup as individual lessons.
+
+Verified the study guide in the in-app browser, checked its typography/list layout,
+tested an older lesson URL redirect, and found no console warnings or errors.
+Screenshot: `.design-evidence/modules/study-goals-clean.png`.
+
+---
+
 # Go and DDIA modules — design QA
 
 final result: passed

@@ -53,6 +53,13 @@ const sidebar=$('[data-sidebar]');if(sidebar)sidebar.addEventListener('click',()
  }));
  let completed=[],last={};
  try{completed=JSON.parse(localStorage.getItem('notex-understood')||'[]');if(!Array.isArray(completed))completed=[];completed=completed.filter(s=>typeof s==='string');last=JSON.parse(localStorage.getItem('notex-course-last')||'{}');if(!last||typeof last!=='object'||Array.isArray(last))last={};}catch{}
+ const lessonAliases={
+  'ddia/lessons/00-01-who-should-read-this-book':'ddia/lessons/00-01-study-goals',
+  'ddia/lessons/00-02-whats-new-in-the-second-edition':'ddia/lessons/00-02-topics-in-this-learning-path',
+  'ddia/lessons/00-03-references-and-further-reading':'ddia/lessons/00-03-a-practical-study-method'
+ };
+ completed=[...new Set(completed.map(slug=>lessonAliases[slug]||slug))];
+ Object.keys(last).forEach(key=>{if(typeof last[key]==='string')last[key]=lessonAliases[last[key]]||last[key];});
  const base=document.body.dataset.base||'./';
  const update=()=>{
   all('[data-lesson-link]').forEach(link=>link.classList.toggle('is-complete',completed.includes(link.dataset.lessonLink)));

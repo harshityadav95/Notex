@@ -1,14 +1,22 @@
 """Book references and guided curricula derived from preserved source chapters."""
 import html
 import json
+import re
 from pathlib import Path
 from urllib.parse import quote
 import curriculum
+import study_notes
 
 ROOT = Path(__file__).resolve().parent.parent
 MANIFEST = json.loads(Path(__file__).with_name('book-import.json').read_text())
 SERIES = MANIFEST['series']
 PAGES = curriculum.prepare(SERIES, ROOT/'src')
+ALIASES = {
+    'ddia/modules/01-preface':'ddia/modules/01-study-guide',
+    'ddia/lessons/00-01-who-should-read-this-book':'ddia/lessons/00-01-study-goals',
+    'ddia/lessons/00-02-whats-new-in-the-second-edition':'ddia/lessons/00-02-topics-in-this-learning-path',
+    'ddia/lessons/00-03-references-and-further-reading':'ddia/lessons/00-03-a-practical-study-method',
+}
 
 def e(value): return html.escape(str(value), quote=True)
 def url(base,slug): return base+quote(slug,safe='/')+'/'
@@ -24,7 +32,8 @@ def configure(groups, titles):
         next(g for g in groups if g[0] == category)[5].extend(slugs)
         titles[series['overview']] = series['title']
         for chapter in series['chapters']:
-            titles[chapter['slug']] = f"{series['key'].upper() if series['key'] == 'ddia' else 'Go'} {chapter['number']:02} · {chapter['title']}"
+            display_title=chapter['module']['title']
+            titles[chapter['slug']] = f"{series['key'].upper() if series['key'] == 'ddia' else 'Go'} {chapter['number']:02} · {display_title}"
         titles.update({p['slug']:p['title'] for p in PAGES.values() if p['series'] is series})
 
 def section_label(track, module):
@@ -71,15 +80,15 @@ def overview(slug,base):
     first=track['lessons'][0]
     structure=''.join(f'<a href="#module-{m["number"]:02}"><span>{m["number"]:02}</span><strong>{e(m["title"])}</strong><small>{len(m["lessons"])} LESSONS</small><b aria-hidden="true">→</b></a>' for m in track['modules'])
     panels=''.join(module_panel(track,m,base) for m in track['modules'])
-    notice='The available source starts at chapter 2 and ends at chapter 6.' if track['key']=='go' else 'Based on the preface and all fourteen available chapters.'
-    return f'''<section class="course-hero"><div><p class="eyebrow">OPEN LEARNING PATH / {'GO' if track['key']=='go' else 'DDIA'}</p><h1>{e(track['headline'])}</h1><p>{e(track['description'])}</p><span class="course-stats">{len(track['modules'])} MODULES <span>·</span> {len(track['lessons'])} LESSONS <span>·</span> FREE TO READ</span></div><img class="course-book" src="{base}assets/books/{track['key']}-notebook.webp" alt="{e(track['title'])} textured notebook cover" width="1254" height="1254"></section><div class="course-start"><div><strong>A little progress, one lesson at a time.</strong><span data-course-resume-label="{track['key']}">Your progress stays in this browser.</span></div><a class="tactile" href="{url(base,first['slug'])}" data-course-resume="{track['key']}">Start learning →</a></div><section class="curriculum-structure" aria-labelledby="curriculum-structure"><h2 class="eyebrow" id="curriculum-structure">CURRICULUM STRUCTURE</h2><nav class="module-directory" aria-label="Module directory">{structure}</nav></section><div class="curriculum-toolbar"><h2>Full curriculum</h2><div role="group" aria-label="Filter lessons"><button class="active" data-lesson-filter="all" aria-pressed="true">All lessons</button><button data-lesson-filter="reading" aria-pressed="false">Reading</button><button data-lesson-filter="practice" aria-pressed="false">Practice</button></div><div role="group" aria-label="Curriculum layout"><button class="active" data-curriculum-layout="list" aria-pressed="true">List</button><button data-curriculum-layout="grid" aria-pressed="false">Grid</button></div></div><div class="course-curriculum" data-layout="list">{panels}<p class="course-empty" hidden>No practice lessons in this collection. Choose Reading to explore the curriculum.</p></div><details class="course-provenance"><summary>About the source material</summary><p>{notice} Guided lessons remove publishing notices and scraped navigation. All original chapters, code, exercises, figure descriptions, and references remain available in the <a href="{url(base,track['chapters'][0]['slug'])}">full chapter reference</a> and <a href="{MANIFEST['repository']}">source repository</a>. Original book image files were not included upstream.</p></details>'''
+
+    return f'''<section class="course-hero"><div><p class="eyebrow">OPEN LEARNING PATH / {'GO' if track['key']=='go' else 'DDIA'}</p><h1>{e(track['headline'])}</h1><p>{e(track['description'])}</p><span class="course-stats">{len(track['modules'])} MODULES <span>·</span> {len(track['lessons'])} LESSONS <span>·</span> FREE TO READ</span></div><img class="course-book" src="{base}assets/books/{track['key']}-notebook.webp" alt="{e(track['title'])} textured notebook cover" width="1254" height="1254"></section><div class="course-start"><div><strong>A little progress, one lesson at a time.</strong><span data-course-resume-label="{track['key']}">Your progress stays in this browser.</span></div><a class="tactile" href="{url(base,first['slug'])}" data-course-resume="{track['key']}">Start learning →</a></div><section class="curriculum-structure" aria-labelledby="curriculum-structure"><h2 class="eyebrow" id="curriculum-structure">CURRICULUM STRUCTURE</h2><nav class="module-directory" aria-label="Module directory">{structure}</nav></section><div class="curriculum-toolbar"><h2>Full curriculum</h2><div role="group" aria-label="Filter lessons"><button class="active" data-lesson-filter="all" aria-pressed="true">All lessons</button><button data-lesson-filter="reading" aria-pressed="false">Reading</button><button data-lesson-filter="practice" aria-pressed="false">Practice</button></div><div role="group" aria-label="Curriculum layout"><button class="active" data-curriculum-layout="list" aria-pressed="true">List</button><button data-curriculum-layout="grid" aria-pressed="false">Grid</button></div></div><div class="course-curriculum" data-layout="list">{panels}<p class="course-empty" hidden>No practice lessons in this collection. Choose Reading to explore the curriculum.</p></div>'''
 
 def display(slug, content, base):
     if page_kind(slug)=='overview':return overview(slug,base)
     page=PAGES.get(slug)
     if page and page['kind']=='module':
         module=page['module'];track=page['series']
-        return f'<p class="module-intro">{e(module["summary"])}</p><div class="course-curriculum">{module_panel(track,module,base)}</div><div class="module-reference"><a href="{url(base,module["chapter"]["slug"])}">Read the full source chapter and references ↗</a></div>'
+        return f'<p class="module-intro">{e(module["summary"])}</p><div class="course-curriculum">{module_panel(track,module,base)}</div><div class="module-reference"><a href="{url(base,module["chapter"]["slug"])}">Read complete module notes →</a></div>'
     return content
 
 def context(slug, base):
@@ -99,7 +108,7 @@ def context(slug, base):
         nav+='</nav>'
         complete=f'<div class="lesson-completion"><button class="tactile" data-complete-lesson="{slug}" data-track="{track["key"]}" aria-pressed="false">Mark as understood</button><span>Progress is saved on this device.</span></div>'
         intro+=f'<div class="lesson-heading-meta"><span>{page["code"]}</span><span>LESSON {page["number"]:02} OF {len(module["lessons"])} · {page["minutes"]} MIN READ</span></div>'
-        tail=f'<details class="lesson-source"><summary>Source & further reading</summary><p>{link(module["chapter"]["slug"],"Full chapter, figures, and references")} · <a href="{MANIFEST["repository"]}/blob/{MANIFEST["revision"]}/{quote(module["chapter"]["source_path"])}">Original source ↗</a></p></details>'
+        tail=f'<div class="module-reference">{link(module["chapter"]["slug"],"Read complete module notes →")}</div>'
         return intro,complete+nav+tail
     chapter=next(c for c in track['chapters'] if c['slug']==slug)
     i=track['chapters'].index(chapter)
@@ -108,6 +117,20 @@ def context(slug, base):
     nav+=link(chapter['module']['slug'],'Guided module')
     nav+=link(track['chapters'][i+1]['slug'],'Next chapter →') if i+1<len(track['chapters']) else '<span>End of collection</span>'
     nav+='</nav>'
-    source=f'{MANIFEST["repository"]}/blob/{MANIFEST["revision"]}/{quote(chapter["source_path"])}'
-    intro=f'<div class="source-credit">FULL CHAPTER REFERENCE · <a href="{source}">Original chapter ↗</a></div><p class="reference-callout">Prefer a shorter session? {link(chapter["module"]["slug"],"Explore this chapter as a guided module →")}</p>'
+    intro=f'<p class="reference-callout">Study one concept at a time. {link(chapter["module"]["slug"],"Open the guided module →")}</p>'
     return intro+nav,nav
+
+def study_text(slug, text):
+    """Display complete technical notes without publisher front/back matter."""
+    track=track_for(slug)
+    if not track or slug in PAGES or slug.endswith('/overview'):
+        return text
+    chapter=next(c for c in track['chapters'] if c['slug']==slug)
+    if track['key']=='ddia' and chapter['number']==0:
+        return '\n\n'.join('## '+title+'\n\n'+body for title,body in study_notes.GUIDE.values())+'\n'
+    hs=curriculum.headings(text,2)
+    intro=text[:hs[0][0]] if hs else text
+    intro=re.sub(r'^# [^\n]+\n','',intro,flags=re.M)
+    intro=re.sub(r'^>[^\n]*\n','',intro,flags=re.M)
+    selected=[body for title,body in curriculum.sections(text,2) if title not in study_notes.DROP_SECTIONS]
+    return study_notes.clean(intro+'\n\n'+'\n\n'.join(selected))

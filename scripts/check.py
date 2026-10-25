@@ -12,7 +12,7 @@ class Links(HTMLParser):
    if (tag=='a' and key=='href') or (tag in ('script','link','img') and key in ('src','href')): self.links.append((value,tag))
 errors=[]
 # Validate every built source and derived curriculum page.
-valid_slugs={x.relative_to(ROOT/'src').with_suffix('').as_posix() for x in (ROOT/'src').rglob('*.md')} | set(books.PAGES) | {'licenses','library'}
+valid_slugs={x.relative_to(ROOT/'src').with_suffix('').as_posix() for x in (ROOT/'src').rglob('*.md')} | set(books.PAGES) | set(books.ALIASES) | {'licenses','library'}
 for file in OUT.rglob('index.html'):
  if file.parent!=OUT and file.parent.relative_to(OUT).as_posix() not in valid_slugs:continue
  parser=Links();parser.feed(file.read_text())

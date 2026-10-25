@@ -65,11 +65,15 @@ are rebuilt on each build. Edit source chapters rather than generated lesson HTM
 The two new notebook covers are original generated PNGs with transparent backgrounds;
 art direction and prompts are documented in `web/assets/books/README.md`.
 
+The study interface omits publisher front/back matter, edition notices, import panels,
+and bibliographic markers. Illustrative package paths use `example.com/studynotes`.
+Attribution is retained in [CREDITS.md](CREDITS.md), separately from the study pages.
+
 All 20 imported chapter Markdown files are byte-for-byte preserved from
 [FAANG_BOOKS](https://github.com/harshityadav95/FAANG_BOOKS) at
 `e17be94c728cd6ae755bf5d87a5a45b1a9f0dfbb`. Provenance, source byte counts, and SHA-256
 hashes are recorded in `scripts/book-import.json`. `python scripts/check_books.py`
 verifies original files and confirms every code block survives lesson extraction and
-HTML rendering. Go source contains chapters 2–6 only; DDIA includes the preface and
+HTML rendering, allowing only the documented illustrative namespace substitutions. Go source contains chapters 2–6 only; DDIA includes the preface and
 chapters 1–14. Original book figure files are absent upstream; captions and descriptions
 remain in the notes. Original text retains its respective rights.
