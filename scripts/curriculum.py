@@ -49,7 +49,7 @@ def prepare(series, src):
                 module['slug']='ddia/modules/01-study-guide'
                 module['summary']='Set study goals, review the learning path, and build a practical method for reasoning about data systems.'
             else:
-                module['summary']=excerpt(study_notes.clean(raw))
+                module['summary']=excerpt(study_notes.clean(raw, strip_citations=track['key']=='ddia'))
             for title, body in sections(clean(raw), 2):
                 if title in SKIP:
                     continue
@@ -74,7 +74,7 @@ def prepare(series, src):
                         section_title,guide=study_notes.GUIDE[original_section_title]
                         section_body='# '+section_title+'\n\n'+guide+'\n'
                         slug=f"{track['key']}/lessons/{chapter['number']:02}-{number:02}-{slugify(section_title,'-')}"
-                    section_body=study_notes.clean(section_body)
+                    section_body=study_notes.clean(section_body, strip_citations=track['key']=='ddia')
                     kind = 'practice' if section_title.startswith(('Practice:','Code Review:')) else 'reading'
                     lesson = {'slug':slug,'title':section_title,'text':section_body.strip()+'\n','number':number,'code':f'{module_number:02}.{number:02}','module':module,'series':track,'kind':kind,'minutes':max(1,round(len(section_body.split())/220)),'summary':excerpt(section_body)}
                     module['lessons'].append(lesson)

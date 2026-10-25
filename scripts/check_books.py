@@ -94,3 +94,12 @@ for entry in index:
     if entry['url'].startswith(('go/','ddia/')):
         assert not re.search(r"o[’' -]?reilly|oreilly\.com|FAANG_BOOKS|Early Release|learning-go-book",entry['text'],re.I)
 print('Passed: public study pages and search entries contain no publisher/import metadata.')
+
+# Numeric array values are study content, not bibliography markers.
+go_track=next(t for t in books.SERIES if t['key']=='go')
+for module in go_track['modules']:
+    original=(ROOT/'src'/(module['chapter']['slug']+'.md')).read_text()
+    derived='\n'.join(l['text'] for l in module['lessons'])
+    for literal in re.findall(r'\[(?:\d+,\s*){2,}\d+\]',original):
+        assert literal in derived,f'Numeric example lost in {module["title"]}: {literal}'
+print('Passed: bracketed numeric Go examples remain intact.')

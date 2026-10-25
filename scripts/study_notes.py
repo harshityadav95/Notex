@@ -44,13 +44,14 @@ def code(text):
     return text.replace('sample_code/artifact/', 'examples/artifact/')
 
 
-def _plain(text):
+def _plain(text, strip_citations=True):
     # Publishing and exercise-solution location sentences are not part of the lesson.
     text = re.sub(r'[^.!?\n]*(?:Solutions? (?:are |can be |to (?:these|the) exercises)|[Aa]nswers? to (?:these|the) exercises)[^.!?\n]*(?:repository|directory)[^.!?\n]*[.!?]?', '', text)
     text = re.sub(r'\s+or in the `sample_code/[^`]+` directory in the Chapter \d+ repository', '', text, flags=re.I)
     text = re.sub(r'\s+or in the `[^`]+` directory in the (?:Chapter \d+|chapter) repository', '', text, flags=re.I)
     text = re.sub(r'\s*\((?:see )?Chapter(?:s)? \d+[^)]*\)', '', text, flags=re.I)
-    text = re.sub(r' +\[(?:\d+)(?:\s*[,–-]\s*\d+)*\](?![\w(])', '', text)
+    if strip_citations:
+        text = re.sub(r' +\[(?:\d+)(?:\s*[,–-]\s*\d+)*\](?![\w(])', '', text)
     text = re.sub(r'\b(?:this|the) book\b', lambda m:'These notes' if m[0][0].isupper() else 'these notes', text, flags=re.I)
     text = re.sub(r'\b(?:this|the previous|the next) chapter\b', lambda m:'This topic' if m[0][0].isupper() else 'this topic', text, flags=re.I)
     text = re.sub(r'\bChapters? \d+(?: (?:and|or) \d+)?\b', 'the related discussion', text)
@@ -65,7 +66,7 @@ def _plain(text):
     return re.sub(r' +([,.;:])', r'\1', ' '.join(result))
 
 
-def _prose(text):
+def _prose(text, strip_citations=True):
     text=re.sub(r'\s+or in the [^\n]*?Chapter \d+ repository', '', text)
     text=text.replace('You can find the code for this example on GitHub. ', '').replace('You can see it on GitHub.', '')
     text=text.replace('For example, I wrote a simple Lisp interpreter with a Scan function', 'For example, a simple Lisp interpreter can use a Scan function')
@@ -79,10 +80,10 @@ def _prose(text):
     text=re.sub(r'\s+or in the `[^`]+` directory in the Chapter \d+ repository','',text,flags=re.I)
     text=re.sub(r'\([^)]*\bChapter(?:s)? \d+[^)]*\)','',text)
     text=re.sub(r'(?i)(?:As (?:we shall|you will|you’ll) see|as discussed|as covered) in Chapters? \d+(?: and \d+)?,?\s*','',text)
-    return ''.join(piece if piece.startswith('`') else _plain(piece) for piece in re.split(r'(`+[^`]+`+)',text))
+    return ''.join(piece if piece.startswith('`') else _plain(piece, strip_citations) for piece in re.split(r'(`+[^`]+`+)',text))
 
 
-def clean(text):
+def clean(text, strip_citations=True):
     """Clean prose outside code fences; remove only publishing/reader interface content."""
     text = re.sub(r'\n---\s*\n\s*- table of contents\b.*', '', text, flags=re.S|re.I)
     text = text.replace('<!-- Skip to Content -->', '')
@@ -101,7 +102,7 @@ def clean(text):
                 continue
             if line.strip() in ('- table of contents', '- search', '- settings', '- Previous chapter', '- Next chapter', '- Table of contents collapsed'):
                 continue
-            lines.append(_prose(line))
+            lines.append(_prose(line, strip_citations))
         pieces[i] = '\n'.join(lines)
         if piece.startswith('\n'): pieces[i]='\n'+pieces[i]
         if piece.endswith('\n'): pieces[i]+='\n'

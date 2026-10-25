@@ -133,4 +133,4 @@ def study_text(slug, text):
     intro=re.sub(r'^# [^\n]+\n','',intro,flags=re.M)
     intro=re.sub(r'^>[^\n]*\n','',intro,flags=re.M)
     selected=[body for title,body in curriculum.sections(text,2) if title not in study_notes.DROP_SECTIONS]
-    return study_notes.clean(intro+'\n\n'+'\n\n'.join(selected))
+    return study_notes.clean(intro+'\n\n'+'\n\n'.join(selected),strip_citations=track['key']=='ddia')
