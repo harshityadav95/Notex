@@ -1,0 +1,221 @@
+{
+  "repository": "https://github.com/harshityadav95/FAANG_BOOKS",
+  "revision": "e17be94c728cd6ae755bf5d87a5a45b1a9f0dfbb",
+  "media_note": "Upstream contains no bundled figure files. Original chapter overview SVGs supplement the preserved figure descriptions; they are not reproductions of book figures.",
+  "series": [
+    {
+      "key": "go",
+      "title": "Learning Go · Third Edition",
+      "overview": "go/overview",
+      "chapters": [
+        {
+          "number": 2,
+          "slug": "go/chapter-02",
+          "title": "Composite Types",
+          "heading": "Chapter 2. Composite Types",
+          "source_path": "Learning GO book 3rd edition/chapter-02.md",
+          "sha256": "c0a52dc9393cee534924b3a75bba7403fc3b2d3c5dd43a65c41d5bfbbf59a233",
+          "bytes": 71799,
+          "graphic": "assets/books/go-chapter-02.svg"
+        },
+        {
+          "number": 3,
+          "slug": "go/chapter-03",
+          "title": "Blocks, Shadows, and Control Structures",
+          "heading": "Chapter 3. Blocks, Shadows, and Control Structures",
+          "source_path": "Learning GO book 3rd edition/chapter-03.md",
+          "sha256": "7e6f47e28db8f44055fb72a233c89f949357e267f8e50b4625685e9cd0b560e1",
+          "bytes": 53001,
+          "graphic": "assets/books/go-chapter-03.svg"
+        },
+        {
+          "number": 4,
+          "slug": "go/chapter-04",
+          "title": "Functions",
+          "heading": "Chapter 4. Functions",
+          "source_path": "Learning GO book 3rd edition/chapter-04.md",
+          "sha256": "515bf7d5a69ed4a99dbad3019a13a83d3d4410ab7cacaeedf497ce3b3f7e9c1d",
+          "bytes": 53051,
+          "graphic": "assets/books/go-chapter-04.svg"
+        },
+        {
+          "number": 5,
+          "slug": "go/chapter-05",
+          "title": "Pointers",
+          "heading": "Chapter 5. Pointers",
+          "source_path": "Learning GO book 3rd edition/chapter-05.md",
+          "sha256": "4aa69bdc3eadbf909774e6d1ec5f7c96d4936f282fadf0d7fc924d98691f8e14",
+          "bytes": 59468,
+          "graphic": "assets/books/go-chapter-05.svg"
+        },
+        {
+          "number": 6,
+          "slug": "go/chapter-06",
+          "title": "Writing Tests",
+          "heading": "Chapter 6. Writing Tests",
+          "source_path": "Learning GO book 3rd edition/chapter-06.md",
+          "sha256": "ecdbb2c6226ffb33a606217309b42b297a379ebb96c915d324a95d4f7aee939d",
+          "bytes": 99927,
+          "graphic": "assets/books/go-chapter-06.svg"
+        }
+      ]
+    },
+    {
+      "key": "ddia",
+      "title": "Designing Data-Intensive Applications · Second Edition",
+      "overview": "ddia/overview",
+      "chapters": [
+        {
+          "number": 0,
+          "slug": "ddia/chapter-00",
+          "title": "Preface",
+          "heading": "Chapter 0. Preface",
+          "source_path": "Designing Data Intensive Applications Second Edition/chapter-00.md",
+          "sha256": "2305f757ef20e6e27dc5d9cc129162335abc8ec4b4fbc2fee83b0286a0358c26",
+          "bytes": 13040,
+          "graphic": "assets/books/ddia-chapter-00.svg"
+        },
+        {
+          "number": 1,
+          "slug": "ddia/chapter-01",
+          "title": "Trade-Offs in Data Systems Architecture",
+          "heading": "Chapter 1. Trade-Offs in Data Systems Architecture",
+          "source_path": "Designing Data Intensive Applications Second Edition/chapter-01.md",
+          "sha256": "e3d932e11cdc2c21068c52bbec8568f935cb0374032f552679ba488a2718e3d5",
+          "bytes": 80085,
+          "graphic": "assets/books/ddia-chapter-01.svg"
+        },
+        {
+          "number": 2,
+          "slug": "ddia/chapter-02",
+          "title": "Defining Nonfunctional Requirements",
+          "heading": "Chapter 2. Defining Nonfunctional Requirements",
+          "source_path": "Designing Data Intensive Applications Second Edition/chapter-02.md",
+          "sha256": "c38f253f6effc9099a7bec7feb42f6f417c841f79d0611859c20bce1eefbc116",
+          "bytes": 79110,
+          "graphic": "assets/books/ddia-chapter-02.svg"
+        },
+        {
+          "number": 3,
+          "slug": "ddia/chapter-03",
+          "title": "Data Models and Query Languages",
+          "heading": "Chapter 3. Data Models and Query Languages",
+          "source_path": "Designing Data Intensive Applications Second Edition/chapter-03.md",
+          "sha256": "e1a50837f6bea573bfefb15280cd51aacc4945ad94af4184bb7017c90fa05e5b",
+          "bytes": 113221,
+          "graphic": "assets/books/ddia-chapter-03.svg"
+        },
+        {
+          "number": 4,
+          "slug": "ddia/chapter-04",
+          "title": "Storage and Retrieval",
+          "heading": "Chapter 4. Storage and Retrieval",
+          "source_path": "Designing Data Intensive Applications Second Edition/chapter-04.md",
+          "sha256": "2a7a195860eb54d0ea534bbedb0a115ca71b01344a889bdd38c0937a06fbf002",
+          "bytes": 107599,
+          "graphic": "assets/books/ddia-chapter-04.svg"
+        },
+        {
+          "number": 5,
+          "slug": "ddia/chapter-05",
+          "title": "Encoding and Evolution",
+          "heading": "Chapter 5. Encoding and Evolution",
+          "source_path": "Designing Data Intensive Applications Second Edition/chapter-05.md",
+          "sha256": "d8ce0182cad9197dfbb6e88532d1d78714fadf291352cc5e7c7acc61b43f56d5",
+          "bytes": 81635,
+          "graphic": "assets/books/ddia-chapter-05.svg"
+        },
+        {
+          "number": 6,
+          "slug": "ddia/chapter-06",
+          "title": "Replication",
+          "heading": "Chapter 6. Replication",
+          "source_path": "Designing Data Intensive Applications Second Edition/chapter-06.md",
+          "sha256": "055e8e03083283c9393ee3dbd25663ce38b00b1f6988323b283c6b786d1968f4",
+          "bytes": 128903,
+          "graphic": "assets/books/ddia-chapter-06.svg"
+        },
+        {
+          "number": 7,
+          "slug": "ddia/chapter-07",
+          "title": "Sharding",
+          "heading": "Chapter 7. Sharding",
+          "source_path": "Designing Data Intensive Applications Second Edition/chapter-07.md",
+          "sha256": "4c584e47b5be47090a7d2db03a8fa1b116f00fc7a03ae43f290bf478a4d554bf",
+          "bytes": 56620,
+          "graphic": "assets/books/ddia-chapter-07.svg"
+        },
+        {
+          "number": 8,
+          "slug": "ddia/chapter-08",
+          "title": "Transactions",
+          "heading": "Chapter 8. Transactions",
+          "source_path": "Designing Data Intensive Applications Second Edition/chapter-08.md",
+          "sha256": "de7059782e19d3e97e396bce0191cea0089001eaf907a7b17c4f823e5650aa89",
+          "bytes": 169411,
+          "graphic": "assets/books/ddia-chapter-08.svg"
+        },
+        {
+          "number": 9,
+          "slug": "ddia/chapter-09",
+          "title": "The Trouble with Distributed Systems",
+          "heading": "Chapter 9. The Trouble with Distributed Systems",
+          "source_path": "Designing Data Intensive Applications Second Edition/chapter-09.md",
+          "sha256": "8467709ddeb7f177d80189d1eca2b57004b1a690bcec7cfebc9d6c5fdcf45c3b",
+          "bytes": 142754,
+          "graphic": "assets/books/ddia-chapter-09.svg"
+        },
+        {
+          "number": 10,
+          "slug": "ddia/chapter-10",
+          "title": "Consistency and Consensus",
+          "heading": "Chapter 10. Consistency and Consensus",
+          "source_path": "Designing Data Intensive Applications Second Edition/chapter-10.md",
+          "sha256": "7a5c50777dac349a40eee5ba66d39d6d4836c221c9872c09cff8d4a15256238f",
+          "bytes": 125427,
+          "graphic": "assets/books/ddia-chapter-10.svg"
+        },
+        {
+          "number": 11,
+          "slug": "ddia/chapter-11",
+          "title": "Batch Processing",
+          "heading": "Chapter 11. Batch Processing",
+          "source_path": "Designing Data Intensive Applications Second Edition/chapter-11.md",
+          "sha256": "1f46c2d9809df354c9dd7a56aacb447c1d3faf2fe8b2bb337aee25e2a00af98f",
+          "bytes": 87415,
+          "graphic": "assets/books/ddia-chapter-11.svg"
+        },
+        {
+          "number": 12,
+          "slug": "ddia/chapter-12",
+          "title": "Stream Processing",
+          "heading": "Chapter 12. Stream Processing",
+          "source_path": "Designing Data Intensive Applications Second Edition/chapter-12.md",
+          "sha256": "cb3ff9f08b7f91134f67da5b2128f2fcfdb5253189611c37cae32c71ca33f159",
+          "bytes": 129910,
+          "graphic": "assets/books/ddia-chapter-12.svg"
+        },
+        {
+          "number": 13,
+          "slug": "ddia/chapter-13",
+          "title": "A Philosophy of Streaming Systems",
+          "heading": "Chapter 13. A Philosophy of Streaming Systems",
+          "source_path": "Designing Data Intensive Applications Second Edition/chapter-13.md",
+          "sha256": "aba03241685ce5d06bd4c0c1045d5a2b5941eee2ff145ecfd13a4108e8a5afa3",
+          "bytes": 120223,
+          "graphic": "assets/books/ddia-chapter-13.svg"
+        },
+        {
+          "number": 14,
+          "slug": "ddia/chapter-14",
+          "title": "Doing the Right Thing",
+          "heading": "Chapter 14. Doing the Right Thing",
+          "source_path": "Designing Data Intensive Applications Second Edition/chapter-14.md",
+          "sha256": "590e949e515e3db256e774ef21f29749af734b3ae4b13020b845bf0811542631",
+          "bytes": 47722,
+          "graphic": "assets/books/ddia-chapter-14.svg"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1161 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Notex: open notes, code snippets, system design, programming languages and handwritten resources by Harshit Yadav."><meta name="theme-color" content="#f7f7f8"><title>Go 02 · Composite Types · Notex</title><link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../../assets/style.css?v=07c9ccb4c9"><link rel="stylesheet" href="../../assets/highlight.css"><script src="../../assets/app.js?v=861de97365" defer></script></head><body class="reading" data-base="../../"><a class="skip" href="#main-content">Skip to content</a><div class="announcement"><a href="../../library/"><span class="badge live">OPEN</span> Your next idea starts with a note <span class="announcement-more">Explore the library →</span></a><button aria-label="Dismiss announcement" data-dismiss>×</button></div><header class="site-header"><div class="nav-wrap"><a class="wordmark" href="../../">notex<span class="badge">OPEN</span></a><nav aria-label="Main navigation"><div class="dropdown"><button aria-expanded="false" data-dropdown>Learning <span>⌄</span></button><div class="dropdown-panel"><a class="" href="../../python/">Programming languages</a><a class="" href="../../Learning_System_Design/">System design in depth</a><a class="" href="../../ai_ml_index/">AI &amp; machine learning</a><a class="" href="../../sql/">Databases &amp; SQL</a><a class="" href="../../django/">Tools for building</a><a class="" href="../../dsalgo/dsalgoindex/">Data structures &amp; algorithms</a><a class="" href="../../terminal_commands/">Terminal &amp; hardware</a></div></div><a href="../../library/">Library</a><a href="../../library/#handwritten">Handwritten</a><a href="../../library/#notebooks">Notebooks</a><div class="dropdown"><button aria-expanded="false" data-dropdown>Explore <span>⌄</span></button><div class="dropdown-panel"><a href="../../#paths">Learning paths</a><a href="../../#about">About Notex</a><a class="" href="../../Research/">Research</a><a class="" href="../../Tools_Compilation/">Developer tools</a></div></div><a href="https://github.com/harshityadav95/Notex">GitHub ↗</a></nav><div class="nav-actions"><a class="pill open-source" href="https://github.com/harshityadav95/Notex">100% open source ↗</a><button class="search-trigger tactile" aria-label="Search notes" data-search><img src="../../assets/icons/search.svg" alt="" width="18" height="18"></button><a class="tactile desktop-start" href="../../python/">Start reading</a><button class="tactile menu-trigger" aria-label="Open navigation menu" data-menu><img src="../../assets/icons/menu.svg" alt="" width="16" height="16"> Menu</button></div></div></header><dialog class="menu-dialog"><div class="menu-head"><span class="wordmark">notex</span><button aria-label="Close menu" data-close>×</button></div><p>Notes, code and ideas. All in one place.</p><nav aria-label="Mobile navigation"><a href="../../library/">All notes</a><a href="../../library/#handwritten">Handwritten notes</a><a href="../../library/#notebooks">Python notebooks</a><a href="../../#about">About Notex</a><a class="" href="../../python/">Programming languages</a><a class="" href="../../Learning_System_Design/">System design in depth</a><a class="" href="../../ai_ml_index/">AI &amp; machine learning</a><a class="" href="../../sql/">Databases &amp; SQL</a><a class="" href="../../django/">Tools for building</a><a class="" href="../../dsalgo/dsalgoindex/">Data structures &amp; algorithms</a><a class="" href="../../terminal_commands/">Terminal &amp; hardware</a><a href="https://github.com/harshityadav95/Notex">GitHub ↗</a></nav></dialog><div class="reader-bar"><button class="tactile" data-sidebar aria-expanded="false">☰ Topics</button><a href="../../">Notex</a><span>/</span><span>Languages</span><span>/</span><strong>Go 02 · Composite Types</strong></div><div class="reader-layout"><aside class="sidebar" aria-label="Topic navigation"><a class="sidebar-overview" href="../../library/">← All notes</a><p class="eyebrow">WORKSPACE</p><details open><summary>Languages<span>10</span></summary><a class="" href="../../python/">Python</a><a class="" href="../../Javascript-ES6-Notes/">JavaScript &amp; ES6</a><a class="" href="../../C%2B%2B/">C / C++</a><a class="" href="../../css/">CSS</a><a class="" href="../../go/overview/">Learning Go · Third Edition</a><a class="active" href="../../go/chapter-02/">Go 02 · Composite Types</a><a class="" href="../../go/chapter-03/">Go 03 · Blocks, Shadows, and Control Structures</a><a class="" href="../../go/chapter-04/">Go 04 · Functions</a><a class="" href="../../go/chapter-05/">Go 05 · Pointers</a><a class="" href="../../go/chapter-06/">Go 06 · Writing Tests</a></details><details ><summary>Systems<span>18</span></summary><a class="" href="../../Learning_System_Design/">System Design from Scratch</a><a class="" href="../../Scalable_crossplatform_design/">Scalable Cross-platform Design</a><a class="" href="../../ddia/overview/">Designing Data-Intensive Applications · Second Edition</a><a class="" href="../../ddia/chapter-00/">DDIA 00 · Preface</a><a class="" href="../../ddia/chapter-01/">DDIA 01 · Trade-Offs in Data Systems Architecture</a><a class="" href="../../ddia/chapter-02/">DDIA 02 · Defining Nonfunctional Requirements</a><a class="" href="../../ddia/chapter-03/">DDIA 03 · Data Models and Query Languages</a><a class="" href="../../ddia/chapter-04/">DDIA 04 · Storage and Retrieval</a><a class="" href="../../ddia/chapter-05/">DDIA 05 · Encoding and Evolution</a><a class="" href="../../ddia/chapter-06/">DDIA 06 · Replication</a><a class="" href="../../ddia/chapter-07/">DDIA 07 · Sharding</a><a class="" href="../../ddia/chapter-08/">DDIA 08 · Transactions</a><a class="" href="../../ddia/chapter-09/">DDIA 09 · The Trouble with Distributed Systems</a><a class="" href="../../ddia/chapter-10/">DDIA 10 · Consistency and Consensus</a><a class="" href="../../ddia/chapter-11/">DDIA 11 · Batch Processing</a><a class="" href="../../ddia/chapter-12/">DDIA 12 · Stream Processing</a><a class="" href="../../ddia/chapter-13/">DDIA 13 · A Philosophy of Streaming Systems</a><a class="" href="../../ddia/chapter-14/">DDIA 14 · Doing the Right Thing</a></details><details ><summary>AI &amp; ML<span>02</span></summary><a class="" href="../../ai_ml_index/">AI &amp; Machine Learning</a><a class="" href="../../Research/">Research</a></details><details ><summary>Databases<span>03</span></summary><a class="" href="../../sql/">SQL</a><a class="" href="../../postgresql/">PostgreSQL</a><a class="" href="../../MongoDB/">MongoDB</a></details><details ><summary>Development<span>05</span></summary><a class="" href="../../django/">Django</a><a class="" href="../../git/">Git</a><a class="" href="../../markdownsyntax/">Markdown</a><a class="" href="../../vimCheats/">Vim Cheatsheet</a><a class="" href="../../Tools_Compilation/">Developer Tools</a></details><details ><summary>Algorithms<span>04</span></summary><a class="" href="../../dsalgo/dsalgoindex/">Data Structures &amp; Algorithms</a><a class="" href="../../dsalgo/sorting/">Sorting Algorithms</a><a class="" href="../../dsalgo/sol1/">Worked Solutions</a><a class="" href="../../Programming_Interview_Study_Plan/">Programming Interview Study Plan</a></details><details ><summary>The garage<span>02</span></summary><a class="" href="../../terminal_commands/">Terminal Commands</a><a class="" href="../../thinkpad/">ThinkPad</a></details><div class="sidebar-foot">FREE TO READ · OPEN TO EVERYONE</div></aside><main id="main-content" class="reader-main"><div class="article-meta"><span class="eyebrow">Languages / NOTES</span><span>56 MIN READ</span></div><h1 class="article-title">Go 02 · Composite Types</h1><div class="article-actions"><button class="tactile" data-save="go/chapter-02/" aria-pressed="false">Save note</button><a href="https://github.com/harshityadav95/Notex/blob/main/src/go/chapter-02.md">Edit on GitHub ↗</a><span>Always free to read</span></div><div class="article-layout"><article class="prose"><div class="source-credit"><a href="../../go/overview/">Learning Go · Third Edition</a> · <a href="https://github.com/harshityadav95/FAANG_BOOKS/blob/e17be94c728cd6ae755bf5d87a5a45b1a9f0dfbb/Learning%20GO%20book%203rd%20edition/chapter-02.md">Original chapter ↗</a></div><figure class="chapter-graphic"><div class="diagram-scroll" tabindex="0" role="region" aria-label="Chapter overview diagram"><img src="../../assets/books/go-chapter-02.svg" alt="Conceptual overview for Composite Types" width="960" height="300"></div><figcaption>Original Notex overview. Source figure captions and descriptions are preserved below; original figure images are absent from the source repository.</figcaption></figure><nav class="chapter-navigation" aria-label="Chapter navigation"><span>Start of collection</span><a href="../../go/overview/">All chapters</a><a href="../../go/chapter-03/">Next chapter →</a></nav><h2 id="chapter-2-composite-types">Chapter 2. Composite Types</h2>
+<h2 id="a-note-for-early-release-readers">A Note for Early Release Readers</h2>
+<p>With Early Release ebooks, you get books in their earliest form—the author’s raw and unedited content as they write—so you can take advantage of these technologies long before the official release of these titles.</p>
+<p>This will be the third chapter of the final book. Please note that the GitHub repo will be made active later on.</p>
+<p>If you’d like to be actively involved in reviewing and commenting on this draft, please reach out to the editor at sgrey@oreilly.com.</p>
+<p>In the previous chapter, you looked at literals and predeclared variable types: numbers, booleans, and strings. In this chapter, you’ll learn about the composite types in Go, the built-in functions that support them, and the best practices for working with them.</p>
+<h2 id="arraystoo-rigid-to-use-directly">Arrays—Too Rigid to Use Directly</h2>
+<p>Like most programming languages, Go has arrays. However, arrays are rarely used directly in Go. You’ll learn why in a bit, but first let’s quickly cover array declaration syntax and use.</p>
+<p>All elements in the array must be of the type that’s specified (this is unsurprisingly called the element type). There are a few declaration styles. In the first, you specify the size of the array and the type of the elements in the array:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="kt">int</span>
+</code></pre></div>
+
+<p>This creates an array of three ints. Since no values were specified, all of the elements (x[0], x[1], and x[2]) are initialized to the zero value for an int, which is (of course) 0. If you have initial values for the array, you specify them with an array literal:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">}</span>
+</code></pre></div>
+
+<p>If you have a sparse array (an array where most elements are set to their zero value), you can specify only the indices with nonzero values in the array literal:</p>
+<div class="codehilite"><pre><span></span><code>
+</code></pre></div>
+
+<p>This creates an array of 12 ints with the following values: [1, 0, 0, 0, 0, 4, 6, 0, 0, 0, 100, 15].</p>
+<p>When using an array literal to initialize an array, you can replace the number that specifies the number of elements in the array with ...:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="o">...</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">}</span>
+</code></pre></div>
+
+<p>You can use == and != to compare two arrays. Arrays are equal if they are the same length and contain equal values:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="o">...</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">}</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">}</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nx">y</span><span class="p">)</span><span class="w"> </span><span class="c1">// prints true</span>
+</code></pre></div>
+
+<p>Go has only one-dimensional arrays, but you can simulate multidimensional arrays:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span><span class="kt">int</span>
+</code></pre></div>
+
+<p>This declares x to be an array of length 2 whose type is an array of ints of length 3. This sounds pedantic, but some languages have true matrix support, like Fortran or Julia; Go isn’t one of them.</p>
+<p>Like most languages, arrays in Go are read and written using bracket syntax:</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">10</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">x</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+</code></pre></div>
+
+<p>You cannot read or write past the end of an array or use a negative index. If you do this with a constant or literal index, it is a compile-time error. An out-of-bounds read or write with a variable index compiles but fails at runtime with a panic (you’ll learn more about panics in the Panic Recover section).</p>
+<p>Finally, the built-in function <code>len</code> takes in an array and returns its length:</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nx">x</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Earlier I said that arrays in Go are rarely used explicitly. This is because they come with an unusual limitation: Go considers the size of the array to be part of the type of the array. This makes an array that’s declared to be [3]int a different type from an array that’s declared to be [4]int. This also means that you cannot use a variable to specify the size of an array, because types must be resolved at compile time, not at runtime.</p>
+<p>What’s more, you can’t use a type conversion to directly convert arrays of different sizes to identical types. Because you can’t convert arrays of different sizes into each other, you can’t write a function that works with arrays of any size and you can’t assign arrays of different sizes to the same variable.</p>
+<blockquote>
+<p><strong>Note</strong></p>
+<p>You’ll learn how arrays work behind the scenes when I discuss memory layout in Chapter 5.</p>
+</blockquote>
+<p>Because of these restrictions, don’t use arrays unless you know the exact length you need ahead of time. For example, some of the cryptographic functions in the standard library return arrays because the sizes of checksums are defined as part of the algorithm. This is the exception, not the rule.</p>
+<p>This raises the question: why is such a limited feature in the language? The main reason arrays exist in Go is to provide the backing store for slices, which are one of the most useful features of Go.</p>
+<h2 id="slices">Slices</h2>
+<p>Most of the time, when you want a data structure that holds a sequence of values, a slice is what you should use. What makes slices so useful is that you can grow slices as needed. This is because the length of a slice is not part of its type. This removes the biggest limitations of arrays and allows you to write a single function that processes slices of any size (I’ll cover function writing in Chapter 4). After going over the basics of using slices in Go, I’ll cover the best ways to use them.</p>
+<p>Working with slices looks a lot like working with arrays, but subtle differences exist. The first thing to notice is that you don’t specify the size of the slice when you declare it:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">}</span>
+</code></pre></div>
+
+<blockquote>
+<p><strong>Tip</strong></p>
+<p>Using [...] makes an array. Using [] makes a slice.</p>
+</blockquote>
+<p>This creates a slice of type []int with an element type of int. The slice is initialized to hold three ints using a slice literal. Just as with arrays, you can also specify only the indices with nonzero values in the slice literal:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">15</span><span class="p">}</span>
+</code></pre></div>
+
+<p>This creates a slice of 12 ints with the following values: [1, 0, 0, 0, 0, 4, 6, 0, 0, 0, 100, 15].</p>
+<p>You can simulate multidimensional slices and make a slice of slices:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="p">[][]</span><span class="kt">int</span>
+</code></pre></div>
+
+<p>You read and write slices using bracket syntax, and, just as with arrays, you can’t read or write past the end or use a negative index:</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">10</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">x</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+</code></pre></div>
+
+<p>So far, slices have seemed identical to arrays. You start to see the differences between arrays and slices when you look at declaring slices without using a literal:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span>
+</code></pre></div>
+
+<p>This creates a slice of ints. Since no value is assigned, x is assigned the zero value for a slice, which is something you haven’t seen before: <code>nil</code>. I’ll talk more about <code>nil</code> in Chapter 5, but it is slightly different from the null that’s found in other languages. In Go, <code>nil</code> is an identifier that represents the lack of a value for some types. Like the untyped numeric constants you saw in the previous chapter, <code>nil</code> has no type, so it can be assigned or compared against values of different types. A <code>nil</code> slice contains nothing.</p>
+<p>A slice is the first type you’ve seen that isn’t comparable. It is a compile-time error to use == to see if two slices are identical or != to see if they are different. The only thing you can compare a slice with using == is <code>nil</code>:</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">nil</span><span class="p">)</span><span class="w"> </span><span class="c1">// prints true</span>
+</code></pre></div>
+
+<h3 id="len">len</h3>
+<p>Go provides several built-in functions to work with slices. You’ve already seen the built-in <code>len</code> function when looking at arrays. It works for slices too. Passing a <code>nil</code> slice to <code>len</code> returns 0.</p>
+<blockquote>
+<p><strong>Note</strong></p>
+<p>Functions like <code>len</code> are built into Go because they can do things that can’t be done by the functions that you can write. You’ve already seen that <code>len</code>’s parameter can be any type of array or any type of slice. You’ll soon see that it also works for strings and maps. In the Channels section, you’ll see it working with channels. Trying to pass a variable of any other type to <code>len</code> is a compile-time error. As you’ll see in Chapter 4, Go doesn’t let developers write a function that accepts any string, array, slice, channel, or map, but rejects other types.</p>
+</blockquote>
+<h3 id="append">append</h3>
+<p>The built-in <code>append</code> function is used to grow slices:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span>
+<span class="nx">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span>
+</code></pre></div>
+
+<p>The <code>append</code> function takes a slice of any type and zero or more values of the element type of the slice. It returns a slice with the same type as the passed-in slice, which is usually assigned to the variable that was passed to <code>append</code>. In this example, you are appending to a <code>nil</code> slice, but you can <code>append</code> to a slice that already has elements:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">}</span>
+<span class="nx">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span>
+</code></pre></div>
+
+<p>You can <code>append</code> more than one value at a time:</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">)</span>
+</code></pre></div>
+
+<p>One slice is appended onto another by using the ... operator to expand the source slice into individual values (you’ll learn more about the ... operator in “Variadic Input Parameters and Slices”):</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">y</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w"> </span><span class="mi">40</span><span class="p">}</span>
+<span class="nx">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">...</span><span class="p">)</span>
+</code></pre></div>
+
+<p>It is a compile-time error if you forget to assign the value returned from <code>append</code>. You might be wondering why as it seems a bit repetitive. I will talk about this in greater detail in Chapter 4, but Go is a call-by-value language. Every time you pass a parameter to a function, Go makes a copy of the value that’s passed in. Passing a slice to the <code>append</code> function actually passes a copy of the slice to the function. The function adds the values to the copy of the slice and returns the copy. You then assign the returned slice back to the variable in the calling function.</p>
+<h3 id="capacity">Capacity</h3>
+<p>As you’ve seen, a slice is a sequence of values. Each element in a slice is assigned to consecutive memory locations, which makes it quick to read or write these values. The length of a slice is the number of consecutive memory locations that have been assigned a value. Every slice also has a capacity, which is the number of consecutive memory locations reserved. This can be larger than the length. Each time you <code>append</code> to a slice, one or more values is added to the end of the slice. Each value added increases the length by one. When the length reaches the capacity, there’s no more room to put values. If you try to add additional values when the length equals the capacity, the <code>append</code> function uses the Go runtime to allocate a new backing array for the slice with a larger capacity. The values in the original backing array are copied to the new one, the new values are added to the end of the new backing array, and the slice is updated to refer to the new backing array. Finally, the updated slice is returned.</p>
+<h4 id="the-go-runtime">The Go Runtime</h4>
+<p>Every high-level language relies on a set of libraries to enable programs written in that language to run, and Go is no exception. The Go runtime provides services like memory allocation and garbage collection, concurrency support, networking, and implementations of built-in types and functions.</p>
+<p>The Go runtime is compiled into every Go binary. This is different from languages that use a virtual machine, which must be installed separately to allow programs written in those languages to function. Including the runtime in the binary makes it easier to distribute Go programs and avoids worries about compatibility issues between the runtime and the program. The drawback of including the runtime in the binary is that even the simplest Go program produces a binary that’s about 2 MB.</p>
+<p>When a slice grows via <code>append</code>, it takes time for the Go runtime to allocate new memory and copy the existing data from the old memory to the new. The old memory also needs to be garbage collected. For this reason, after the first allocation, the Go runtime increases a slice’s capacity by more than one each time it runs out of capacity. The amount of increase depends on the current capacity of the slice:</p>
+<table>
+<thead>
+<tr>
+<th>current capacity</th>
+<th>new capacity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>&lt; 256</td>
+<td>2 * current capacity</td>
+</tr>
+<tr>
+<td>&gt;= 256</td>
+<td>(current capacity + 768) / 4</td>
+</tr>
+</tbody>
+</table>
+<p>This algorithm slowly converges at 25% growth (a slice with capacity of 512 will grow by 63%, but a slice with capacity 4,096 will grow by only 30%).</p>
+<p>Just as the built-in <code>len</code> function returns the current length of a slice, the built-in <code>cap</code> function returns the current capacity of a slice. It is used far less frequently than <code>len</code>. Most of the time, <code>cap</code> is used to check if a slice is large enough to hold new data, or if a call to make is needed to create a new slice.</p>
+<p>You can also pass an array to the <code>cap</code> function, but <code>cap</code> always returns the same value as <code>len</code> for arrays. Don’t put it in your code, but save this trick for Go trivia night.</p>
+<p>Let’s take a look at how adding elements to a slice changes the length and capacity. Run the code in Example 2-1 on The Go Playground or in the <code>sample_code/len_cap</code> directory in the Chapter 3 repository. Let’s take a look at how adding elements to a slice changes the length and capacity. Run the code in Example 2-1 on The Go Playground or in the <code>sample_code/len_cap</code> directory in the Chapter 3 repository.</p>
+<p><strong>Example 2-1. Understanding capacity</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">x</span><span class="p">),</span><span class="w"> </span><span class="nb">cap</span><span class="p">(</span><span class="nx">x</span><span class="p">))</span>
+<span class="nx">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">x</span><span class="p">),</span><span class="w"> </span><span class="nb">cap</span><span class="p">(</span><span class="nx">x</span><span class="p">))</span>
+<span class="nx">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">x</span><span class="p">),</span><span class="w"> </span><span class="nb">cap</span><span class="p">(</span><span class="nx">x</span><span class="p">))</span>
+<span class="nx">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">x</span><span class="p">),</span><span class="w"> </span><span class="nb">cap</span><span class="p">(</span><span class="nx">x</span><span class="p">))</span>
+<span class="nx">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="mi">40</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">x</span><span class="p">),</span><span class="w"> </span><span class="nb">cap</span><span class="p">(</span><span class="nx">x</span><span class="p">))</span>
+<span class="nx">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">x</span><span class="p">),</span><span class="w"> </span><span class="nb">cap</span><span class="p">(</span><span class="nx">x</span><span class="p">))</span>
+</code></pre></div>
+
+<p>When you build and run the code, you’ll see the following output. Notice how and when the capacity increases:</p>
+<div class="codehilite"><pre><span></span><code>[] 0 0
+[10] 1 1
+[10 20] 2 2
+[10 20 30] 3 4
+[10 20 30 40] 4 4
+[10 20 30 40 50] 5 8
+</code></pre></div>
+
+<p>While it’s nice that slices grow automatically, it’s far more efficient to size them once. If you know how many things you plan to put into a slice, create it with the correct initial capacity. You do that with the make function.</p>
+<h3 id="make">make</h3>
+<p>You’ve already seen two ways to declare a slice, using a slice literal or the <code>nil</code> zero value. While useful, neither way allows you to create an empty slice that already has a length or capacity specified. That’s the job of the built-in make function. It allows you to specify the type, length, and, optionally, the capacity. Let’s take a look:</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">x</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span>
+</code></pre></div>
+
+<p>This creates an int slice with a length of 5 and a capacity of 5. Since it has a length of 5, x[0] through x[4] are valid elements, and they are all initialized to 0.</p>
+<p>One common beginner mistake is to try to populate those initial elements using <code>append</code>:</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">x</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span>
+<span class="nx">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span>
+</code></pre></div>
+
+<p>The 10 is placed at the end of the slice, after the zero values in elements 0–4 because <code>append</code> always increases the length of a slice. The value of x is now [0 0 0 0 0 10], with a length of 6 and a capacity of 10 (the capacity was doubled as soon as the sixth element was appended).</p>
+<p>You can also specify an initial capacity with make:</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">x</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span>
+</code></pre></div>
+
+<p>This creates an int slice with a length of 5 and a capacity of 10.</p>
+<p>You can also create a slice with zero length but a capacity that’s greater than zero:</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">x</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span>
+</code></pre></div>
+
+<p>In this case, you have a non-<code>nil</code> slice with a length of 0 but a capacity of 10. Since the length is 0, you can’t directly index into it, but you can <code>append</code> values to it:</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">x</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span>
+<span class="nx">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">)</span>
+</code></pre></div>
+
+<p>The value of x is now [5 6 7 8], with a length of 4 and a capacity of 10.</p>
+<blockquote>
+<p><strong>Warning</strong></p>
+<p>Never specify a capacity that’s less than the length! It is a compile-time error to do so with a constant or numeric literal. If you use a variable to specify a capacity that’s smaller than the length, your program will panic at runtime.</p>
+</blockquote>
+<h3 id="emptying-a-slice">Emptying a Slice</h3>
+<p>Go 1.21 added a <code>clear</code> function that takes in a slice and sets all of the slice’s elements to their zero value. The length of the slice remains unchanged. The following code:</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">s</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;first&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;second&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;third&quot;</span><span class="p">}</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">s</span><span class="p">,</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">s</span><span class="p">))</span>
+<span class="nb">clear</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">s</span><span class="p">,</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">s</span><span class="p">))</span>
+</code></pre></div>
+
+<p>prints out:</p>
+<div class="codehilite"><pre><span></span><code>[first second third] 3
+[  ] 3
+</code></pre></div>
+
+<p>(Remember, the zero value for a string is an empty string ""!)</p>
+<h3 id="declaring-your-slice">Declaring Your Slice</h3>
+<p>Now that you’ve seen all these ways to create slices, how do you choose which slice declaration style to use? The primary goal is to minimize the number of times the slice needs to grow. If it’s possible that the slice won’t need to grow at all, use a var declaration with no assigned value to create a <code>nil</code> slice, as shown in Example 2-2.</p>
+<p><strong>Example 2-2. Declaring a slice that might stay nil</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span>
+</code></pre></div>
+
+<blockquote>
+<p><strong>Note</strong></p>
+<p>You can create a slice using an empty slice literal:</p>
+</blockquote>
+<div class="codehilite"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span><span class="p">{}</span>
+</code></pre></div>
+
+<p>This creates a slice with zero length and zero capacity. It is confusingly different from a <code>nil</code> slice. Because of implementation reasons, comparing a zero-length slice to <code>nil</code> returns false, while comparing a <code>nil</code> slice to <code>nil</code> returns true. For simplicity, favor <code>nil</code> slices.</p>
+<p>If you have some starting values, or if a slice’s values aren’t going to change, then a slice literal is a good choice (see Example 2-3).</p>
+<p><strong>Example 2-3. Declaring a slice with default values</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="nx">data</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">}</span><span class="w"> </span><span class="c1">// numbers we appreciate</span>
+</code></pre></div>
+
+<p>If you have a good idea of how large your slice needs to be, but don’t know what those values will be when you are writing the program, use make. The question then becomes whether you should specify a nonzero length in the call to make or specify a zero length and a nonzero capacity. There are three possibilities:</p>
+<ul>
+<li>
+<p>If you are using a slice as a buffer (you’ll see this in Chapter 13), then specify a nonzero length.</p>
+</li>
+<li>
+<p>If you are sure you know the exact size you want, you can specify the length and index into the slice to set the values. This is often done when transforming values in one slice and storing them in a second. The downside to this approach is that if you have the size wrong, you’ll end up with either zero values at the end of the slice or a panic from trying to access elements that don’t exist.</p>
+</li>
+<li>
+<p>In other situations, use make with a zero length and a specified capacity. This allows you to use <code>append</code> to add items to the slice. If the number of items turns out to be smaller, you won’t have an extraneous zero value at the end. If the number of items is larger, your code will not panic.</p>
+</li>
+</ul>
+<p>The Go community is split between the second and third approaches. I personally prefer using <code>append</code> with a slice initialized to a zero length. It might be slower in some situations, but it is less likely to introduce a bug.</p>
+<blockquote>
+<p><strong>Warning</strong></p>
+<p><code>append</code> always increases the length of a slice! If you have specified a slice’s length using make, be sure that you mean to <code>append</code> to it before you do so, or you might end up with a bunch of surprise zero values at the beginning of your slice.</p>
+</blockquote>
+<h3 id="sharing-and-copying-slices">Sharing and Copying Slices</h3>
+<p>Another difference between slices and arrays is that assigning an array variable to another array variable creates an independent copy of the array, while assigning a slice variable to another slice variable shares the storage of the data between the two variables. This potentially becomes confusing when the slice is modified. An example on The Go Playground makes this <code>clear</code>:</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">array1</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">}</span>
+<span class="nx">array2</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">array1</span>
+<span class="nx">array2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">20</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">array1</span><span class="p">,</span><span class="w"> </span><span class="nx">array2</span><span class="p">)</span><span class="w"> </span><span class="c1">// prints [1 2 3] [20 2 3]</span>
+
+<span class="nx">slice1</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">}</span>
+<span class="nx">slice2</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">slice1</span>
+<span class="nx">slice2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">20</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">slice1</span><span class="p">,</span><span class="w"> </span><span class="nx">slice2</span><span class="p">)</span><span class="w"> </span><span class="c1">// prints [20 2 3] [20 2 3]</span>
+</code></pre></div>
+
+<p>A slice is a wrapper around an array (Details on how slices are implemented are in “The Difference Between Maps and Slices”). The length of the array is the capacity of the slice. When you assign one slice variable to another slice variable, you are making a copy of the wrapper, but the array is shared between the two variables until one slice is appended to a point where its capacity is larger than the initial array. Once this happens, a new backing array is allocated and the link between the two variables is broken.</p>
+<p>This example on The Go Playground shows how the array is shared at first, but once one slice grows beyond the size of the initial array, the link is broken.</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">slice1</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+<span class="nx">slice1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">slice1</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span>
+<span class="nx">slice2</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">slice1</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">slice1</span><span class="p">,</span><span class="w"> </span><span class="nx">slice2</span><span class="p">)</span><span class="w"> </span><span class="c1">// prints [10] [10]</span>
+<span class="nx">slice1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">-</span><span class="mi">5</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">slice1</span><span class="p">,</span><span class="w"> </span><span class="nx">slice2</span><span class="p">)</span><span class="w"> </span><span class="c1">// prints [-5] [-5]</span>
+<span class="nx">slice1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">slice1</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">slice1</span><span class="p">,</span><span class="w"> </span><span class="nx">slice2</span><span class="p">)</span><span class="w"> </span><span class="c1">// prints [-5 20] [-5]</span>
+<span class="nx">slice2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">slice2</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">slice1</span><span class="p">,</span><span class="w"> </span><span class="nx">slice2</span><span class="p">)</span><span class="w"> </span><span class="c1">// prints [-5 30] [-5 30]</span>
+<span class="nx">slice1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">slice1</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">slice1</span><span class="p">,</span><span class="w"> </span><span class="nx">slice2</span><span class="p">)</span><span class="w"> </span><span class="c1">// prints [-5 30 100] [-5 30]</span>
+<span class="nx">slice2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">slice2</span><span class="p">,</span><span class="w"> </span><span class="mi">200</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">slice1</span><span class="p">,</span><span class="w"> </span><span class="nx">slice2</span><span class="p">)</span><span class="w"> </span><span class="c1">// prints [-5 30 100] [-5 30 200]</span>
+</code></pre></div>
+
+<p>In this example, slice1 is created as a slice with zero length and a capacity of two. The value 10 is set as the first value in slice1. slice2 is assigned the value of slice1, which means they keep track of size and capacity independently, but share a backing array. Setting slice1[0] to -5 changes the value for both slices. Appending a 20 to slice1 changes the size of slice1, but doesn’t change the size of slice2, which is why slice1 is now [-5 20] and slice2 is still [-5].</p>
+<p>Things get weird when 30 is appended to slice2. Both slices have a length of two now, and since the length of the initial backing array is two, they still share it. Because of this, appending 30 to slice2 writes 30 to the shared backing array, which changes the value of slice1[1] as well.</p>
+<p>When slice1 is appended for a third time, there’s no more room in the shared backing array, so a new backing array is created, just for slice1. The old values are copied into it, and the new value is appended to it. This breaks the connection between the two slices. When slice2 is appended, it also outgrows the initial backing array and its data is copied into a new backing array. At this point, the old backing array is no longer used and will eventually be garbage collected by the Go Runtime.</p>
+<p>Developers rarely want this behavior. Most of the time, you want to make an independent copy of the slice. There are two ways to do this. The first is to use the built-in copy function. Look at this example, which you can run on The Go Playground or in the <code>sample_code/copy_slice</code> directory in the Chapter 3 repository:</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">x</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">}</span>
+<span class="nx">y</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span>
+<span class="nx">num</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">copy</span><span class="p">(</span><span class="nx">y</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">y</span><span class="p">,</span><span class="w"> </span><span class="nx">num</span><span class="p">)</span>
+</code></pre></div>
+
+<p>You get this output:</p>
+<div class="codehilite"><pre><span></span><code>[1 2 3 4] 4
+</code></pre></div>
+
+<p>The copy function takes two parameters. The first is the destination slice, and the second is the source slice. The function copies as many values as it can from source to destination, limited by whichever slice is smaller, and returns the number of elements copied. The capacity of x and y doesn’t matter; it’s the length that’s important.</p>
+<p>If the destination has a smaller length than the source, only a subset of a slice is copied. The following code copies the first two elements of a four-element slice into a two-element slice:</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">x</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">}</span>
+<span class="nx">y</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+<span class="nx">num</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">copy</span><span class="p">(</span><span class="nx">y</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="p">)</span>
+</code></pre></div>
+
+<p>The variable y is set to [1 2], and num is set to 2.</p>
+<p>The other way to make a copy of a slice is to use the Clone function in the slices package. The Clone function takes in a slice and returns a copy.</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">x</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">}</span>
+<span class="nx">y</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">slices</span><span class="p">.</span><span class="nx">Clone</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span>
+</code></pre></div>
+
+<blockquote>
+<p><strong>Note</strong></p>
+<p>You might wonder why copy is a built-in function, but Clone is a function in the slices package. The reason is the copy function was defined before generics were added to Go. Without generics, you cannot write a single function that can process slices of any type. I cover generics in Chapter 8.</p>
+</blockquote>
+<p>Why does Go provide two ways to duplicate a slice? The answer is flexibility. Clone is great when you want to duplicate a slice, but the ability to provide the destination slice makes copy more powerful. Because the destination slice is provided, You have the ability to re-use the destination slice, which reduces memory usage. (Recycling isn’t only good in the real world!) You can even use copy to duplicate the middle or end of a slice by passing only parts of the source and destination slices to copy. How do you read from only part of a slice? It’s time to learn about slice expressions.</p>
+<h3 id="slicing-slices">Slicing Slices</h3>
+<p>A slice expression creates a slice from a slice. It’s written inside brackets and consists of a starting offset and an ending offset, separated by a colon (:). The starting offset is the first position in the slice that is included in the new slice, and the ending offset is one past the last position to include. If you leave off the starting offset, 0 is assumed. Likewise, if you leave off the ending offset, the end of the slice is substituted. You can see how this works by running the code in Example 2-4 on The Go Playground or in the <code>sample_code/slicing_slices</code> directory in the Chapter 3 repository.</p>
+<p><strong>Example 2-4. Slicing slices</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="nx">x</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;b&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;c&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;d&quot;</span><span class="p">}</span>
+<span class="nx">y</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">x</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
+<span class="nx">z</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="nx">d</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+<span class="nx">e</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">x</span><span class="p">[:]</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;x:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;y:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;z:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">z</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;d:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">d</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;e:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">e</span><span class="p">)</span>
+</code></pre></div>
+
+<p>It gives the following output:</p>
+<div class="codehilite"><pre><span></span><code>x: [a b c d]
+y: [a b]
+z: [b c d]
+d: [b c]
+e: [a b c d]
+</code></pre></div>
+
+<p>When you take a slice from a slice, you are not making a copy of the data. Instead, you now have two variables that are sharing memory. This means that changes to an element in a slice affect all slices that share that element. Let’s see what happens when you change values. You can run the code in Example 2-5 on The Go Playground or in the <code>sample_code/slice_share_storage</code> directory in the Chapter 3 repository.</p>
+<p><strong>Example 2-5. Slices with overlapping storage</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="nx">x</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;b&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;c&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;d&quot;</span><span class="p">}</span>
+<span class="nx">y</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">x</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
+<span class="nx">z</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="nx">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;y&quot;</span>
+<span class="nx">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;x&quot;</span>
+<span class="nx">z</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;z&quot;</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;x:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;y:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;z:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">z</span><span class="p">)</span>
+</code></pre></div>
+
+<p>You get the following output:</p>
+<div class="codehilite"><pre><span></span><code>x: [x y z d]
+y: [x y]
+z: [y z d]
+</code></pre></div>
+
+<p>Changing x modified both y and z, while changes to y and z modified x.</p>
+<p>Slicing slices gets extra confusing when combined with <code>append</code>. Try out the code in Example 2-6 on The Go Playground or in the <code>sample_code/slice_append_storage</code> directory in the Chapter 3 repository.</p>
+<p><strong>Example 2-6. append makes overlapping slices more confusing</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="nx">x</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;b&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;c&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;d&quot;</span><span class="p">}</span>
+<span class="nx">y</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">x</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nb">cap</span><span class="p">(</span><span class="nx">x</span><span class="p">),</span><span class="w"> </span><span class="nb">cap</span><span class="p">(</span><span class="nx">y</span><span class="p">))</span>
+<span class="nx">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">y</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;z&quot;</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;x:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;y:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Running this code gives the following output:</p>
+<div class="codehilite"><pre><span></span><code>4 4
+x: [a b z d]
+y: [a b z]
+</code></pre></div>
+
+<p>What’s going on? Whenever you take a slice from another slice, the subslice’s capacity is set to the capacity of the original slice, minus the starting offset of the subslice within the original slice. This means elements of the original slice beyond the end of the subslice, including unused capacity, are shared by both slices.</p>
+<p>When you make the y slice from x, the length is set to 2, but the capacity is set to 4, the same as x. Since the capacity is 4, appending onto the end of y puts the value in the third position of x.</p>
+<p>This behavior creates some odd scenarios, with multiple slices appending and overwriting each other’s data. See if you can guess what the code in Example 2-7 prints out, then run it on The Go Playground or in the <code>sample_code/confusing_slices</code> directory in the Chapter 3 repository to see if you guessed correctly.</p>
+<p><strong>Example 2-7. Even more confusing slices</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="nx">x</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">([]</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span>
+<span class="nx">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;b&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;c&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;d&quot;</span><span class="p">)</span>
+<span class="nx">y</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">x</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
+<span class="nx">z</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">x</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nb">cap</span><span class="p">(</span><span class="nx">x</span><span class="p">),</span><span class="w"> </span><span class="nb">cap</span><span class="p">(</span><span class="nx">y</span><span class="p">),</span><span class="w"> </span><span class="nb">cap</span><span class="p">(</span><span class="nx">z</span><span class="p">))</span>
+<span class="nx">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">y</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;i&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;j&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;k&quot;</span><span class="p">)</span>
+<span class="nx">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;x&quot;</span><span class="p">)</span>
+<span class="nx">z</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">z</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;y&quot;</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;x:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;y:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;z:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">z</span><span class="p">)</span>
+</code></pre></div>
+
+<p>To avoid complicated slice situations, you should either never use <code>append</code> with a subslice or make sure that <code>append</code> doesn’t cause an overwrite by using a full slice expression. This is a little weird, but it makes <code>clear</code> how much memory is shared between the parent slice and the subslice. The full slice expression includes a third part, which indicates the last position in the parent slice’s capacity that’s available for the subslice. Subtract the starting offset from this number to get the subslice’s capacity. Example 2-8 shows the first four lines from the previous example, modified to use full slice expressions.</p>
+<p><strong>Example 2-8. The full slice expression protects against append</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="nx">x</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">([]</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span>
+<span class="nx">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;b&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;c&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;d&quot;</span><span class="p">)</span>
+<span class="nx">y</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">x</span><span class="p">[:</span><span class="mi">2</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+<span class="nx">z</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">x</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
+</code></pre></div>
+
+<p>Try out this code on The Go Playground or in the <code>sample_code/full_slice_expression</code> directory in the Chapter 3 repository. Both y and z have a capacity of 2. Because you limited the capacity of the subslices to their lengths, appending additional elements onto y and z created new slices that didn’t interact with the other slices. After this code runs, x is set to [a b c d x], y is set to [a b i j k], and z is set to [c d y].</p>
+<blockquote>
+<p><strong>Warning</strong></p>
+<p>Be careful when taking a slice of a slice! Both slices share the same memory, and changes to one are reflected in the other. Avoid modifying slices after they have been sliced or if they were produced by slicing. Use a three-part slice expression to prevent <code>append</code> from sharing capacity between slices.</p>
+</blockquote>
+<h3 id="copying-slices-of-slices">Copying Slices of Slices</h3>
+<p>Slice expressions allow you to copy from the middle of the source slice:</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">x</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">}</span>
+<span class="nx">y</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">copy</span><span class="p">(</span><span class="nx">y</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="p">[</span><span class="mi">2</span><span class="p">:])</span>
+</code></pre></div>
+
+<p>You are copying the third and fourth elements in x by taking a slice of the slice. Also note that you don’t assign the output of copy to a variable. If you don’t need the number of elements copied, you don’t need to assign it.</p>
+<p>Combining the copy function with slice expressions allows you to do some unusual things, like copy between two slices that cover overlapping sections of an underlying slice:</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">x</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">}</span>
+<span class="nx">num</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">copy</span><span class="p">(</span><span class="nx">x</span><span class="p">[:</span><span class="mi">3</span><span class="p">],</span><span class="w"> </span><span class="nx">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="nx">num</span><span class="p">)</span>
+</code></pre></div>
+
+<p>In this case, you are copying the last three values in x on top of the first three values of x. This prints out [2 3 4 4] 3.</p>
+<h3 id="converting-arrays-to-slices">Converting Arrays to Slices</h3>
+<p>Slices aren’t the only thing you can slice. If you have an array, you can take a slice from it using a slice expression. This is a useful way to bridge an array to a function that takes only slices. To convert an entire array into a slice, use the [:] syntax:</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">xArray</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">}</span>
+<span class="nx">xSlice</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">xArray</span><span class="p">[:]</span>
+</code></pre></div>
+
+<p>You can also convert a subset of an array into a slice:</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">x</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">}</span>
+<span class="nx">y</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">x</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
+<span class="nx">z</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">x</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>
+</code></pre></div>
+
+<p>Be aware that taking a slice from an array has the same memory-sharing properties as taking a slice from a slice. If you run the following code on The Go Playground or in the <code>sample_code/slice_array_memory</code> directory in the Chapter 3 repository:</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">x</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">}</span>
+<span class="nx">y</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">x</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
+<span class="nx">z</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">x</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>
+<span class="nx">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">10</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;x:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;y:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;z:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">z</span><span class="p">)</span>
+</code></pre></div>
+
+<p>you get this output:</p>
+<div class="codehilite"><pre><span></span><code>x: [10 6 7 8]
+y: [10 6]
+z: [7 8]
+</code></pre></div>
+
+<p>You can use copy with arrays by taking a slice of the array. You can make the array either the source or the destination of the copy. You can try out the following code on The Go Playground or in the <code>sample_code/copy_array</code> directory in the Chapter 3 repository:</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">x</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">}</span>
+<span class="nx">d</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">}</span>
+<span class="nx">y</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">copy</span><span class="p">(</span><span class="nx">y</span><span class="p">,</span><span class="w"> </span><span class="nx">d</span><span class="p">[:])</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">y</span><span class="p">)</span>
+<span class="nb">copy</span><span class="p">(</span><span class="nx">d</span><span class="p">[:],</span><span class="w"> </span><span class="nx">x</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">d</span><span class="p">)</span>
+</code></pre></div>
+
+<p>The first call to copy copies the first two values in array d into slice y. The second copies all of the values in slice x into array d. This produces the following output:</p>
+<div class="codehilite"><pre><span></span><code>[5 6]
+[1 2 3 4]
+</code></pre></div>
+
+<h3 id="converting-slices-to-arrays">Converting Slices to Arrays</h3>
+<p>Use a type conversion to make an array variable from a slice. You can convert an entire slice to an array of the same type, or you can create an array from a subset of the slice.</p>
+<p>When you convert a slice to an array, the data in the slice is copied to new memory. That means that changes to the slice won’t affect the array, and vice versa.</p>
+<p>The following code:</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">xSlice</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">}</span>
+<span class="nx">xArray</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="nb">int</span><span class="p">(</span><span class="nx">xSlice</span><span class="p">)</span>
+<span class="nx">smallArray</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="nb">int</span><span class="p">(</span><span class="nx">xSlice</span><span class="p">)</span>
+<span class="nx">xSlice</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">10</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">xSlice</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">xArray</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">smallArray</span><span class="p">)</span>
+</code></pre></div>
+
+<p>prints out:</p>
+<div class="codehilite"><pre><span></span><code>[10 2 3 4]
+[1 2 3 4]
+[1 2]
+</code></pre></div>
+
+<p>The size of the array must be specified at compile time. It’s a compile-time error to use [...] in a slice to array type conversion.</p>
+<p>While the size of the array can be smaller than the size of the slice, it cannot be bigger. Unfortunately, the compiler cannot detect this, and your code will panic at runtime if you specify an array size that’s bigger than the length (not the capacity) of the slice. The following code:</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">panicArray</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="nb">int</span><span class="p">(</span><span class="nx">xSlice</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">panicArray</span><span class="p">)</span>
+</code></pre></div>
+
+<p>panics at runtime with the message:</p>
+<div class="codehilite"><pre><span></span><code>panic: runtime error: cannot convert slice with length 4 to array
+     or pointer to array with length 5
+</code></pre></div>
+
+<blockquote>
+<p><strong>Note</strong></p>
+<p>I haven’t talked about pointers yet, but you can also use a type conversion to convert a slice into a pointer to an array:</p>
+</blockquote>
+<div class="codehilite"><pre><span></span><code><span class="nx">xSlice</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">}</span>
+<span class="nx">xArrayPointer</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="kt">int</span><span class="p">)(</span><span class="nx">xSlice</span><span class="p">)</span>
+</code></pre></div>
+
+<p>After converting a slice to an array pointer, the storage between the two is shared. A change to one will change the other:</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">xSlice</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">10</span>
+<span class="nx">xArrayPointer</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">20</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">xSlice</span><span class="p">)</span><span class="w"> </span><span class="c1">// prints [10 20 3 4]</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">xArrayPointer</span><span class="p">)</span><span class="w"> </span><span class="c1">// prints &amp;[10 20 3 4]</span>
+</code></pre></div>
+
+<p>Pointers are covered in Chapter 5.</p>
+<p>You can try all of the array type conversions on The Go Playground or in the <code>sample_code/array_conversion</code> directory in the Chapter 3 repository.</p>
+<p>In “Arrays—Too Rigid to Use Directly”, I mentioned that you can’t use arrays as function parameters when the size of the array being passed in might vary. Technically, you can work around this limitation by converting an array to a slice, converting the slice to an array of a different size, and then passing the second array in to a function. The second array must be shorter than the first array, or your program will panic. While this might be helpful in a pinch, if you find yourself doing this frequently, strongly consider changing your function’s API to take a slice instead of an array.</p>
+<h3 id="comparing-slices">Comparing Slices</h3>
+<p>As I mentioned earlier, slices are not comparable, which means they cannot be compared to each other using the == and != operators (slices can only be compared to <code>nil</code>). If you need to test if two slices have identical sizes and contents, the slices package in the standard library provides two functions. The <code>slices.Equal</code> function takes in two slices and returns true if the slices are the same length, and all of the elements are equal. It requires the elements of the slice to be comparable. The other function, <code>slices.EqualFunc</code>, lets you pass in a function to determine equality and does not require the slice elements to be comparable. You’ll learn about passing functions into functions in “Passing Functions as Parameters”.</p>
+<p>You can see how Equal and EqualFunc are used on the Go Playground:</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">x</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">}</span>
+<span class="nx">y</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">}</span>
+<span class="nx">z</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">}</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">slices</span><span class="p">.</span><span class="nx">Equal</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">))</span><span class="w"> </span><span class="c1">// prints false</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">slices</span><span class="p">.</span><span class="nx">Equal</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="nx">z</span><span class="p">))</span><span class="w"> </span><span class="c1">// prints true</span>
+<span class="nx">a</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[][]</span><span class="kt">int</span><span class="p">{{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">}}</span>
+<span class="nx">b</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[][]</span><span class="kt">int</span><span class="p">{{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">}}</span>
+<span class="c1">// pass slices.Equal in to slices.EqualFunc to</span>
+<span class="c1">// compare elements that are slices of comparable values</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">slices</span><span class="p">.</span><span class="nx">EqualFunc</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">,</span><span class="w"> </span><span class="nx">slices</span><span class="p">.</span><span class="nx">Equal</span><span class="p">))</span><span class="w"> </span><span class="c1">// prints true</span>
+</code></pre></div>
+
+<p>Slices are also not an ordered type. That means you cannot use them with the &lt;, &lt;=, &gt;, and &gt;= operators. Just like equality testing, the slices package provides two functions to determine if one slice is greater than, equal to, or less than another slice. The first is Compare and is only usable if the elements of the slice are an ordered type (only integers types, floating point types, and string are ordered types). Compare returns -1 if the first slice is “less than” the second slice, 1 if the first slice is “greater than” the second slice, and 0 if the slices are identical. If the elements are not an ordered type, use the CompareFunc function, passing in the slices and a function that compares an element of the slice. You can see how Compare and CompareFunc are used on the Go Playground:</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">x</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">}</span>
+<span class="nx">y</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">}</span>
+<span class="nx">z</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">}</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">slices</span><span class="p">.</span><span class="nx">Compare</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">))</span><span class="w"> </span><span class="c1">// prints -1</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">slices</span><span class="p">.</span><span class="nx">Compare</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="nx">z</span><span class="p">))</span><span class="w"> </span><span class="c1">// prints 0</span>
+<span class="nx">a</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[][]</span><span class="kt">int</span><span class="p">{{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">}}</span>
+<span class="nx">b</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[][]</span><span class="kt">int</span><span class="p">{{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">}}</span>
+<span class="c1">// pass slices.Compare in to slices.CompareFunc to</span>
+<span class="c1">// compare elements that are slices of ordered values</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">slices</span><span class="p">.</span><span class="nx">CompareFunc</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">,</span><span class="w"> </span><span class="nx">slices</span><span class="p">.</span><span class="nx">Compare</span><span class="p">))</span><span class="w"> </span><span class="c1">// prints 0</span>
+</code></pre></div>
+
+<blockquote>
+<p><strong>Warning</strong></p>
+<p>The reflect package contains a function called DeepEqual that can compare almost anything, including slices. It’s a legacy function, primarily intended for testing. Before the inclusion of <code>slices.Equal</code> and <code>slices.EqualFunc</code>, <code>reflect.DeepEqual</code> was often used to compare slices. Don’t use it in new code, as it is slower and less safe than using the functions in the slices package.</p>
+</blockquote>
+<h3 id="other-slice-functions">Other Slice Functions</h3>
+<p>The slices package in the Go Standard Library includes many other functions to make it easier to work with slices. If you find yourself writing a function to manipulate or manage a slice, stop and check the slices package documentation. There’s a good chance it has already been written for you.</p>
+<h2 id="code-review-slices-and-arrays">Code Review: Slices and Arrays</h2>
+<ul>
+<li>
+<p>Use slices instead of arrays, unless the number of elements never changes.</p>
+</li>
+<li>
+<p>Prefer <code>nil</code> slices to empty slice literals.</p>
+</li>
+<li>
+<p>If you know how many elements you need in a slice, size it with make.</p>
+</li>
+<li>
+<p>Don’t use make([]T, length) to create a slice and then <code>append</code> the slice. <code>append</code> adds new values to the end of a slice, starting at position length+1.</p>
+</li>
+<li>
+<p>Use <code>slices.Clone</code> (or copy with a sized destination) to duplicate a slice.</p>
+</li>
+<li>
+<p>Be very careful when slicing slices. Treat the resulting slices as read-only to avoid data sharing surprises.</p>
+</li>
+<li>
+<p>Before writing your own slice manipulation function, check the standard library to make sure it hasn’t already been implemented.</p>
+</li>
+</ul>
+<h2 id="exercises">Exercises</h2>
+<p>The following exercises will help solidify your knowledge of slices. Solutions are in the <code>exercise_solutions</code> directory in the Chapter 3 repository.</p>
+<ol>
+<li>
+<p>Starting from a <code>nil</code> []int, <code>append</code> one value at a time, printing length and capacity after each call until capacity reaches 16. Predict the sequence before you run it.</p>
+</li>
+<li>
+<p>Create s := []int{1, 2, 3, 4, 5}. Take a subslice of length 3 starting at index 1, using a three-part slice expression to set its capacity to 3. Append 100 to the subslice. Print both slices and explain why the parent is unchanged.</p>
+</li>
+<li>
+<p>Use <code>slices.EqualFunc</code> together with <code>strings.EqualFold</code> to compare two []string values for case-insensitive equality. Cover the cases of equal, unequal, and different lengths.</p>
+</li>
+</ol>
+<h2 id="strings-and-runes-and-bytes">Strings and Runes and Bytes</h2>
+<p>Now that I’ve talked about slices, we can look at strings again. You might think that a string in Go is made out of runes, but that’s not the case. Under the covers, Go uses a sequence of bytes to represent a string. These bytes don’t have to be in any particular character encoding, but several Go library functions (and the for-range loop that I discuss in the next chapter) assume that a string is composed of a sequence of UTF-8-encoded code points.</p>
+<blockquote>
+<p><strong>Note</strong></p>
+<p>According to the language specification, Go source code is always written in UTF-8. Unless you use hexadecimal escapes in a string literal, your string literals are written in UTF-8.</p>
+</blockquote>
+<p>Just as you can extract a single value from an array or a slice, you can extract a single value from a string by using an index expression:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">s</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;Hello there&quot;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">b</span><span class="w"> </span><span class="kt">byte</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">s</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span>
+</code></pre></div>
+
+<p>Like arrays and slices, string indexes are zero-based; in this example, b is assigned the numeric value of the seventh position in s, which is 116 (the UTF-8 value of a lowercase t).</p>
+<p>The slice expression notation that you used with arrays and slices also works with strings:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">s</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;Hello there&quot;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">s2</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">s</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">7</span><span class="p">]</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">s3</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">s</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">s4</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">s</span><span class="p">[</span><span class="mi">6</span><span class="p">:]</span>
+</code></pre></div>
+
+<p>This assigns “o t” to s2, “Hello” to s3, and “there” to s4. You can try out this code on The Go Playground or in the <code>sample_code/string_slicing</code> directory in the Chapter 3 repository.</p>
+<p>While it’s handy that Go allows you to use slicing notation to make substrings and use index notation to extract individual entries from a string, you should be careful when doing so. Since strings are immutable, they don’t have the modification problems that slices of slices do. There is a different problem, though. A string is composed of a sequence of bytes, while a code point in UTF-8 can be anywhere from one to four bytes long. The previous example was entirely composed of code points that are one byte long in UTF-8, so everything worked out as expected. But when dealing with languages other than English or with emojis, you run into code points that are multiple bytes long in UTF-8:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">s</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;Hello \U0001F30E&quot;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">s2</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">s</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">7</span><span class="p">]</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">s3</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">s</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">s4</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">s</span><span class="p">[</span><span class="mi">6</span><span class="p">:]</span>
+</code></pre></div>
+
+<p>“o 🌎.”</p>
+<p>In this example, s3 will still be equal to “Hello.” The variable s4 is set to the world emoji. But s2 is not set to “o 🌎.” Instead, you get “o <code>&lt;img src="../../go/images/emoji/replacement.png"/&gt;</code>].” That’s because you copied only the first byte of the world emoji’s code point, which is not a valid code point on its own.</p>
+<p>Go allows you to pass a string to the built-in <code>len</code> function to find the length of the string. Given that string index and slice expressions count positions in bytes, it’s not surprising that the length returned is the length in bytes, not in code points:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">s</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;Hello \U0001F30E&quot;</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nx">s</span><span class="p">))</span>
+</code></pre></div>
+
+<p>This code prints out 10, not 7, because it takes four bytes to represent the world emoji in UTF-8. You can run these world emoji examples on The Go Playground or in the <code>sample_code/world_slicing</code> directory in the Chapter 3 repository.</p>
+<blockquote>
+<p><strong>Warning</strong></p>
+<p>Even though Go allows you to use slicing and indexing syntax with strings, you should use it only when you know that your string contains only characters that take up one byte.</p>
+</blockquote>
+<p>Because of this complicated relationship among runes, strings, and bytes, Go has some interesting type conversions between these types. A single rune or byte can be converted to a string:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="kt">rune</span><span class="w">    </span><span class="p">=</span><span class="w"> </span><span class="sc">&#39;x&#39;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">s</span><span class="w"> </span><span class="kt">string</span><span class="w">  </span><span class="p">=</span><span class="w"> </span><span class="nb">string</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">b</span><span class="w"> </span><span class="kt">byte</span><span class="w">    </span><span class="p">=</span><span class="w"> </span><span class="sc">&#39;y&#39;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">s2</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">string</span><span class="p">(</span><span class="nx">b</span><span class="p">)</span>
+</code></pre></div>
+
+<blockquote>
+<p><strong>Warning</strong></p>
+<p>A common bug for new Go developers is to try to make an int into a string by using a type conversion:</p>
+</blockquote>
+<div class="codehilite"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">65</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">string</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">y</span><span class="p">)</span>
+</code></pre></div>
+
+<p>This results in y having the value “A,” not “65.” The go vet tool blocks a type conversion to string from any integer type other than rune or byte.</p>
+<p>A string can be converted back and forth to a slice of bytes or a slice of runes. Try Example 2-9 on The Go Playground or in the <code>sample_code/string_to_slice</code> directory in the Chapter 3 repository.</p>
+<p><strong>Example 2-9. Converting strings to slices</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">s</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;Hello, \U0001F30E&quot;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">bs</span><span class="w"> </span><span class="p">[]</span><span class="kt">byte</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[]</span><span class="nb">byte</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">rs</span><span class="w"> </span><span class="p">[]</span><span class="kt">rune</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[]</span><span class="nb">rune</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">bs</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">rs</span><span class="p">)</span>
+</code></pre></div>
+
+<p>When you run this code, you see the following:</p>
+<div class="codehilite"><pre><span></span><code>[72 101 108 108 111 44 32 240 159 140 141]
+[72 101 108 108 111 44 32 127757]
+</code></pre></div>
+
+<p>The first output line has the string converted to UTF-8 bytes. The second has the string converted to runes.</p>
+<p>Most data in Go is read and written as a sequence of bytes, so the most common string type conversions are back and forth with a slice of bytes. Slices of runes are uncommon.</p>
+<h3 id="utf-8">UTF-8</h3>
+<p>UTF-8 is the most commonly used encoding for Unicode. Unicode uses four bytes (32 bits) to represent each code point, the technical name for each character and modifier. Given this, the simplest way to represent Unicode code points is to store four bytes for each code point. This is called UTF-32. It is mostly unused because it wastes so much space. Due to Unicode implementation details, 11 of the 32 bits are always zero. Another common encoding is UTF-16, which uses one or two 16-bit (2-byte) sequences to represent each code point. This is also wasteful; much of the content in the world is written using code points that fit into a single byte. And that’s where UTF-8 comes in.</p>
+<p>UTF-8 is clever. It lets you use a single byte to represent the Unicode characters whose values are below 128 (which includes all of the letters, numbers, and punctuation commonly used in English), but expands to a maximum of four bytes to represent Unicode code points with larger values. The result is that the worst case for UTF-8 is the same as using UTF-32. UTF-8 has some other nice properties. Unlike UTF-32 and UTF-16, you don’t have to worry about little-endian versus big-endian. It also allows you to look at any byte in a sequence and tell if you are at the start of a UTF-8 sequence or somewhere in the middle. That means you can’t accidentally read a character incorrectly.</p>
+<p>The only downside is that you cannot randomly access a string encoded with UTF-8. While you can detect if you are in the middle of a character, you can’t tell how many characters in you are. You need to start at the beginning of the string and count. Go doesn’t require a string to be written in UTF-8 but strongly encourages it. You’ll see how to work with UTF-8 strings in upcoming chapters.</p>
+<p>Fun fact: UTF-8 was invented in 1992 by Ken Thompson and Rob Pike, two of the creators of Go.</p>
+<p>Rather than use the slice and index expressions with strings, you should extract substrings and code points from strings using the functions in the strings and <code>unicode/utf8</code> packages in the standard library. In the next chapter, you’ll see how to use a for-range loop to iterate over the code points in a string.</p>
+<h3 id="standard-library-functions-for-string-and-bytes">Standard Library Functions for string and bytes</h3>
+<p>The standard library contains many functions for working with strings in the aptly-named strings package. If you want to search, compare, split, or trim a string, chances are the standard library provides what you need. Before writing your own implementation, check to make sure that the work hasn’t been done for you.</p>
+<p>The functions defined in the strings package have doppelgangers in the bytes package. Data from a network connection or disk is often loaded into memory as a slice of bytes. Rather than converting the bytes to a string, you can work directly on the bytes slice.</p>
+<p>You may also notice that some of the functions defined in the bytes package have analogues in the slices package. If you are working with a byte slice, use the functions in the bytes package, since they are optimized for byte slices.</p>
+<h2 id="maps">Maps</h2>
+<p>Slices are useful when you have sequential data. Like most languages, Go provides a built-in data type for situations where you want to associate one value to another. The map type is written as map[keyType]valueType. Let’s take a look at a few ways to declare maps. First, you can use a var declaration to create a map variable that’s set to its zero value:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">nilMap</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span>
+</code></pre></div>
+
+<p>In this case, nilMap is declared to be a map with string keys and int values. The zero value for a map is <code>nil</code>. A <code>nil</code> map has a length of 0. Attempting to read a <code>nil</code> map always returns the zero value for the map’s value type. However, attempting to write to a <code>nil</code> map variable causes a panic.</p>
+<p>You can use a := declaration to create a map variable by assigning it a map literal:</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">totalWins</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">{}</span>
+</code></pre></div>
+
+<p>In this case, you are using an empty map literal. This is not the same as a <code>nil</code> map. It has a length of 0, but you can read and write to a map assigned an empty map literal. Here’s what a nonempty map literal looks like:</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">teams</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">][]</span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="s">&quot;Orcas&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;Fred&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Ralph&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Bijou&quot;</span><span class="p">},</span>
+<span class="w">    </span><span class="s">&quot;Lions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;Sarah&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Peter&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Billie&quot;</span><span class="p">},</span>
+<span class="w">    </span><span class="s">&quot;Kittens&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;Waldo&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Raul&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Ze&quot;</span><span class="p">},</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>A map literal’s body is written as the key, followed by a colon (:), then the value. A comma separates each key-value pair in the map, even on the last line. In this example, the value is a slice of strings. The type of the value in a map can be anything. There are some restrictions on the types of the keys that I’ll discuss in a bit.</p>
+<p>If you know how many key-value pairs you intend to put in the map but don’t know the exact values, you can use make to create a map with a default size:</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">ages</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">int</span><span class="p">][]</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Maps created with make still have a length of 0, and they can grow past the initially specified size.</p>
+<p>Maps are like slices in several ways:</p>
+<ul>
+<li>
+<p>Maps automatically grow as you add key-value pairs to them.</p>
+</li>
+<li>
+<p>If you know how many key-value pairs you plan to insert into a map, you can use make to create a map with a specific initial size.</p>
+</li>
+<li>
+<p>Passing a map to the <code>len</code> function tells you the number of key-value pairs in a map.</p>
+</li>
+<li>
+<p>The zero value for a map is <code>nil</code>.</p>
+</li>
+<li>
+<p>Maps are not comparable. You can check if they are equal to <code>nil</code>, but you cannot check if two maps have identical keys and values using == or differ using !=.</p>
+</li>
+<li>
+<p>The key for a map can be any comparable type. This means you cannot use a slice or a map as the key for a map.</p>
+</li>
+</ul>
+<blockquote>
+<p><strong>Tip</strong></p>
+<p>When should you use a map, and when should you use a slice? You should use slices for lists of data when the data should be processed sequentially or the order of the elements is important.</p>
+</blockquote>
+<p>Maps are useful when you need to organize values using something other than an increasing integer value, such as a name.</p>
+<h3 id="what-is-a-hash-map">What Is a Hash Map?</h3>
+<p>In computer science, a map is a data structure that associates (or maps) one value to another. Maps can be implemented in several ways, each with its own trade-offs. The map that’s built into Go is a hash map, or hash table. If you aren’t familiar with the concept, Chapter 5 in Grokking Algorithms by Aditya Bhargava (Manning) describes what a hash table is and why they are so useful.</p>
+<p>It’s great that Go includes a hash map implementation as part of the runtime, because building your own is hard to get right. It’s also great because the implementation gets better over time. In Go 1.24, the runtime was updated with a new hash table algorithm that improved performance on microbenchmarks by up to 60%. Go developers got this faster version by simply recompiling their code. You can learn about the details of the updated algorithm in Michael Pratt’s 2025 blog post “Faster Go maps with Swiss Tables”.</p>
+<p>Go doesn’t require (or even allow) you to define your own hash algorithm or equality definition. Instead, the Go runtime that’s compiled into every Go program has code that implements hash algorithms for all types that are allowed to be keys.</p>
+<h3 id="reading-and-writing-a-map">Reading and Writing a Map</h3>
+<p>Let’s look at a short program that declares, writes to, and reads from a map. You can run the program in Example 2-10 on The Go Playground or in the <code>sample_code/map_read_write</code> directory in the Chapter 3 repository.</p>
+<p><strong>Example 2-10. Using a map</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="nx">totalWins</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">{}</span>
+<span class="nx">totalWins</span><span class="p">[</span><span class="s">&quot;Orcas&quot;</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="nx">totalWins</span><span class="p">[</span><span class="s">&quot;Lions&quot;</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">totalWins</span><span class="p">[</span><span class="s">&quot;Orcas&quot;</span><span class="p">])</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">totalWins</span><span class="p">[</span><span class="s">&quot;Kittens&quot;</span><span class="p">])</span>
+<span class="nx">totalWins</span><span class="p">[</span><span class="s">&quot;Kittens&quot;</span><span class="p">]</span><span class="o">++</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">totalWins</span><span class="p">[</span><span class="s">&quot;Kittens&quot;</span><span class="p">])</span>
+<span class="nx">totalWins</span><span class="p">[</span><span class="s">&quot;Lions&quot;</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">3</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">totalWins</span><span class="p">[</span><span class="s">&quot;Lions&quot;</span><span class="p">])</span>
+</code></pre></div>
+
+<p>When you run this program, you’ll see the following output:</p>
+<div class="codehilite"><pre><span></span><code>1
+0
+1
+3
+</code></pre></div>
+
+<p>You assign a value to a map key by putting the key within brackets and using = to specify the value, and you read the value assigned to a map key by putting the key within brackets. Note that you cannot use := to assign a value to a map key.</p>
+<p>When you try to read the value assigned to a map key that was never set, the map returns the zero value for the map’s value type. In this case, the value type is an int, so you get back a 0. You can use the ++ operator to increment the numeric value for a map key. Because a map returns its zero value by default, this works even when there’s no existing value associated with the key.</p>
+<h3 id="the-comma-ok-idiom">The comma ok Idiom</h3>
+<p>As you’ve seen, a map returns the zero value if you ask for the value associated with a key that’s not in the map. This is handy when implementing things like the totalWins counter you saw earlier. However, you sometimes do need to find out if a key is in a map. Go provides the comma ok idiom to tell the difference between a key that’s associated with a zero value and a key that’s not in the map:</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">m</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span>
+<span class="w">    </span><span class="s">&quot;hello&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;world&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="nx">v</span><span class="p">,</span><span class="w"> </span><span class="nx">ok</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">m</span><span class="p">[</span><span class="s">&quot;hello&quot;</span><span class="p">]</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">v</span><span class="p">,</span><span class="w"> </span><span class="nx">ok</span><span class="p">)</span>
+
+<span class="nx">v</span><span class="p">,</span><span class="w"> </span><span class="nx">ok</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">m</span><span class="p">[</span><span class="s">&quot;world&quot;</span><span class="p">]</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">v</span><span class="p">,</span><span class="w"> </span><span class="nx">ok</span><span class="p">)</span>
+
+<span class="nx">v</span><span class="p">,</span><span class="w"> </span><span class="nx">ok</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">m</span><span class="p">[</span><span class="s">&quot;goodbye&quot;</span><span class="p">]</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">v</span><span class="p">,</span><span class="w"> </span><span class="nx">ok</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Rather than assign the result of a map read to a single variable, with the comma ok idiom you assign the results of a map read to two variables. The first gets the value associated with the key. The second value returned is a bool. It is usually named ok. If ok is true, the key is present in the map. If ok is false, the key is not present. In this example, the code prints out 5 true, 0 true, and 0 false.</p>
+<blockquote>
+<p><strong>Note</strong></p>
+<p>The comma ok idiom is used in Go when you want to differentiate between reading a value and getting back the zero value. You’ll see it again when you read from channels in Chapter 12 and when you use type assertions in Chapter 7.</p>
+</blockquote>
+<h3 id="deleting-from-maps">Deleting from Maps</h3>
+<p>Key-value pairs are removed from a map via the built-in <code>delete</code> function:</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">m</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span>
+<span class="w">    </span><span class="s">&quot;hello&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;world&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="nb">delete</span><span class="p">(</span><span class="nx">m</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;hello&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>The <code>delete</code> function takes a map and a key and then removes the key-value pair with the specified key. If the key isn’t present in the map or if the map is <code>nil</code>, nothing happens. The <code>delete</code> function doesn’t return a value.</p>
+<h3 id="emptying-a-map">Emptying a Map</h3>
+<p>The <code>clear</code> function that you saw in “Emptying a Slice” works on maps also. A cleared map has its length set to zero, unlike a cleared slice. The following code:</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">m</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span>
+<span class="w">    </span><span class="s">&quot;hello&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;world&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">m</span><span class="p">,</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">m</span><span class="p">))</span>
+<span class="nb">clear</span><span class="p">(</span><span class="nx">m</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">m</span><span class="p">,</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">m</span><span class="p">))</span>
+</code></pre></div>
+
+<p>prints out:</p>
+<div class="codehilite"><pre><span></span><code>map[hello:5 world:10] 2
+map[] 0
+</code></pre></div>
+
+<h3 id="comparing-maps">Comparing Maps</h3>
+<p>Go 1.21 added a package to the standard library called maps that contains helper functions for working with maps. Two functions in the package are useful for comparing if two maps are equal, <code>maps.Equal</code> and <code>maps.EqualFunc</code>. They are analogous to the <code>slices.Equal</code> and <code>slices.EqualFunc</code> functions. Use <code>maps.Equal</code> when the values in the map are comparable (as previously mentioned, the keys in a map are required to be comparable):</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">m</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span>
+<span class="w">    </span><span class="s">&quot;hello&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;world&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="nx">n</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span>
+<span class="w">    </span><span class="s">&quot;world&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;hello&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">maps</span><span class="p">.</span><span class="nx">Equal</span><span class="p">(</span><span class="nx">m</span><span class="p">,</span><span class="w"> </span><span class="nx">n</span><span class="p">))</span><span class="w"> </span><span class="c1">// prints true</span>
+</code></pre></div>
+
+<p>If the values are not comparable, use <code>maps.EqualFunc</code> to provide a function that determines equality. Try out this example on The Go Playground:</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">m</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">][]</span><span class="kt">int</span><span class="p">{</span>
+<span class="w">    </span><span class="s">&quot;team_a&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">},</span>
+<span class="w">    </span><span class="s">&quot;team_b&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p">},</span>
+<span class="p">}</span>
+<span class="nx">n</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">][]</span><span class="kt">int</span><span class="p">{</span>
+<span class="w">    </span><span class="s">&quot;team_a&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">},</span>
+<span class="w">    </span><span class="s">&quot;team_b&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p">},</span>
+<span class="p">}</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">maps</span><span class="p">.</span><span class="nx">EqualFunc</span><span class="p">(</span><span class="nx">m</span><span class="p">,</span><span class="w"> </span><span class="nx">n</span><span class="p">,</span><span class="w"> </span><span class="nx">slices</span><span class="p">.</span><span class="nx">Equal</span><span class="p">))</span><span class="w"> </span><span class="c1">// prints true</span>
+</code></pre></div>
+
+<p>If you want a different definition of equality than what Go provides by default, you can use <code>maps.EqualFunc</code> (or <code>slices.EqualFunc</code>) with a comparable type. For example, you could implement a case-insensitive comparison of map values. Try it out on The Go Playground:</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">m</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span>
+<span class="w">    </span><span class="mi">10</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;hello&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="mi">20</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;goodbye&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="mi">30</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;peace&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="nx">n</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span>
+<span class="w">    </span><span class="mi">10</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;HELLO&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="mi">20</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;GOODBYE&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="mi">30</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;PEACE&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">maps</span><span class="p">.</span><span class="nx">EqualFunc</span><span class="p">(</span><span class="nx">m</span><span class="p">,</span><span class="w"> </span><span class="nx">n</span><span class="p">,</span><span class="w"> </span><span class="nx">strings</span><span class="p">.</span><span class="nx">EqualFold</span><span class="p">))</span><span class="w"> </span><span class="c1">// prints true</span>
+</code></pre></div>
+
+<h3 id="copying-maps">Copying Maps</h3>
+<p>Assigning a map variable to another map variable shares the map between the two variables. If you modify one variable, the other is modified as well. This is similar to the way slices behave, which was discussed in “Sharing and Copying Slices”. Here is an example on The Go Playground:</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">x</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span>
+<span class="w">    </span><span class="s">&quot;magic&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;hero&quot;</span><span class="p">:</span><span class="w">  </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;good&quot;</span><span class="p">:</span><span class="w">  </span><span class="mi">11</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="nx">y</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">x</span>
+<span class="nx">y</span><span class="p">[</span><span class="s">&quot;naughty&quot;</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">9</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span><span class="w"> </span><span class="c1">// prints map[good:11 hero:0 magic:3 naughty:9]</span>
+</code></pre></div>
+
+<p>Like slices, Go provides two ways to duplicate a map. While the built-in function copy does not work for maps, the maps package provides a pair of methods for copying maps: Copy, which is similar to the built-in copy function for slices, and Clone, which is similar to <code>slices.Clone</code>. For <code>maps.Copy</code>, you pass in a destination map and a source map. All the key/value pairs in the source are copied to the destination. The destination map does not need to be empty; if it contains a key that is also in the source map, the value in the destination map is overwritten. You can see this behavior on The Go Playground:</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">from</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span>
+<span class="w">    </span><span class="s">&quot;hello&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;world&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="nx">to</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span>
+<span class="w">    </span><span class="s">&quot;hello&quot;</span><span class="p">:</span><span class="w">   </span><span class="mi">30</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;goodbye&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="nx">maps</span><span class="p">.</span><span class="nx">Copy</span><span class="p">(</span><span class="nx">to</span><span class="p">,</span><span class="w"> </span><span class="nx">from</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">to</span><span class="p">)</span><span class="w"> </span><span class="c1">// prints map[goodbye:11 hello:5 world:10]</span>
+</code></pre></div>
+
+<p>The <code>maps.Clone</code> function returns a new map with a copy of all the key/value pairs in the source map. You can see this on The Go Playground:</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">x</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span>
+<span class="w">    </span><span class="s">&quot;uno&quot;</span><span class="p">:</span><span class="w">  </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;dos&quot;</span><span class="p">:</span><span class="w">  </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;tres&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="nx">y</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">maps</span><span class="p">.</span><span class="nx">Clone</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span>
+<span class="nx">y</span><span class="p">[</span><span class="s">&quot;catorce&quot;</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">14</span>
+<span class="nx">y</span><span class="p">[</span><span class="s">&quot;uno&quot;</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span><span class="w"> </span><span class="c1">// prints map[dos:2 tres:3 uno:1]</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">y</span><span class="p">)</span><span class="w"> </span><span class="c1">// prints map[catorce:14 dos:2 tres:3 uno:0]</span>
+</code></pre></div>
+
+<p>Notice that modifying the clone doesn’t modify the original. However, you should be aware of an interaction between pointers and the copy functions for maps and slices. These functions make shallow copies. When copying a value that contains a pointer, the data pointed to by the pointer isn’t duplicated; the pointer is. If the value pointed to by the pointer is modified, the modification appears in both the original and the copy. This is similar to the behavior you saw when assigning a map or slice to a new variable. You can see it demonstrated on The Go Playground:</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">original</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">][]</span><span class="kt">int</span><span class="p">{</span>
+<span class="w">    </span><span class="s">&quot;fives&quot;</span><span class="p">:</span><span class="w">  </span><span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">},</span>
+<span class="w">    </span><span class="s">&quot;threes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p">},</span>
+<span class="p">}</span>
+<span class="nx">clone</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">maps</span><span class="p">.</span><span class="nx">Clone</span><span class="p">(</span><span class="nx">original</span><span class="p">)</span>
+<span class="nx">clone</span><span class="p">[</span><span class="s">&quot;fives&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">-</span><span class="mi">5</span>
+<span class="nx">clone</span><span class="p">[</span><span class="s">&quot;sixes&quot;</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">}</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">original</span><span class="p">[</span><span class="s">&quot;fives&quot;</span><span class="p">],</span><span class="w"> </span><span class="nx">clone</span><span class="p">[</span><span class="s">&quot;fives&quot;</span><span class="p">])</span><span class="w"> </span><span class="c1">// prints [-5 5 10] [-5 5 10]</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">original</span><span class="p">[</span><span class="s">&quot;sixes&quot;</span><span class="p">],</span><span class="w"> </span><span class="nx">clone</span><span class="p">[</span><span class="s">&quot;sixes&quot;</span><span class="p">])</span><span class="w"> </span><span class="c1">// prints [], [0 6 12]</span>
+</code></pre></div>
+
+<p>Both slices and maps contain pointers, which is why we see this behavior. Notice that adding a new entry to the clone doesn’t modify the original. It’s when you modify one of the slices that is already there that the change is shared. Again, I’ll cover pointers in detail in Chapter 5.</p>
+<h3 id="using-maps-as-sets">Using Maps as Sets</h3>
+<p>Many languages include a set in their standard library. A set is a data type that ensures there is at most one of a value, but doesn’t guarantee that the values are in any particular order. Checking to see if an element is in a set is fast, no matter how many elements are in the set. (Checking to see if an element is in a slice takes longer, as you add more elements to the slice.)</p>
+<p>Go doesn’t include a set, but you can use a map to simulate some of its features. Use the key of the map for the type that you want to put into the set and use a bool for the value. The code in Example 2-11 demonstrates the concept. You can run it on The Go Playground or in the <code>sample_code/map_set</code> directory in the Chapter 3 repository.</p>
+<p><strong>Example 2-11. Using a map as a set</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="nx">intSet</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="kt">bool</span><span class="p">{}</span>
+<span class="nx">vals</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">}</span>
+<span class="k">for</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">v</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">vals</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">intSet</span><span class="p">[</span><span class="nx">v</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="p">}</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nx">vals</span><span class="p">),</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">intSet</span><span class="p">))</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">intSet</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">intSet</span><span class="p">[</span><span class="mi">500</span><span class="p">])</span>
+<span class="k">if</span><span class="w"> </span><span class="nx">intSet</span><span class="p">[</span><span class="mi">100</span><span class="p">]</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;100 is in the set&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>You want a set of ints, so you create a map where the keys are of int type and the values are of bool type. You iterate over the values in vals using a for-range loop (which I discuss in “The versatile for-range Statement”) to place them into intSet, associating each int with the boolean value true.</p>
+<p>We wrote 11 values into intSet, but the length of intSet is 8, because you cannot have duplicate keys in a map. If you look for 5 in intSet, it returns true, because there is a key with the value 5. However, if you look for 500 or 100 in intSet, it returns false. This is because you haven’t put either value into intSet, which causes the map to return the zero value for the map value, and the zero value for a bool is false.</p>
+<p>If you need sets that provide operations like union, intersection, and subtraction, you can either write one yourself or use one of the many third-party libraries that provide the functionality. The most popular one is https://github.com/deckarep/golang-set . (You’ll learn more about using third-party libraries in Chapter 10.)</p>
+<blockquote>
+<p><strong>Note</strong></p>
+<p>Some people prefer to use struct{} for the value when a map is being used to implement a set. (I’ll discuss structs in the next section.) There are two advantages. One is that an empty struct uses zero bytes, while a boolean uses one byte. The other is that intention is slightly clearer. If there’s a key with the value struct{}, the element exists in the set, but it is unclear what it means when someone writes a key with a false value. It might be a bug or a misguided way to indicate that an element is not in the set.</p>
+</blockquote>
+<p>The disadvantage is that using a struct{} makes your code clumsier. You have a less obvious assignment, and you need to use the comma ok idiom to check if a value is in the set:</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">intSet</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="kd">struct</span><span class="p">{}{}</span>
+<span class="nx">vals</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">}</span>
+<span class="k">for</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">v</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">vals</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">intSet</span><span class="p">[</span><span class="nx">v</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="kd">struct</span><span class="p">{}{}</span>
+<span class="p">}</span>
+<span class="k">if</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">ok</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">intSet</span><span class="p">[</span><span class="mi">5</span><span class="p">];</span><span class="w"> </span><span class="nx">ok</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;5 is in the set&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Unless you have very large sets, the difference in memory usage will not likely be significant. As for the meaning of a false value for a set element, review code to make sure it never happens.</p>
+<h2 id="code-review-strings-and-maps">Code Review: Strings and Maps</h2>
+<ul>
+<li>
+<p>Don’t slice or index a string unless you know it’s single-byte content.</p>
+</li>
+<li>
+<p>Never convert an int to string with string(x).</p>
+</li>
+<li>
+<p>Always initialize maps before writing.</p>
+</li>
+<li>
+<p>Use the comma-ok idiom whenever a map’s zero value is a legitimate value.</p>
+</li>
+<li>
+<p>Check the slices, bytes, and maps packages before writing your own helper.</p>
+</li>
+</ul>
+<h2 id="exercises_1">Exercises</h2>
+<p>The following exercises cover strings and maps. Solutions are in the <code>exercise_solutions</code> directory in the Chapter 3 repository.</p>
+<ol>
+<li>
+<p>For s := "café", print <code>len</code>(s) and <code>len</code>([]rune(s)). Explain the difference using what you know about UTF-8.</p>
+</li>
+<li>
+<p>Convert the string "Go ߦ顢 to []byte and []rune. Print both representations, then convert each back to a string and confirm the round-trip matches the original.</p>
+</li>
+<li>
+<p>Use a map as a set to compute the union of []int{1, 2, 3, 4} and []int{3, 4, 5, 6} as a deduplicated []int. Order doesn’t matter.</p>
+</li>
+</ol>
+<h2 id="structs">Structs</h2>
+<p>Maps are a convenient way to store some kinds of data, but they have limitations. They don’t define an API since there’s no way to constrain a map to allow only certain keys. Also, all values in a map must be of the same type. For these reasons, maps are not an ideal way to pass data from function to function. When you have related data that you want to group together, you should define a struct.</p>
+<blockquote>
+<p><strong>Note</strong></p>
+<p>If you already know an object-oriented language, you might be wondering about the difference between classes and structs. The difference is simple: Go doesn’t have classes, because it doesn’t have inheritance. This doesn’t mean that Go doesn’t have some of the features of object-oriented languages it just does things a little differently. You’ll learn more about the object-oriented features of Go in Chapter 7.</p>
+</blockquote>
+<p>Most languages have a concept that’s similar to a struct, and the syntax that Go uses to read and write structs should look familiar:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">person</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">name</span><span class="w"> </span><span class="kt">string</span>
+<span class="w">    </span><span class="nx">age</span><span class="w">  </span><span class="kt">int</span>
+<span class="w">    </span><span class="nx">pet</span><span class="w">  </span><span class="kt">string</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>A struct type is defined with the keyword type, the name of the struct type, the keyword struct, and a pair of braces ({}). Within the braces, you list the fields in the struct. Just as you put the variable name first and the variable type second in a var declaration, you put the struct field name first and the struct field type second. Also note that unlike in map literals, no commas separate the fields in a struct declaration. You can define a struct type inside or outside of a function. A struct type that’s defined within a function can be used only within that function. (You’ll learn more about functions in Chapter 4.)</p>
+<blockquote>
+<p><strong>Note</strong></p>
+<p>Technically, you can scope a struct definition to any block level. You’ll learn more about blocks in Chapter 3.</p>
+</blockquote>
+<p>Once a struct type is declared, you can define variables of that type:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">fred</span><span class="w"> </span><span class="nx">person</span>
+</code></pre></div>
+
+<p>Here we are using a var declaration. Since no value is assigned to fred, it gets the zero value for the person struct type. A zero value struct has every field set to the field’s zero value.</p>
+<p>A struct literal can be assigned to a variable as well:</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">bob</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">person</span><span class="p">{}</span>
+</code></pre></div>
+
+<p>Unlike maps, there is no difference between assigning an empty struct literal and not assigning a value at all. Both initialize all fields in the struct to their zero values. There are two styles for a nonempty struct literal. First, a struct literal can be specified as a comma-separated list of values for the fields inside of braces:</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">julia</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">person</span><span class="p">{</span>
+<span class="w">    </span><span class="s">&quot;Julia&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="mi">40</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;cat&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>When using this struct literal format, a value for every field in the struct must be specified, and the values are assigned to the fields in the order they were declared in the struct definition.</p>
+<p>The second struct literal style looks like the map literal style:</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">beth</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">person</span><span class="p">{</span>
+<span class="w">    </span><span class="nx">age</span><span class="p">:</span><span class="w">  </span><span class="mi">30</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Beth&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>You use the names of the fields in the struct to specify the values. This style has some advantages. It allows you to specify the fields in any order, and you don’t need to provide a value for all fields. Any field not specified is set to its zero value.</p>
+<p>You cannot mix the two struct literal styles: either all fields are specified with names, or none of them are. For small structs where all fields are always specified, the simpler struct literal style is fine. In other cases, use the names. It’s more verbose, but it makes <code>clear</code> what value is being assigned to what field without having to reference the struct definition. It’s also more maintainable. If you initialize a struct without using the field names and a future version of the struct adds additional fields, your code will no longer compile.</p>
+<p>A field in a struct is accessed with dot notation:</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">bob</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;Bob&quot;</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">bob</span><span class="p">.</span><span class="nx">name</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Just as you use brackets for both reading and writing to a map, you use dotted notation for reading and writing to struct fields.</p>
+<h3 id="anonymous-structs">Anonymous Structs</h3>
+<p>You can also declare that a variable has a struct type without first giving the struct type a name. This is called an anonymous struct:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">person</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">name</span><span class="w"> </span><span class="kt">string</span>
+<span class="w">    </span><span class="nx">age</span><span class="w">  </span><span class="kt">int</span>
+<span class="w">    </span><span class="nx">pet</span><span class="w">  </span><span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="nx">person</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;bob&quot;</span>
+<span class="nx">person</span><span class="p">.</span><span class="nx">age</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">50</span>
+<span class="nx">person</span><span class="p">.</span><span class="nx">pet</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;dog&quot;</span>
+
+<span class="nx">pet</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">name</span><span class="w"> </span><span class="kt">string</span>
+<span class="w">    </span><span class="nx">kind</span><span class="w"> </span><span class="kt">string</span>
+<span class="p">}{</span>
+<span class="w">    </span><span class="nx">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Fido&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">kind</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;dog&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>In this example, the types of the variables person and pet are anonymous structs. You assign (and read) fields in an anonymous struct just as you do for a named struct type. Just as you can initialize an instance of a named struct with a struct literal, you can do the same for an anonymous struct as well.</p>
+<p>You might wonder when it’s useful to have a data type that’s associated only with a single instance. Anonymous structs are handy in two common situations. The first is when you translate external data into a struct or a struct into external data (like JSON or Protocol Buffers). This is called unmarshaling and marshaling data, respectively. You’ll learn how to do this in Chapter 13&gt;.</p>
+<p>Writing tests is another place where anonymous structs pop up. You’ll use a slice of anonymous structs when writing table-driven tests in Chapter 6.</p>
+<h3 id="comparing-and-converting-structs">Comparing and Converting Structs</h3>
+<p>Whether a struct is comparable depends on the struct’s fields. Structs that are entirely composed of comparable types are comparable; those with slice or map fields are not (as you will see in later chapters, function and channel fields also prevent a struct from being comparable).</p>
+<p>Unlike in Python or Ruby, in Go there’s no magic method that can be overridden to redefine equality and make == and != work for incomparable structs. You can, of course, write your own function that you use to compare structs.</p>
+<p>Just as Go doesn’t allow comparisons between variables of different primitive types, Go doesn’t allow comparisons between variables that represent structs of different types. Go does allow you to perform a type conversion from one struct type to another if the fields of both structs have the same names, order, and types. Let’s see what this means. Given this struct:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">firstPerson</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">name</span><span class="w"> </span><span class="kt">string</span>
+<span class="w">    </span><span class="nx">age</span><span class="w">  </span><span class="kt">int</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>you can use a type conversion to convert an instance of firstPerson to secondPerson, but you can’t use == to compare an instance of firstPerson and an instance of secondPerson, because they are different types:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">secondPerson</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">name</span><span class="w"> </span><span class="kt">string</span>
+<span class="w">    </span><span class="nx">age</span><span class="w">  </span><span class="kt">int</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>You can’t convert an instance of firstPerson to thirdPerson, because the fields are in a different order:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">thirdPerson</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">age</span><span class="w">  </span><span class="kt">int</span>
+<span class="w">    </span><span class="nx">name</span><span class="w"> </span><span class="kt">string</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>You can’t convert an instance of firstPerson to fourthPerson because the field names don’t match:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">fourthPerson</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">firstName</span><span class="w"> </span><span class="kt">string</span>
+<span class="w">    </span><span class="nx">age</span><span class="w">       </span><span class="kt">int</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Finally, you can’t convert an instance of firstPerson to fifthPerson because there’s an additional field:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">fifthPerson</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">name</span><span class="w">          </span><span class="kt">string</span>
+<span class="w">    </span><span class="nx">age</span><span class="w">           </span><span class="kt">int</span>
+<span class="w">    </span><span class="nx">favoriteColor</span><span class="w"> </span><span class="kt">string</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Anonymous structs add a small twist: if two struct variables are being compared and at least one has a type that’s an anonymous struct, you can compare them without a type conversion if the fields of both structs have the same names, order, and types. You can also assign between named and anonymous struct types if the fields of both structs have the same names, order, and types:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">firstPerson</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">name</span><span class="w"> </span><span class="kt">string</span>
+<span class="w">    </span><span class="nx">age</span><span class="w">  </span><span class="kt">int</span>
+<span class="p">}</span>
+<span class="nx">f</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">firstPerson</span><span class="p">{</span>
+<span class="w">    </span><span class="nx">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Bob&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">age</span><span class="p">:</span><span class="w">  </span><span class="mi">50</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">g</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">name</span><span class="w"> </span><span class="kt">string</span>
+<span class="w">    </span><span class="nx">age</span><span class="w">  </span><span class="kt">int</span>
+<span class="p">}</span>
+
+<span class="c1">// compiles -- can use = and == between identical named and anonymous structs</span>
+<span class="nx">g</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">f</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">f</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nx">g</span><span class="p">)</span>
+</code></pre></div>
+
+<h2 id="code-review-structs">Code Review: Structs</h2>
+<ul>
+<li>
+<p>Use structs to group related data.</p>
+</li>
+<li>
+<p>Use named struct literals for anything beyond two or three fields.</p>
+</li>
+<li>
+<p>Use a struct, not a map, when you have a known set of fields. Don’t fight against the type system.</p>
+</li>
+</ul>
+<h2 id="exercises_2">Exercises</h2>
+<p>The following exercises test what you’ve learned about structs. Solutions are in the <code>exercise_solutions</code> directory in the Chapter 3 repository.</p>
+<ol>
+<li>
+<p>Write a program that defines a struct called Employee with three fields: firstName, lastName, and id. The first two fields are of type string, and the last field (id) is of type int. Create three instances of this struct using whatever values you’d like. Initialize the first one using the struct literal style without names, the second using the struct literal style with names, and the third with a var declaration. Use dot notation to populate the fields in the third struct. Print out all three structs.</p>
+</li>
+<li>
+<p>Write a program that defines two different struct types that can be converted to each other.</p>
+</li>
+<li>
+<p>Write a program that defines two structs, Person and Pet. Pet has three fields, name, species, and age. The first two fields are of type string and the last is of type int. Person has two fields, name, and pet. The first is a string and the second is a Pet. Create an instance of Person and populate all fields. Print out the instance.</p>
+</li>
+</ol>
+<h2 id="wrapping-up">Wrapping Up</h2>
+<p>You’ve learned a lot about composite types in Go. In addition to learning more about strings, you now know how to use the built-in container types: slices and maps. You can also construct your own composite types via structs. In the next chapter, you’re going to take a look at Go’s control structures: for, if/else, and switch. You will also learn how Go organizes code into blocks and how the different block levels can lead to surprising behavior.</p><nav class="chapter-navigation" aria-label="Chapter navigation"><span>Start of collection</span><a href="../../go/overview/">All chapters</a><a href="../../go/chapter-03/">Next chapter →</a></nav></article><aside class="article-toc"><span class="eyebrow">ON THIS PAGE</span><div class="toc">
+<ul>
+<li><a href="#chapter-2-composite-types">Chapter 2. Composite Types</a><ul>
+<li><a href="#a-note-for-early-release-readers">A Note for Early Release Readers</a></li>
+<li><a href="#arraystoo-rigid-to-use-directly">Arrays—Too Rigid to Use Directly</a></li>
+<li><a href="#slices">Slices</a><ul>
+<li><a href="#len">len</a></li>
+<li><a href="#append">append</a></li>
+<li><a href="#capacity">Capacity</a><ul>
+<li><a href="#the-go-runtime">The Go Runtime</a></li>
+</ul>
+</li>
+<li><a href="#make">make</a></li>
+<li><a href="#emptying-a-slice">Emptying a Slice</a></li>
+<li><a href="#declaring-your-slice">Declaring Your Slice</a></li>
+<li><a href="#sharing-and-copying-slices">Sharing and Copying Slices</a></li>
+<li><a href="#slicing-slices">Slicing Slices</a></li>
+<li><a href="#copying-slices-of-slices">Copying Slices of Slices</a></li>
+<li><a href="#converting-arrays-to-slices">Converting Arrays to Slices</a></li>
+<li><a href="#converting-slices-to-arrays">Converting Slices to Arrays</a></li>
+<li><a href="#comparing-slices">Comparing Slices</a></li>
+<li><a href="#other-slice-functions">Other Slice Functions</a></li>
+</ul>
+</li>
+<li><a href="#code-review-slices-and-arrays">Code Review: Slices and Arrays</a></li>
+<li><a href="#exercises">Exercises</a></li>
+<li><a href="#strings-and-runes-and-bytes">Strings and Runes and Bytes</a><ul>
+<li><a href="#utf-8">UTF-8</a></li>
+<li><a href="#standard-library-functions-for-string-and-bytes">Standard Library Functions for string and bytes</a></li>
+</ul>
+</li>
+<li><a href="#maps">Maps</a><ul>
+<li><a href="#what-is-a-hash-map">What Is a Hash Map?</a></li>
+<li><a href="#reading-and-writing-a-map">Reading and Writing a Map</a></li>
+<li><a href="#the-comma-ok-idiom">The comma ok Idiom</a></li>
+<li><a href="#deleting-from-maps">Deleting from Maps</a></li>
+<li><a href="#emptying-a-map">Emptying a Map</a></li>
+<li><a href="#comparing-maps">Comparing Maps</a></li>
+<li><a href="#copying-maps">Copying Maps</a></li>
+<li><a href="#using-maps-as-sets">Using Maps as Sets</a></li>
+</ul>
+</li>
+<li><a href="#code-review-strings-and-maps">Code Review: Strings and Maps</a></li>
+<li><a href="#exercises_1">Exercises</a></li>
+<li><a href="#structs">Structs</a><ul>
+<li><a href="#anonymous-structs">Anonymous Structs</a></li>
+<li><a href="#comparing-and-converting-structs">Comparing and Converting Structs</a></li>
+</ul>
+</li>
+<li><a href="#code-review-structs">Code Review: Structs</a></li>
+<li><a href="#exercises_2">Exercises</a></li>
+<li><a href="#wrapping-up">Wrapping Up</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</aside></div><div class="article-end"><span class="eyebrow">KEEP EXPLORING</span><h2>One note leads to another.</h2><a class="tactile" href="../../library/">Back to the library →</a></div></main></div><footer><div class="footer-top wrap"><div class="footer-brand"><a class="wordmark" href="../../">notex<span class="badge">OPEN</span></a><p>A personal library for deliberate<br>technical practice.</p><a href="https://github.com/harshityadav95/Notex">Explore the source ↗</a></div><div class="footer-links"><div><h3>Languages</h3><a class="" href="../../python/">Python</a><a class="" href="../../Javascript-ES6-Notes/">JavaScript &amp; ES6</a><a class="" href="../../C%2B%2B/">C / C++</a><a class="" href="../../css/">CSS</a><a class="" href="../../go/overview/">Learning Go · Third Edition</a></div><div><h3>Systems</h3><a class="" href="../../Learning_System_Design/">System Design from Scratch</a><a class="" href="../../Scalable_crossplatform_design/">Scalable Cross-platform Design</a><a class="" href="../../ddia/overview/">Designing Data-Intensive Applications · Second Edition</a></div><div><h3>AI &amp; ML</h3><a class="" href="../../ai_ml_index/">AI &amp; Machine Learning</a><a class="" href="../../Research/">Research</a></div><div><h3>Databases</h3><a class="" href="../../sql/">SQL</a><a class="" href="../../postgresql/">PostgreSQL</a><a class="" href="../../MongoDB/">MongoDB</a></div><div><h3>Development</h3><a class="" href="../../django/">Django</a><a class="" href="../../git/">Git</a><a class="" href="../../markdownsyntax/">Markdown</a><a class="" href="../../vimCheats/">Vim Cheatsheet</a><a class="" href="../../Tools_Compilation/">Developer Tools</a></div></div></div><div class="footer-bottom wrap"><span>© 2026 Notex · Open knowledge, shared freely.</span><a href="../../licenses/">Licenses & credits</a><span>Designed by <a href="https://harshityadav.in">harshityadav.in</a></span></div></footer><dialog class="search-dialog"><div class="search-top"><span>⌕</span><input type="search" placeholder="Search notes, topics, code…" aria-label="Search the library" autocomplete="off"><button aria-label="Close search" data-close>Esc</button></div><div class="search-hint">Search across the entire library <kbd>⌘ K</kbd></div><div id="search-results" aria-live="polite"></div></dialog><div class="toast" role="status"></div></body></html>

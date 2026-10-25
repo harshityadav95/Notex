@@ -5,6 +5,7 @@ site_dir : docs
 nav:
     - Home: 'index.md'
     - 'Languages':
+        - 'Go': 'go/overview.md'
         - 'Python': 'python.md'
         - 'Javascript': 'Javascript-ES6-Notes.md'
         - 'Java': '404.md'
@@ -22,6 +23,7 @@ nav:
 
     - 'Garage':
         - 'Terminal': 'terminal_commands.md'
+        - 'Designing Data-Intensive Applications': 'ddia/overview.md'
         - 'System Design': 'Learning_System_Design.md'
         - 'Thinkpad': 'thinkpad.md'
         - 'Interview': 'Programming_Interview_Study_Plan.md'

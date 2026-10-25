@@ -1,0 +1,918 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Notex: open notes, code snippets, system design, programming languages and handwritten resources by Harshit Yadav."><meta name="theme-color" content="#f7f7f8"><title>Go 04 · Functions · Notex</title><link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../../assets/style.css?v=07c9ccb4c9"><link rel="stylesheet" href="../../assets/highlight.css"><script src="../../assets/app.js?v=861de97365" defer></script></head><body class="reading" data-base="../../"><a class="skip" href="#main-content">Skip to content</a><div class="announcement"><a href="../../library/"><span class="badge live">OPEN</span> Your next idea starts with a note <span class="announcement-more">Explore the library →</span></a><button aria-label="Dismiss announcement" data-dismiss>×</button></div><header class="site-header"><div class="nav-wrap"><a class="wordmark" href="../../">notex<span class="badge">OPEN</span></a><nav aria-label="Main navigation"><div class="dropdown"><button aria-expanded="false" data-dropdown>Learning <span>⌄</span></button><div class="dropdown-panel"><a class="" href="../../python/">Programming languages</a><a class="" href="../../Learning_System_Design/">System design in depth</a><a class="" href="../../ai_ml_index/">AI &amp; machine learning</a><a class="" href="../../sql/">Databases &amp; SQL</a><a class="" href="../../django/">Tools for building</a><a class="" href="../../dsalgo/dsalgoindex/">Data structures &amp; algorithms</a><a class="" href="../../terminal_commands/">Terminal &amp; hardware</a></div></div><a href="../../library/">Library</a><a href="../../library/#handwritten">Handwritten</a><a href="../../library/#notebooks">Notebooks</a><div class="dropdown"><button aria-expanded="false" data-dropdown>Explore <span>⌄</span></button><div class="dropdown-panel"><a href="../../#paths">Learning paths</a><a href="../../#about">About Notex</a><a class="" href="../../Research/">Research</a><a class="" href="../../Tools_Compilation/">Developer tools</a></div></div><a href="https://github.com/harshityadav95/Notex">GitHub ↗</a></nav><div class="nav-actions"><a class="pill open-source" href="https://github.com/harshityadav95/Notex">100% open source ↗</a><button class="search-trigger tactile" aria-label="Search notes" data-search><img src="../../assets/icons/search.svg" alt="" width="18" height="18"></button><a class="tactile desktop-start" href="../../python/">Start reading</a><button class="tactile menu-trigger" aria-label="Open navigation menu" data-menu><img src="../../assets/icons/menu.svg" alt="" width="16" height="16"> Menu</button></div></div></header><dialog class="menu-dialog"><div class="menu-head"><span class="wordmark">notex</span><button aria-label="Close menu" data-close>×</button></div><p>Notes, code and ideas. All in one place.</p><nav aria-label="Mobile navigation"><a href="../../library/">All notes</a><a href="../../library/#handwritten">Handwritten notes</a><a href="../../library/#notebooks">Python notebooks</a><a href="../../#about">About Notex</a><a class="" href="../../python/">Programming languages</a><a class="" href="../../Learning_System_Design/">System design in depth</a><a class="" href="../../ai_ml_index/">AI &amp; machine learning</a><a class="" href="../../sql/">Databases &amp; SQL</a><a class="" href="../../django/">Tools for building</a><a class="" href="../../dsalgo/dsalgoindex/">Data structures &amp; algorithms</a><a class="" href="../../terminal_commands/">Terminal &amp; hardware</a><a href="https://github.com/harshityadav95/Notex">GitHub ↗</a></nav></dialog><div class="reader-bar"><button class="tactile" data-sidebar aria-expanded="false">☰ Topics</button><a href="../../">Notex</a><span>/</span><span>Languages</span><span>/</span><strong>Go 04 · Functions</strong></div><div class="reader-layout"><aside class="sidebar" aria-label="Topic navigation"><a class="sidebar-overview" href="../../library/">← All notes</a><p class="eyebrow">WORKSPACE</p><details open><summary>Languages<span>10</span></summary><a class="" href="../../python/">Python</a><a class="" href="../../Javascript-ES6-Notes/">JavaScript &amp; ES6</a><a class="" href="../../C%2B%2B/">C / C++</a><a class="" href="../../css/">CSS</a><a class="" href="../../go/overview/">Learning Go · Third Edition</a><a class="" href="../../go/chapter-02/">Go 02 · Composite Types</a><a class="" href="../../go/chapter-03/">Go 03 · Blocks, Shadows, and Control Structures</a><a class="active" href="../../go/chapter-04/">Go 04 · Functions</a><a class="" href="../../go/chapter-05/">Go 05 · Pointers</a><a class="" href="../../go/chapter-06/">Go 06 · Writing Tests</a></details><details ><summary>Systems<span>18</span></summary><a class="" href="../../Learning_System_Design/">System Design from Scratch</a><a class="" href="../../Scalable_crossplatform_design/">Scalable Cross-platform Design</a><a class="" href="../../ddia/overview/">Designing Data-Intensive Applications · Second Edition</a><a class="" href="../../ddia/chapter-00/">DDIA 00 · Preface</a><a class="" href="../../ddia/chapter-01/">DDIA 01 · Trade-Offs in Data Systems Architecture</a><a class="" href="../../ddia/chapter-02/">DDIA 02 · Defining Nonfunctional Requirements</a><a class="" href="../../ddia/chapter-03/">DDIA 03 · Data Models and Query Languages</a><a class="" href="../../ddia/chapter-04/">DDIA 04 · Storage and Retrieval</a><a class="" href="../../ddia/chapter-05/">DDIA 05 · Encoding and Evolution</a><a class="" href="../../ddia/chapter-06/">DDIA 06 · Replication</a><a class="" href="../../ddia/chapter-07/">DDIA 07 · Sharding</a><a class="" href="../../ddia/chapter-08/">DDIA 08 · Transactions</a><a class="" href="../../ddia/chapter-09/">DDIA 09 · The Trouble with Distributed Systems</a><a class="" href="../../ddia/chapter-10/">DDIA 10 · Consistency and Consensus</a><a class="" href="../../ddia/chapter-11/">DDIA 11 · Batch Processing</a><a class="" href="../../ddia/chapter-12/">DDIA 12 · Stream Processing</a><a class="" href="../../ddia/chapter-13/">DDIA 13 · A Philosophy of Streaming Systems</a><a class="" href="../../ddia/chapter-14/">DDIA 14 · Doing the Right Thing</a></details><details ><summary>AI &amp; ML<span>02</span></summary><a class="" href="../../ai_ml_index/">AI &amp; Machine Learning</a><a class="" href="../../Research/">Research</a></details><details ><summary>Databases<span>03</span></summary><a class="" href="../../sql/">SQL</a><a class="" href="../../postgresql/">PostgreSQL</a><a class="" href="../../MongoDB/">MongoDB</a></details><details ><summary>Development<span>05</span></summary><a class="" href="../../django/">Django</a><a class="" href="../../git/">Git</a><a class="" href="../../markdownsyntax/">Markdown</a><a class="" href="../../vimCheats/">Vim Cheatsheet</a><a class="" href="../../Tools_Compilation/">Developer Tools</a></details><details ><summary>Algorithms<span>04</span></summary><a class="" href="../../dsalgo/dsalgoindex/">Data Structures &amp; Algorithms</a><a class="" href="../../dsalgo/sorting/">Sorting Algorithms</a><a class="" href="../../dsalgo/sol1/">Worked Solutions</a><a class="" href="../../Programming_Interview_Study_Plan/">Programming Interview Study Plan</a></details><details ><summary>The garage<span>02</span></summary><a class="" href="../../terminal_commands/">Terminal Commands</a><a class="" href="../../thinkpad/">ThinkPad</a></details><div class="sidebar-foot">FREE TO READ · OPEN TO EVERYONE</div></aside><main id="main-content" class="reader-main"><div class="article-meta"><span class="eyebrow">Languages / NOTES</span><span>39 MIN READ</span></div><h1 class="article-title">Go 04 · Functions</h1><div class="article-actions"><button class="tactile" data-save="go/chapter-04/" aria-pressed="false">Save note</button><a href="https://github.com/harshityadav95/Notex/blob/main/src/go/chapter-04.md">Edit on GitHub ↗</a><span>Always free to read</span></div><div class="article-layout"><article class="prose"><div class="source-credit"><a href="../../go/overview/">Learning Go · Third Edition</a> · <a href="https://github.com/harshityadav95/FAANG_BOOKS/blob/e17be94c728cd6ae755bf5d87a5a45b1a9f0dfbb/Learning%20GO%20book%203rd%20edition/chapter-04.md">Original chapter ↗</a></div><figure class="chapter-graphic"><div class="diagram-scroll" tabindex="0" role="region" aria-label="Chapter overview diagram"><img src="../../assets/books/go-chapter-04.svg" alt="Conceptual overview for Functions" width="960" height="300"></div><figcaption>Original Notex overview. Source figure captions and descriptions are preserved below; original figure images are absent from the source repository.</figcaption></figure><nav class="chapter-navigation" aria-label="Chapter navigation"><a href="../../go/chapter-03/">← Previous chapter</a><a href="../../go/overview/">All chapters</a><a href="../../go/chapter-05/">Next chapter →</a></nav><h2 id="chapter-4-functions">Chapter 4. Functions</h2>
+<h2 id="a-note-for-early-release-readers">A Note for Early Release Readers</h2>
+<p>With Early Release ebooks, you get books in their earliest form—the author’s raw and unedited content as they write—so you can take advantage of these technologies long before the official release of these titles.</p>
+<p>This will be the fifth chapter of the final book. Please note that the GitHub repo will be made active later on.</p>
+<p>If you’d like to be actively involved in reviewing and commenting on this draft, please reach out to the editor at sgrey@oreilly.com.</p>
+<p>So far, your programs have been limited to a few lines in the main function. It’s time to get bigger. In this chapter, you’re going to learn how to write functions in Go and see all the interesting things you can do with them.</p>
+<h2 id="declaring-and-calling-functions">Declaring and Calling Functions</h2>
+<p>The basics of Go functions are familiar to anyone who has programmed in other languages with first-class functions, like C, Python, Ruby, or JavaScript. (Go also has methods, which I’ll cover in Chapter 7.) Just as with control structures, Go adds its own twist on function features. Some are improvements, and others are experiments that should be avoided. I’ll cover both in this chapter.</p>
+<p>You’ve already seen functions being declared and used. Every Go program starts from a main function, and you’ve been calling the <code>fmt.Println</code> function to print to the screen. Since a main function doesn’t take in parameters or return values, let’s see what it looks like when a function does:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">div</span><span class="p">(</span><span class="nx">num</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nx">denom</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">denom</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">num</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nx">denom</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Let’s look at all the new things in this code sample. A function declaration has four parts: the keyword func, the name of the function, the input parameters, and the return type. The input parameters are listed in parentheses, separated by commas, with the parameter name first and the type second. Go is a typed language, so you must specify the types of the parameters. The return type is written between the input parameter’s closing parenthesis and the opening brace for the function body.</p>
+<p>Just like other languages, Go has a return keyword for returning values from a function. If a function returns a value, you must supply a return. If a function returns nothing, a return statement is not needed at the end, unless you are exiting from the function before the last line.</p>
+<p>The main function has no input parameters or return values. When a function has no input parameters, use empty parentheses (()). When a function returns nothing, you write nothing between the input parameter’s closing parenthesis and the opening brace for the function body:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">result</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">div</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>The code for this simple program is in the <code>sample_code/simple_div</code> directory in the Chapter 5 repository.</p>
+<p>Calling a function should be familiar to you as an experienced developer. On the right side of the <code>:=</code>, you call the div function with the values 5 and 2. On the left side, you assign the returned value to the variable result.</p>
+<blockquote>
+<p><strong>Tip</strong></p>
+<p>When you have two or more consecutive input parameters of the same type, you can specify the type once for all of them like this:</p>
+</blockquote>
+<div class="codehilite"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">div</span><span class="p">(</span><span class="nx">num</span><span class="p">,</span><span class="w"> </span><span class="nx">denom</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="p">{</span>
+</code></pre></div>
+
+<h3 id="simulating-named-and-optional-parameters">Simulating Named and Optional Parameters</h3>
+<p>Before getting to Go’s unique function features, I’ll mention two that Go doesn’t have: named and optional input parameters. With one exception, which I will cover in the next section, you must supply all the parameters for a function. If you want to emulate named and optional parameters, define a struct that has fields that match the desired parameters and pass the struct to your function. Example 4-1 demonstrates this pattern.</p>
+<p><strong>Example 4-1. Using a struct to simulate named parameters</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">MyFuncOpts</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">FirstName</span><span class="w"> </span><span class="kt">string</span>
+<span class="w">    </span><span class="nx">LastName</span><span class="w">  </span><span class="kt">string</span>
+<span class="w">    </span><span class="nx">Age</span><span class="w">       </span><span class="kt">int</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">MyFunc</span><span class="p">(</span><span class="nx">opts</span><span class="w"> </span><span class="nx">MyFuncOpts</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// do something here</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">MyFunc</span><span class="p">(</span><span class="nx">MyFuncOpts</span><span class="p">{</span>
+<span class="w">        </span><span class="nx">LastName</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Patel&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">Age</span><span class="p">:</span><span class="w">      </span><span class="mi">50</span><span class="p">,</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">    </span><span class="nx">MyFunc</span><span class="p">(</span><span class="nx">MyFuncOpts</span><span class="p">{</span>
+<span class="w">        </span><span class="nx">FirstName</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Joe&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">LastName</span><span class="p">:</span><span class="w">  </span><span class="s">&quot;Smith&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>The code for this program is in the <code>sample_code/named_optional_parameters</code> directory in the Chapter 5 repository.</p>
+<p>In practice, not having named and optional parameters isn’t a limitation. A function shouldn’t have more than a few parameters, and named and optional parameters are mostly useful when a function has many inputs. If you find yourself in that situation, your function is quite possibly too complicated.</p>
+<h3 id="variadic-input-parameters-and-slices">Variadic Input Parameters and Slices</h3>
+<p>You’ve been using <code>fmt.Println</code> to print results to the screen, and you’ve probably noticed that this function allows any number of input parameters. How does it do that?</p>
+<p>Like many languages, Go supports variadic parameters (which just means a function can have an unspecified number of parameters). It does so via a special variadic parameter, which must be the last (or only) parameter in the input parameter list. You indicate it with three dots (...) before the type. The variable that’s created within the function is a slice of the specified type. You use it just like any other slice.</p>
+<p>Let's see how variadic parameters work by writing a program that adds a base number to a variable number of parameters and returns the result as a slice of +int+. You can run this program on https://oreil.ly/nSad4[The Go Playground] or in the <em>sample_code/variadic</em> directory in the https://TODO[Chapter 5 repository]. First, write the variadic function:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">addTo</span><span class="p">(</span><span class="nx">base</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nx">vals</span><span class="w"> </span><span class="o">...</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">out</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">vals</span><span class="p">))</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">v</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">vals</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">out</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">out</span><span class="p">,</span><span class="w"> </span><span class="nx">base</span><span class="o">+</span><span class="nx">v</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">out</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Now call it in a few ways:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">addTo</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">addTo</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">))</span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">addTo</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">))</span>
+<span class="w">    </span><span class="nx">a</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">}</span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">addTo</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="nx">a</span><span class="o">...</span><span class="p">))</span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">addTo</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">}</span><span class="o">...</span><span class="p">))</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>As you can see, you can supply however many values you want for the variadic parameter or no values at all. Since the variadic parameter is converted to a slice, you can supply a slice as the input. However, you must put three dots (...) after the variable or slice literal. If you don’t, you’ll get a compile-time error.</p>
+<p>When you build and run this program, you get this output:</p>
+<div class="codehilite"><pre><span></span><code>[]
+[5]
+[5 7 9 11]
+[7 6]
+[4 5 6 7 8]
+</code></pre></div>
+
+<h3 id="multiple-return-values">Multiple Return Values</h3>
+<p>The first difference that you’ll see between Go and other languages is that Go allows for multiple return values. Let’s add a small feature to the previous division program. You’re going to return both the quotient and the remainder from the function. Here’s the updated function:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">divAndRemainder</span><span class="p">(</span><span class="nx">num</span><span class="p">,</span><span class="w"> </span><span class="nx">denom</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">denom</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nx">errors</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="s">&quot;cannot divide by zero&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">num</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nx">denom</span><span class="p">,</span><span class="w"> </span><span class="nx">num</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="nx">denom</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>There are a few changes to support multiple return values. When a Go function returns multiple values, the types of the return values are listed in parentheses, separated by commas. Also, if a function returns multiple values, you must return all of them, separated by commas. Don’t put parentheses around the returned values; that’s a compile-time error.</p>
+<p>There’s something else that you haven’t seen yet: creating and returning an error. (If you want to learn more about errors, skip ahead to Chapter 9.) For now, you only need to know that you’ll use Go’s multiple-return-value support to return an error if something goes wrong in a function. If the function completes successfully, it returns nil for the error’s value. By convention, the error is always the last (or only) value returned from a function.</p>
+<p>Calling the updated function looks like this:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">result</span><span class="p">,</span><span class="w"> </span><span class="nx">remainder</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">divAndRemainder</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">slog</span><span class="p">.</span><span class="nx">Error</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">os</span><span class="p">.</span><span class="nx">Exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">result</span><span class="p">,</span><span class="w"> </span><span class="nx">remainder</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>The code for this program is in the <code>sample_code/updated_div</code> directory in the Chapter 5 repository.</p>
+<p>I talked about assigning multiple values at once in “var Versus <code>:=</code>”. Here, you are using that feature to assign the results of a function call to three variables. On the right side of the <code>:=</code>, you call the divAndRemainder function with the values 5 and 2. On the left side, you assign the returned values to the variables result, remainder, and err. You can then check to see if there was an error by comparing err to nil.</p>
+<h4 id="multiple-return-values-are-multiple-values">Multiple Return Values Are Multiple Values</h4>
+<p>If you are familiar with Python, you might think that multiple return values are like Python functions returning a tuple—​one that’s optionally destructured if the tuple’s values are assigned to multiple variables. Example 4-2 shows some sample code run in the Python interpreter.</p>
+<p><strong>Example 4-2. Multiple return values in Python are destructured tuples</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span><span class="w"> </span><span class="nf">div_and_remainder</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">d</span><span class="p">):</span>
+<span class="gp">... </span>  <span class="k">if</span> <span class="n">d</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;cannot divide by zero&quot;</span><span class="p">)</span>
+<span class="gp">... </span>  <span class="k">return</span> <span class="n">n</span> <span class="o">/</span> <span class="n">d</span><span class="p">,</span> <span class="n">n</span> <span class="o">%</span> <span class="n">d</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">div_and_remainder</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span>
+<span class="go">(2.5, 1)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span><span class="p">,</span> <span class="n">remainder</span> <span class="o">=</span> <span class="n">div_and_remainder</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span>
+<span class="go">2.5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">remainder</span>
+<span class="go">1</span>
+</code></pre></div>
+
+<p>In Python, you can assign all the values returned to a single variable or to multiple variables. That’s not how Go works. In Go, you must assign each value returned from a function. If you try to assign multiple return values to one variable, you get a compile-time error.</p>
+<h3 id="ignoring-returned-values">Ignoring Returned Values</h3>
+<p>What if you call a function and don’t want to use all the returned values? As covered in “Unused Variables”, Go does not allow unused variables. If a function returns multiple values, but you don’t need to read one or more of them, assign the unused values to the name <em>. For example, if you weren’t going to read remainder, you would write the assignment as result, </em>, err <code>:=</code> divAndRemainder(5, 2).</p>
+<p>Surprisingly, Go does let you implicitly ignore all of the return values for a function. You can write divAndRemainder(5,2), and the returned values are dropped. In fact, you’ve actually been doing this since the earliest example in this book: <code>fmt.Println</code> returns two values, but it is idiomatic to ignore them. In almost all other cases, you should make it explicit that you are ignoring return values by using underscores.</p>
+<blockquote>
+<p><strong>Tip</strong></p>
+<p>Use _ whenever you don’t need to read a value that’s returned by a function.</p>
+</blockquote>
+<h3 id="named-return-values">Named Return Values</h3>
+<p>In addition to letting you return more than one value from a function, Go allows you to specify names for your return values. Rewrite the divAndRemainder function one more time, this time using named return values:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">divAndRemainder</span><span class="p">(</span><span class="nx">num</span><span class="p">,</span><span class="w"> </span><span class="nx">denom</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nx">result</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nx">remainder</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">denom</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">errors</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="s">&quot;cannot divide by zero&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">result</span><span class="p">,</span><span class="w"> </span><span class="nx">remainder</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="nx">result</span><span class="p">,</span><span class="w"> </span><span class="nx">remainder</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">num</span><span class="o">/</span><span class="nx">denom</span><span class="p">,</span><span class="w"> </span><span class="nx">num</span><span class="o">%</span><span class="nx">denom</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">result</span><span class="p">,</span><span class="w"> </span><span class="nx">remainder</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>When you supply names to your return values, what you are doing is predeclaring variables that you use within the function to hold the return values. They are written as a comma-separated list within parentheses. You must surround named return values with parentheses, even if there is only a single return value. Named return values are initialized to their zero values when created. This means that you can return them before any explicit use or assignment.</p>
+<blockquote>
+<p><strong>Tip</strong></p>
+<p>If you want to name only some of the return values, you can do so by using _ as the name for any return values you want to remain nameless.</p>
+</blockquote>
+<p>The name you use for a named returned value is local to the function; it doesn’t enforce any name outside of the function. It is perfectly legal to assign the return values to variables of different names:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">,</span><span class="w"> </span><span class="nx">z</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">divAndRemainder</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">,</span><span class="w"> </span><span class="nx">z</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>While named return values can sometimes clarify your code, they do have some potential corner cases. First is the problem of shadowing, which was discussed in “Shadowing Variables”. Just as with any other variable, you can shadow a named return value. Be sure that you are assigning to the return value and not to a shadow of it.</p>
+<p>The other problem with named return values is that you don’t have to return them. Let’s take a look at another variation on divAndRemainder. You can run it on The Go Playground or in the divAndRemainderConfusing function in <code>main.go</code> in the <code>sample_code/named_div</code> directory in the Chapter 5 repository:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">divAndRemainder</span><span class="p">(</span><span class="nx">num</span><span class="p">,</span><span class="w"> </span><span class="nx">denom</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nx">result</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nx">remainder</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// assign some values</span>
+<span class="w">    </span><span class="nx">result</span><span class="p">,</span><span class="w"> </span><span class="nx">remainder</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">denom</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nx">errors</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="s">&quot;cannot divide by zero&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">num</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nx">denom</span><span class="p">,</span><span class="w"> </span><span class="nx">num</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="nx">denom</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Notice that you assigned values to result and remainder, then returned different values directly. Before running this code, try to guess what happens when you pass 5 and 2 to this function. The result might surprise you.</p>
+<p>The values from the return statement are returned even though they were never assigned to the named return parameters. That’s because the Go compiler inserts code that assigns whatever is returned to the return parameters. The named return parameters give a way to declare that you intend to use variables to hold the return values, but don’t require you to use them.</p>
+<p>Some developers like to use named return parameters because they provide additional documentation. However, I find their value to be limited. Shadowing makes them confusing, as does simply ignoring them. However, named return parameters are essential in one situation. I will talk about that when I cover defer later in the chapter.</p>
+<p>(By the way, if you didn’t run the sample above, it returns 2 and 1.)</p>
+<h3 id="blank-returnsnever-use-these">Blank Returns—Never Use These!</h3>
+<p>If you use named return values, you need to be aware of one severe misfeature in Go: blank (sometimes called naked) returns. If you have named return values, you can just write return without specifying the values that are returned. This returns the last values assigned to the named return values. Rewrite the divAndRemainder function one last time, this time using blank returns:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">divAndRemainder</span><span class="p">(</span><span class="nx">num</span><span class="p">,</span><span class="w"> </span><span class="nx">denom</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nx">result</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nx">remainder</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">denom</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">errors</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="s">&quot;cannot divide by zero&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="nx">result</span><span class="p">,</span><span class="w"> </span><span class="nx">remainder</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">num</span><span class="o">/</span><span class="nx">denom</span><span class="p">,</span><span class="w"> </span><span class="nx">num</span><span class="o">%</span><span class="nx">denom</span>
+<span class="w">    </span><span class="k">return</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Using blank returns makes a few additional changes to the function. When there’s invalid input, the function returns immediately. Since you assigned no values to result and remainder, their zero values are returned. If you are returning the zero values for your named return values, be sure they make sense. Also, note that you still have to put a return at the end of the function. Even though this function is using blank returns, it still returns values. Leaving out return is a compile-time error.</p>
+<p>At first, you might find blank returns handy, since they allow you to avoid some typing. However, most experienced Go developers consider blank returns a bad idea because they make it harder to understand data flow. Good software is clear and readable; it’s obvious what is happening. When you use a blank return, the reader of your code needs to scan back through the program to find the last value assigned to the return parameters to see what is actually being returned.</p>
+<blockquote>
+<p><strong>Warning</strong></p>
+<p>If your function returns values, never use a blank return. This can make it very confusing to figure out what value is actually returned.</p>
+</blockquote>
+<h2 id="code-review-functions-parameters-and-return-values">Code Review: functions, parameters, and return values</h2>
+<ul>
+<li>
+<p>A function shouldn’t have a lot of parameters. Make sure your function isn’t doing too much.</p>
+</li>
+<li>
+<p>Outside of <code>fmt.Println</code> and other well-known functions, use _ to explicitly mark ignored return values.</p>
+</li>
+<li>
+<p>Never use a blank (naked) return in a function that returns values. It forces the reader to scan the entire function to figure out what value is being returned.</p>
+</li>
+<li>
+<p>Watch out for shadowing named return values. Confirm that you’re assigning to the return variable, not accidentally creating a new one with <code>:=</code>.</p>
+</li>
+</ul>
+<h2 id="exercises">Exercises</h2>
+<p>These exercises let you experiment with writing functions of your own. Solutions are available in the <code>exercise_solutions</code> directory in the Chapter 5 repository.</p>
+<ol>
+<li>
+<p>Write a function called subtract that takes in two int parameters and returns an int. Call this function from main with several values and print out the result.</p>
+</li>
+<li>
+<p>Write a function named minMax that takes in 0 or more int values and returns three results: the smallest number, the largest number, and an error. If no values are passed to minMax, return an error using <code>errors.New</code>. Otherwise, the returned error should be nil. Call it from main three ways: with no arguments, with several arguments, and with an []int.</p>
+</li>
+<li>
+<p>In the <code>exercises/ex03</code> directory in the Chapter 5 repository, there is a function called split that implements several bad practices. Update this function to follow better practices and explain why your version is an improvement.</p>
+</li>
+</ol>
+<h2 id="functions-are-values">Functions Are Values</h2>
+<p>Just as in many other languages, functions in Go are values. The type of a function is built out of the keyword func and the types of the parameters and return values. This combination is called the signature of the function. Any function that has the exact same number and types of parameters and return values meets the type signature.</p>
+<p>Since functions are values, you can declare a function variable:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">myFuncVariable</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="kt">int</span>
+</code></pre></div>
+
+<p>You can assign myFuncVariable any function that has a single parameter of type string and returns a single value of type int. Here’s a longer example:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">f1</span><span class="p">(</span><span class="nx">a</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">f2</span><span class="p">(</span><span class="nx">a</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">total</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">v</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">total</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nb">int</span><span class="p">(</span><span class="nx">v</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">total</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">myFuncVariable</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="kt">int</span>
+<span class="w">    </span><span class="nx">myFuncVariable</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">f1</span>
+<span class="w">    </span><span class="nx">result</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">myFuncVariable</span><span class="p">(</span><span class="s">&quot;Hello&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nx">myFuncVariable</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">f2</span>
+<span class="w">    </span><span class="nx">result</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">myFuncVariable</span><span class="p">(</span><span class="s">&quot;Hello&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>You can run this program on The Go Playground or in the <code>sample_code/func_value</code> directory in the Chapter 5 repository. The output is:</p>
+<div class="codehilite"><pre><span></span><code>5
+500
+</code></pre></div>
+
+<p>The default zero value for a function variable is nil. Attempting to run a function variable with a nil value results in a panic (which is covered in the Panic Recover section).</p>
+<p>Having functions as values allows you to do some clever things, such as build a simple calculator using functions as values in a map. Let’s see how this works. The following code is available on The Go Playground or in the <code>sample_code/calculator</code> directory in the Chapter 5 repository. First, create a set of functions that all have the same signature:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">add</span><span class="p">(</span><span class="nx">i</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nx">j</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">j</span><span class="w"> </span><span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">sub</span><span class="p">(</span><span class="nx">i</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nx">j</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">j</span><span class="w"> </span><span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">mul</span><span class="p">(</span><span class="nx">i</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nx">j</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">j</span><span class="w"> </span><span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">div</span><span class="p">(</span><span class="nx">i</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nx">j</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nx">j</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+
+<p>Next, create a map to associate a math operator with each function:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">opMap</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kd">func</span><span class="p">(</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="kt">int</span><span class="p">{</span>
+<span class="w">    </span><span class="s">&quot;+&quot;</span><span class="p">:</span><span class="w"> </span><span class="nx">add</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;-&quot;</span><span class="p">:</span><span class="w"> </span><span class="nx">sub</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;*&quot;</span><span class="p">:</span><span class="w"> </span><span class="nx">mul</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;/&quot;</span><span class="p">:</span><span class="w"> </span><span class="nx">div</span><span class="p">,</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Finally, try out the calculator with a few expressions:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">expressions</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[][]</span><span class="kt">string</span><span class="p">{</span>
+<span class="w">        </span><span class="p">{</span><span class="s">&quot;2&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;+&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;3&quot;</span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span><span class="s">&quot;2&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;-&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;3&quot;</span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span><span class="s">&quot;2&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;*&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;3&quot;</span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span><span class="s">&quot;2&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;3&quot;</span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span><span class="s">&quot;2&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;%&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;3&quot;</span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span><span class="s">&quot;two&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;+&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;three&quot;</span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span><span class="s">&quot;5&quot;</span><span class="p">},</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">expression</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">expressions</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">expression</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;invalid expression:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">expression</span><span class="p">)</span>
+<span class="w">            </span><span class="k">continue</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="nx">p1</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">strconv</span><span class="p">.</span><span class="nx">Atoi</span><span class="p">(</span><span class="nx">expression</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+<span class="w">            </span><span class="k">continue</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="nx">op</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">expression</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="w">        </span><span class="nx">opFunc</span><span class="p">,</span><span class="w"> </span><span class="nx">ok</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">opMap</span><span class="p">[</span><span class="nx">op</span><span class="p">]</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">ok</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;unsupported operator:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">op</span><span class="p">)</span>
+<span class="w">            </span><span class="k">continue</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="nx">p2</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">strconv</span><span class="p">.</span><span class="nx">Atoi</span><span class="p">(</span><span class="nx">expression</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+<span class="w">            </span><span class="k">continue</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="nx">result</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">opFunc</span><span class="p">(</span><span class="nx">p1</span><span class="p">,</span><span class="w"> </span><span class="nx">p2</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>The <code>strconv.Atoi</code> function in the standard library converts a string to an int. The second value returned by this function is an error. As shown earlier, every time you call a function that returns an error, check the returned error value. If it is not nil, handle the error. In this case, we print out the error and skip the rest of the for loop.</p>
+<p>You''ll use op as the key to the opMap map and assign the value associated with the key to the variable opFunc. The type of opFunc is func(int, int) int. If there wasn’t a function in the map associated with the provided key, print an error message and skip the rest of the loop. Then call the function assigned to the opFunc variable with the p1 and p2 variables that you decoded earlier. Calling a function in a variable looks just like calling a function directly.</p>
+<p>When you run this program, you can see the simple calculator at work:</p>
+<div class="codehilite"><pre><span></span><code>5
+-1
+6
+0
+unsupported operator: %
+strconv.Atoi: parsing &quot;two&quot;: invalid syntax
+invalid expression: [5]
+</code></pre></div>
+
+<blockquote>
+<p><strong>Note</strong></p>
+<p>Don’t write fragile programs. The core logic for this example is relatively short. Of the 22 lines inside the for loop, 6 of them implement the actual algorithm, and the other 16 are for error checking and data validation. You might be tempted to not validate incoming data or check errors, but doing so produces unstable, unmaintainable code. Error handling is what separates the professionals from the amateurs.</p>
+</blockquote>
+<h3 id="function-type-declarations">Function Type Declarations</h3>
+<p>Just as you can use the type keyword to define a struct, you can use it to define a function type, too. (I’ll go into more details on type declarations in Chapter 7.) Take a look:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">opFuncType</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="kt">int</span>
+</code></pre></div>
+
+<p>You can then rewrite the opMap declaration to look like this:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">opMap</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="nx">opFuncType</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// same as before</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>You don’t have to modify the functions at all. Any function that has two input parameters of type int and a single return value of type int automatically meets the type and can be assigned as a value in the map.</p>
+<p>What’s the advantage of declaring a function type? One use is documentation. It’s useful to give something a name if you’re going to refer to it multiple times. You will see another use in Chapter 7.</p>
+<h3 id="anonymous-functions">Anonymous Functions</h3>
+<p>Not only can you assign functions to variables, you can also define new functions within a function and assign them to variables. Here’s a program to demonstrate this, which you can run on The Go Playground. The code is also available in the <code>sample_code/anon_func</code> directory in the Chapter 5 repository:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">f</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">j</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;printing&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">j</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;from inside of an anonymous function&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">f</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Inner functions are anonymous; they don’t have names. To declare an anonymous function, use the keyword func immediately followed by the input parameters, the return values, and the opening brace. It is a compile-time error to put a function name between func and the input parameters.</p>
+<p>Just like any other function, you call an anonymous function using parentheses. In this example, you are passing the i variable from the for loop in here. It is assigned to the j input parameter of the anonymous function.</p>
+<p>The program gives the following output:</p>
+<div class="codehilite"><pre><span></span><code>printing 0 from inside of an anonymous function
+printing 1 from inside of an anonymous function
+printing 2 from inside of an anonymous function
+printing 3 from inside of an anonymous function
+printing 4 from inside of an anonymous function
+</code></pre></div>
+
+<p>You don’t have to assign an anonymous function to a variable. You can write it inline and call it immediately. You can rewrite the previous program to do this:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">func</span><span class="p">(</span><span class="nx">j</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;printing&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">j</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;from inside of an anonymous function&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">}(</span><span class="nx">i</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>You can run this example on The Go Playground or in the <code>sample_code/anon_func</code> directory in the Chapter 5 repository.</p>
+<p>Now, this is not something that you would normally do. If you are declaring and executing an anonymous function immediately, you might as well get rid of the anonymous function and just call the code. However, declaring anonymous functions without assigning them to variables is useful in two situations: defer statements and launching goroutines. I’ll talk about defer statements in a bit. Goroutines are covered in Chapter 12&gt;.</p>
+<p>Since you can declare variables at the package scope, you can also declare package-scope variables and assign them anonymous functions:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="nx">add</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span><span class="w"> </span><span class="nx">j</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">j</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="nx">sub</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span><span class="w"> </span><span class="nx">j</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">j</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="nx">mul</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span><span class="w"> </span><span class="nx">j</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">j</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="nx">div</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span><span class="w"> </span><span class="nx">j</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nx">j</span><span class="w"> </span><span class="p">}</span>
+<span class="p">)</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">x</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">add</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Unlike a normal function definition, you can assign a new value to a package-level anonymous function:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">x</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">add</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">changeAdd</span><span class="p">()</span>
+<span class="w">    </span><span class="nx">y</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">add</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">y</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">changeAdd</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">add</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span><span class="w"> </span><span class="nx">j</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">j</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">j</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Running this code gives the following output:</p>
+<div class="codehilite"><pre><span></span><code>5
+8
+</code></pre></div>
+
+<p>You can try this sample on The Go Playground. The code is also in the <code>sample_code/package_level_anon</code> directory in the Chapter 5 repository.</p>
+<p>Before using a package-level anonymous function, be very sure you need this capability. Package-level state should be immutable to make data flow easier to understand. If a function’s meaning changes while a program is running, it becomes difficult to understand not just how data flows, but how it is processed.</p>
+<h2 id="closures">Closures</h2>
+<p>Functions declared inside functions are special; they are called closures. This is a computer-science word that means that functions declared inside functions can access and modify variables declared in the outer function. Let’s look at a quick example to see how this works. You can find the code on The Go Playground. The code is also in the <code>sample_code/closure</code> directory in the Chapter 5 repository:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">a</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">20</span>
+<span class="w">    </span><span class="nx">f</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">a</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">30</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="nx">f</span><span class="p">()</span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Running this program gives the following output:</p>
+<div class="codehilite"><pre><span></span><code>20
+30
+</code></pre></div>
+
+<p>The anonymous function assigned to f can read and write a, even though a is not passed into it.</p>
+<p>Just as with any inner scope, you can shadow a variable inside a closure. Try changing the code to:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">a</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">20</span>
+<span class="w">    </span><span class="nx">f</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">a</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">30</span>
+<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="nx">f</span><span class="p">()</span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>This will print out the following:</p>
+<div class="codehilite"><pre><span></span><code>20
+30
+20
+</code></pre></div>
+
+<p>Using <code>:=</code> instead of = inside the closure creates a new a that ceases to exist when the closure exits. When working with inner functions, be careful to use the correct assignment operator, especially when multiple variables are on the left-hand side. You can try this code on The Go Playground. The code is also in the <code>sample_code/closure_shadow</code> directory in the Chapter 5 repository.</p>
+<p>This inner function and closure stuff might not seem all that useful at first. What benefit do you get from making mini-functions within a larger function? Why does Go have this feature?</p>
+<p>One thing that closures allow you to do is to limit a function’s scope. If a function is going to be called from only one other function, but it’s called multiple times, you can use an inner function to “hide” the called function. This reduces the number of declarations at the package level, which can make it easier to find an unused name.</p>
+<p>If you have a piece of logic that is repeated multiple times within a function, you can use a closure to remove that repetition. For example, I wrote a simple Lisp interpreter with a Scan function that processes an input string to find the parts of a Lisp program. It relies on two closures, buildCurToken and update, to make the code shorter and easier to understand. You can see it on GitHub.</p>
+<p>Closures really become interesting when they are passed to other functions or returned from a function. They allow you to take the variables within your function and use them outside of your function.</p>
+<h3 id="passing-functions-as-parameters">Passing Functions as Parameters</h3>
+<p>Since functions are values and you can specify function’s type using its parameter and return types, you can pass functions as parameters into functions. If you aren’t used to treating functions like data, take a moment to think about the implications of creating a closure that references local variables and then passing that closure to another function. It’s a very useful pattern that appears several times in the standard library.</p>
+<p>The slices and maps packages have many functions with function parameters. In “Comparing Slices” and “Comparing Maps”, you learned about <code>slices.EqualFunc</code> and <code>maps.EqualFunc</code>, which use a function parameter to test equality for elements in the containers.</p>
+<p>Another example is sorting slices. The slices package in the standard library has a function called <code>slices.Sort</code> that takes in a slice and sorts the values in it. However, it only works for slices whose elements are of an ordered type, and it only sorts thw values in ascending order. (As a reminder, an ordered type is one that can be compared with &gt;, &lt;, &gt;=, and ⇐.)</p>
+<p>If you want to sort a slice that contains elements of a nonordered type, or if you want to specify your own sort order, use the <code>slices.SortFunc</code> function. Let’s see how it works by sorting a slice of a struct with multiple fields. Here’s the sample data:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">Person</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">FirstName</span><span class="w"> </span><span class="kt">string</span>
+<span class="w">    </span><span class="nx">LastName</span><span class="w">  </span><span class="kt">string</span>
+<span class="w">    </span><span class="nx">Age</span><span class="w">       </span><span class="kt">int</span>
+<span class="p">}</span>
+
+<span class="nx">people</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="nx">Person</span><span class="p">{</span>
+<span class="w">    </span><span class="p">{</span><span class="s">&quot;Pat&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Patterson&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">37</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="s">&quot;Tracy&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Bobdaughter&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">23</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="s">&quot;Fred&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Fredson&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">18</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="s">&quot;Fred&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Fredson&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">92</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="s">&quot;Mary&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Patterson&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">42</span><span class="p">},</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>You can’t use <code>slices.Sort</code> to sort this slice, because Person isn’t an ordered type. Here is the code to sort this slice by last name in ascending alphabetical order:</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">slices</span><span class="p">.</span><span class="nx">SortFunc</span><span class="p">(</span><span class="nx">people</span><span class="p">,</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">p1</span><span class="p">,</span><span class="w"> </span><span class="nx">p2</span><span class="w"> </span><span class="nx">Person</span><span class="p">)</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="nx">p1</span><span class="p">.</span><span class="nx">LastName</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="nx">p2</span><span class="p">.</span><span class="nx">LastName</span><span class="p">:</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="nx">p1</span><span class="p">.</span><span class="nx">LastName</span><span class="w"> </span><span class="p">&gt;</span><span class="w"> </span><span class="nx">p2</span><span class="p">.</span><span class="nx">LastName</span><span class="p">:</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="k">default</span><span class="p">:</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">})</span>
+</code></pre></div>
+
+<blockquote>
+<p><strong>Note</strong></p>
+<p>The people slice is changed by the call to <code>slices.SortFunc</code>. I talk about this briefly in “Go Is Call by Value” and in more detail in the next chapter.</p>
+</blockquote>
+<p>SortFunc takes in a slice and a compare function. A compare function takes in two parameters of the same type and returns an int. It returns a value less than 0 when the first parameter is ordered before the second parameter, 0 when the parameters are considered identical, and greater than 0 when the second parameter is ordered before the first parameter.</p>
+<p>If you are building a comparison function out of orderable types, the Go standard library contains a useful helper function. While Person isn’t orderable, its LastName field is. Call the <code>cmp.Compare</code> function with the fields you are comparing to remove a lot of ugly boilerplate code:</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">slices</span><span class="p">.</span><span class="nx">SortFunc</span><span class="p">(</span><span class="nx">people</span><span class="p">,</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">p1</span><span class="p">,</span><span class="w"> </span><span class="nx">p2</span><span class="w"> </span><span class="nx">Person</span><span class="p">)</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">cmp</span><span class="p">.</span><span class="nx">Compare</span><span class="p">(</span><span class="nx">p1</span><span class="p">.</span><span class="nx">LastName</span><span class="p">,</span><span class="w"> </span><span class="nx">p2</span><span class="p">.</span><span class="nx">LastName</span><span class="p">)</span>
+<span class="p">})</span>
+</code></pre></div>
+
+<p>Here are few more sorting variations. To sort by last name, descending, swap the order of the parameters to <code>cmp.Compare</code>:</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">slices</span><span class="p">.</span><span class="nx">SortFunc</span><span class="p">(</span><span class="nx">people</span><span class="p">,</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">p1</span><span class="p">,</span><span class="w"> </span><span class="nx">p2</span><span class="w"> </span><span class="nx">Person</span><span class="p">)</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">cmp</span><span class="p">.</span><span class="nx">Compare</span><span class="p">(</span><span class="nx">p2</span><span class="p">.</span><span class="nx">LastName</span><span class="p">,</span><span class="w"> </span><span class="nx">p1</span><span class="p">.</span><span class="nx">LastName</span><span class="p">)</span>
+<span class="p">})</span>
+</code></pre></div>
+
+<p>What if you want to sort by multiple fields? The cmp package includes another useful function called Or. It takes in zero or more values and returns the first nonzero value. If all of the values are 0, <code>cmp.Or</code> returns 0.</p>
+<p>Combining <code>cmp.Or</code> with <code>cmp.Compare</code> allows you to list multiple compare functions. The first nonzero value determines the order of the two values. If all of the compare functions return 0, the values are equal. Here is how to use it to sort by last name, first name, and age:</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">slices</span><span class="p">.</span><span class="nx">SortFunc</span><span class="p">(</span><span class="nx">people</span><span class="p">,</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">p1</span><span class="p">,</span><span class="w"> </span><span class="nx">p2</span><span class="w"> </span><span class="nx">Person</span><span class="p">)</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">cmp</span><span class="p">.</span><span class="nx">Or</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">cmp</span><span class="p">.</span><span class="nx">Compare</span><span class="p">(</span><span class="nx">p1</span><span class="p">.</span><span class="nx">LastName</span><span class="p">,</span><span class="w"> </span><span class="nx">p2</span><span class="p">.</span><span class="nx">LastName</span><span class="p">),</span>
+<span class="w">        </span><span class="nx">cmp</span><span class="p">.</span><span class="nx">Compare</span><span class="p">(</span><span class="nx">p1</span><span class="p">.</span><span class="nx">FirstName</span><span class="p">,</span><span class="w"> </span><span class="nx">p2</span><span class="p">.</span><span class="nx">FirstName</span><span class="p">),</span>
+<span class="w">        </span><span class="nx">cmp</span><span class="p">.</span><span class="nx">Compare</span><span class="p">(</span><span class="nx">p1</span><span class="p">.</span><span class="nx">Age</span><span class="p">,</span><span class="w"> </span><span class="nx">p2</span><span class="p">.</span><span class="nx">Age</span><span class="p">),</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="p">})</span>
+</code></pre></div>
+
+<p>What if you want a configurable sort function? You can take advantage of closures’ ability to capture a local variable (which is the official computer-science way to say that closures can access local variables) and pass a function to <code>slices.SortFunc</code> that reads the value of function parameters to determine how to sort them:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">PeopleSorter</span><span class="p">(</span><span class="nx">people</span><span class="w"> </span><span class="p">[]</span><span class="nx">Person</span><span class="p">,</span><span class="w"> </span><span class="nx">sortBy</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">direction</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">slices</span><span class="p">.</span><span class="nx">SortFunc</span><span class="p">(</span><span class="nx">people</span><span class="p">,</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">p1</span><span class="p">,</span><span class="w"> </span><span class="nx">p2</span><span class="w"> </span><span class="nx">Person</span><span class="p">)</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="nx">out</span><span class="w"> </span><span class="kt">int</span>
+<span class="w">        </span><span class="k">switch</span><span class="w"> </span><span class="nx">sortBy</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="s">&quot;lastname&quot;</span><span class="p">:</span>
+<span class="w">            </span><span class="nx">out</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">cmp</span><span class="p">.</span><span class="nx">Compare</span><span class="p">(</span><span class="nx">p1</span><span class="p">.</span><span class="nx">LastName</span><span class="p">,</span><span class="w"> </span><span class="nx">p2</span><span class="p">.</span><span class="nx">LastName</span><span class="p">)</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="s">&quot;firstname&quot;</span><span class="p">:</span>
+<span class="w">            </span><span class="nx">out</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">cmp</span><span class="p">.</span><span class="nx">Compare</span><span class="p">(</span><span class="nx">p1</span><span class="p">.</span><span class="nx">FirstName</span><span class="p">,</span><span class="w"> </span><span class="nx">p2</span><span class="p">.</span><span class="nx">FirstName</span><span class="p">)</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="s">&quot;age&quot;</span><span class="p">:</span>
+<span class="w">            </span><span class="nx">out</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">cmp</span><span class="p">.</span><span class="nx">Compare</span><span class="p">(</span><span class="nx">p1</span><span class="p">.</span><span class="nx">Age</span><span class="p">,</span><span class="w"> </span><span class="nx">p2</span><span class="p">.</span><span class="nx">Age</span><span class="p">)</span>
+<span class="w">        </span><span class="k">default</span><span class="p">:</span>
+<span class="w">            </span><span class="nx">out</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="c1">// don&#39;t sort</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">direction</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;desc&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">out</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">-</span><span class="nx">out</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">out</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<blockquote>
+<p><strong>Tip</strong></p>
+<p>Passing functions as parameters to other functions is often useful for performing different operations on the same kind of data.</p>
+</blockquote>
+<p>You can try out this code on the Go Playground or in the <code>sample_code/sort_sample</code> directory in the Chapter 5 repository.</p>
+<p>One common pattern in the standard library is pairing Sort with SortFunc: a function that provides a standard behavior for a specific set of types, and a Func variant that has a function parameter to support additional types and implement customized behavior. You’ve already seen <code>slices.Equal</code> with <code>slices.EqualFunc</code> and <code>slices.Compare</code> with <code>slices.CompareFunc</code>. There are more of these pairs in the slices package, including Contains/ContainsFunc, Delete/DeleteFunc, and Min/MinFunc.</p>
+<blockquote>
+<p><strong>Note</strong></p>
+<p>All of the functions I’ve used in these examples (<code>slices.Sort</code>, <code>slices.SortFunc</code>, <code>cmp.Compare</code>, and <code>cmp.Or</code>) take advantage of Go’s generics support. I’ll cover generics in detail in Chapter 8.</p>
+</blockquote>
+<h3 id="returning-functions-from-functions">Returning Functions from Functions</h3>
+<p>In addition to using a closure to pass some function state to another function, you can also return a closure from a function. Let’s demonstrate this by writing a function that returns a multiplier function. You can run this program on The Go Playground. The code is also in the <code>sample_code/makeMult</code> directory in the Chapter 5 repository. Here is a function that returns a closure:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">makeMult</span><span class="p">(</span><span class="nx">base</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">factor</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">base</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">factor</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>And here is how the function is used:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">twoBase</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">makeMult</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">threeBase</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">makeMult</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">twoBase</span><span class="p">(</span><span class="nx">i</span><span class="p">),</span><span class="w"> </span><span class="nx">threeBase</span><span class="p">(</span><span class="nx">i</span><span class="p">))</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Running this program gives the following output:</p>
+<div class="codehilite"><pre><span></span><code>0 0
+2 3
+4 6
+</code></pre></div>
+
+<p>Now that you’ve seen closures in action, you might wonder how often Go developers use them. As it turns out, they’re surprisingly useful. The slices and maps packages are mostly composed of functions that take in functions or return functions. The <code>slices.Values</code> function and the other functions I covered in “Iterating over functions” aren’t iterator functions themselves; they return closures that implement the iterator function types. You will see this pattern when you build middleware for a web server in Chapter 13. Go also uses closures to implement resource cleanup, via the defer keyword.</p>
+<blockquote>
+<p><strong>Note</strong></p>
+<p>If you spend any time with programmers who use functional programming languages like Haskell, you might hear the term higher-order functions. That’s a fancy way to say that a function has a function for an input parameter or a return value. As a Go developer, you are as cool as they are!</p>
+</blockquote>
+<h2 id="code-review-function-values-and-closures">Code Review: Function values and closures</h2>
+<ul>
+<li>
+<p>If multiple functions with the same signature are used for similar purposes and assigned to variables, define a function type and use it when declaring the function variables. This clarifies the relationship between the functions and documents their purpose.</p>
+</li>
+<li>
+<p>Take care when using package-level function variables. Unlike function declarations, they are mutable, which means their functionality can be changed at runtime.</p>
+</li>
+<li>
+<p>If you have a helper function that’s only used within a single function, consider using a closure for the helper function.</p>
+</li>
+<li>
+<p>Use function parameters to “plug in” logic to a larger algorithm, such as to specify the sort order when sorting a slice.</p>
+</li>
+<li>
+<p>Default to using <code>cmp.Compare</code> and <code>cmp.Or</code> when writing comparator functions.</p>
+</li>
+</ul>
+<h2 id="exercises_1">Exercises</h2>
+<p>These exercises test your knowledge of function values and closures. Solutions are available in the <code>exercise_solutions</code> directory in the Chapter 5 repository.</p>
+<ol>
+<li>
+<p>Assign an anonymous function to a variable that prints its int argument. Then call it inside a for i <code>:=</code> range 5 loop.</p>
+</li>
+<li>
+<p>Write a function called makeCounter that takes in no parameters and returns a closure with the function signature func() int. The first call to the closure should return 1, and each subsequent call should return the next-largest integer. Demonstrate that these two separate counters are independent. 6.Write two functions, double(int) int, which returns two times the value of its parameter, and square(int) int, which returns the square of its parameter. Write a third function transform(nums []int, f func(int) int) []int . This function applies f to each element and returns a new slice. Call it twice, once with double as a parameter, and once with square.</p>
+</li>
+</ol>
+<h2 id="defer">defer</h2>
+<p>Programs often create temporary resources, like files or network connections, that need to be cleaned up, no matter how many exit points the function has, or whether it completes successfully. In Go, the cleanup code is attached to the function with the defer keyword.</p>
+<p>Let’s take a look at how to use defer to release resources. You’ll do this by writing a simple version of cat, the Unix utility for printing the contents of a file. You can’t pass in arguments on the Go Playground, but you can find the code for this example in the <code>sample_code/simple_cat</code> directory in the Chapter 5 repository. This example introduces a few new features that I’ll cover in more detail in later chapters:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Args</span><span class="p">)</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">slog</span><span class="p">.</span><span class="nx">Error</span><span class="p">(</span><span class="s">&quot;no file specified&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">os</span><span class="p">.</span><span class="nx">Exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="nx">os</span><span class="p">.</span><span class="nx">Exit</span><span class="p">(</span><span class="nx">run</span><span class="p">())</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">run</span><span class="p">()</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">f</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">Open</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Args</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">slog</span><span class="p">.</span><span class="nx">Error</span><span class="p">(</span><span class="s">&quot;open failed&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">slog</span><span class="p">.</span><span class="nx">Any</span><span class="p">(</span><span class="s">&quot;err&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">))</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">f</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
+<span class="w">    </span><span class="nx">data</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">([]</span><span class="kt">byte</span><span class="p">,</span><span class="w"> </span><span class="mi">2048</span><span class="p">)</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">count</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">f</span><span class="p">.</span><span class="nx">Read</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">os</span><span class="p">.</span><span class="nx">Stdout</span><span class="p">.</span><span class="nx">Write</span><span class="p">(</span><span class="nx">data</span><span class="p">[:</span><span class="nx">count</span><span class="p">])</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nx">io</span><span class="p">.</span><span class="nx">EOF</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nx">slog</span><span class="p">.</span><span class="nx">Error</span><span class="p">(</span><span class="s">&quot;read failed&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">slog</span><span class="p">.</span><span class="nx">Any</span><span class="p">(</span><span class="s">&quot;err&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">))</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="k">break</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>First, the program ensures that a filename is specified on the command line by checking the length of <code>os.Args</code>, a slice in the os package. The first value in <code>os.Args</code> is the program name. The remaining values are the arguments passed to the program. Check that the length of <code>os.Args</code> is at least 2 to determine whether the argument was provided to the program. If it wasn’t, the program will call the Error function in the log/slog package to print a message, and end execution using <code>os.Exit</code>(1) to indicate that it has exited due to an error.</p>
+<p>Next, the run function is called. In run, the program tries to acquire a read-only file handle via the Open function in the os package. The second value returned by Open is an error. If there’s a problem opening the file, it will print the error message and return 1.</p>
+<p>Once you know there is a valid file handle, you need to close it after you use it, no matter how you exit the function. To ensure that the cleanup code runs, use the defer keyword followed by a function or method call. In this case, you’ll use the Close method on the file variable. (I cover methods in Go in Chapter 7.) Normally, a function call would run immediately, but defer delays its invocation until the surrounding function exits.</p>
+<p>You can read from a file handle by passing a slice of bytes to the Read method on a file variable. I’ll cover how to use this method in detail in Chapter 13, but for now, know that Read returns the number of bytes that were read into the slice, along with an error. If an error occurs, check whether it’s an end-of-file marker. If you’re at the end of the file, use break to exit the for loop. Report all other errors using <code>slog.Error</code> and exit run with a value of 1. I’ll talk a little more about slices and function parameters in “Go Is Call by Value” and will go into more detail on this pattern when I discuss pointers in the next chapter.</p>
+<p>If the file is read to the end, run returns 0.</p>
+<p>Finally, the flow of execution returns to main, and the value returned from run is passed to <code>os.Exit</code>. A 0 indicates the program has exited normally; a 1 indicates that an error has occurred.</p>
+<p>Building and running the program from within the simple_cat directory produces the following result:</p>
+<div class="codehilite"><pre><span></span><code><span class="gp">$ </span>go<span class="w"> </span>build
+<span class="gp">$ </span>./simple_cat<span class="w"> </span>main.go
+<span class="go">package main</span>
+
+<span class="go">import (</span>
+<span class="go">    &quot;io&quot;</span>
+<span class="go">    &quot;log/slog&quot;</span>
+<span class="go">    &quot;os&quot;</span>
+<span class="go">)</span>
+<span class="go">...</span>
+</code></pre></div>
+
+<blockquote>
+<p><strong>Tip</strong></p>
+<p>Why is most of this program outside of main? It’s because of defer. By convention, a program that exits due to an error returns a nonzero exit code. In Go, you indicate this with the <code>os.Exit</code> function. The problem is that calling <code>os.Exit</code> immediately exits the program, which means that any deferred functions are skipped. To ensure that deferred functions run, only call <code>os.Exit</code> from main, and do not use defer in main if there’s an <code>os.Exit</code>. If you move most of the logic to run, the program can use defer to close resources properly and return the correct exit code on error.</p>
+</blockquote>
+<p>You should know a few more things about defer. First, you can use a function, method, or closure with defer. (When I mention functions with defer, you can mentally expand that to “functions, methods, or closures.”)</p>
+<p>You can defer multiple functions in a Go function. They run in last-in, first-out (LIFO) order; the last defer registered runs first.</p>
+<p>The code within defer functions runs after the return statement. As I mentioned, you can supply a function with input parameters to a defer. The input parameters are evaluated immediately and their values are stored until the function runs.</p>
+<p>Here’s a quick example that demonstrates both of these features of defer:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">deferExample</span><span class="p">()</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">a</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">10</span>
+<span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">val</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;first:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">val</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}(</span><span class="nx">a</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">a</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">20</span>
+<span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">val</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;second:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">val</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}(</span><span class="nx">a</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">a</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">30</span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;exiting:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">a</span><span class="p">)</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">a</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Running this code gives the following output:</p>
+<div class="codehilite"><pre><span></span><code>exiting: 30
+second: 20
+first: 10
+</code></pre></div>
+
+<p>You can run this on The Go Playground. It is also available in the <code>sample_code/defer_example</code> directory in the Chapter 5 repository.</p>
+<blockquote>
+<p><strong>Note</strong></p>
+<p>You can supply a function that returns values to a defer, but there’s no way to read those values:</p>
+</blockquote>
+<div class="codehilite"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">example</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="c1">// there&#39;s no way to read this value</span>
+<span class="w">    </span><span class="p">}()</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>You might be wondering whether there’s a way for a deferred function to examine or modify the return values of its surrounding function. There is, and it’s the best reason to use named return values. It allows your code to take actions based on an error. When I talk about errors in Chapter 9&gt;, I will discuss a pattern that uses defer to add contextual information to an error returned from a function.</p>
+<p>Let’s look at a way to clean up database transactions using named return values and defer:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">DoSomeInserts</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">db</span><span class="w"> </span><span class="o">*</span><span class="nx">sql</span><span class="p">.</span><span class="nx">DB</span><span class="p">,</span><span class="w"> </span><span class="nx">value1</span><span class="p">,</span><span class="w"> </span><span class="nx">value2</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span>
+<span class="w">                  </span><span class="p">(</span><span class="nx">err</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">tx</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">db</span><span class="p">.</span><span class="nx">BeginTx</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="p">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">tx</span><span class="p">.</span><span class="nx">Commit</span><span class="p">()</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">tx</span><span class="p">.</span><span class="nx">Rollback</span><span class="p">()</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}()</span>
+<span class="w">    </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">tx</span><span class="p">.</span><span class="nx">ExecContext</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;INSERT INTO FOO (val) values $1&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">value1</span><span class="p">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// use tx to do more database inserts here with value2</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>I’m not going to cover Go’s database support in this book, but the standard library includes extensive support for databases in the database/sql package. In the example function, you create a transaction to do a series of database inserts. If any of them fails, roll back rather than modifying the database. If they all succeed, commit (store the database changes). Use a closure with defer to check whether err has been assigned a value. If it hasn’t, run <code>tx.Commit</code>. This could also return an error. If it does, the value err is modified. If any database interaction returns an error, call <code>tx.Rollback</code>.</p>
+<blockquote>
+<p><strong>Note</strong></p>
+<p>New Go developers tend to forget the set of parentheses that goes after the braces when specifying a function for defer. It is a compile-time error to leave them out, so eventually the habit sets in. It helps to remember that supplying parentheses allows you to specify values that will be passed into the function when it runs.</p>
+</blockquote>
+<p>Another common pattern in Go: a function that allocates a resource can also return a closure that cleans up the resource. In the <code>sample_code/simple_cat_cancel</code> directory in the Chapter 5 repository, there is a rewrite of the simple cat program that does this. First you write a helper function that opens a file and returns a closure:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">openFile</span><span class="p">(</span><span class="nx">name</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">os</span><span class="p">.</span><span class="nx">File</span><span class="p">,</span><span class="w"> </span><span class="kd">func</span><span class="p">(),</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">file</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">Open</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">file</span><span class="p">,</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">file</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
+<span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="kc">nil</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>The helper function returns a file, a function, and an error. That * means that a file reference in Go is a pointer. I’ll talk more about that in the next chapter.</p>
+<p>Now, in run, use the openFile function:</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">f</span><span class="p">,</span><span class="w"> </span><span class="nx">closer</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">openFile</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Args</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">slog</span><span class="p">.</span><span class="nx">Error</span><span class="p">(</span><span class="s">&quot;cannot open file&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">slog</span><span class="p">.</span><span class="nx">Any</span><span class="p">(</span><span class="s">&quot;err&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">))</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span>
+<span class="p">}</span>
+<span class="k">defer</span><span class="w"> </span><span class="nx">closer</span><span class="p">()</span>
+</code></pre></div>
+
+<p>Because Go doesn’t allow unused variables, returning the closer from the function means that the program will not compile if the function isn’t called. That reminds the user to use defer. As covered earlier, put parentheses after closer when you defer it.</p>
+<blockquote>
+<p><strong>Note</strong></p>
+<p>Using defer can feel strange if you are used to a language that uses a block within a function to control resource cleanup, like the try/catch/finally blocks in Java, JavaScript, and Python or the begin/rescue/ensure blocks in Ruby.</p>
+</blockquote>
+<p>The downside to these resource-cleanup blocks is that they create another level of indentation in your function, which makes the code harder to read. It’s not just my opinion that nested code is harder to follow: In research described in a 2017 paper in Empirical Software Engineering, Vard Antinyan et al. discovered that “Of …​ eleven proposed code characteristics, only two markedly influence complexity growth: the nesting depth and the lack of structure.”</p>
+<p>There is a wide body of research on what makes a program easier to read and understand. You can find papers many decades old, including a 1983 paper by Richard Miara et al. that tries to figure out the right amount of indentation to use (according to their results, two to four spaces).</p>
+<h2 id="go-is-call-by-value">Go Is Call by Value</h2>
+<p>You might hear people call Go a call-by-value language. This means that when you supply a variable for a parameter to a function, Go always makes a copy of the variable’s value. You can run this code on The Go Playground. It is also in the <code>sample_code/pass_value_type</code> directory in the Chapter 5 repository.</p>
+<p>Let’s take a look. First, define a simple struct:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">person</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">age</span><span class="w">  </span><span class="kt">int</span>
+<span class="w">    </span><span class="nx">name</span><span class="w"> </span><span class="kt">string</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Next, write a function that takes in an int, a string, and a person, and modifies their values:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">modifyFails</span><span class="p">(</span><span class="nx">i</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nx">s</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">p</span><span class="w"> </span><span class="nx">person</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span>
+<span class="w">    </span><span class="nx">s</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;Goodbye&quot;</span>
+<span class="w">    </span><span class="nx">p</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;Bob&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Call this function from main and see whether the modifications stick:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">p</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">person</span><span class="p">{}</span>
+<span class="w">    </span><span class="nx">i</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">2</span>
+<span class="w">    </span><span class="nx">s</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s">&quot;Hello&quot;</span>
+<span class="w">    </span><span class="nx">modifyFails</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span><span class="w"> </span><span class="nx">s</span><span class="p">,</span><span class="w"> </span><span class="nx">p</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span><span class="w"> </span><span class="nx">s</span><span class="p">,</span><span class="w"> </span><span class="nx">p</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>As the function name indicates, running this code shows that the function won’t change the values of the parameters passed into it:</p>
+<div class="codehilite"><pre><span></span><code>2 Hello {0 }
+</code></pre></div>
+
+<p>I’ve included the person struct to show that this isn’t true just for primitive types. If you have programming experience in Java, JavaScript, Python, or Ruby, you might find Go’s struct behavior strange. After all, those languages let you modify the fields in an object when you pass an object as a parameter to a function. I’ll cover the reason for this difference when I talk about pointers.</p>
+<p>The behavior is a little different for maps and slices. Let’s see what happens when you try to modify them within a function. You can run this code on The Go Playground. It is also in the <code>sample_code/pass_map_slice</code> directory in the Chapter 5 repository.</p>
+<p>You’re going to write two functions: one to modify a map parameter and one to modify a slice parameter:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">modMap</span><span class="p">(</span><span class="nx">m</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">m</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;hello&quot;</span>
+<span class="w">    </span><span class="nx">m</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;goodbye&quot;</span>
+<span class="w">    </span><span class="nb">delete</span><span class="p">(</span><span class="nx">m</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">modSlice</span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">k</span><span class="p">,</span><span class="w"> </span><span class="nx">v</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">s</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">s</span><span class="p">[</span><span class="nx">k</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">v</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="nx">s</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">s</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Call these functions from main:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">m</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span>
+<span class="w">        </span><span class="mi">1</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;first&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="mi">2</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;second&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="nx">modMap</span><span class="p">(</span><span class="nx">m</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">m</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nx">s</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">}</span>
+<span class="w">    </span><span class="nx">modSlice</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>When you run this code, you’ll see something interesting:</p>
+<div class="codehilite"><pre><span></span><code>map[2:hello 3:goodbye]
+[2 4 6]
+</code></pre></div>
+
+<p>For the map, it’s easy to explain what happens: any changes made to a map parameter are reflected in the variable passed into the function. For a slice, it’s more complicated. You can modify any element in the slice, but you can’t lengthen the slice. This is true for maps and slices passed directly into functions, as well as for map and slice fields in structs.</p>
+<p>This program leads to the question: Why do maps and slices behave differently than other types? It’s because maps and slices are both implemented with pointers, discussed in the next chapter.</p>
+<blockquote>
+<p><strong>Tip</strong></p>
+<p>Every type in Go is a value type. It’s just that sometimes the value is a pointer.</p>
+</blockquote>
+<p>Call by value is one reason that Go’s limited support for constants is only a minor handicap. Since variables are passed by value, you can be sure that calling a function won’t modify the variable whose value was passed in (unless the variable is a slice or map). In general, this is a good thing. It helps you understand the flow of data through your program when functions don’t modify their input parameters and instead return newly computed values.</p>
+<p>While this approach is easy to understand, at times, you’ll need to pass something mutable to a function. What do you do then? That’s when you need a pointer.</p>
+<h2 id="code-review-defer-and-call-by-value">Code Review: defer and call by value</h2>
+<ul>
+<li>
+<p>Use defer to make sure that resources are cleaned up when a function exits.</p>
+</li>
+<li>
+<p>For functions that allocate a resource, consider returning a cleanup closure. The unused-variable rule reminds the caller to defer it.</p>
+</li>
+<li>
+<p>Use named return values if a deferred function can modify a function’s return value.</p>
+</li>
+<li>
+<p>Keep your functions shallow; don’t nest the indentations too deeply. Using defer and early returns helps avoid the deep indentation of try/finally-style cleanups.</p>
+</li>
+<li>
+<p>Unlike primitive values and structs, map and slice parameters can be mutated. Use comments on your functions to document when your function mutates the values of its parameters so users of the function know that passed-in values aren’t read-only.</p>
+</li>
+</ul>
+<h2 id="exercises_2">Exercises</h2>
+<p>These exercises test your knowledge of defer statments and call by value in Go. Solutions are available in the <code>exercise_solutions</code> directory in the Chapter 5 repository.</p>
+<ol>
+<li>
+<p>Write a function called echo with an int parameter that returns an int. Use defer and a closure to print the return value.</p>
+</li>
+<li>
+<p>Write a function called mystery with an int parameter that returns an int. Inside mystery, there are three deferred closures. The first one assigns 10 to the return value, the second assigns 20 to the return value, and the third assigns 30 to the return value. Call this function from main and print out the result. Try to guess what will be printed out before you run the program.</p>
+</li>
+<li>
+<p>Write a function called ager that takes in a slice of person (with age and name fields) and has no return values. Your function should modify the slice by increasing everyone’s age by 1. Call this function from main and print out the result.</p>
+</li>
+</ol>
+<h2 id="wrapping-up">Wrapping Up</h2>
+<p>In this chapter, you’ve learned how functions in Go are similar to functions in other languages, as well as their unique features. In the next chapter, you’ll find out that pointers aren’t nearly as scary as many new Go developers expect them to be, and learn how to take advantage of them to write efficient programs.</p><nav class="chapter-navigation" aria-label="Chapter navigation"><a href="../../go/chapter-03/">← Previous chapter</a><a href="../../go/overview/">All chapters</a><a href="../../go/chapter-05/">Next chapter →</a></nav></article><aside class="article-toc"><span class="eyebrow">ON THIS PAGE</span><div class="toc">
+<ul>
+<li><a href="#chapter-4-functions">Chapter 4. Functions</a><ul>
+<li><a href="#a-note-for-early-release-readers">A Note for Early Release Readers</a></li>
+<li><a href="#declaring-and-calling-functions">Declaring and Calling Functions</a><ul>
+<li><a href="#simulating-named-and-optional-parameters">Simulating Named and Optional Parameters</a></li>
+<li><a href="#variadic-input-parameters-and-slices">Variadic Input Parameters and Slices</a></li>
+<li><a href="#multiple-return-values">Multiple Return Values</a><ul>
+<li><a href="#multiple-return-values-are-multiple-values">Multiple Return Values Are Multiple Values</a></li>
+</ul>
+</li>
+<li><a href="#ignoring-returned-values">Ignoring Returned Values</a></li>
+<li><a href="#named-return-values">Named Return Values</a></li>
+<li><a href="#blank-returnsnever-use-these">Blank Returns—Never Use These!</a></li>
+</ul>
+</li>
+<li><a href="#code-review-functions-parameters-and-return-values">Code Review: functions, parameters, and return values</a></li>
+<li><a href="#exercises">Exercises</a></li>
+<li><a href="#functions-are-values">Functions Are Values</a><ul>
+<li><a href="#function-type-declarations">Function Type Declarations</a></li>
+<li><a href="#anonymous-functions">Anonymous Functions</a></li>
+</ul>
+</li>
+<li><a href="#closures">Closures</a><ul>
+<li><a href="#passing-functions-as-parameters">Passing Functions as Parameters</a></li>
+<li><a href="#returning-functions-from-functions">Returning Functions from Functions</a></li>
+</ul>
+</li>
+<li><a href="#code-review-function-values-and-closures">Code Review: Function values and closures</a></li>
+<li><a href="#exercises_1">Exercises</a></li>
+<li><a href="#defer">defer</a></li>
+<li><a href="#go-is-call-by-value">Go Is Call by Value</a></li>
+<li><a href="#code-review-defer-and-call-by-value">Code Review: defer and call by value</a></li>
+<li><a href="#exercises_2">Exercises</a></li>
+<li><a href="#wrapping-up">Wrapping Up</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</aside></div><div class="article-end"><span class="eyebrow">KEEP EXPLORING</span><h2>One note leads to another.</h2><a class="tactile" href="../../library/">Back to the library →</a></div></main></div><footer><div class="footer-top wrap"><div class="footer-brand"><a class="wordmark" href="../../">notex<span class="badge">OPEN</span></a><p>A personal library for deliberate<br>technical practice.</p><a href="https://github.com/harshityadav95/Notex">Explore the source ↗</a></div><div class="footer-links"><div><h3>Languages</h3><a class="" href="../../python/">Python</a><a class="" href="../../Javascript-ES6-Notes/">JavaScript &amp; ES6</a><a class="" href="../../C%2B%2B/">C / C++</a><a class="" href="../../css/">CSS</a><a class="" href="../../go/overview/">Learning Go · Third Edition</a></div><div><h3>Systems</h3><a class="" href="../../Learning_System_Design/">System Design from Scratch</a><a class="" href="../../Scalable_crossplatform_design/">Scalable Cross-platform Design</a><a class="" href="../../ddia/overview/">Designing Data-Intensive Applications · Second Edition</a></div><div><h3>AI &amp; ML</h3><a class="" href="../../ai_ml_index/">AI &amp; Machine Learning</a><a class="" href="../../Research/">Research</a></div><div><h3>Databases</h3><a class="" href="../../sql/">SQL</a><a class="" href="../../postgresql/">PostgreSQL</a><a class="" href="../../MongoDB/">MongoDB</a></div><div><h3>Development</h3><a class="" href="../../django/">Django</a><a class="" href="../../git/">Git</a><a class="" href="../../markdownsyntax/">Markdown</a><a class="" href="../../vimCheats/">Vim Cheatsheet</a><a class="" href="../../Tools_Compilation/">Developer Tools</a></div></div></div><div class="footer-bottom wrap"><span>© 2026 Notex · Open knowledge, shared freely.</span><a href="../../licenses/">Licenses & credits</a><span>Designed by <a href="https://harshityadav.in">harshityadav.in</a></span></div></footer><dialog class="search-dialog"><div class="search-top"><span>⌕</span><input type="search" placeholder="Search notes, topics, code…" aria-label="Search the library" autocomplete="off"><button aria-label="Close search" data-close>Esc</button></div><div class="search-hint">Search across the entire library <kbd>⌘ K</kbd></div><div id="search-results" aria-live="polite"></div></dialog><div class="toast" role="status"></div></body></html>

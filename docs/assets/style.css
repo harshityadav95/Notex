@@ -11,3 +11,6 @@
 .cover{transform:scale(1.15) translateX(-5px);transform-origin:center}
 @media(max-width:600px){.cover{transform:scale(1.2) translateX(-3px)}}
 .library-page .library{padding-top:70px}.library-page .section-heading h1{font-size:42px;line-height:1.12;letter-spacing:-1.5px;font-weight:500;margin:0}@media(max-width:600px){.library-page .section-heading h1{font-size:34px}}
+/* Reading collections use the existing notebook palette and article rhythm. */
+.source-credit{font-size:12px;color:var(--muted);margin-bottom:22px}.chapter-graphic{margin:0 0 26px}.chapter-graphic img{display:block;width:100%;height:auto}.chapter-graphic figcaption{font-size:11px;line-height:1.6;color:var(--muted);margin-top:9px}.chapter-navigation{display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;padding:18px 0;margin:22px 0;border-block:1px solid var(--line);font-size:12px}.chapter-navigation span{color:var(--muted)}
+.diagram-scroll{overflow-x:auto;border-radius:12px}.diagram-scroll:focus-visible{outline:2px solid #347aa8;outline-offset:3px}.chapter-graphic .diagram-scroll img{min-width:640px}

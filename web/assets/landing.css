@@ -83,3 +83,4 @@
 .folder-item-4{left:26%;top:77%;width:190px}
 @media(max-width:1000px){.folder-item{width:165px;gap:13px}.folder-item-1{width:85px}.folder-item-3{width:155px}.folder-item-4{width:165px}}
 @media(max-width:700px){.folder-item{gap:15px;width:175px}.folder-item-1{width:85px}.folder-item-3{width:165px}.folder-item-4{width:180px}}
+.home .cover-go{background:url('books/go-notebook.svg') center/contain no-repeat;transform:none}.home .cover-ddia{background:url('books/ddia-notebook.svg') center/contain no-repeat;transform:none}

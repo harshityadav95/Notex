@@ -21,6 +21,7 @@ jobs:
       - run: pip install -r requirements.txt
       - run: python scripts/build.py
       - run: python scripts/check.py
+      - run: python scripts/check_books.py
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
