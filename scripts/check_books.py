@@ -73,7 +73,7 @@ for track in books.SERIES:
             file=ROOT/'docs'/lesson['slug']/'index.html'
             parser=Article();parser.feed(file.read_text())
             expected=re.findall(r'^```[^\n]*\n(.*?)^```',lesson['text'],re.M|re.S)
-            if track['key']=='distributed-systems':
+            if track['key'] in ('distributed-systems','system-design'):
                 source_parser=Article();source_parser.feed(lesson['text']);expected=source_parser.code_blocks
             assert [c.expandtabs(4).strip('\n') for c in expected]==[c.strip('\n') for c in parser.code_blocks],f'Lesson code changed: {lesson["slug"]}'
             assert set(parser.fragments)<=set(parser.ids),f'Lesson anchors broken: {lesson["slug"]}'
@@ -84,9 +84,9 @@ for track in books.SERIES:
             lesson_count+=1
         original=ROOT/'src'/(module['chapter']['slug']+'.md')
         expected=re.findall(r'^```[^\n]*\n(.*?)^```',original.read_text(),re.M|re.S)
-        if track['key']=='distributed-systems':
+        if track['key'] in ('distributed-systems','system-design'):
             source_parser=Article();source_parser.feed(original.read_text());expected=source_parser.code_blocks
-        assert combined==([study_notes.code(c) for c in expected] if track['key']!='distributed-systems' else expected),f'Code omitted or duplicated while splitting {original}'
+        assert combined==([study_notes.code(c) for c in expected] if track['key'] not in ('distributed-systems','system-design') else expected),f'Code omitted or duplicated while splitting {original}'
 assert lesson_count==sum(len(t['lessons']) for t in books.SERIES)
 print(f'Passed: {lesson_count} guided lessons retain every source code block, omit publishing/navigation boilerplate, and have valid section anchors.')
 
@@ -139,3 +139,26 @@ for file in (ROOT/'docs/distributed-systems').rglob('index.html'):
     visible=re.sub('<[^>]+>',' ',text)
     assert not re.search(r'\bthis book\b|\b(?:chapter|section) \d',visible,re.I),f'Stale course terminology: {file}'
 print('Passed: course terminology, unique reference anchors, relocated footnotes, and resolved study links.')
+
+# The replacement System Design path retains original diagrams and section readings.
+system=json.loads((ROOT/'scripts/system-design-import.json').read_text())
+track=next(t for t in books.SERIES if t['key']=='system-design')
+assert len(track['modules'])==16 and len(track['lessons'])==system['lesson_count']
+assert len(system['figures'])==225
+for chapter in system['chapters']:
+    source=ROOT/'src'/(chapter['slug']+'.md')
+    assert hashlib.sha256(source.read_bytes()).hexdigest()==chapter['sha256']
+for figure in system['figures']:
+    for folder in ('web','docs'):
+        path=ROOT/folder/'assets/system-design'/figure['file']
+        assert hashlib.sha256(path.read_bytes()).hexdigest()==figure['sha256']
+for lesson in track['lessons']:
+    file=ROOT/'docs'/lesson['slug']/'index.html'
+    text=file.read_text();parser=Article();parser.feed(text)
+    assert text.count('class="chapter-video"')==1
+    assert len(parser.ids)==len(set(parser.ids))
+    for image in parser.images:assert (file.parent/unquote(image)).resolve().is_file(),image
+assert not (ROOT/'src/Learning_System_Design.md').exists()
+assert 'http-equiv="refresh"' in (ROOT/'docs/Learning_System_Design/index.html').read_text()
+assert not any(x['url']=='Learning_System_Design/' for x in index)
+print(f'Passed: 16 System Design modules, {len(track["lessons"])} section videos, 225 original graphics, source hashes, and retired legacy content.')

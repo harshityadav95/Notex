@@ -44,3 +44,14 @@ a small distributed clock, and restrained technical plotting dots. Entire uncut 
 centered on a square truly transparent background. No author, publisher, watermark,
 or extra books. Match the reference's tactile product illustration proportions.
 The site serves the alpha-preserving WebP copy at quality 86.
+
+## System design — `system-design-notebook.png`
+
+Generated with built-in ImageGen, November 2026. Prompt: Create one isolated muted
+sage-green Notex cloth hardcover notebook matching the existing reference's tactile
+grain, rounded corners, narrow left spine, small right tab, front-facing perspective,
+black serif typography and contact shadow. Title exactly “System design” on two lines;
+tiny “notex” bottom left. Fine engraved line art of a load balancer branching to three
+servers and a database, with restrained plotting dots and arrows. Entire uncut notebook
+on a true transparent square background. No author, publisher, watermark, or extra books.
+The site uses an alpha-preserving WebP at quality 86.

@@ -104,3 +104,18 @@ updates publication/chapter references to the current module and linked lessons,
 and restores readable URLs, numbered steps, and the bandwidth equation. Module
 summaries and complete module notes collect references at the end. Internal `study:`
 links in source are resolved by the builder for portable project-prefix deployment.
+
+## System design replacement
+
+`system-design/overview/` replaces the former System Design note with 16 modules,
+193 section readings, 225 original PDF graphics, and a video placeholder per section.
+The legacy `Learning_System_Design/` route redirects to the new overview; its old
+content is removed from source and search. The shared course interface supplies
+saved notes, progress, resume, search, responsive navigation, and light/dark themes.
+
+`scripts/import_system_design.py` performs a one-time PyMuPDF/BeautifulSoup import.
+Source chapters and graphics are verified against `scripts/system-design-import.json`.
+Technical wording is preserved with PDF line wrapping normalized; diagrams, tables,
+and code illustrations retain their original image bytes. Publication front matter
+is excluded. References remain at each module's end and are linked from sections.
+The source PDF is not required for normal builds or deployment.

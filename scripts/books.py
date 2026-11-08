@@ -9,9 +9,10 @@ import study_notes
 
 ROOT = Path(__file__).resolve().parent.parent
 MANIFEST = json.loads(Path(__file__).with_name('book-import.json').read_text())
-SERIES = MANIFEST['series'] + [json.loads(Path(__file__).with_name('distributed-import.json').read_text())]
+SERIES = MANIFEST['series'] + [json.loads(Path(__file__).with_name(name).read_text()) for name in ('distributed-import.json','system-design-import.json')]
 PAGES = curriculum.prepare(SERIES, ROOT/'src')
 ALIASES = {
+    'Learning_System_Design':'system-design/overview',
     'ddia/modules/01-preface':'ddia/modules/01-study-guide',
     'ddia/lessons/00-01-who-should-read-this-book':'ddia/lessons/00-01-study-goals',
     'ddia/lessons/00-02-whats-new-in-the-second-edition':'ddia/lessons/00-02-topics-in-this-learning-path',
@@ -34,13 +35,14 @@ def configure(groups, titles):
         titles[series['overview']] = series['title']
         for chapter in series['chapters']:
             display_title=chapter['module']['title']
-            titles[chapter['slug']] = f"{ {'go':'Go','ddia':'DDIA','distributed-systems':'Distributed systems'}[series['key']]} {chapter['number']:02} · {display_title}"
+            titles[chapter['slug']] = f"{ {'go':'Go','ddia':'DDIA','distributed-systems':'Distributed systems','system-design':'System design'}[series['key']]} {chapter['number']:02} · {display_title}"
         titles.update({p['slug']:p['title'] for p in PAGES.values() if p['series'] is series})
 
 def section_label(track, module):
     n=module['chapter']['number']
     if track['key']=='go':return 'GO / CORE LANGUAGE'
-    if track['key']=='distributed-systems':return ('START HERE' if n==1 else f'PART {n-1} / '+module['title'].upper())
+    if track['key']=='system-design':return 'FOUNDATIONS' if n<=3 else 'DESIGN CASE STUDIES' if n<=15 else 'KEEP LEARNING'
+    if track['key'] in ('distributed-systems','system-design'):return ('START HERE' if n==1 else f'PART {n-1} / '+module['title'].upper())
     if n==0:return 'START HERE'
     if n<=5:return 'PART 1 / DATA FOUNDATIONS'
     if n<=10:return 'PART 2 / DISTRIBUTED SYSTEMS'
@@ -91,7 +93,7 @@ def display(slug, content, base):
     if page and page['kind']=='module':
         module=page['module'];track=page['series']
         references=''
-        if track['key']=='distributed-systems':
+        if track['key'] in ('distributed-systems','system-design'):
             for lesson in module['lessons']:
                 match=re.search(r'<section[^>]*class="lesson-references"[^>]*>(.*?)</section>',lesson['text'],re.S)
                 if match:
@@ -100,7 +102,7 @@ def display(slug, content, base):
                     references+=f'<details><summary>{e(lesson["title"])}</summary>{notes}</details>'
             if references:references='<section class="module-references"><h2>References</h2>'+references+'</section>'
         return f'<p class="module-intro">{e(module["summary"])}</p><div class="course-curriculum">{module_panel(track,module,base)}</div>{references}<div class="module-reference"><a href="{url(base,module["chapter"]["slug"])}">Read complete module notes →</a></div>'
-    if track_for(slug) and track_for(slug)['key']=='distributed-systems' and page_kind(slug)=='reference':
+    if track_for(slug) and track_for(slug)['key'] in ('distributed-systems','system-design') and page_kind(slug)=='reference':
         notes=re.findall(r'<section[^>]*class="lesson-references"[^>]*>.*?</section>',content,re.S)
         content=re.sub(r'<section[^>]*class="lesson-references"[^>]*>.*?</section>','',content,flags=re.S)
         if notes:content+='<section class="module-references"><h2>Module references</h2>'+''.join(notes)+'</section>'
@@ -138,7 +140,7 @@ def context(slug, base):
 def study_text(slug, text):
     """Display complete technical notes without publisher front/back matter."""
     track=track_for(slug)
-    if not track or track['key']=='distributed-systems' or slug in PAGES or slug.endswith('/overview'):
+    if not track or track['key'] in ('distributed-systems','system-design') or slug in PAGES or slug.endswith('/overview'):
         return text
     chapter=next(c for c in track['chapters'] if c['slug']==slug)
     if track['key']=='ddia' and chapter['number']==0:

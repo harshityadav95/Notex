@@ -39,7 +39,7 @@ def excerpt(text):
 def prepare(series, src):
     pages = {}
     for track in series:
-        track['title'] = {'go':'Go study notes','ddia':'Data-intensive applications','distributed-systems':'Distributed systems'}[track['key']]
+        track['title'] = {'go':'Go study notes','ddia':'Data-intensive applications','distributed-systems':'Distributed systems','system-design':'System design'}[track['key']]
         track['modules'] = []
         track['lessons'] = []
         for module_number, chapter in enumerate(track['chapters'], 1):
@@ -58,7 +58,7 @@ def prepare(series, src):
                 # Deep sections become separate lessons at natural subsection boundaries.
                 subs = sections(body,3)
                 chunks = [(title,body)]
-                if track['key']!='distributed-systems' and len(body.split())>2200 and len(subs)>1:
+                if track['key'] not in ('distributed-systems','system-design') and len(body.split())>2200 and len(subs)>1:
                     lead = body[:headings(body,3)[0][0]]
                     chunks = [(title,lead)] + [(sub,part) for sub,part in subs]
                 for section_title, section_body in chunks:
@@ -68,7 +68,7 @@ def prepare(series, src):
                     if section_title == 'Exercises':
                         prior = module['lessons'][-1]['title'] if module['lessons'] else module['title']
                         section_title = 'Practice: '+prior.replace('Code Review: ','')
-                    if section_title in ('Wrapping Up','Summary'):
+                    if section_title in ('Wrapping Up','Summary') and track['key']!='system-design':
                         section_title = 'Recap: '+module['title']
                     slug = f"{track['key']}/lessons/{chapter['number']:02}-{number:02}-{slugify(section_title,'-')}"
                     section_body = re.sub(r'^#{2,3} [^\n]+', '# '+section_title, section_body, count=1)
@@ -76,7 +76,7 @@ def prepare(series, src):
                         section_title,guide=study_notes.GUIDE[original_section_title]
                         section_body='# '+section_title+'\n\n'+guide+'\n'
                         slug=f"{track['key']}/lessons/{chapter['number']:02}-{number:02}-{slugify(section_title,'-')}"
-                    if track['key']!='distributed-systems':
+                    if track['key'] not in ('distributed-systems','system-design'):
                         section_body=study_notes.clean(section_body, strip_citations=track['key']=='ddia')
                     kind = 'practice' if section_title.startswith(('Practice:','Code Review:')) else 'reading'
                     lesson = {'slug':slug,'title':section_title,'text':section_body.strip()+'\n','number':number,'code':f'{module_number:02}.{number:02}','module':module,'series':track,'kind':kind,'minutes':max(1,round(len(section_body.split())/220)),'summary':excerpt(section_body)}
@@ -94,4 +94,7 @@ def prepare(series, src):
         if track['key']=='distributed-systems':
             track['description']='Explore communication, coordination, scalability, resiliency, and maintainability. Complete chapter readings, original diagrams, and a place for every chapter video.'
             track['headline']='Build a clearer picture of distributed systems.'
+        if track['key']=='system-design':
+            track['description']='Build system design fluency through scaling foundations, estimation, design frameworks, and complete architecture case studies. Original diagrams and a video placeholder for every section.'
+            track['headline']='Design systems, from the first user to millions.'
     return pages

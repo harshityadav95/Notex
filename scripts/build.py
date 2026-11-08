@@ -11,13 +11,13 @@ ROOT=Path(__file__).resolve().parent.parent
 SRC=ROOT/'src'; OUT=ROOT/'docs'; WEB=ROOT/'web'
 GROUPS=[
  ('Languages','Programming languages','python','rose',['Python fundamentals and examples','JavaScript, ES6 and beyond','C++, CSS and language references'],['python','Javascript-ES6-Notes','C++','css']),
- ('Systems','System design in depth','Learning_System_Design','sage',['Architecture from first principles','Scalability and design tradeoffs','Cross-platform system design'],['Learning_System_Design','Scalable_crossplatform_design']),
+ ('Systems','System design in depth','system-design/overview','sage',['Architecture from first principles','Scalability and design tradeoffs','Cross-platform system design'],['system-design/overview','Scalable_crossplatform_design']),
  ('AI & ML','AI & machine learning','ai_ml_index','yellow',['Foundations and learning resources','Research, papers and practical tools','Explore the AI learning landscape'],['ai_ml_index','Research']),
  ('Databases','Databases & SQL','sql','blue',['SQL queries and data modeling','PostgreSQL and MongoDB','Relational and document databases'],['sql','postgresql','MongoDB']),
  ('Development','Tools for building','django','teal',['Django and web development','Git workflows and version control','Markdown, Vim and useful tools'],['django','git','markdownsyntax','vimCheats','Tools_Compilation']),
  ('Algorithms','Data structures & algorithms','dsalgo/dsalgoindex','purple',['Sorting and problem solving','Programming interview study plan','Practice with worked solutions'],['dsalgo/dsalgoindex','dsalgo/sorting','dsalgo/sol1','Programming_Interview_Study_Plan']),
  ('The garage','Terminal & hardware','terminal_commands','gray',['Commands worth keeping close','ThinkPad setup and experiments','A practical developer workspace'],['terminal_commands','thinkpad'])]
-TITLES={'python':'Python','Javascript-ES6-Notes':'JavaScript & ES6','C++':'C / C++','css':'CSS','Learning_System_Design':'System Design from Scratch','Scalable_crossplatform_design':'Scalable Cross-platform Design','ai_ml_index':'AI & Machine Learning','Research':'Research','sql':'SQL','postgresql':'PostgreSQL','MongoDB':'MongoDB','django':'Django','git':'Git','markdownsyntax':'Markdown','vimCheats':'Vim Cheatsheet','Tools_Compilation':'Developer Tools','dsalgo/dsalgoindex':'Data Structures & Algorithms','dsalgo/sorting':'Sorting Algorithms','dsalgo/sol1':'Worked Solutions','Programming_Interview_Study_Plan':'Programming Interview Study Plan','terminal_commands':'Terminal Commands','thinkpad':'ThinkPad','404':'Page Not Found'}
+TITLES={'python':'Python','Javascript-ES6-Notes':'JavaScript & ES6','C++':'C / C++','css':'CSS','system-design/overview':'System Design from Scratch','Scalable_crossplatform_design':'Scalable Cross-platform Design','ai_ml_index':'AI & Machine Learning','Research':'Research','sql':'SQL','postgresql':'PostgreSQL','MongoDB':'MongoDB','django':'Django','git':'Git','markdownsyntax':'Markdown','vimCheats':'Vim Cheatsheet','Tools_Compilation':'Developer Tools','dsalgo/dsalgoindex':'Data Structures & Algorithms','dsalgo/sorting':'Sorting Algorithms','dsalgo/sol1':'Worked Solutions','Programming_Interview_Study_Plan':'Programming Interview Study Plan','terminal_commands':'Terminal Commands','thinkpad':'ThinkPad','404':'Page Not Found'}
 books.configure(GROUPS, TITLES)
 GROUPS[0][4][2] = 'Go, C++, CSS and language references'
 GROUPS[1][4][2] = 'DDIA: data systems and distributed design'
@@ -105,7 +105,7 @@ for p, derived_text in sources:
  header_intro=chapter_intro if slug in books.PAGES else ''
  if header_intro: chapter_intro=''
  content=books.display(slug,content,base)
- if track and track['key']=='distributed-systems':
+ if track and track['key'] in ('distributed-systems','system-design'):
   headings=re.findall(r'<h[34] id="([^"]+)">(.*?)</h[34]>',content,re.S)
   md.toc='<ul>'+''.join(f'<li><a href="#{esc(id)}">{label}</a></li>' for id,label in headings)+'</ul>' if headings else ''
  if books.page_kind(slug) in ('overview', 'module'): md.toc=''
@@ -113,7 +113,8 @@ for p, derived_text in sources:
  dest=OUT/slug/'index.html';dest.parent.mkdir(parents=True,exist_ok=True);dest.write_text(shell(title,body,base,('reading course-page course-'+track['key']+' course-'+books.page_kind(slug)) if track else 'reading'))
 # Keep previously shared links working after editorial cleanup.
 for old_slug,new_slug in books.ALIASES.items():
- target='../'+new_slug.rsplit('/',1)[1]+'/'
+ import posixpath
+ target=posixpath.relpath(new_slug,start=old_slug)+'/'
  destination=OUT/old_slug/'index.html';destination.parent.mkdir(parents=True,exist_ok=True)
  destination.write_text(f'<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="refresh" content="0;url={target}"><title>Continue studying · Notex</title></head><body><p><a href="{target}">Continue to the study notes →</a></p></body></html>')
 index.sort(key=lambda x:(next((i for i,g in enumerate(GROUPS) if g[0]==x['category']),99),x['title']))
