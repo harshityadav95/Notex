@@ -31,7 +31,8 @@ def configure(groups, titles):
     for series in SERIES:
         category = 'Languages' if series['key']=='go' else 'Systems'
         slugs = [series['overview']] + [c['slug'] for c in series['chapters']]
-        next(g for g in groups if g[0] == category)[5].extend(slugs)
+        group_slugs=next(g for g in groups if g[0] == category)[5]
+        group_slugs.extend(slug for slug in slugs if slug not in group_slugs)
         titles[series['overview']] = series['title']
         for chapter in series['chapters']:
             display_title=chapter['module']['title']
