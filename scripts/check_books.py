@@ -128,3 +128,14 @@ for lesson in track['lessons']:
     for image in parser.images:
         assert (ROOT/'docs'/lesson['slug']/unquote(image)).resolve().is_file(),image
 print('Passed: 6 distributed systems modules, 39 video placeholders, preserved chapter hashes, and 85 byte-identical original diagrams.')
+
+# Editorial navigation must match the website rather than PDF chapter numbering.
+for file in (ROOT/'docs/distributed-systems').rglob('index.html'):
+    text=file.read_text()
+    parser=Article();parser.feed(text)
+    assert len(parser.ids)==len(set(parser.ids)),f'Duplicate section IDs: {file}'
+    assert 'class="source-footnote"' not in text,f'Inline PDF footnotes remain: {file}'
+    assert 'href="study:' not in text,f'Unresolved study link: {file}'
+    visible=re.sub('<[^>]+>',' ',text)
+    assert not re.search(r'\bthis book\b|\b(?:chapter|section) \d',visible,re.I),f'Stale course terminology: {file}'
+print('Passed: course terminology, unique reference anchors, relocated footnotes, and resolved study links.')

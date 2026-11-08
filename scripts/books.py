@@ -90,7 +90,20 @@ def display(slug, content, base):
     page=PAGES.get(slug)
     if page and page['kind']=='module':
         module=page['module'];track=page['series']
-        return f'<p class="module-intro">{e(module["summary"])}</p><div class="course-curriculum">{module_panel(track,module,base)}</div><div class="module-reference"><a href="{url(base,module["chapter"]["slug"])}">Read complete module notes →</a></div>'
+        references=''
+        if track['key']=='distributed-systems':
+            for lesson in module['lessons']:
+                match=re.search(r'<section[^>]*class="lesson-references"[^>]*>(.*?)</section>',lesson['text'],re.S)
+                if match:
+                    notes=re.sub(r'<h3[^>]*>.*?</h3>','',match[1],count=1,flags=re.S)
+                    notes=notes.replace('href="study:', 'href="'+base)
+                    references+=f'<details><summary>{e(lesson["title"])}</summary>{notes}</details>'
+            if references:references='<section class="module-references"><h2>References</h2>'+references+'</section>'
+        return f'<p class="module-intro">{e(module["summary"])}</p><div class="course-curriculum">{module_panel(track,module,base)}</div>{references}<div class="module-reference"><a href="{url(base,module["chapter"]["slug"])}">Read complete module notes →</a></div>'
+    if track_for(slug) and track_for(slug)['key']=='distributed-systems' and page_kind(slug)=='reference':
+        notes=re.findall(r'<section[^>]*class="lesson-references"[^>]*>.*?</section>',content,re.S)
+        content=re.sub(r'<section[^>]*class="lesson-references"[^>]*>.*?</section>','',content,flags=re.S)
+        if notes:content+='<section class="module-references"><h2>Module references</h2>'+''.join(notes)+'</section>'
     return content
 
 def context(slug, base):

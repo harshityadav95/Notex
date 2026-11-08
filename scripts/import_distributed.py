@@ -119,7 +119,9 @@ def run(path):
         text='# '+module['title']+'\n\n'+'\n\n'.join('## '+s['title']+'\n\n'+s['text'] for s in module['sections'])+'\n'
         (ROOT/'src'/(module['slug']+'.md')).write_text(text)
     (SRC/'overview.md').write_text('# Distributed systems\n\nCommunication, coordination, scalability, resiliency, and maintainability.\n')
-    manifest={'key':'distributed-systems','title':'Distributed systems','overview':'distributed-systems/overview','chapters':[{k:m[k] for k in ('number','title','slug')} for m in modules], 'source_sha256':hashlib.sha256(Path(path).read_bytes()).hexdigest(),'page_count':len(doc),'technical_pages':[19,len(doc)],'chapter_count':chapters,'lesson_count':len(starts),'text_blocks':blocks_kept,'figures':figures,'sources':{m['slug']:hashlib.sha256((ROOT/'src'/(m['slug']+'.md')).read_bytes()).hexdigest() for m in modules}}
+    from edit_distributed import edit
+    edit(ROOT)
+    manifest={'editorial_revision':2,'key':'distributed-systems','title':'Distributed systems','overview':'distributed-systems/overview','chapters':[{k:m[k] for k in ('number','title','slug')} for m in modules], 'source_sha256':hashlib.sha256(Path(path).read_bytes()).hexdigest(),'page_count':len(doc),'technical_pages':[19,len(doc)],'chapter_count':chapters,'lesson_count':len(starts),'text_blocks':blocks_kept,'figures':figures,'sources':{m['slug']:hashlib.sha256((ROOT/'src'/(m['slug']+'.md')).read_bytes()).hexdigest() for m in modules}}
     (ROOT/'scripts/distributed-import.json').write_text(json.dumps(manifest,indent=2)+'\n')
     print(f'Imported {chapters} chapters + {len(starts)-chapters} part introductions, {len(modules)} modules, {len(figures)} original diagrams, {blocks_kept} text blocks.')
 

@@ -556,11 +556,12 @@
     }
   ],
   "sources": {
-    "distributed-systems/chapter-01": "62eab1e698a2a8b8687f1135cb10121450312538cc51f952f6bac312fbb6f4e8",
-    "distributed-systems/chapter-02": "4568b28d9ebbfd388e6c43d7598bd50815cd95063b4437e1f73ca3fd735aa2a7",
-    "distributed-systems/chapter-03": "339598e043490e6c81d050acd2c8b8b6322950f3fc0ceaf346ff01d0857eedde",
-    "distributed-systems/chapter-04": "95cde91d20c19815100fd06bff777fb96dbee59d29b52f8f2cc47928d70d8ee3",
-    "distributed-systems/chapter-05": "0755c0c24b6db4e7ea35e4e410a98ecb1b93fb2710284075d8e0c9974fa4af0e",
-    "distributed-systems/chapter-06": "41227b09cd82dd6a2ddda7976ff1656b1f0c1b5cca7f311532332cc9af49e684"
-  }
+    "distributed-systems/chapter-01": "ab097f2b78e8b49d8e2c36d1dfd42e84732184a73cd20245ec5989e8a5e29179",
+    "distributed-systems/chapter-02": "f4627d893cacf2f4da3f99f3dce1fdb352ac5734d9afbc8f0da2b4aed250535f",
+    "distributed-systems/chapter-03": "117981b06160fceaa7cb9ac606e01d79b4569a1f3314f10b54e11115b127430a",
+    "distributed-systems/chapter-04": "05e5c61f637aef59f9f5cd7d79aa4ae350db8d019afff1b56c57f4726a0d028d",
+    "distributed-systems/chapter-05": "0d52bff93885ae8a2845771cb0f843ff05a92340d7776cc2828384cc34df9ded",
+    "distributed-systems/chapter-06": "56f36f1e48169af727c77fc730d07890f8873b51255f2b84eec1db4ad0810b93"
+  },
+  "editorial_revision": 2
 }

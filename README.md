@@ -96,3 +96,11 @@ and run the normal checks. Preserve original figures rather than regenerating th
 The shared sun/moon button toggles the whole site. Light is the original palette and
 the default. Dark uses charcoal surfaces with muted accents. The browser remembers
 `notex-theme`; the early `theme.js` script applies it before styles paint.
+
+Distributed Systems readings receive an editorial pass in `scripts/edit_distributed.py`
+after import (install `beautifulsoup4` alongside PyMuPDF for reimports). It reflows
+paragraphs interrupted by PDF pagination, moves citations to the end of each reading,
+updates publication/chapter references to the current module and linked lessons,
+and restores readable URLs, numbered steps, and the bandwidth equation. Module
+summaries and complete module notes collect references at the end. Internal `study:`
+links in source are resolved by the builder for portable project-prefix deployment.

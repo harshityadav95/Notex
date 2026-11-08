@@ -71,6 +71,7 @@ for p, derived_text in sources:
  # Rebase existing Markdown links and attachments, including raw HTML links.
  def fixlink(m):
   attr,url=m.group(1),html.unescape(m.group(2))
+  if url.startswith('study:'): return f'{attr}="{base}{url[6:]}"'
   if url == base: return m.group(0)
   if re.match(r'^(https?:|mailto:|data:|#|//)',url): return m.group(0)
   target=(p.parent/unquote(url.split('#')[0])).resolve()
