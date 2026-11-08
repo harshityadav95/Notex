@@ -75,3 +75,15 @@ const sidebar=$('[data-sidebar]');if(sidebar)sidebar.addEventListener('click',()
  all('[data-course-resume]').forEach(link=>{const key=link.dataset.courseResume,slug=last[key];if(typeof slug==='string'&&new RegExp('^'+key+'/lessons/[a-z0-9-]+$').test(slug)){link.href=base+slug+'/';link.textContent='Continue learning →';}});
  update();
 })();
+/* A shared, keyboard-accessible theme preference across all Notex pages. */
+(()=>{
+ const root=document.documentElement,buttons=[...document.querySelectorAll('[data-theme-toggle]')];
+ function apply(theme){
+  root.dataset.theme=theme;
+  buttons.forEach(button=>{const label=theme==='dark'?'Switch to light theme':'Switch to dark theme';button.setAttribute('aria-label',label);button.title=label;button.setAttribute('aria-pressed',String(theme==='dark'));});
+  document.querySelector('meta[name="theme-color"]')?.setAttribute('content',theme==='dark'?'#18191c':'#f7f7f8');
+ }
+ buttons.forEach(button=>button.addEventListener('click',()=>{const theme=root.dataset.theme==='dark'?'light':'dark';apply(theme);try{localStorage.setItem('notex-theme',theme);}catch{}}));
+ window.addEventListener('storage',event=>{if(event.key==='notex-theme')apply(event.newValue==='dark'?'dark':'light');});
+ apply(root.dataset.theme||'light');
+})();

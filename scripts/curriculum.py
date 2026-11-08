@@ -27,6 +27,8 @@ def clean(text):
     return text.replace('<!-- Skip to Content -->', '').strip()
 
 def excerpt(text):
+    text = re.sub(r'<section class="chapter-video".*?</section>', '', text, flags=re.S)
+    text = re.sub(r'<div class="source-page"[^>]*></div>', '', text)
     text = re.sub(r'```.*?```', '', text, flags=re.S)
     paragraphs = [p for p in re.split(r'\n\s*\n', text) if p.strip() and not p.lstrip().startswith(('#','>','*Figure','**','-','|'))]
     fallback = next((line.lstrip('-* ') for line in text.splitlines() if line.startswith(('- ', '* '))), 'Read the examples, connect the ideas, and work through the notes.')
@@ -37,7 +39,7 @@ def excerpt(text):
 def prepare(series, src):
     pages = {}
     for track in series:
-        track['title'] = 'Go study notes' if track['key']=='go' else 'Data-intensive applications'
+        track['title'] = {'go':'Go study notes','ddia':'Data-intensive applications','distributed-systems':'Distributed systems'}[track['key']]
         track['modules'] = []
         track['lessons'] = []
         for module_number, chapter in enumerate(track['chapters'], 1):
@@ -56,7 +58,7 @@ def prepare(series, src):
                 # Deep sections become separate lessons at natural subsection boundaries.
                 subs = sections(body,3)
                 chunks = [(title,body)]
-                if len(body.split())>2200 and len(subs)>1:
+                if track['key']!='distributed-systems' and len(body.split())>2200 and len(subs)>1:
                     lead = body[:headings(body,3)[0][0]]
                     chunks = [(title,lead)] + [(sub,part) for sub,part in subs]
                 for section_title, section_body in chunks:
@@ -74,7 +76,8 @@ def prepare(series, src):
                         section_title,guide=study_notes.GUIDE[original_section_title]
                         section_body='# '+section_title+'\n\n'+guide+'\n'
                         slug=f"{track['key']}/lessons/{chapter['number']:02}-{number:02}-{slugify(section_title,'-')}"
-                    section_body=study_notes.clean(section_body, strip_citations=track['key']=='ddia')
+                    if track['key']!='distributed-systems':
+                        section_body=study_notes.clean(section_body, strip_citations=track['key']=='ddia')
                     kind = 'practice' if section_title.startswith(('Practice:','Code Review:')) else 'reading'
                     lesson = {'slug':slug,'title':section_title,'text':section_body.strip()+'\n','number':number,'code':f'{module_number:02}.{number:02}','module':module,'series':track,'kind':kind,'minutes':max(1,round(len(section_body.split())/220)),'summary':excerpt(section_body)}
                     module['lessons'].append(lesson)
@@ -88,4 +91,7 @@ def prepare(series, src):
             pages[module['slug']] = {'slug':module['slug'],'title':module['title'],'text':'# '+module['title']+'\n','module':module,'series':track,'kind':'module'}
         track['description'] = ('Build fluency in Go through types, control flow, functions, memory, and testing.' if track['key']=='go' else 'Reason about data systems, from storage and replication to streams and responsible design.')
         track['headline'] = ('Write Go with a clearer mental model.' if track['key']=='go' else 'Understand how data systems fit together.')
+        if track['key']=='distributed-systems':
+            track['description']='Explore communication, coordination, scalability, resiliency, and maintainability. Complete chapter readings, original diagrams, and a place for every chapter video.'
+            track['headline']='Build a clearer picture of distributed systems.'
     return pages

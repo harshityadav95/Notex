@@ -9,7 +9,7 @@ import study_notes
 
 ROOT = Path(__file__).resolve().parent.parent
 MANIFEST = json.loads(Path(__file__).with_name('book-import.json').read_text())
-SERIES = MANIFEST['series']
+SERIES = MANIFEST['series'] + [json.loads(Path(__file__).with_name('distributed-import.json').read_text())]
 PAGES = curriculum.prepare(SERIES, ROOT/'src')
 ALIASES = {
     'ddia/modules/01-preface':'ddia/modules/01-study-guide',
@@ -27,18 +27,20 @@ def page_kind(slug):
     if slug.endswith('/overview') and track_for(slug):return 'overview'
     return 'reference' if track_for(slug) else 'note'
 def configure(groups, titles):
-    for series, category in zip(SERIES, ('Languages', 'Systems')):
+    for series in SERIES:
+        category = 'Languages' if series['key']=='go' else 'Systems'
         slugs = [series['overview']] + [c['slug'] for c in series['chapters']]
         next(g for g in groups if g[0] == category)[5].extend(slugs)
         titles[series['overview']] = series['title']
         for chapter in series['chapters']:
             display_title=chapter['module']['title']
-            titles[chapter['slug']] = f"{series['key'].upper() if series['key'] == 'ddia' else 'Go'} {chapter['number']:02} · {display_title}"
+            titles[chapter['slug']] = f"{ {'go':'Go','ddia':'DDIA','distributed-systems':'Distributed systems'}[series['key']]} {chapter['number']:02} · {display_title}"
         titles.update({p['slug']:p['title'] for p in PAGES.values() if p['series'] is series})
 
 def section_label(track, module):
     n=module['chapter']['number']
     if track['key']=='go':return 'GO / CORE LANGUAGE'
+    if track['key']=='distributed-systems':return ('START HERE' if n==1 else f'PART {n-1} / '+module['title'].upper())
     if n==0:return 'START HERE'
     if n<=5:return 'PART 1 / DATA FOUNDATIONS'
     if n<=10:return 'PART 2 / DISTRIBUTED SYSTEMS'
@@ -46,7 +48,7 @@ def section_label(track, module):
 
 def header(base, track):
     choices=''.join(f'<a href="{url(base,s["overview"])}">{e(s["title"])}</a>' for s in SERIES)
-    return f'''<a class="skip" href="#main-content">Skip to content</a><header class="course-header"><a class="wordmark" href="{base}">notex<span class="badge">OPEN</span></a><span class="course-header-divider"></span><div class="dropdown"><button data-dropdown aria-expanded="false">{e('Learning Go' if track['key']=='go' else 'Data-intensive applications')} <span>⌄</span></button><div class="dropdown-panel">{choices}<a href="{base}library/">All notes</a></div></div><a class="course-header-overview" href="{url(base,track['overview'])}">Overview</a><div class="nav-actions"><button class="search-trigger tactile" aria-label="Search notes" data-search><img src="{base}assets/icons/search.svg" alt="" width="18" height="18"></button><a class="tactile course-library-link" href="{base}library/">Library ↗</a><button class="tactile menu-trigger" aria-label="Open navigation menu" data-menu>Menu</button></div></header><dialog class="menu-dialog"><div class="menu-head"><span class="wordmark">notex</span><button aria-label="Close menu" data-close>×</button></div><nav aria-label="Mobile navigation">{choices}<a href="{base}library/">All notes</a></nav></dialog>'''
+    return f'''<a class="skip" href="#main-content">Skip to content</a><header class="course-header"><a class="wordmark" href="{base}">notex<span class="badge">OPEN</span></a><span class="course-header-divider"></span><div class="dropdown"><button data-dropdown aria-expanded="false">{e(track['title'])} <span>⌄</span></button><div class="dropdown-panel">{choices}<a href="{base}library/">All notes</a></div></div><a class="course-header-overview" href="{url(base,track['overview'])}">Overview</a><div class="nav-actions"><button class="search-trigger tactile" aria-label="Search notes" data-search><img src="{base}assets/icons/search.svg" alt="" width="18" height="18"></button><a class="tactile course-library-link" href="{base}library/">Library ↗</a><button class="tactile menu-trigger" aria-label="Open navigation menu" data-menu>Menu</button></div></header><dialog class="menu-dialog"><div class="menu-head"><span class="wordmark">notex</span><button aria-label="Close menu" data-close>×</button></div><nav aria-label="Mobile navigation">{choices}<a href="{base}library/">All notes</a></nav></dialog>'''
 
 def sidebar(slug,base):
     track=track_for(slug)
@@ -81,7 +83,7 @@ def overview(slug,base):
     structure=''.join(f'<a href="#module-{m["number"]:02}"><span>{m["number"]:02}</span><strong>{e(m["title"])}</strong><small>{len(m["lessons"])} LESSONS</small><b aria-hidden="true">→</b></a>' for m in track['modules'])
     panels=''.join(module_panel(track,m,base) for m in track['modules'])
 
-    return f'''<section class="course-hero"><div><p class="eyebrow">OPEN LEARNING PATH / {'GO' if track['key']=='go' else 'DDIA'}</p><h1>{e(track['headline'])}</h1><p>{e(track['description'])}</p><span class="course-stats">{len(track['modules'])} MODULES <span>·</span> {len(track['lessons'])} LESSONS <span>·</span> FREE TO READ</span></div><img class="course-book" src="{base}assets/books/{track['key']}-notebook.webp" alt="{e(track['title'])} textured notebook cover" width="1254" height="1254"></section><div class="course-start"><div><strong>A little progress, one lesson at a time.</strong><span data-course-resume-label="{track['key']}">Your progress stays in this browser.</span></div><a class="tactile" href="{url(base,first['slug'])}" data-course-resume="{track['key']}">Start learning →</a></div><section class="curriculum-structure" aria-labelledby="curriculum-structure"><h2 class="eyebrow" id="curriculum-structure">CURRICULUM STRUCTURE</h2><nav class="module-directory" aria-label="Module directory">{structure}</nav></section><div class="curriculum-toolbar"><h2>Full curriculum</h2><div role="group" aria-label="Filter lessons"><button class="active" data-lesson-filter="all" aria-pressed="true">All lessons</button><button data-lesson-filter="reading" aria-pressed="false">Reading</button><button data-lesson-filter="practice" aria-pressed="false">Practice</button></div><div role="group" aria-label="Curriculum layout"><button class="active" data-curriculum-layout="list" aria-pressed="true">List</button><button data-curriculum-layout="grid" aria-pressed="false">Grid</button></div></div><div class="course-curriculum" data-layout="list">{panels}<p class="course-empty" hidden>No practice lessons in this collection. Choose Reading to explore the curriculum.</p></div>'''
+    return f'''<section class="course-hero"><div><p class="eyebrow">OPEN LEARNING PATH / {e(track['key'].upper().replace('-', ' '))}</p><h1>{e(track['headline'])}</h1><p>{e(track['description'])}</p><span class="course-stats">{len(track['modules'])} MODULES <span>·</span> {len(track['lessons'])} LESSONS <span>·</span> FREE TO READ</span></div><img class="course-book" src="{base}assets/books/{track['key']}-notebook.webp" alt="{e(track['title'])} textured notebook cover" width="1254" height="1254"></section><div class="course-start"><div><strong>A little progress, one lesson at a time.</strong><span data-course-resume-label="{track['key']}">Your progress stays in this browser.</span></div><a class="tactile" href="{url(base,first['slug'])}" data-course-resume="{track['key']}">Start learning →</a></div><section class="curriculum-structure" aria-labelledby="curriculum-structure"><h2 class="eyebrow" id="curriculum-structure">CURRICULUM STRUCTURE</h2><nav class="module-directory" aria-label="Module directory">{structure}</nav></section><div class="curriculum-toolbar"><h2>Full curriculum</h2><div role="group" aria-label="Filter lessons"><button class="active" data-lesson-filter="all" aria-pressed="true">All lessons</button><button data-lesson-filter="reading" aria-pressed="false">Reading</button><button data-lesson-filter="practice" aria-pressed="false">Practice</button></div><div role="group" aria-label="Curriculum layout"><button class="active" data-curriculum-layout="list" aria-pressed="true">List</button><button data-curriculum-layout="grid" aria-pressed="false">Grid</button></div></div><div class="course-curriculum" data-layout="list">{panels}<p class="course-empty" hidden>No practice lessons in this collection. Choose Reading to explore the curriculum.</p></div>'''
 
 def display(slug, content, base):
     if page_kind(slug)=='overview':return overview(slug,base)
@@ -123,7 +125,7 @@ def context(slug, base):
 def study_text(slug, text):
     """Display complete technical notes without publisher front/back matter."""
     track=track_for(slug)
-    if not track or slug in PAGES or slug.endswith('/overview'):
+    if not track or track['key']=='distributed-systems' or slug in PAGES or slug.endswith('/overview'):
         return text
     chapter=next(c for c in track['chapters'] if c['slug']==slug)
     if track['key']=='ddia' and chapter['number']==0:

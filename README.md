@@ -77,3 +77,22 @@ verifies original files and confirms every code block survives lesson extraction
 HTML rendering, allowing only the documented illustrative namespace substitutions. Go source contains chapters 2–6 only; DDIA includes the preface and
 chapters 1–14. Original book figure files are absent upstream; captions and descriptions
 remain in the notes. Original text retains its respective rights.
+
+## Distributed systems and themes
+
+The Distributed Systems path at `distributed-systems/overview/` has six modules:
+Foundations, Communication, Coordination, Scalability, Resiliency, and Maintainability.
+It contains 34 chapter readings and five part introductions, with 85 original diagrams,
+chapter video placeholders, search, saved notes, progress, and resume navigation.
+The public study interface omits the supplied publication's title, author, and front matter.
+Technical text is reflowed for the web; PDF ligatures and line-break hyphenation are normalized.
+
+`scripts/import_distributed.py` performs the one-time local PDF import using PyMuPDF;
+the original PDF is not committed or needed during builds. Imported Markdown and image
+bytes are checked against `scripts/distributed-import.json`. To intentionally reimport,
+install `pymupdf==1.26.7` and pass the PDF's absolute path to the importer. Then build
+and run the normal checks. Preserve original figures rather than regenerating their labels.
+
+The shared sun/moon button toggles the whole site. Light is the original palette and
+the default. Dark uses charcoal surfaces with muted accents. The browser remembers
+`notex-theme`; the early `theme.js` script applies it before styles paint.

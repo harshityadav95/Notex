@@ -30,3 +30,17 @@ approximation, Fanout branding, or extra objects. Reference is used for style on
 Delivery copies (`go-notebook.webp` and `ddia-notebook.webp`) use WebP quality 86 at
 the original dimensions with alpha preserved. The website loads these compressed
 copies; the original generated PNGs are retained as source artwork.
+
+## Distributed systems — `distributed-systems-notebook.png`
+
+Created with the built-in ImageGen tool, November 2026. The existing DDIA notebook was
+a style reference only. Final prompt: Create one isolated muted dusty lavender Notex
+hardcover notebook, photographic cloth/leather grain, softly rounded corners, narrow
+left spine, tiny right tab, nearly front-facing slight perspective, fine engraved
+technical line drawings printed directly on the cover, subtle contact shadow, and
+editorial serif typography. Title exactly “Distributed systems” on two lines; tiny
+“notex” at bottom left. Three connected server nodes with delicate message arrows,
+a small distributed clock, and restrained technical plotting dots. Entire uncut notebook
+centered on a square truly transparent background. No author, publisher, watermark,
+or extra books. Match the reference's tactile product illustration proportions.
+The site serves the alpha-preserving WebP copy at quality 86.

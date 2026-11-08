@@ -73,6 +73,8 @@ for track in books.SERIES:
             file=ROOT/'docs'/lesson['slug']/'index.html'
             parser=Article();parser.feed(file.read_text())
             expected=re.findall(r'^```[^\n]*\n(.*?)^```',lesson['text'],re.M|re.S)
+            if track['key']=='distributed-systems':
+                source_parser=Article();source_parser.feed(lesson['text']);expected=source_parser.code_blocks
             assert [c.expandtabs(4).strip('\n') for c in expected]==[c.strip('\n') for c in parser.code_blocks],f'Lesson code changed: {lesson["slug"]}'
             assert set(parser.fragments)<=set(parser.ids),f'Lesson anchors broken: {lesson["slug"]}'
             assert 'A Note for Early Release Readers' not in file.read_text()
@@ -82,7 +84,9 @@ for track in books.SERIES:
             lesson_count+=1
         original=ROOT/'src'/(module['chapter']['slug']+'.md')
         expected=re.findall(r'^```[^\n]*\n(.*?)^```',original.read_text(),re.M|re.S)
-        assert combined==[study_notes.code(c) for c in expected],f'Code omitted or duplicated while splitting {original}'
+        if track['key']=='distributed-systems':
+            source_parser=Article();source_parser.feed(original.read_text());expected=source_parser.code_blocks
+        assert combined==([study_notes.code(c) for c in expected] if track['key']!='distributed-systems' else expected),f'Code omitted or duplicated while splitting {original}'
 assert lesson_count==sum(len(t['lessons']) for t in books.SERIES)
 print(f'Passed: {lesson_count} guided lessons retain every source code block, omit publishing/navigation boilerplate, and have valid section anchors.')
 
@@ -103,3 +107,24 @@ for module in go_track['modules']:
     for literal in re.findall(r'\[(?:\d+,\s*){2,}\d+\]',original):
         assert literal in derived,f'Numeric example lost in {module["title"]}: {literal}'
 print('Passed: bracketed numeric Go examples remain intact.')
+
+# The supplied PDF's imported chapters and diagram bytes must remain intact.
+distributed=json.loads((ROOT/'scripts/distributed-import.json').read_text())
+track=next(t for t in books.SERIES if t['key']=='distributed-systems')
+assert len(track['modules'])==6 and len(track['lessons'])==39
+for slug,sha in distributed['sources'].items():
+    assert hashlib.sha256((ROOT/'src'/(slug+'.md')).read_bytes()).hexdigest()==sha
+for figure in distributed['figures']:
+    for folder in ('web','docs'):
+        path=ROOT/folder/'assets/distributed-systems'/figure['file']
+        assert hashlib.sha256(path.read_bytes()).hexdigest()==figure['sha256']
+assert len(distributed['figures'])==85
+for lesson in track['lessons']:
+    content=(ROOT/'docs'/lesson['slug']/'index.html').read_text()
+    assert content.count('class="chapter-video"')==1
+    assert 'data-theme-toggle' in content
+    assert not re.search('Understanding Distributed Systems|Roberto Vitillo',content,re.I)
+    parser=Article();parser.feed(content)
+    for image in parser.images:
+        assert (ROOT/'docs'/lesson['slug']/unquote(image)).resolve().is_file(),image
+print('Passed: 6 distributed systems modules, 39 video placeholders, preserved chapter hashes, and 85 byte-identical original diagrams.')

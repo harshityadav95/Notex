@@ -1,0 +1,566 @@
+{
+  "key": "distributed-systems",
+  "title": "Distributed systems",
+  "overview": "distributed-systems/overview",
+  "chapters": [
+    {
+      "number": 1,
+      "title": "Foundations",
+      "slug": "distributed-systems/chapter-01"
+    },
+    {
+      "number": 2,
+      "title": "Communication",
+      "slug": "distributed-systems/chapter-02"
+    },
+    {
+      "number": 3,
+      "title": "Coordination",
+      "slug": "distributed-systems/chapter-03"
+    },
+    {
+      "number": 4,
+      "title": "Scalability",
+      "slug": "distributed-systems/chapter-04"
+    },
+    {
+      "number": 5,
+      "title": "Resiliency",
+      "slug": "distributed-systems/chapter-05"
+    },
+    {
+      "number": 6,
+      "title": "Maintainability",
+      "slug": "distributed-systems/chapter-06"
+    }
+  ],
+  "source_sha256": "fb8053c1cd063710ac6843e6d94b5ac9083f7cf4dfc61bc226a0e0cb149f382f",
+  "page_count": 346,
+  "technical_pages": [
+    19,
+    346
+  ],
+  "chapter_count": 34,
+  "lesson_count": 39,
+  "text_blocks": 1849,
+  "figures": [
+    {
+      "file": "figure-001.png",
+      "page": 22,
+      "sha256": "4fb81b33904529e882a7ad682d704d535f26e6854b381a26596ae3cd430f94f6",
+      "caption": "Figure 1.1: The system throughput on the y axis is the subset of client requests (x axis) that can be handled without errors and with low response times, also referred to as its goodput."
+    },
+    {
+      "file": "figure-002.png",
+      "page": 27,
+      "sha256": "09f1a82778ba8853ac6d1169080f5c62b3856809278b0a257f628559d0ec40dc",
+      "caption": "Figure 1.2: In this example, the business logic uses the reposi- tory interface, implemented by the PostgreSQL adapter, to access the database. In contrast, the HTTP adapter handles incoming re- quests by calling operations defined in the service interface."
+    },
+    {
+      "file": "figure-003.png",
+      "page": 32,
+      "sha256": "94cb81f20439ffbdbd7bc51a36a4d86d1574f36957a0524fd39bd5398d551010",
+      "caption": "Figure 1.3: Internet protocol suite"
+    },
+    {
+      "file": "figure-004.png",
+      "page": 37,
+      "sha256": "d7e1a295b11a46de9e019a8b6e344bba9cb3f56be0c38dbf16169f4085974576",
+      "caption": "Figure 2.1: Three-way handshake"
+    },
+    {
+      "file": "figure-005.png",
+      "page": 38,
+      "sha256": "5f193231b1b7d48df600bfd66b89a03971d830e8b7cad5e66c84f67f30f9e76c",
+      "caption": "Figure 2.2: The receive buffer stores data that hasn\u2019t yet been pro- cessed by the destination process."
+    },
+    {
+      "file": "figure-006.png",
+      "page": 39,
+      "sha256": "4e4d751e373f8a400348fb7faca2f524ce763140c6eadbc904f26f4497b9c4b3",
+      "caption": "Figure 2.3: The size of the receive buffer is communicated in the headers of acknowledgment segments."
+    },
+    {
+      "file": "figure-007.png",
+      "page": 40,
+      "sha256": "e4b19c48169b6d5e2298ce9ea3ca604d8881a2ece5c50b1b543fdc8446183746",
+      "caption": "Figure 2.4: The shorter the RTT, the quicker the sender can start utilizing the underlying network\u2019s bandwidth."
+    },
+    {
+      "file": "figure-008.png",
+      "page": 45,
+      "sha256": "f672adbe6753908364326da06d4f4111deff5be04c9670f48cea162c5ab55869",
+      "caption": "Figure 3.1: A certificate chain ends with a self-signed certificate issued by a root CA."
+    },
+    {
+      "file": "figure-009.png",
+      "page": 51,
+      "sha256": "d0bff89bbc39d07c096941316658084769bc289e5e63e0aedce9ae6f90b29fc5",
+      "caption": "Figure 4.1: DNS resolution process"
+    },
+    {
+      "file": "figure-010.png",
+      "page": 56,
+      "sha256": "ee6c8fcbd2ad8cd66c055ce018edb8de9af2b35a3e3950cfffa93eb9193465cd",
+      "caption": "Figure 5.1: An example HTTP transaction between a browser and a web server"
+    },
+    {
+      "file": "figure-011.png",
+      "page": 80,
+      "sha256": "6ee03b83d0d4518190e75db96a692ad6ffe9b101dd4cb6ce136748bb75f97bb7",
+      "caption": "Figure 7.1: The client can\u2019t tell whether the server is slow, it crashed or a message was delayed/dropped because of a network issue."
+    },
+    {
+      "file": "figure-012.png",
+      "page": 84,
+      "sha256": "9ecd1fedacbd80538fd91c8e2b1740ab325be04c6353c7811ca9080b61212dce",
+      "caption": "Figure 8.1: Three processes using Lamport clocks. For example, because D happened before F, D\u2019s logical timestamp is less than F\u2019s."
+    },
+    {
+      "file": "figure-013.png",
+      "page": 86,
+      "sha256": "7b7b0a6a6014b7757cd4b71e59837b206d336c48474e029dd40ea3dc4c8630e0",
+      "caption": "Figure 8.2: Each process has a vector clock represented by an array of three counters."
+    },
+    {
+      "file": "figure-014.png",
+      "page": 92,
+      "sha256": "84a109a74b1999befef4b5feb986a52e0676d21bad0454c657d725df326a74bc",
+      "caption": "Figure 9.1: Raft\u2019s leader election algorithm represented as a state machine."
+    },
+    {
+      "file": "figure-015.png",
+      "page": 97,
+      "sha256": "0fcaef3bba6b09a606742dd79dc2e85b4b925ad7c5336e9efe760bc98bd9ac0d",
+      "caption": "Figure 10.1: The leader\u2019s log is replicated to its followers."
+    },
+    {
+      "file": "figure-016.png",
+      "page": 101,
+      "sha256": "d74ce27393d47cc14c3c8ae12f7ac03a951a49ac25ac8bafbacbc5b2fbaa8ab1",
+      "caption": "Figure 10.2: A write request executing instantaneously"
+    },
+    {
+      "file": "figure-017.png",
+      "page": 102,
+      "sha256": "5efa452364c4e19ed302bbbd0e22e4ae2fa228c2ed3ef290bb39e70a7b7e8165",
+      "caption": "Figure 10.3: A write request can\u2019t execute instantaneously because it takes time to reach the leader and be executed."
+    },
+    {
+      "file": "figure-018.png",
+      "page": 103,
+      "sha256": "e93855a194bce2bda919b26c1ef76be519b709acd5299e3949c6f5d6887bfcf7",
+      "caption": "Figure 10.4: The side-effects of a strongly consistent operation are visible to all observers once it completes."
+    },
+    {
+      "file": "figure-019.png",
+      "page": 105,
+      "sha256": "6c3581c2834cde63ad29ca61d568c8ee5f61a46e45029c41d0117ca3fe04c2ba",
+      "caption": "Figure 10.5: Although followers have a different view of the sys- tem\u2019s state, they process updates in the same order."
+    },
+    {
+      "file": "figure-020.png",
+      "page": 109,
+      "sha256": "dfb6a1bd537f0f9732df7e8846556f67b758fe73565de02aa076baefc4455340",
+      "caption": "Figure 10.6: Writes propagate through all processes in the chain, while reads are served exclusively by the tail."
+    },
+    {
+      "file": "figure-021.png",
+      "page": 111,
+      "sha256": "1116cadbda82bf889959eb0e69f6567717ce4cd3a3548d0a1ebec803ab4d8a5f",
+      "caption": "Figure 10.7: A dirty read can be served by any replica with an ad- ditional request to the tail to guarantee strong consistency."
+    },
+    {
+      "file": "figure-022.png",
+      "page": 114,
+      "sha256": "04a0ec5a399fda1dec681b817fa86d94fdfde4799e870e34794992dd4e8dd95c",
+      "caption": "Figure 11.1: Best-effort broadcast"
+    },
+    {
+      "file": "figure-023.png",
+      "page": 115,
+      "sha256": "f01ea169212412ae300e53fe4772c77de3fb1ea5e6a51375035a40811a96613e",
+      "caption": "Figure 11.2: Eager reliable broadcast"
+    },
+    {
+      "file": "figure-024.png",
+      "page": 116,
+      "sha256": "0cab2ec264f32294695c02a39cd621027112ba2971dbcd0bc8e3e0531b1ffef0",
+      "caption": "Figure 11.3: Gossip broadcast"
+    },
+    {
+      "file": "figure-025.png",
+      "page": 117,
+      "sha256": "9009f2a885b477e21861347956026f27e476897c9d25697e8238cdeaafd050e3",
+      "caption": "Figure 11.4: The same object is updated simultaneously by differ- ent clients at different replicas, leading to conflicts."
+    },
+    {
+      "file": "figure-026.png",
+      "page": 120,
+      "sha256": "0863eb57801f432d8bc1a2d8575d364fa013364c113903170cf8cade520915ec",
+      "caption": "Figure 11.5: Last-writer wins register"
+    },
+    {
+      "file": "figure-027.png",
+      "page": 120,
+      "sha256": "64addcfbeaa86ba4d3926206fc7c39fc44870ba6368e9c62194d29c627d3ceaf",
+      "caption": "Figure 11.6: Multi-value register"
+    },
+    {
+      "file": "figure-028.png",
+      "page": 122,
+      "sha256": "74bdd83a5c4f93604882132a503d7581c1e6dd422cceda7f05a46a5a9512ca2f",
+      "caption": "Figure 11.7: Intersecting write and read quorums"
+    },
+    {
+      "file": "figure-029.png",
+      "page": 127,
+      "sha256": "d149f20e5da06dc8a98b51bf7bdd4615c7ac257d683f377b47ab97c105963299",
+      "caption": "Figure 11.8: A causally consistent implementation of a key-value store"
+    },
+    {
+      "file": "figure-030.png",
+      "page": 132,
+      "sha256": "76235d35ba26100b5565ed4c90ca0b2bb4445b95b0211548c70817a3f2712d35",
+      "caption": "Figure 12.1: Isolation levels define which race conditions they for- bid."
+    },
+    {
+      "file": "figure-031.png",
+      "page": 139,
+      "sha256": "31ca991fcac8db07025a9c647b23f1eb5d7db1fdf041fe8df8e53005aed75275",
+      "caption": "Figure 12.2: The two-phase commit protocol consists of a prepare and a commit phase."
+    },
+    {
+      "file": "figure-032.png",
+      "page": 142,
+      "sha256": "c7116178f32e176a8d127bab4f686f0a8e3876114dbd02a06a58baad0478e2f1",
+      "caption": "Figure 12.3: Spanner combines 2PC with 2PL and state machine replication. In this figure, there are three partitions and three repli- cas per partition."
+    },
+    {
+      "file": "figure-033.png",
+      "page": 150,
+      "sha256": "6836ec4fb4d8b880a1aab9272242a4ae69169cccd068344acfdaab45d1e66a02",
+      "caption": "Figure 13.1: A workflow implementing an asynchronous transac- tion"
+    },
+    {
+      "file": "figure-034.png",
+      "page": 158,
+      "sha256": "769dd1f11d51e5112d6a2bf089d06c5fb5c558efade6653cc77d8dcc357e3253",
+      "caption": "Figure 13.2: Cruder\u2019s architecture"
+    },
+    {
+      "file": "figure-035.png",
+      "page": 160,
+      "sha256": "9a0cd42d5d8e7d105a1ec08dc8de7c1793b6717ac66a803b64ce921b6897bef7",
+      "caption": "Figure 13.3: Moving the database to its own dedicated machine is an example of functional decomposition"
+    },
+    {
+      "file": "figure-036.png",
+      "page": 164,
+      "sha256": "766562fc448020dc8a8b10b9f0921fcdf6e04261ed314670fb7ecc9aabdee719",
+      "caption": "Figure 14.1: A client accessing a resource for the first time (the Age header contains the time in seconds the object was in the cache)"
+    },
+    {
+      "file": "figure-037.png",
+      "page": 165,
+      "sha256": "c72c773623e78908568f5ea01b9af25caa42145d7954eecf08db20ae599b07d1",
+      "caption": "Figure 14.2: A client accessing a stale resource"
+    },
+    {
+      "file": "figure-038.png",
+      "page": 166,
+      "sha256": "3e852b5de84e0c01b5f6b1b50a31d7e85b3827f54eef979d4bd35d21224a687c",
+      "caption": "Figure 14.3: A reverse proxy acts as an intermediary between the clients and the servers."
+    },
+    {
+      "file": "figure-039.png",
+      "page": 171,
+      "sha256": "f46a9e8cc0d022bb562d22b406082b2c88aa171b71ef1bafd88225f1814b34ca",
+      "caption": "Figure 15.1: A CDN reduces the round trip time of network calls for clients and the load for the origin server."
+    },
+    {
+      "file": "figure-040.png",
+      "page": 174,
+      "sha256": "042f4ef92e2fa515b0ea3a09d0cbafaae5582df9a286af37d0ba23ac7f384fe1",
+      "caption": "Figure 16.1: A partitioned application with a gateway that routes requests to partitions"
+    },
+    {
+      "file": "figure-041.png",
+      "page": 175,
+      "sha256": "d7445ab41de2f3789548ce22e45e166ce84791f1de6970bc4d89792520357bde",
+      "caption": "Figure 16.2: A range-partitioned dataset"
+    },
+    {
+      "file": "figure-042.png",
+      "page": 177,
+      "sha256": "a43f66a2920f54732cf7201d6dd7c862c608a12136e9df1573be696285859e18",
+      "caption": "Figure 16.3: A hash-partitioned dataset"
+    },
+    {
+      "file": "figure-043.png",
+      "page": 178,
+      "sha256": "01bb550d5a4e74190096cec38d9f04066979e74628093c4c65b525e45af0c26a",
+      "caption": "Figure 16.4: With consistent hashing, partition identifiers and keys are randomly distributed around a circle, and each key is assigned to the next partition that appears on the circle in clockwise order."
+    },
+    {
+      "file": "figure-044.png",
+      "page": 179,
+      "sha256": "77ad06d41957842567c9b16760f4dbb4e2047b9cb9a5bee44f4e12c8cf783321",
+      "caption": "Figure 16.5: After partition P4 is added, the key \u2019for\u2019 is reassigned to P4, but the assignment of the other keys doesn\u2019t change."
+    },
+    {
+      "file": "figure-045.png",
+      "page": 183,
+      "sha256": "ef358919bc59008fb7cc711dba3ab643a1a410d9f04c3f6f62a4d6aea543361c",
+      "caption": "Figure 17.1: A high-level view of Azure Storage\u2019s architecture"
+    },
+    {
+      "file": "figure-046.png",
+      "page": 184,
+      "sha256": "32fb00d25a8a03b59f6b223ef5be0a06ae5b5febd73507b931ca169a8b8150c8",
+      "caption": "Figure 17.2: The stream layer uses chain replication to replicate extents across storage servers."
+    },
+    {
+      "file": "figure-047.png",
+      "page": 185,
+      "sha256": "3a266540c99cec84c2675050e32515a41442e3b601c909c7f8500a5acbd0fcf7",
+      "caption": "Figure 17.3: The partition manager range-partitions files across partition servers and rebalances the partitions when necessary."
+    },
+    {
+      "file": "figure-048.png",
+      "page": 193,
+      "sha256": "969721a64372d35a5e51ba70c2a77beda394895f3a8b87360a00b9f6cced0316",
+      "caption": "Figure 18.1: DNS load balancing"
+    },
+    {
+      "file": "figure-049.png",
+      "page": 195,
+      "sha256": "a5809c0573230b628644aeffb711c40ef48e6ffffbded4f59174a2d9f6d9d238",
+      "caption": "Figure 18.2: Transport layer load balancing"
+    },
+    {
+      "file": "figure-050.png",
+      "page": 200,
+      "sha256": "c1e45fbe631cb8bed94e8071341e66dbb6d6184bc89f2b510a0e9afc874b2411",
+      "caption": "Figure 19.1: Single leader replication"
+    },
+    {
+      "file": "figure-051.png",
+      "page": 211,
+      "sha256": "ebc8082f0555fad98c12f73e71bf0bd7bca300a0caba487f158deb61813e6a8e",
+      "caption": "Figure 20.1: In-process cache"
+    },
+    {
+      "file": "figure-052.png",
+      "page": 213,
+      "sha256": "0856e5fc3c14c016f197360c42079ec64e24cbb96391a95fbe5a48d08d16bd3b",
+      "caption": "Figure 20.2: Out-of-process cache"
+    },
+    {
+      "file": "figure-053.png",
+      "page": 215,
+      "sha256": "2807f874cbcebd0765e5c61b22e7f193ce794e04a496bfb5e92e4beba5dcbf63",
+      "caption": "Figure 21.1: A monolithic application composed of multiple com- ponents"
+    },
+    {
+      "file": "figure-054.png",
+      "page": 216,
+      "sha256": "28c7f4121611b0e78c9a7a4c3d81fb07ecdf108adad6c7f15d0cac67357383ab",
+      "caption": "Figure 21.2: An application split into independently deployable services that communicate via APIs"
+    },
+    {
+      "file": "figure-055.png",
+      "page": 221,
+      "sha256": "8138cf60d0b79490bb9649bfdcde29883bf5a84167f5acc6c97c1c4140af198d",
+      "caption": "Figure 21.3: The API gateway hides the internal APIs from its clients."
+    },
+    {
+      "file": "figure-056.png",
+      "page": 230,
+      "sha256": "a9f43fb9a8233a81d60b6dbecd9f2c44b9b48d630faf40a6e2877ca6fd74256d",
+      "caption": "Figure 22.1: The intermediate data store protects the control plane by absorbing the load generated by the data plane."
+    },
+    {
+      "file": "figure-057.png",
+      "page": 231,
+      "sha256": "ebfdb052078d39784c3027dc0d800de6dcb70cce8caa03366874ff3d85cc6dab",
+      "caption": "Figure 22.2: The intermediate data store absorbs the load of bulk reads, while the control plane pushes small deltas to the data plane whenever the state changes."
+    },
+    {
+      "file": "figure-058.png",
+      "page": 236,
+      "sha256": "9abe2a7f3fee6aa1096c328d402f7b17c5d110be50ef35195659617377138a56",
+      "caption": "Figure 23.1: The message consumer (an inbound adapter) is part of the API surface of the service."
+    },
+    {
+      "file": "figure-059.png",
+      "page": 238,
+      "sha256": "7873872b53df11461303335b2b4882fb8979677bc613828d320846f130714665",
+      "caption": "Figure 23.2: One-way messaging style"
+    },
+    {
+      "file": "figure-060.png",
+      "page": 239,
+      "sha256": "adc1a7c564abf02ec2e261a0140b8df916aaadf3c4bed18e3dc14d97faa8a788",
+      "caption": "Figure 23.3: Request-response messaging style"
+    },
+    {
+      "file": "figure-061.png",
+      "page": 239,
+      "sha256": "9cac7bd60a10be32a6ab99116981afbd63ff54f7f2031397b84fe273b9352ce2",
+      "caption": "Figure 23.4: Broadcast messaging style"
+    },
+    {
+      "file": "figure-062.png",
+      "page": 257,
+      "sha256": "6fa7476293cd7041c672c1d929851c529ad1b45b69e555be94e52556c7fd8b6a",
+      "caption": "Figure 24.1: Two replicas behind a load balancer; each is handling half the load."
+    },
+    {
+      "file": "figure-063.png",
+      "page": 258,
+      "sha256": "f7fade4cc8a5232c254eb1073eacc9f58d51fb7bdeeeeef3ffc0620dc4f69240",
+      "caption": "Figure 24.2: When replica B becomes unavailable, A will be hit with more load, which can strain it beyond its capacity."
+    },
+    {
+      "file": "figure-064.png",
+      "page": 259,
+      "sha256": "b7d18e95a66132fa07cdd416c789a872fd28dcd04ca98367736248a2d042efe6",
+      "caption": "Figure 24.3: Risk matrix"
+    },
+    {
+      "file": "figure-065.png",
+      "page": 264,
+      "sha256": "b980be7b585226e8bcb7cbc02e839ce4a1287f08d19c8c1f3314a5a8819bbcbc",
+      "caption": "Figure 25.1: A simplistic multi-region architecture"
+    },
+    {
+      "file": "figure-066.png",
+      "page": 266,
+      "sha256": "2234e33616abe4f5e6196ec52f02071b51f7051c572a7517d3dc9c01c17f3193",
+      "caption": "Figure 26.1: Service instances partitioned into 3 partitions"
+    },
+    {
+      "file": "figure-067.png",
+      "page": 267,
+      "sha256": "ad603a1eaab522d1ac7baf6c0b2c3019b957f46b05a72a69ec1d042dfac24872",
+      "caption": "Figure 26.2: Virtual partitions are far less likely to fully overlap with each other."
+    },
+    {
+      "file": "figure-068.png",
+      "page": 268,
+      "sha256": "ef358919bc59008fb7cc711dba3ab643a1a410d9f04c3f6f62a4d6aea543361c",
+      "caption": "Figure 26.3: Each storage cluster (stamp) is a cell in Azure Storage."
+    },
+    {
+      "file": "figure-069.png",
+      "page": 275,
+      "sha256": "a2252d0a9c4a5799d9511976c8559044ecaa84db6599b108b6013dca137f5435",
+      "caption": "Figure 27.1: Retry storm"
+    },
+    {
+      "file": "figure-070.png",
+      "page": 276,
+      "sha256": "5eca190eaeb8093000b366b1a83c3aa0368047e39e4fb93b034120061ba6b023",
+      "caption": "Figure 27.2: Retry amplification in action"
+    },
+    {
+      "file": "figure-071.png",
+      "page": 277,
+      "sha256": "d1fae0d8fc750180ae606df57be3df9b145a431ca6b3b60f93ad56b4f6cf049d",
+      "caption": "Figure 27.3: Circuit breaker state machine"
+    },
+    {
+      "file": "figure-072.png",
+      "page": 281,
+      "sha256": "fd9cf8bb90f44b893a535742090726a949217c7c92a9baea61cb394c2090362a",
+      "caption": "Figure 28.1: The channel smooths out the load for the consuming service."
+    },
+    {
+      "file": "figure-073.png",
+      "page": 284,
+      "sha256": "596c1b1f2679b7ebe64a5427e5f1ca1cb19d1af98b7ffac06c3a04ef0d4c0b95",
+      "caption": "Figure 28.2: Buckets divide time into 1-minute intervals, which keep track of the number of requests seen."
+    },
+    {
+      "file": "figure-074.png",
+      "page": 284,
+      "sha256": "209cf9a4bf204121cf9ca04f1e232981488bb1eef921f6d30d55f6de69f9da5e",
+      "caption": "Figure 28.3: When a new request comes in, its timestamp is used to determine the bucket it belongs to."
+    },
+    {
+      "file": "figure-075.png",
+      "page": 285,
+      "sha256": "0112a2626a517acff02a5c30e8b033e7c07628b45a78407a1687bfd3d3dda0ec",
+      "caption": "Figure 28.4: A bucket\u2019s weight is proportional to its overlap with the sliding window."
+    },
+    {
+      "file": "figure-076.png",
+      "page": 287,
+      "sha256": "a7f1756cff3950bcd8b94534fec50788ab1e63d4b73614e5944fff6cabb7cf1f",
+      "caption": "Figure 28.5: Servers batch bucket updates in memory for some time, and flush them asynchronously to the data store at the end of it."
+    },
+    {
+      "file": "figure-077.png",
+      "page": 300,
+      "sha256": "c488dca20b9c174b98b569e5532db7ab9e84d822c4498406e0ba1d59003da6a9",
+      "caption": "Figure 29.1: Test pyramid"
+    },
+    {
+      "file": "figure-078.png",
+      "page": 302,
+      "sha256": "13f0185f332aa87e330221931eba6c432ded30fa8bdba1ec27f7fb2a2593a004",
+      "caption": "Figure 29.2: How should we test the service?"
+    },
+    {
+      "file": "figure-079.png",
+      "page": 305,
+      "sha256": "18d04704116c0703cf142425ab3218eabf52baa6bfe9d810078d69e7b86ebf26",
+      "caption": "Figure 29.3: Data stores can see writes in different orders."
+    },
+    {
+      "file": "figure-080.png",
+      "page": 308,
+      "sha256": "43026fc3797865025e5e968d135a55b54fc13e8e3c12ced3c9ea187b44b3946b",
+      "caption": "Figure 30.1: Continuous delivery and deployment pipeline stages"
+    },
+    {
+      "file": "figure-081.png",
+      "page": 320,
+      "sha256": "a9f946d24245e6c1504fcabb79eff0f8766f57088e87591fff752d94414ca7fe",
+      "caption": "Figure 31.1: An SLI defined as the ratio of good events over the total number of events"
+    },
+    {
+      "file": "figure-082.png",
+      "page": 323,
+      "sha256": "969a3d8eaf8aaa6b09360cae92f033c042abd43a593bc1941c0c44974937f9e9",
+      "caption": "Figure 31.2: An SLO defines the range of acceptable values for an SLI."
+    },
+    {
+      "file": "figure-083.png",
+      "page": 327,
+      "sha256": "126d1403930ac34891962e528cabe398263364e9a879f43e69a1b73b7c98533b",
+      "caption": "Figure 31.3: Dashboards should be tailored to their audience."
+    },
+    {
+      "file": "figure-084.png",
+      "page": 335,
+      "sha256": "545f97503bc2c8b6403b4aef8072809004d3baf737ba6eceac63356d57eb19bc",
+      "caption": "Figure 32.1: Observability is a superset of monitoring."
+    },
+    {
+      "file": "figure-085.png",
+      "page": 338,
+      "sha256": "c08c75480e47b273d4e81c6d96c1a9d2c66c3e1651a0e74c49b1789737622fdd",
+      "caption": "Figure 32.2: An execution flow can be represented with spans."
+    }
+  ],
+  "sources": {
+    "distributed-systems/chapter-01": "62eab1e698a2a8b8687f1135cb10121450312538cc51f952f6bac312fbb6f4e8",
+    "distributed-systems/chapter-02": "4568b28d9ebbfd388e6c43d7598bd50815cd95063b4437e1f73ca3fd735aa2a7",
+    "distributed-systems/chapter-03": "339598e043490e6c81d050acd2c8b8b6322950f3fc0ceaf346ff01d0857eedde",
+    "distributed-systems/chapter-04": "95cde91d20c19815100fd06bff777fb96dbee59d29b52f8f2cc47928d70d8ee3",
+    "distributed-systems/chapter-05": "0755c0c24b6db4e7ea35e4e410a98ecb1b93fb2710284075d8e0c9974fa4af0e",
+    "distributed-systems/chapter-06": "41227b09cd82dd6a2ddda7976ff1656b1f0c1b5cca7f311532332cc9af49e684"
+  }
+}
